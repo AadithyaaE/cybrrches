@@ -133,7 +133,7 @@ export default function MitigationPage() {
     <div>
       <SectionHeader
         title="Mitigation"
-        description="A deterministic mitigation policy engine and controlled simulation, sitting between Attack Analysis / MITRE evidence and the (future) Verification stage."
+        description="A deterministic mitigation policy engine and controlled simulation, sitting between Attack Analysis / MITRE evidence and the simulated Verification stage."
       />
 
       <MitigationHeader />

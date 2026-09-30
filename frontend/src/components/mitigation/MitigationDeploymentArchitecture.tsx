@@ -6,7 +6,7 @@ const STEPS = [
   { label: "CyberChess Decision", sub: "Policy engine output", icon: <IconAttack /> },
   { label: "Mitigation Adapter", sub: "SIMULATION ONLY", icon: <IconMitigation />, current: true },
   { label: "Approved Enforcement Mechanism", sub: "Not connected", icon: <IconNetwork /> },
-  { label: "Verification", sub: "Feature 11 — implemented next", icon: <IconResearch /> },
+  { label: "Verification", sub: "Simulation verification only", icon: <IconResearch /> },
 ];
 
 export default function MitigationDeploymentArchitecture() {

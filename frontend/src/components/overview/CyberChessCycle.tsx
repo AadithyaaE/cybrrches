@@ -12,8 +12,8 @@ const steps: CycleStep[] = [
   { label: "OBSERVE", done: true, note: "Network state S(t)" },
   { label: "IDENTIFY", done: true, note: "Anomaly & MITRE evidence" },
   { label: "PREDICT", done: true, note: "K-step forecasting" },
-  { label: "MITIGATE", done: false, note: "Coming soon" },
-  { label: "VERIFY", done: false, note: "Coming soon" },
+  { label: "MITIGATE", done: true, note: "Simulation" },
+  { label: "VERIFY", done: true, note: "Simulation" },
 ];
 
 export default function CyberChessCycle() {

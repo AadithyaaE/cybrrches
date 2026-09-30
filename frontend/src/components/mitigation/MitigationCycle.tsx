@@ -6,8 +6,8 @@ const STEPS = [
   { label: "OBSERVE", done: true, note: "Network state S(t)" },
   { label: "IDENTIFY", done: true, note: "MITRE evidence" },
   { label: "PREDICT", done: true, note: "K-step forecasting + attack progression" },
-  { label: "MITIGATE", done: true, note: "This feature - demonstration policy + simulation" },
-  { label: "VERIFY", done: false, note: "Feature 11 — implemented next" },
+  { label: "MITIGATE", done: true, note: "Simulation" },
+  { label: "VERIFY", done: true, note: "Simulation" },
 ];
 
 export default function MitigationCycle() {
