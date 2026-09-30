@@ -1,0 +1,46 @@
+{
+  "day_label": "Wednesday-14-02-2018",
+  "input_file": "data\\raw\\external_evaluation\\Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+  "cleaning_report_summary": {
+    "raw_row_count": 1048575,
+    "embedded_header_rows_removed": 0,
+    "exact_duplicate_rows_removed": 225628,
+    "final_row_count": 822947,
+    "label_distribution_raw_rows": {
+      "Benign": 666273,
+      "SSH-Bruteforce": 117322,
+      "FTP-BruteForce": 39352
+    },
+    "timestamp_min": "1970-01-05 03:01:17",
+    "timestamp_max": "2018-02-14 12:59:59"
+  },
+  "unexpected_protocol_values": [],
+  "infinity_counts_pre_conversion": {
+    "Flow Byts/s": 1544,
+    "Flow Pkts/s": 3821
+  },
+  "window_summary": {
+    "num_windows": 32043,
+    "num_continuous_segments": 449,
+    "num_gaps": 448,
+    "label_distribution_windows": {
+      "Benign": 20775,
+      "FTP-BruteForce": 5826,
+      "SSH-Bruteforce": 5442
+    },
+    "observation_count_stats": {
+      "min": 1,
+      "max": 261,
+      "mean": 25.683
+    }
+  },
+  "sequence_summary": {
+    "num_valid_sequences": 29091,
+    "sequence_length": 10,
+    "feature_count": 68
+  },
+  "preprocessing": {
+    "pipeline_path": "data\\processed\\splits\\preprocessing_pipeline_train_fitted.joblib",
+    "fit_source": "Feature 7 TRAIN partition of the ORIGINAL Thursday-01-03-2018 dataset - NOT refit on this external data."
+  }
+}

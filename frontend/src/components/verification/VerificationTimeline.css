@@ -1,0 +1,54 @@
+.verification-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.verification-timeline__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  opacity: 0.6;
+}
+
+.verification-timeline__item--occurred {
+  opacity: 1;
+  border-color: var(--accent-cyan-border);
+}
+
+.verification-timeline__marker {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--status-success);
+  flex-shrink: 0;
+}
+
+.verification-timeline__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.verification-timeline__label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.verification-timeline__detail {
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+
+.verification-timeline__timestamp {
+  font-size: 10px;
+  color: var(--text-disabled);
+  font-family: var(--font-mono);
+}

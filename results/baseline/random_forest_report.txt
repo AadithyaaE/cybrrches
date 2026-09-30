@@ -1,0 +1,148 @@
+======================================================================
+RANDOM FOREST BASELINE REPORT (FEATURE 9)
+======================================================================
+This Random Forest is a nonlinear supervised baseline for next-window attack-state prediction. It is not the CyberChess World Model and it does not explicitly learn temporal state-transition dynamics. The purpose of this benchmark is to provide a controlled comparison point for the subsequent LSTM World Model using the same chronological data partitions and the same 10-window input representation.
+
+----------------------------------------------------------------------
+MODEL CONFIGURATION
+----------------------------------------------------------------------
+  n_estimators: 300
+  class_weight: balanced
+  random_state: 42
+  n_jobs: -1
+  configuration_note: Recommended configuration used unchanged; no additional regularization (e.g. max_depth) was necessary for reasonable runtime/memory on this dataset size (15,660 train samples x 680 features).
+
+----------------------------------------------------------------------
+ENVIRONMENT
+----------------------------------------------------------------------
+  python_version: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+  sklearn_version: 1.9.0
+  platform: Windows-11-10.0.22631-SP0
+
+----------------------------------------------------------------------
+SAMPLE COUNTS / CLASS DISTRIBUTIONS / TIMESTAMP RANGES
+----------------------------------------------------------------------
+  TRAIN: n=15660, classes={'Benign': 10760, 'Infilteration': 4900}, range={'min': '2018-03-01 01:00:00', 'max': '2018-03-01 10:12:22'}
+  VALIDATION: n=3492, classes={'Benign': 1815, 'Infilteration': 1677}, range={'min': '2018-03-01 10:12:23', 'max': '2018-03-01 11:35:25'}
+  TEST: n=2871, classes={'Benign': 2871, 'Infilteration': 0}, range={'min': '2018-03-01 11:35:32', 'max': '2018-03-01 12:59:59'}
+
+----------------------------------------------------------------------
+METRICS
+----------------------------------------------------------------------
+  TRAIN:
+    n_samples: 15660
+    n_positive: 4900
+    n_negative: 10760
+    predicted_positive_count: 4900
+    predicted_negative_count: 10760
+    accuracy: 1.0
+    precision: 1.0
+    recall: 1.0
+    f1: 1.0
+    roc_auc: 1.0
+    roc_auc_note: None
+    false_positive_rate: 0.0
+    false_positive_rate_note: None
+    confusion_matrix: {'tn': 10760, 'fp': 0, 'fn': 0, 'tp': 4900}
+    notes: []
+    class_distribution: {'Benign': 10760, 'Infilteration': 4900}
+    timestamp_range: {'min': '2018-03-01 01:00:00', 'max': '2018-03-01 10:12:22'}
+  VALIDATION:
+    n_samples: 3492
+    n_positive: 1677
+    n_negative: 1815
+    predicted_positive_count: 1394
+    predicted_negative_count: 2098
+    accuracy: 0.7242268041237113
+    precision: 0.7560975609756098
+    recall: 0.6285032796660703
+    f1: 0.6864213611201563
+    roc_auc: 0.8423148380865083
+    roc_auc_note: None
+    false_positive_rate: 0.18732782369146006
+    false_positive_rate_note: None
+    confusion_matrix: {'tn': 1475, 'fp': 340, 'fn': 623, 'tp': 1054}
+    notes: []
+    class_distribution: {'Benign': 1815, 'Infilteration': 1677}
+    timestamp_range: {'min': '2018-03-01 10:12:23', 'max': '2018-03-01 11:35:25'}
+  TEST:
+    n_samples: 2871
+    n_positive: 0
+    n_negative: 2871
+    predicted_positive_count: 19
+    predicted_negative_count: 2852
+    accuracy: 0.9933820968303727
+    precision: 0.0
+    recall: None
+    f1: 0.0
+    roc_auc: None
+    roc_auc_note: Not computable: only one class present in y_true (n_positive=0, n_negative=2871).
+    false_positive_rate: 0.0066179031696273075
+    false_positive_rate_note: None
+    confusion_matrix: {'tn': 2852, 'fp': 19, 'fn': 0, 'tp': 0}
+    notes: ["Recall is not estimable: with zero actual positive samples, recall's denominator (TP+FN) is structurally 0 (0/0) - mathematically undefined, reported as null.", 'F1 is still well-defined here (F1 = 0.0) since TP+FP+FN > 0 even though TP=0.']
+    class_distribution: {'Benign': 2871, 'Infilteration': 0}
+    timestamp_range: {'min': '2018-03-01 11:35:32', 'max': '2018-03-01 12:59:59'}
+
+----------------------------------------------------------------------
+TEST-SET LIMITATION
+----------------------------------------------------------------------
+  The chronological TEST partition contains no positive Infilteration examples. Therefore, attack-class recall and ROC-AUC are not estimable on this test partition. Test results primarily characterize behavior on benign traffic and false positive behavior, not attack-detection capability.
+
+----------------------------------------------------------------------
+MODEL RELOAD TEST
+----------------------------------------------------------------------
+  predict_identical_after_reload: True
+  predict_proba_identical_after_reload_atol_1e-12: True
+
+----------------------------------------------------------------------
+FEATURE IMPORTANCE (Random Forest impurity-based)
+----------------------------------------------------------------------
+  Caveat: This is a model-specific importance measure (mean decrease in impurity across trees) and must NOT be interpreted as causal evidence, SHAP-style attribution, or a ground-truth ranking of real-world attack indicators. It reflects only how this particular fitted Random Forest used each flattened feature.
+  Sum of importances: 1.0
+  Top 10 flattened features:
+    {'flattened_feature': 't-2__Flow IAT Min', 'importance': 0.005748902478727715}
+    {'flattened_feature': 't-3__Fwd IAT Min', 'importance': 0.0052511383193385745}
+    {'flattened_feature': 't-1__Fwd IAT Min', 'importance': 0.005077014309801359}
+    {'flattened_feature': 't__Fwd IAT Mean', 'importance': 0.0050344459941833244}
+    {'flattened_feature': 't-2__Fwd IAT Min', 'importance': 0.004988433514353136}
+    {'flattened_feature': 't-3__Flow IAT Min', 'importance': 0.00495210538468143}
+    {'flattened_feature': 't-3__Flow IAT Mean', 'importance': 0.004866420854837215}
+    {'flattened_feature': 't-1__Flow IAT Min', 'importance': 0.0048242273976047065}
+    {'flattened_feature': 't-9__Fwd IAT Min', 'importance': 0.004704664989435645}
+    {'flattened_feature': 't-4__Fwd IAT Min', 'importance': 0.004673294602996963}
+  Top 10 original features (aggregated across t-9..t):
+    {'original_feature': 'Flow IAT Min', 'total_importance': 0.04588729236743676, 'mean_importance': 0.004588729236743676, 'max_importance': 0.005748902478727715}
+    {'original_feature': 'Fwd IAT Min', 'total_importance': 0.04557208824674857, 'mean_importance': 0.004557208824674857, 'max_importance': 0.0052511383193385745}
+    {'original_feature': 'Flow IAT Mean', 'total_importance': 0.03949392316205835, 'mean_importance': 0.003949392316205835, 'max_importance': 0.004866420854837215}
+    {'original_feature': 'Fwd IAT Mean', 'total_importance': 0.03853790581297796, 'mean_importance': 0.003853790581297796, 'max_importance': 0.0050344459941833244}
+    {'original_feature': 'Init Fwd Win Byts', 'total_importance': 0.02436053904653939, 'mean_importance': 0.002436053904653939, 'max_importance': 0.002859090481142669}
+    {'original_feature': 'Fwd IAT Max', 'total_importance': 0.022376522509822645, 'mean_importance': 0.0022376522509822646, 'max_importance': 0.002613705221843548}
+    {'original_feature': 'Flow IAT Max', 'total_importance': 0.022303480813508768, 'mean_importance': 0.0022303480813508766, 'max_importance': 0.0023686481674591586}
+    {'original_feature': 'Idle Min', 'total_importance': 0.019610088820987654, 'mean_importance': 0.0019610088820987653, 'max_importance': 0.0021131496348368354}
+    {'original_feature': 'Bwd IAT Min', 'total_importance': 0.017835920514017275, 'mean_importance': 0.0017835920514017276, 'max_importance': 0.0019923685113202587}
+    {'original_feature': 'Idle Mean', 'total_importance': 0.017596857533666715, 'mean_importance': 0.0017596857533666715, 'max_importance': 0.0020078863780378232}
+
+----------------------------------------------------------------------
+NO-DATA-LEAKAGE CHECKS
+----------------------------------------------------------------------
+  only_X_sequences_scaled_used_as_input: True
+  next_window_features_scaled_not_used_as_input: True
+  target_from_sequence_metadata_only: True
+  no_raw_csv_loaded: True
+  no_preprocessing_fitted: True
+  no_random_split_performed: True
+  no_validation_or_test_used_in_fit: True
+  test_labels_not_used_for_model_selection: True
+  feature_ordering_identical_across_partitions: True
+
+----------------------------------------------------------------------
+OUTPUTS
+----------------------------------------------------------------------
+  model: results\baseline\random_forest_model.joblib
+  feature_names: results\baseline\random_forest_feature_names.json
+  confusion_matrices: results\baseline\random_forest_confusion_matrices.json
+  feature_importance: results\baseline\random_forest_feature_importance.csv
+  feature_importance_by_feature: results\baseline\random_forest_feature_importance_by_feature.csv
+  feature_importance_by_time: results\baseline\random_forest_feature_importance_by_time.csv
+  predictions: {'train': 'data\\processed\\baseline\\rf_train_predictions.csv', 'validation': 'data\\processed\\baseline\\rf_validation_predictions.csv', 'test': 'data\\processed\\baseline\\rf_test_predictions.csv'}

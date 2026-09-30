@@ -1,0 +1,103 @@
+======================================================================
+DATASET CLEANING REPORT
+======================================================================
+
+----------------------------------------------------------------------
+RAW DATA
+----------------------------------------------------------------------
+  Original file: data\raw\Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv
+  Original row count: 331125
+  Original column count: 80
+
+----------------------------------------------------------------------
+EMBEDDED HEADERS
+----------------------------------------------------------------------
+  Expected count: 25
+  Detected count: 25
+  Matches expectation: True
+  Detection method: A row is flagged as an embedded header row when every cell in that row equals the header text of its own column (compared as strings across all columns), rather than assuming fixed row positions.
+  Rows removed: 25
+
+----------------------------------------------------------------------
+DATA TYPES
+----------------------------------------------------------------------
+  Timestamp column (kept as datetime): Timestamp
+  Label column (kept as text): Label
+  Numeric columns converted: 78
+  No column had NEW NaNs introduced by numeric conversion.
+  Columns with pre-existing NaN or infinite values (from raw data):
+    Flow Byts/s: raw_nan_before=1834, nan_after=1834, infinite_values=1085
+    Flow Pkts/s: raw_nan_before=0, nan_after=0, infinite_values=2919
+
+----------------------------------------------------------------------
+TIMESTAMP
+----------------------------------------------------------------------
+  Format used: %d/%m/%Y %H:%M:%S
+  Parsed successfully: 331100
+  Failed to parse: 0
+  Minimum timestamp: 2018-03-01 01:00:00
+  Maximum timestamp: 2018-03-01 12:59:59
+  Note: An explicit DD/MM/YYYY format is used because the source timestamps (e.g. '01/03/2018') are ambiguous under pandas' default date inference, which would otherwise misread them as MM/DD/YYYY (e.g. January 3 instead of the correct March 1, consistent with the file name 'Thursday-01-03-2018' - March 1, 2018 was a Thursday).
+
+----------------------------------------------------------------------
+LABELS
+----------------------------------------------------------------------
+  Distribution after header removal:
+    Benign: 238037
+    Infilteration: 93063
+  Unexpected labels found: None
+  Labels renamed or merged: False
+
+----------------------------------------------------------------------
+DUPLICATES
+----------------------------------------------------------------------
+  Duplicate count reported in Feature 1 (raw, incl. header rows): 97
+  Duplicate count after header removal: 73
+  Full-row duplicate groups: 71
+  Rows involved in full-row duplicate groups: 144
+  Conflicting-label groups (same features, different Label): 5
+  Rows involved in conflicting-label groups: 10
+  Example conflicting-label rows:
+    {'row_index': 15308, 'Timestamp': Timestamp('2018-03-01 03:04:49'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Benign'}
+    {'row_index': 35561, 'Timestamp': Timestamp('2018-03-01 03:03:30'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Benign'}
+    {'row_index': 58719, 'Timestamp': Timestamp('2018-03-01 02:03:15'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Benign'}
+    {'row_index': 67394, 'Timestamp': Timestamp('2018-03-01 03:19:42'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Benign'}
+    {'row_index': 67812, 'Timestamp': Timestamp('2018-03-01 03:11:51'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Benign'}
+    {'row_index': 118687, 'Timestamp': Timestamp('2018-03-01 02:03:15'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Infilteration'}
+    {'row_index': 153217, 'Timestamp': Timestamp('2018-03-01 03:03:30'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Infilteration'}
+    {'row_index': 154034, 'Timestamp': Timestamp('2018-03-01 03:04:49'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Infilteration'}
+    {'row_index': 156961, 'Timestamp': Timestamp('2018-03-01 03:11:51'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Infilteration'}
+    {'row_index': 160766, 'Timestamp': Timestamp('2018-03-01 03:19:42'), 'Dst Port': 53, 'Protocol': 17, 'Label': 'Infilteration'}
+  Decision: Removed 73 exact full-row duplicate(s) (identical across all 80 columns, including Timestamp and Label). 5 additional group(s) (10 rows) share identical traffic features but disagree on Label - these are NOT exact duplicates and were left in the dataset unmodified; they are flagged for awareness.
+  Duplicate count after cleaning: 0
+
+----------------------------------------------------------------------
+MISSING VALUES
+----------------------------------------------------------------------
+  After cleaning:
+    Flow Byts/s: 1834
+  Explanation: Missing values remaining after cleaning were already present in the raw CSV as literal 'NaN' strings (observed only in 'Flow Byts/s') and were not introduced by numeric conversion or timestamp parsing. No rows were dropped because of missing values. Some flow-rate columns ('Flow Byts/s', 'Flow Pkts/s') also contain literal 'Infinity' values from the source data (near-zero-duration flows); these were preserved as infinite floats, not treated as missing.
+
+----------------------------------------------------------------------
+VALIDATION
+----------------------------------------------------------------------
+  columns_unchanged: True
+  no_embedded_header_rows_remain: True
+  timestamp_is_datetime: True
+  label_column_present: True
+  expected_numeric_columns_are_numeric: True
+  final_row_count: 331027
+  final_column_count: 80
+  final_duplicate_count: 0
+  final_min_timestamp: 2018-03-01 01:00:00
+  final_max_timestamp: 2018-03-01 12:59:59
+  final_label_distribution:
+    Benign: 237987
+    Infilteration: 93040
+
+----------------------------------------------------------------------
+FINAL DATASET
+----------------------------------------------------------------------
+  Final row count: 331027
+  Final column count: 80
+  Output file: data\processed\Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv

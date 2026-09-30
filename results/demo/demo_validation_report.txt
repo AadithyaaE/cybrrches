@@ -1,0 +1,103 @@
+======================================================================
+FEATURE 18 - CYBERCHESS END-TO-END RESEARCH DEMO - VALIDATION REPORT
+======================================================================
+This is an integration/demo feature, NOT a new ML research experiment.
+No model was trained, no threshold was tuned, no preprocessing artifact
+was modified. Every research value shown by the demo is read from an
+existing, frozen Feature 1-17 artifact.
+
+----------------------------------------------------------------------
+SELECTED SEQUENCE
+----------------------------------------------------------------------
+sequence_id: 15853 (validation partition)
+Selection rule (deterministic, documented, verified twice-run-identical
+in tests/test_demo.py): the FIRST example in
+results/explainability/explanation_examples.json's own existing,
+already-fixed array order whose prediction is "Infiltration" AND whose
+MITRE primary_stage is not "UNKNOWN / INSUFFICIENT_EVIDENCE".
+
+Real facts about this sequence (all read from existing artifacts, never
+recomputed):
+  input window:      22660 -> 22669 (2018-03-01 10:15:59 -> 10:16:08)
+  target window:      22670 (2018-03-01 10:16:09)
+  ground-truth label: Infilteration (the model's prediction was correct)
+  attack_probability (K=1): 0.5651593804359436
+  MITRE primary stage: Impact
+
+----------------------------------------------------------------------
+RESEARCH ARTIFACTS CONSUMED (read-only, never modified)
+----------------------------------------------------------------------
+  Observe:  data/processed/temporal/temporal_windows.csv (Feature 6)
+  Identify: results/explainability/explanation_examples.json :: attack_probability (Feature 13)
+  Predict:  results/explainability/explanation_examples.json :: feature_13_probability['1'/'2'/'3'/'5'] (Feature 12/13)
+  Explain:  results/explainability/explanation_examples.json :: top_contributors / temporal_summary (Feature 15)
+  MITRE:    results/explainability/explanation_examples.json :: mitre_evidence (Feature 14)
+  Feature 17 summary: results/cross_day_generalization/cross_day_metrics.json (Feature 17)
+  Mitigate/Verify: computed CLIENT-SIDE by the EXISTING, unmodified
+    frontend engines (mitigationPolicy.ts, mitigationSimulation.ts,
+    verificationEngine.ts) - not duplicated or recomputed by any Python
+    code in this feature.
+
+----------------------------------------------------------------------
+FLOW VERIFIED
+----------------------------------------------------------------------
+Observe -> Identify -> Predict -> Explain -> MITRE -> Mitigate -> Verify
+All 7 steps render on a single /demo page, each clearly labeled with its
+provenance (Research-derived / Offline / Simulated / Not live
+enforcement). No step recalculates a research model differently from its
+existing artifact.
+
+----------------------------------------------------------------------
+HONESTY LABELING VERIFIED (tests/test_demo.py, checks 5-6)
+----------------------------------------------------------------------
+  - Page-level label: "OFFLINE RESEARCH DEMONSTRATION" - present.
+  - Mitigation section label: "CONTROLLED MITIGATION SIMULATION" - present.
+  - Explicit distinction: "simulation verification" vs. "real network
+    verification" - present.
+  - None of the forbidden overclaim phrases ("Live detection", "Real-time
+    firewall", "Blocked attacker", "Production protection") appear
+    anywhere in the demo page source.
+
+----------------------------------------------------------------------
+DETERMINISM VERIFIED
+----------------------------------------------------------------------
+  - Python manifest generator: run twice, byte-for-byte identical output
+    (tests/test_demo.py check 7).
+  - Frontend Mitigate/Verify pipeline: uses a fixed timestamp constant
+    (DEMO_FIXED_TIMESTAMP_MS), never the live wall clock, and calls only
+    pure functions (decideMitigation, buildBeforeTrafficState,
+    simulateMitigation, rollbackSimulation, buildVerificationInput,
+    runVerification) - a second "Run Demo" click recomputes the identical
+    result from the same fixed input.
+
+----------------------------------------------------------------------
+NO NEW ML TRAINING VERIFIED
+----------------------------------------------------------------------
+AST-scanned: zero .fit()/.fit_transform() calls anywhere in this
+feature's Python code; zero imports of any Feature 1-17 training script
+(train_lstm_world_model.py, train_logistic_baseline.py,
+train_random_forest_baseline.py, train_next_state_attack_classifier.py,
+run_fold.py).
+
+----------------------------------------------------------------------
+BUILD RESULT
+----------------------------------------------------------------------
+  npm run build: SUCCESS (293 modules transformed, 0 TypeScript errors)
+  npm run lint:  SUCCESS (0 new warnings - only the 2 pre-existing,
+    already-documented no-loss-of-precision warnings in
+    lstmWorldModelData.ts/forecastingData.ts, unrelated to this feature)
+  Runtime smoke check: preview server served /demo (HTTP 200),
+    /data/demo_manifest.json (HTTP 200, sequence_id=15853 confirmed), and
+    /data/explainability_examples.json (HTTP 200).
+
+----------------------------------------------------------------------
+PROTECTED ARTIFACT INTEGRITY
+----------------------------------------------------------------------
+6,361 protected files (Features 1-16, Feature 17's own results, L1, all
+L2.x, L3.1/L3.2, frontend source excluding this feature's own new files)
+hashed before and after this feature's work - IDENTICAL, 0 unexpected
+changes (verified in tests/test_demo.py). Only the two intentionally
+modified files (frontend/src/routes/AppRoutes.tsx,
+frontend/src/routes/navConfig.tsx - adding the /demo route and nav entry)
+were excluded from the strict hash-identity check and are instead
+documented explicitly in the final report's "files modified" section.

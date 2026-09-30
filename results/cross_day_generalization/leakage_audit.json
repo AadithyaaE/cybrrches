@@ -1,0 +1,52 @@
+{
+  "no_fit_on_holdout_source_check": {
+    "check": "no_fit_call_references_a_holdout_named_variable",
+    "passed": true,
+    "offending_calls": []
+  },
+  "no_label_or_timestamp_as_feature": {
+    "check": "no_label_or_timestamp_in_feature_order",
+    "passed": true,
+    "forbidden_found": []
+  },
+  "no_random_shuffle_check": {
+    "check": "no_random_shuffle_outside_DataLoader_minibatch_order",
+    "passed": true,
+    "offenses": []
+  },
+  "chronological_split_only_check": {
+    "check": "uses_chronological_split_only",
+    "passed": true
+  },
+  "per_fold_holdout_isolation": [
+    {
+      "check": "holdout_day_not_in_train_days_set",
+      "passed": true,
+      "train_days": [
+        "Thursday-01-03-2018",
+        "Wednesday-28-02-2018"
+      ],
+      "holdout_day": "Wednesday-21-02-2018"
+    },
+    {
+      "check": "holdout_day_not_in_train_days_set",
+      "passed": true,
+      "train_days": [
+        "Thursday-01-03-2018",
+        "Wednesday-28-02-2018"
+      ],
+      "holdout_day": "Wednesday-21-02-2018"
+    },
+    {
+      "check": "holdout_day_not_in_train_days_set",
+      "passed": true,
+      "train_days": [
+        "Thursday-01-03-2018",
+        "Wednesday-21-02-2018"
+      ],
+      "holdout_day": "Wednesday-28-02-2018"
+    }
+  ],
+  "protected_artifacts_unchanged": true,
+  "all_checks_passed": true
+}

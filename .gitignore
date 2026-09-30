@@ -1,0 +1,48 @@
+# CyberChess .gitignore
+# Deliberately does NOT blanket-ignore data/, results/, src/, tests/, docs/,
+# or frontend/public/ - those directories hold real research artifacts and
+# code that must be committed. Only generated/environment/secret files are
+# excluded here. See docs/REPRODUCIBILITY.md for which specific large data
+# files were intentionally removed from Git and how to obtain them.
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# ---- Virtual environments (any name, any location, including the
+# Feature L2.7 reference environment under results/) ----
+venv/
+.venv/
+**/reference_venv/
+
+# ---- Node / frontend ----
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+
+# ---- Secrets (defense in depth - none found in this repo, but never risk it) ----
+.env
+.env.*
+*.pem
+*.key
+
+# ---- OS / IDE metadata ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ---- Temporary files ----
+*.log
+*.tmp
+
+# ---- Oversized trained-model artifacts (Feature 17 leave-one-day-out
+# fold models, each >90MB and two of them >100MB - exceed GitHub's
+# per-file limit and are not required by the frontend or by the frozen
+# evaluation. See docs/REPRODUCIBILITY.md for how to regenerate them. ----
+results/cross_day_generalization/trained_models/fold_holdout_Wed21/random_forest_model.joblib
+results/cross_day_generalization/trained_models/fold_holdout_Wed21_PRE_OUTLIER_FIX/random_forest_model.joblib
+results/cross_day_generalization/trained_models/fold_holdout_Wed28/random_forest_model.joblib

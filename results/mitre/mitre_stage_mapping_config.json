@@ -1,0 +1,17 @@
+{
+  "horizons": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "growth_baseline_windows": 5,
+  "thresholds_file": "results\\mitre\\mitre_stage_rule_definitions.json",
+  "reasoning_py_found": false,
+  "environment": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch_version": "2.14.0+cpu",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "device": "cpu"
+  }
+}

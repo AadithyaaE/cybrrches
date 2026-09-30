@@ -1,0 +1,9 @@
+file,label,row_count,pct_of_file_excluding_embedded_headers
+Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv,Benign,544200,88.76
+Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv,Infilteration,68871,11.24
+Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv,Benign,667626,63.68
+Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv,FTP-BruteForce,193360,18.44
+Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv,SSH-Bruteforce,187589,17.89
+Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv,DDOS attack-HOIC,686012,65.42
+Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv,Benign,360833,34.42
+Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv,DDOS attack-LOIC-UDP,1730,0.16

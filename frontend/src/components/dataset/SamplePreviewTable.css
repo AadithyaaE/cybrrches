@@ -1,0 +1,15 @@
+.sample-preview-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sample-preview-table .data-table__wrapper {
+  overflow-x: auto;
+}
+
+.sample-preview-table__note {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}

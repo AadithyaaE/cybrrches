@@ -1,0 +1,13 @@
+.attack-family-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.attack-family-results__note {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 90ch;
+  line-height: 1.6;
+}

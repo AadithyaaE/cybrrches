@@ -1,0 +1,188 @@
+{
+  "model_interpretation": "A simple supervised baseline for predicting the next network-window attack state from a flattened history of the previous 10 network states. This is NOT the CyberChess World Model, NOT temporal deep learning, and does not claim to learn network state-transition dynamics. It exists to give the future LSTM World Model a baseline to be compared against.",
+  "model_configuration": {
+    "max_iter": 2000,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "solver": "lbfgs"
+  },
+  "solver_note": "lbfgs supports max_iter, class_weight, and random_state directly; no compatibility substitution was needed.",
+  "environment": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "sklearn_version": "1.9.0",
+    "platform": "Windows-11-10.0.22631-SP0"
+  },
+  "input_files": {
+    "train_dir": "data\\processed\\splits\\train",
+    "validation_dir": "data\\processed\\splits\\validation",
+    "test_dir": "data\\processed\\splits\\test",
+    "fitted_pipeline": "data\\processed\\splits\\preprocessing_pipeline_train_fitted.joblib",
+    "feature_order": "results\\temporal_feature_order.json"
+  },
+  "feature_count_per_window": 68,
+  "sequence_length": 10,
+  "flattened_feature_count": 680,
+  "random_state": 42,
+  "sample_counts": {
+    "train": 15660,
+    "validation": 3492,
+    "test": 2871
+  },
+  "class_distributions": {
+    "train": {
+      "Benign": 10760,
+      "Infilteration": 4900
+    },
+    "validation": {
+      "Benign": 1815,
+      "Infilteration": 1677
+    },
+    "test": {
+      "Benign": 2871,
+      "Infilteration": 0
+    }
+  },
+  "timestamp_ranges": {
+    "train": {
+      "min": "2018-03-01 01:00:00",
+      "max": "2018-03-01 10:12:22"
+    },
+    "validation": {
+      "min": "2018-03-01 10:12:23",
+      "max": "2018-03-01 11:35:25"
+    },
+    "test": {
+      "min": "2018-03-01 11:35:32",
+      "max": "2018-03-01 12:59:59"
+    }
+  },
+  "metric_definitions": {
+    "accuracy": "(TP+TN)/n_samples",
+    "precision": "TP/(TP+FP), pos_label=Infilteration(1); NaN/null if TP+FP=0",
+    "recall": "TP/(TP+FN), pos_label=Infilteration(1); NaN/null if TP+FN=0 (structurally undefined with zero actual positives)",
+    "f1": "harmonic mean of precision and recall; null if either is undefined",
+    "roc_auc": "area under ROC curve; only computed when both classes are present in y_true",
+    "false_positive_rate": "FP/(FP+TN); null if FP+TN=0"
+  },
+  "metrics": {
+    "train": {
+      "n_samples": 15660,
+      "n_positive": 4900,
+      "n_negative": 10760,
+      "predicted_positive_count": 7318,
+      "predicted_negative_count": 8342,
+      "accuracy": 0.7089399744572158,
+      "precision": 0.5233670401749112,
+      "recall": 0.7816326530612245,
+      "f1": 0.6269438533311508,
+      "roc_auc": 0.8013822547606404,
+      "roc_auc_note": null,
+      "false_positive_rate": 0.3241635687732342,
+      "false_positive_rate_note": null,
+      "confusion_matrix": {
+        "tn": 7272,
+        "fp": 3488,
+        "fn": 1070,
+        "tp": 3830
+      },
+      "notes": [],
+      "class_distribution": {
+        "Benign": 10760,
+        "Infilteration": 4900
+      },
+      "timestamp_range": {
+        "min": "2018-03-01 01:00:00",
+        "max": "2018-03-01 10:12:22"
+      }
+    },
+    "validation": {
+      "n_samples": 3492,
+      "n_positive": 1677,
+      "n_negative": 1815,
+      "predicted_positive_count": 2014,
+      "predicted_negative_count": 1478,
+      "accuracy": 0.7574455899198167,
+      "precision": 0.7060575968222443,
+      "recall": 0.8479427549194991,
+      "f1": 0.77052289352479,
+      "roc_auc": 0.8409352920980828,
+      "roc_auc_note": null,
+      "false_positive_rate": 0.3261707988980716,
+      "false_positive_rate_note": null,
+      "confusion_matrix": {
+        "tn": 1223,
+        "fp": 592,
+        "fn": 255,
+        "tp": 1422
+      },
+      "notes": [],
+      "class_distribution": {
+        "Benign": 1815,
+        "Infilteration": 1677
+      },
+      "timestamp_range": {
+        "min": "2018-03-01 10:12:23",
+        "max": "2018-03-01 11:35:25"
+      }
+    },
+    "test": {
+      "n_samples": 2871,
+      "n_positive": 0,
+      "n_negative": 2871,
+      "predicted_positive_count": 178,
+      "predicted_negative_count": 2693,
+      "accuracy": 0.9380006966213863,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "roc_auc": null,
+      "roc_auc_note": "Not computable: only one class present in y_true (n_positive=0, n_negative=2871).",
+      "false_positive_rate": 0.06199930337861372,
+      "false_positive_rate_note": null,
+      "confusion_matrix": {
+        "tn": 2693,
+        "fp": 178,
+        "fn": 0,
+        "tp": 0
+      },
+      "notes": [
+        "Recall is not estimable: with zero actual positive samples in this partition, recall's denominator (TP+FN = actual positive count) is structurally 0 (0/0), so it is mathematically undefined, not merely difficult to estimate. Reported as null.",
+        "F1 is still well-defined here (F1 = 2*TP/(2*TP+FP+FN) = 0.0) because TP+FP+FN > 0 even though TP=0 (there are no actual positives to correctly predict); this is a real computed value, not a stand-in for an undefined quantity."
+      ],
+      "class_distribution": {
+        "Benign": 2871,
+        "Infilteration": 0
+      },
+      "timestamp_range": {
+        "min": "2018-03-01 11:35:32",
+        "max": "2018-03-01 12:59:59"
+      }
+    }
+  },
+  "test_set_limitation": "TEST partition contains 0 Infilteration sequences (Benign=2871, Infilteration=0). Recall and ROC-AUC for the positive class are NOT estimable on TEST for this reason (their formulas are mathematically undefined - 0/0 - with zero actual positive samples, not merely difficult to estimate); they are reported as null. Precision and F1 ARE still computed and reported (they reduce to well-defined values when TP=0 but FP>0), but since there are no actual attacks in TEST at all, none of TEST's metrics say anything about the model's ability to DETECT attacks - only about its false-positive behavior on pure benign traffic. This is a known limitation of the chronological single-day split (see Feature 7's report): attacks in this capture are concentrated earlier in the day and none fall within the TEST time range.",
+  "class_imbalance": {
+    "handling": "class_weight='balanced' passed to LogisticRegression (inversely weights classes by frequency in TRAIN).",
+    "validation_and_test_not_resampled": true,
+    "smote_used": false
+  },
+  "no_data_leakage_checks": {
+    "only_X_sequences_scaled_used_as_input": true,
+    "target_window_features_not_in_input": true,
+    "target_from_sequence_metadata_only": true,
+    "no_validation_or_test_used_in_fit": true,
+    "no_preprocessing_refit": true,
+    "no_raw_csv_reprocessed": true,
+    "no_random_split_performed": true
+  },
+  "outputs": {
+    "model": "results\\baseline\\logistic_regression_model.joblib",
+    "feature_names": "results\\baseline\\logistic_regression_feature_names.json",
+    "confusion_matrices": "results\\baseline\\logistic_regression_confusion_matrices.json",
+    "coefficients": "results\\baseline\\logistic_regression_coefficients.csv",
+    "predictions": {
+      "train": "data\\processed\\baseline\\train_predictions.csv",
+      "validation": "data\\processed\\baseline\\validation_predictions.csv",
+      "test": "data\\processed\\baseline\\test_predictions.csv"
+    }
+  }
+}

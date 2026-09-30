@@ -1,0 +1,209 @@
+{
+  "objective": "Re-verify (independently, from scratch) the three external CSE-CIC-IDS2018 files after the user reported manually downloading two of them following automated ConnectionResetError failures.",
+  "anomaly_detected": {
+    "finding": "An unexpected file, AadithyaaE_resume_ORIGINAL.pdf, was found in data/raw/external_evaluation/ (mtime concurrent with this session). This is NOT part of the CyberChess dataset and was not placed there by any script in this project. It was NOT deleted or modified - flagged for the user's awareness only."
+  },
+  "file_verification": {
+    "Wednesday-28-02-2018": {
+      "local_path": "data/raw/external_evaluation/Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv",
+      "expected_size_bytes": 209249758,
+      "actual_size_bytes": 209249758,
+      "size_match": true
+    },
+    "Wednesday-14-02-2018": {
+      "local_path": "data/raw/external_evaluation/Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "expected_size_bytes": 358223333,
+      "actual_size_bytes": 358223333,
+      "size_match": true
+    },
+    "Wednesday-21-02-2018": {
+      "local_path": "data/raw/external_evaluation/Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv",
+      "expected_size_bytes": 328893673,
+      "actual_size_bytes": 328893673,
+      "size_match": true
+    }
+  },
+  "sha256_verification": {
+    "Wednesday-28-02-2018": {
+      "expected_size": 209249758,
+      "sha256": "f15e2a12304446058a0186c8ad67de2bd15735a9ba5c70c9a1f4c4242ab06771",
+      "previously_verified_sha256": "f15e2a12304446058a0186c8ad67de2bd15735a9ba5c70c9a1f4c4242ab06771"
+    },
+    "Wednesday-14-02-2018": {
+      "expected_size": 358223333,
+      "sha256": "acff8bc61376ee031d80878ee6099e0b1a87a1bd711d8068298421418c9f8147",
+      "previously_verified_sha256": "acff8bc61376ee031d80878ee6099e0b1a87a1bd711d8068298421418c9f8147"
+    },
+    "Wednesday-21-02-2018": {
+      "expected_size": 328893673,
+      "sha256": "a5f4a1c2689e0aa6566c03a58466de9c407c0be0cbd3cc69306544026611be04",
+      "previously_verified_sha256": "a5f4a1c2689e0aa6566c03a58466de9c407c0be0cbd3cc69306544026611be04"
+    }
+  },
+  "sha256_conclusion": "All three files' freshly-computed SHA256 hashes are IDENTICAL to the hashes recorded during the previous automated download session. This means the current files are byte-for-byte the same as what was previously verified - whether this reflects the same files never having been replaced, or a fresh manual download producing an identical copy from the same immutable S3 object, the practical conclusion is the same: file integrity is confirmed, not merely assumed from size.",
+  "schema_comparison": {
+    "reference": "data/processed/Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv (80 columns)",
+    "Wednesday-28-02-2018": {
+      "column_count": 80,
+      "exact_match_names_and_order": true,
+      "has_timestamp": true,
+      "has_label": true,
+      "has_protocol": true,
+      "has_dst_port": true
+    },
+    "Wednesday-14-02-2018": {
+      "column_count": 80,
+      "exact_match_names_and_order": true,
+      "has_timestamp": true,
+      "has_label": true,
+      "has_protocol": true,
+      "has_dst_port": true
+    },
+    "Wednesday-21-02-2018": {
+      "column_count": 80,
+      "exact_match_names_and_order": true,
+      "has_timestamp": true,
+      "has_label": true,
+      "has_protocol": true,
+      "has_dst_port": true
+    }
+  },
+  "label_composition": {
+    "Wednesday-28-02-2018": {
+      "Benign": 544200,
+      "Infilteration": 68871
+    },
+    "Wednesday-14-02-2018": {
+      "FTP-BruteForce": 193360,
+      "SSH-Bruteforce": 187589,
+      "Benign": 667626
+    },
+    "Wednesday-21-02-2018": {
+      "DDOS attack-HOIC": 686012,
+      "Benign": 360833,
+      "DDOS attack-LOIC-UDP": 1730
+    }
+  },
+  "timestamp_coverage": {
+    "Wednesday-28-02-2018": {
+      "min": "2018-02-28 01:00:00",
+      "max": "2018-02-28 12:59:59",
+      "valid_count": 613071,
+      "invalid_count": 0,
+      "unique_count": 31854
+    },
+    "Wednesday-14-02-2018": {
+      "min": "1970-01-05 03:01:17",
+      "max": "2018-02-14 12:59:59",
+      "valid_count": 1048575,
+      "invalid_count": 0,
+      "unique_count": 32043
+    },
+    "Wednesday-21-02-2018": {
+      "min": "2018-02-21 01:55:46",
+      "max": "2018-02-21 10:43:21",
+      "valid_count": 1048575,
+      "invalid_count": 0,
+      "unique_count": 3256
+    }
+  },
+  "data_quality": {
+    "Wednesday-28-02-2018": {
+      "embedded_header_rows": 33,
+      "exact_duplicate_rows": 6089,
+      "literal_nan_strings": {
+        "Flow Byts/s": 0,
+        "Flow Pkts/s": 0
+      },
+      "flow_byts_per_s_infinity": 2128,
+      "flow_pkts_per_s_infinity": 6169,
+      "missing_label": 0,
+      "missing_timestamp": 0,
+      "protocol_values_observed": [
+        "6",
+        "17",
+        "0"
+      ],
+      "protocol_values_match_current_dev_dataset": true
+    },
+    "Wednesday-14-02-2018": {
+      "embedded_header_rows": 0,
+      "exact_duplicate_rows": 225628,
+      "literal_nan_strings": {
+        "Flow Byts/s": 0,
+        "Flow Pkts/s": 0
+      },
+      "flow_byts_per_s_infinity": 1547,
+      "flow_pkts_per_s_infinity": 3824,
+      "missing_label": 0,
+      "missing_timestamp": 0,
+      "protocol_values_observed": [
+        "6",
+        "0",
+        "17"
+      ],
+      "protocol_values_match_current_dev_dataset": true
+    },
+    "Wednesday-21-02-2018": {
+      "embedded_header_rows": 0,
+      "exact_duplicate_rows": 17557,
+      "literal_nan_strings": {
+        "Flow Byts/s": 0,
+        "Flow Pkts/s": 0
+      },
+      "flow_byts_per_s_infinity": 0,
+      "flow_pkts_per_s_infinity": 0,
+      "missing_label": 0,
+      "missing_timestamp": 0,
+      "protocol_values_observed": [
+        "6",
+        "17",
+        "0"
+      ],
+      "protocol_values_match_current_dev_dataset": true
+    }
+  },
+  "feature_compatibility": {
+    "existing_artifacts_reviewed": [
+      "results/feature_selection_report.json (66 core features)",
+      "results/model_feature_list.json (66 selected_features)",
+      "results/state_schema.json (68 state features)",
+      "data/processed/temporal/temporal_aggregation_policy.json (18 SUM + 50 MEAN features)"
+    ],
+    "conclusion": "All 3 files share the exact 80-column schema used to derive the 68-feature representation. Structurally compatible with the existing Feature 2-6 pipeline without any change to the feature list or preprocessing. NOT executed in this task - structural finding only.",
+    "feature_list_unchanged": true,
+    "preprocessing_unchanged": true
+  },
+  "existing_artifact_integrity": {
+    "baseline_manifest": "results/external_dataset_preparation/_pre_task_integrity_hashes.json",
+    "files_checked": 14,
+    "mismatches": 0,
+    "conclusion": "VERIFIED: no existing Feature 1-15 artifact, model checkpoint, train/validation/test array, fitted preprocessing pipeline, or existing report was modified."
+  },
+  "final_verdicts": {
+    "Wednesday-28-02-2018": "READY_FOR_FROZEN_EVALUATION",
+    "Wednesday-14-02-2018": "READY_FOR_FROZEN_EVALUATION",
+    "Wednesday-21-02-2018": "READY_FOR_FROZEN_EVALUATION"
+  },
+  "verdict_reasons": {
+    "Wednesday-28-02-2018": [
+      "No blocking issues found; schema, labels, and timestamps are all structurally valid."
+    ],
+    "Wednesday-14-02-2018": [
+      "Exactly 1,048,575 rows (Excel row-limit signature) - possible truncation, though end timestamp (12:59:59) matches the expected full-day pattern.",
+      "Unusually high duplicate rate (21.5%), concentrated in brute-force labels - genuine attack-traffic characteristic, needs deliberate handling in cleaning, not a blocker.",
+      "5 rows (0.0005%) have implausible pre-2018 timestamps - negligible, noted for future cleaning."
+    ],
+    "Wednesday-21-02-2018": [
+      "Timestamp coverage stops at 10:43:21, over 2 hours before the ~12:59:59 pattern seen in other days - likely incomplete capture (Excel row-limit truncation suspected)."
+    ]
+  },
+  "not_performed_per_scope": [
+    "No cleaning or modification of any downloaded CSV.",
+    "No preprocessing fitting.",
+    "No model training, retraining, or prediction.",
+    "No new model inputs, sequences, or scaled arrays created.",
+    "No Feature 16 execution.",
+    "No additional downloads."
+  ]
+}

@@ -1,0 +1,65 @@
+.explainability-flow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.explainability-flow__step-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.explainability-flow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 150px;
+  padding: var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.explainability-flow__icon {
+  color: var(--accent-cyan);
+  display: flex;
+}
+
+.explainability-flow__label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.explainability-flow__sub {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.explainability-flow__arrow {
+  color: var(--text-disabled);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .explainability-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .explainability-flow__step-wrap {
+    flex-direction: column;
+  }
+
+  .explainability-flow__arrow {
+    transform: rotate(90deg);
+  }
+
+  .explainability-flow__step {
+    width: 100%;
+  }
+}

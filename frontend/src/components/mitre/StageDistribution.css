@@ -1,0 +1,20 @@
+.stage-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.stage-distribution__chart {
+  padding: var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.stage-distribution__note {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 90ch;
+  line-height: 1.6;
+}

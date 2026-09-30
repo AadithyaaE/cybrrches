@@ -1,0 +1,35 @@
+{
+  "horizons": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "threshold": 0.5,
+  "seed": 42,
+  "lstm_checkpoint": "results\\lstm\\lstm_world_model.pt",
+  "classifier_path": "results\\next_state\\next_state_attack_classifier.joblib",
+  "lstm_architecture": {
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "max_epochs": 50,
+    "patience": 7,
+    "seed": 42,
+    "input_size": 68,
+    "sequence_length": 10
+  },
+  "classifier_classes": [
+    "0",
+    "1"
+  ],
+  "environment": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "sklearn_version": "1.9.0",
+    "torch_version": "2.14.0+cpu",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "device": "cpu"
+  }
+}

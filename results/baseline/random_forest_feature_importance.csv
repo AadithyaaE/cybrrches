@@ -1,0 +1,681 @@
+flattened_feature,importance,temporal_position,original_feature
+t-2__Flow IAT Min,0.005748902478727715,t-2,Flow IAT Min
+t-3__Fwd IAT Min,0.0052511383193385745,t-3,Fwd IAT Min
+t-1__Fwd IAT Min,0.005077014309801359,t-1,Fwd IAT Min
+t__Fwd IAT Mean,0.0050344459941833244,t,Fwd IAT Mean
+t-2__Fwd IAT Min,0.004988433514353136,t-2,Fwd IAT Min
+t-3__Flow IAT Min,0.00495210538468143,t-3,Flow IAT Min
+t-3__Flow IAT Mean,0.004866420854837215,t-3,Flow IAT Mean
+t-1__Flow IAT Min,0.0048242273976047065,t-1,Flow IAT Min
+t-9__Fwd IAT Min,0.004704664989435645,t-9,Fwd IAT Min
+t-4__Fwd IAT Min,0.004673294602996963,t-4,Fwd IAT Min
+t__Flow IAT Min,0.004648693479652456,t,Flow IAT Min
+t-7__Flow IAT Min,0.0046435858124830925,t-7,Flow IAT Min
+t__Fwd IAT Min,0.004603850298225368,t,Fwd IAT Min
+t-2__Flow IAT Mean,0.0045889362195092025,t-2,Flow IAT Mean
+t-9__Flow IAT Min,0.004549289575949868,t-9,Flow IAT Min
+t-4__Flow IAT Min,0.004488860802855142,t-4,Flow IAT Min
+t-3__Fwd IAT Mean,0.00447182680943685,t-3,Fwd IAT Mean
+t-8__Fwd IAT Min,0.004313983277437356,t-8,Fwd IAT Min
+t-1__Flow IAT Mean,0.004290150052668549,t-1,Flow IAT Mean
+t-6__Flow IAT Mean,0.0042888394602575534,t-6,Flow IAT Mean
+t-7__Fwd IAT Min,0.004275568966187105,t-7,Fwd IAT Min
+t-5__Flow IAT Mean,0.0041889869694655265,t-5,Flow IAT Mean
+t-6__Fwd IAT Min,0.004131384006697949,t-6,Fwd IAT Min
+t-5__Flow IAT Min,0.004110727657649782,t-5,Flow IAT Min
+t-8__Flow IAT Min,0.004078242188911096,t-8,Flow IAT Min
+t-7__Fwd IAT Mean,0.004007935862259185,t-7,Fwd IAT Mean
+t-6__Fwd IAT Mean,0.0038761854175360954,t-6,Fwd IAT Mean
+t-6__Flow IAT Min,0.003842657588921473,t-6,Flow IAT Min
+t-2__Fwd IAT Mean,0.003780880180210527,t-2,Fwd IAT Mean
+t-4__Flow IAT Mean,0.0036740429987934084,t-4,Flow IAT Mean
+t-8__Fwd IAT Mean,0.0036506775774918514,t-8,Fwd IAT Mean
+t-7__Flow IAT Mean,0.0036261649693582866,t-7,Flow IAT Mean
+t-9__Flow IAT Mean,0.0036237339813035697,t-9,Flow IAT Mean
+t-5__Fwd IAT Min,0.0035527559622751145,t-5,Fwd IAT Min
+t-4__Fwd IAT Mean,0.003496330615737805,t-4,Fwd IAT Mean
+t-5__Fwd IAT Mean,0.003491139855043352,t-5,Fwd IAT Mean
+t-1__Fwd IAT Mean,0.0034657189885972744,t-1,Fwd IAT Mean
+t-9__Fwd IAT Mean,0.0032627645124816964,t-9,Fwd IAT Mean
+t__Flow IAT Mean,0.003234005864270395,t,Flow IAT Mean
+t-8__Flow IAT Mean,0.003112641791594649,t-8,Flow IAT Mean
+t-6__Init Fwd Win Byts,0.002859090481142669,t-6,Init Fwd Win Byts
+t-3__Init Fwd Win Byts,0.0027274718925598827,t-3,Init Fwd Win Byts
+t-7__Fwd IAT Max,0.002613705221843548,t-7,Fwd IAT Max
+t-7__Init Fwd Win Byts,0.002581285429026695,t-7,Init Fwd Win Byts
+t-4__Init Fwd Win Byts,0.0025143612834200506,t-4,Init Fwd Win Byts
+t-5__Fwd IAT Max,0.0024102972036403134,t-5,Fwd IAT Max
+t-6__Fwd IAT Max,0.0024097220913516055,t-6,Fwd IAT Max
+t-9__Fwd IAT Max,0.002387266542183537,t-9,Fwd IAT Max
+t-6__Flow IAT Max,0.0023686481674591586,t-6,Flow IAT Max
+t-2__Flow IAT Max,0.0023624398378895672,t-2,Flow IAT Max
+t-1__Init Fwd Win Byts,0.0023616627907161168,t-1,Init Fwd Win Byts
+t-5__Init Fwd Win Byts,0.002338912188149276,t-5,Init Fwd Win Byts
+t-8__Init Fwd Win Byts,0.002334146453370168,t-8,Init Fwd Win Byts
+t-9__Flow IAT Max,0.00231496950596212,t-9,Flow IAT Max
+t-2__Init Fwd Win Byts,0.0022915925914671303,t-2,Init Fwd Win Byts
+t-5__Flow IAT Max,0.002289854447235663,t-5,Flow IAT Max
+t-3__Fwd IAT Max,0.002220192930349757,t-3,Fwd IAT Max
+t-7__Flow IAT Max,0.002209893052204643,t-7,Flow IAT Max
+t-4__Fwd IAT Max,0.002202580059386811,t-4,Fwd IAT Max
+t-9__Init Fwd Win Byts,0.002201494464398333,t-9,Init Fwd Win Byts
+t-3__Flow IAT Max,0.0021989902900123276,t-3,Flow IAT Max
+t-8__Flow IAT Max,0.002191566128794901,t-8,Flow IAT Max
+t__Init Fwd Win Byts,0.0021505214722890706,t,Init Fwd Win Byts
+t-1__Flow IAT Max,0.0021409223734146386,t-1,Flow IAT Max
+t-4__Flow IAT Max,0.0021399015684646326,t-4,Flow IAT Max
+t-4__Idle Min,0.0021131496348368354,t-4,Idle Min
+t__Fwd IAT Max,0.002108796212596965,t,Fwd IAT Max
+t__Flow IAT Max,0.0020862954420711147,t,Flow IAT Max
+t-7__Idle Min,0.002077966402275039,t-7,Idle Min
+t-9__Idle Min,0.002033388418496957,t-9,Idle Min
+t-2__Fwd IAT Max,0.002030401104958957,t-2,Fwd IAT Max
+t-3__Idle Min,0.002024789180808227,t-3,Idle Min
+t-8__Fwd IAT Max,0.0020202711501138334,t-8,Fwd IAT Max
+t-6__Idle Mean,0.0020078863780378232,t-6,Idle Mean
+t-3__Bwd IAT Min,0.0019923685113202587,t-3,Bwd IAT Min
+t-1__Idle Min,0.0019863885740404458,t-1,Idle Min
+t-7__Idle Mean,0.001981139118419848,t-7,Idle Mean
+t-1__Fwd IAT Max,0.0019732899933973163,t-1,Fwd IAT Max
+t-1__Bwd IAT Min,0.0019653467847927986,t-1,Bwd IAT Min
+t-2__Idle Min,0.00195037916408898,t-2,Idle Min
+t-2__Idle Mean,0.0019308796552114937,t-2,Idle Mean
+t__Idle Min,0.0019211563824319336,t,Idle Min
+t-3__Idle Mean,0.0019088632727573584,t-3,Idle Mean
+t-6__Idle Min,0.0018932447603546472,t-6,Idle Min
+t-1__Idle Mean,0.0018803539835741416,t-1,Idle Mean
+t-6__Flow Duration,0.0018578677990551962,t-6,Flow Duration
+t__Bwd IAT Min,0.001851896867108855,t,Bwd IAT Min
+t-5__Idle Min,0.0018446470026220834,t-5,Idle Min
+t-9__Flow Duration,0.0018179111741413463,t-9,Flow Duration
+t-4__Bwd IAT Min,0.0018171764658687706,t-4,Bwd IAT Min
+t-8__Fwd IAT Tot,0.001797222680959556,t-8,Fwd IAT Tot
+t-5__Flow Duration,0.001778180165527439,t-5,Flow Duration
+t-3__Fwd IAT Tot,0.0017770426432327287,t-3,Fwd IAT Tot
+t-2__Bwd IAT Min,0.0017667572464157063,t-2,Bwd IAT Min
+t-8__Idle Min,0.0017649793010325063,t-8,Idle Min
+t-9__Bwd Pkts/s,0.001763734034477125,t-9,Bwd Pkts/s
+t-7__Bwd IAT Min,0.0017447905025833321,t-7,Bwd IAT Min
+t-9__Idle Mean,0.0017357377903091868,t-9,Idle Mean
+t-3__Active Min,0.0017352728043330786,t-3,Active Min
+t-8__Fwd Pkts/s,0.0017338835220788921,t-8,Fwd Pkts/s
+t-5__Bwd IAT Min,0.001730846304302828,t-5,Bwd IAT Min
+t-5__Fwd IAT Tot,0.001730635473316308,t-5,Fwd IAT Tot
+t__Fwd Pkts/s,0.001726955901608012,t,Fwd Pkts/s
+t-7__Fwd IAT Tot,0.0017246882905243926,t-7,Fwd IAT Tot
+t-8__Bwd IAT Min,0.001719598652832905,t-8,Bwd IAT Min
+t__Init Bwd Win Byts,0.0017147043152146043,t,Init Bwd Win Byts
+t-6__Fwd IAT Tot,0.001698843044920335,t-6,Fwd IAT Tot
+t-4__Flow IAT Std,0.0016867567052662206,t-4,Flow IAT Std
+t-4__Flow Duration,0.001685965714083446,t-4,Flow Duration
+t-9__Flow Pkts/s,0.001684320816499848,t-9,Flow Pkts/s
+t-7__Idle Max,0.0016841515819770766,t-7,Idle Max
+t-1__Fwd IAT Tot,0.0016720640114339198,t-1,Fwd IAT Tot
+t-2__Fwd Pkts/s,0.0016713863442342118,t-2,Fwd Pkts/s
+t-3__Flow Pkts/s,0.0016699365087349024,t-3,Flow Pkts/s
+t-2__Flow IAT Std,0.0016657957443394935,t-2,Flow IAT Std
+t-8__Flow Pkts/s,0.001664091996290625,t-8,Flow Pkts/s
+t__Flow Pkts/s,0.0016574469038207681,t,Flow Pkts/s
+t-6__Bwd IAT Min,0.0016573973928055222,t-6,Bwd IAT Min
+t-2__Fwd IAT Tot,0.0016525824219820102,t-2,Fwd IAT Tot
+t-4__Fwd IAT Tot,0.0016504973035867058,t-4,Fwd IAT Tot
+t-2__Flow Duration,0.0016482362468766545,t-2,Flow Duration
+t__Flow IAT Std,0.0016457270563209098,t,Flow IAT Std
+t-8__Flow Byts/s,0.0016440588164258173,t-8,Flow Byts/s
+t-3__Bwd Pkts/s,0.0016437491044604409,t-3,Bwd Pkts/s
+t-2__Active Min,0.0016436557161040115,t-2,Active Min
+t__Fwd IAT Tot,0.001642138227261164,t,Fwd IAT Tot
+t-7__Flow Duration,0.0016302153099005314,t-7,Flow Duration
+t-7__Fwd Pkts/s,0.0016299165456944724,t-7,Fwd Pkts/s
+t-9__Fwd IAT Tot,0.0016292489216100637,t-9,Fwd IAT Tot
+t-1__Init Bwd Win Byts,0.001627822049447085,t-1,Init Bwd Win Byts
+t-4__Idle Mean,0.0016270283092594707,t-4,Idle Mean
+t-3__Fwd IAT Std,0.0016262235494422519,t-3,Fwd IAT Std
+t-1__Fwd Pkts/s,0.001625805846976589,t-1,Fwd Pkts/s
+t-4__Fwd Pkts/s,0.0016207582334320757,t-4,Fwd Pkts/s
+t-6__Fwd Pkts/s,0.001620213708970377,t-6,Fwd Pkts/s
+t-5__Flow Pkts/s,0.00161907557049697,t-5,Flow Pkts/s
+t-3__Init Bwd Win Byts,0.001618828566180588,t-3,Init Bwd Win Byts
+t-3__Idle Max,0.0016098051604259078,t-3,Idle Max
+t__Active Min,0.0016083081104652462,t,Active Min
+t-4__Flow Pkts/s,0.0016079863420760288,t-4,Flow Pkts/s
+t-3__Fwd Pkts/s,0.001607641367339198,t-3,Fwd Pkts/s
+t-2__Fwd Header Len,0.0016056561004895694,t-2,Fwd Header Len
+t-6__Init Bwd Win Byts,0.001604903441258242,t-6,Init Bwd Win Byts
+t-8__Flow Duration,0.0016040296189840189,t-8,Flow Duration
+t-2__Flow Byts/s,0.0016016775158601167,t-2,Flow Byts/s
+t-8__Init Bwd Win Byts,0.0015930804155004225,t-8,Init Bwd Win Byts
+t-6__Flow Pkts/s,0.0015917649794050985,t-6,Flow Pkts/s
+t-3__Flow Duration,0.0015903886185330372,t-3,Flow Duration
+t-9__Bwd IAT Min,0.0015897417859862975,t-9,Bwd IAT Min
+t-4__Pkt Size Avg,0.0015877099183570255,t-4,Pkt Size Avg
+t__Flow Byts/s,0.0015826784122101025,t,Flow Byts/s
+t-1__Flow Duration,0.0015823868464718395,t-1,Flow Duration
+t__Idle Mean,0.0015812846821939529,t,Idle Mean
+t-7__Flow Pkts/s,0.001579467214894265,t-7,Flow Pkts/s
+t-9__Fwd Pkts/s,0.0015792218846867989,t-9,Fwd Pkts/s
+t-2__Flow Pkts/s,0.0015747546272231424,t-2,Flow Pkts/s
+t-6__Idle Max,0.0015743083967752385,t-6,Idle Max
+t__Flow Duration,0.0015734622676187551,t,Flow Duration
+t-6__Bwd Pkts/s,0.0015719903978594673,t-6,Bwd Pkts/s
+t__Bwd Pkts/s,0.0015712504377961253,t,Bwd Pkts/s
+t-5__Flow Byts/s,0.0015685158665225162,t-5,Flow Byts/s
+t-8__Bwd Pkts/s,0.0015641419877880352,t-8,Bwd Pkts/s
+t-1__Fwd Header Len,0.0015629962763944994,t-1,Fwd Header Len
+t-5__Fwd Pkts/s,0.0015619502612680975,t-5,Fwd Pkts/s
+t-7__Fwd Header Len,0.0015612418248405592,t-7,Fwd Header Len
+t-2__Bwd Pkts/s,0.0015611394295556196,t-2,Bwd Pkts/s
+t-7__TotLen Fwd Pkts,0.0015596235566250963,t-7,TotLen Fwd Pkts
+t-5__Bwd Pkts/s,0.0015562849780996369,t-5,Bwd Pkts/s
+t__Fwd Seg Size Avg,0.0015558241214964554,t,Fwd Seg Size Avg
+t-8__Idle Mean,0.0015553750529475586,t-8,Idle Mean
+t__Idle Max,0.0015553605487249264,t,Idle Max
+t__Fwd Pkt Len Max,0.001555152223461662,t,Fwd Pkt Len Max
+t-1__Active Min,0.0015544201262695206,t-1,Active Min
+t-1__Flow Byts/s,0.001554236646003325,t-1,Flow Byts/s
+t-6__Flow Byts/s,0.001553870797374077,t-6,Flow Byts/s
+t-1__Flow IAT Std,0.00155220248474258,t-1,Flow IAT Std
+t-5__Flow IAT Std,0.0015450648997116783,t-5,Flow IAT Std
+t-6__Flow IAT Std,0.0015420331172964785,t-6,Flow IAT Std
+t-4__Fwd Seg Size Min,0.0015360953142561815,t-4,Fwd Seg Size Min
+t-1__Flow Pkts/s,0.0015328896076408488,t-1,Flow Pkts/s
+t-7__Bwd Pkts/s,0.001531059371968002,t-7,Bwd Pkts/s
+t-4__Bwd IAT Std,0.0015293671328529812,t-4,Bwd IAT Std
+t-4__Down/Up Ratio,0.00152861727263355,t-4,Down/Up Ratio
+t__Pkt Len Mean,0.0015278214941745693,t,Pkt Len Mean
+t-9__Fwd Pkt Len Std,0.0015250861580493676,t-9,Fwd Pkt Len Std
+t-6__TotLen Fwd Pkts,0.0015232622866521372,t-6,TotLen Fwd Pkts
+t-2__Subflow Fwd Byts,0.0015217659770983298,t-2,Subflow Fwd Byts
+t-5__Init Bwd Win Byts,0.0015176312905496858,t-5,Init Bwd Win Byts
+t-4__Bwd IAT Tot,0.0015174778335580914,t-4,Bwd IAT Tot
+t-4__Fwd IAT Std,0.0015164759947920896,t-4,Fwd IAT Std
+t__Pkt Size Avg,0.0015118627915724433,t,Pkt Size Avg
+t-2__Fwd Pkt Len Mean,0.0015090878599856538,t-2,Fwd Pkt Len Mean
+t-3__Fwd Seg Size Avg,0.0015089350632912903,t-3,Fwd Seg Size Avg
+t-4__Fwd Pkt Len Mean,0.0015048166343678809,t-4,Fwd Pkt Len Mean
+t-9__Init Bwd Win Byts,0.0015045050056532686,t-9,Init Bwd Win Byts
+t-7__Pkt Size Avg,0.001504366411456908,t-7,Pkt Size Avg
+t-3__Fwd Header Len,0.001503225946300247,t-3,Fwd Header Len
+t-4__Idle Max,0.0015007642023419868,t-4,Idle Max
+t-1__Bwd Pkts/s,0.0015003419110706732,t-1,Bwd Pkts/s
+t-4__Bwd Pkts/s,0.0014969171474524814,t-4,Bwd Pkts/s
+t-4__Flow Byts/s,0.0014967573161670793,t-4,Flow Byts/s
+t-3__Flow IAT Std,0.0014960325552246273,t-3,Flow IAT Std
+t-7__Fwd Seg Size Avg,0.0014959635640971803,t-7,Fwd Seg Size Avg
+t-9__Fwd Seg Size Min,0.0014952026840508242,t-9,Fwd Seg Size Min
+t-1__Fwd IAT Std,0.0014949714114212349,t-1,Fwd IAT Std
+t-4__Active Min,0.001493415796215208,t-4,Active Min
+t__Fwd Pkt Len Mean,0.0014928173698128282,t,Fwd Pkt Len Mean
+t-9__Fwd Header Len,0.0014927894707490843,t-9,Fwd Header Len
+t-9__Fwd Pkt Len Max,0.0014927101482536359,t-9,Fwd Pkt Len Max
+t-3__Subflow Fwd Byts,0.0014923808142181078,t-3,Subflow Fwd Byts
+t-9__Pkt Len Mean,0.0014890896649717546,t-9,Pkt Len Mean
+t-3__Flow Byts/s,0.0014875526721101163,t-3,Flow Byts/s
+t-1__TotLen Fwd Pkts,0.0014867837493565657,t-1,TotLen Fwd Pkts
+t-7__Init Bwd Win Byts,0.0014852381516040534,t-7,Init Bwd Win Byts
+t-9__Pkt Len Std,0.001485130863431228,t-9,Pkt Len Std
+t-1__Subflow Fwd Byts,0.0014841025925880838,t-1,Subflow Fwd Byts
+t-3__Bwd IAT Mean,0.0014833826913974947,t-3,Bwd IAT Mean
+t-2__Fwd Seg Size Avg,0.0014833328134046,t-2,Fwd Seg Size Avg
+t__Fwd Pkt Len Std,0.0014829905140198534,t,Fwd Pkt Len Std
+t-8__Fwd Pkt Len Std,0.0014824905663185356,t-8,Fwd Pkt Len Std
+t-6__Subflow Fwd Byts,0.0014822388703355888,t-6,Subflow Fwd Byts
+t-3__TotLen Fwd Pkts,0.0014807429869066783,t-3,TotLen Fwd Pkts
+t-9__Fwd IAT Std,0.0014791796640514603,t-9,Fwd IAT Std
+t-6__Fwd Pkt Len Std,0.0014782037632816224,t-6,Fwd Pkt Len Std
+t-7__Active Min,0.0014758849155644207,t-7,Active Min
+t-3__Fwd Seg Size Min,0.0014730316498777793,t-3,Fwd Seg Size Min
+t-2__Bwd IAT Mean,0.0014677854149285207,t-2,Bwd IAT Mean
+t-8__Flow IAT Std,0.0014668027434789899,t-8,Flow IAT Std
+t-2__TotLen Fwd Pkts,0.0014649881077422682,t-2,TotLen Fwd Pkts
+t-7__Flow IAT Std,0.0014645364121767524,t-7,Flow IAT Std
+t-9__Flow IAT Std,0.0014604858762072993,t-9,Flow IAT Std
+t__Down/Up Ratio,0.0014589905497926165,t,Down/Up Ratio
+t__TotLen Fwd Pkts,0.001458197078675225,t,TotLen Fwd Pkts
+t-4__Init Bwd Win Byts,0.0014545245110632126,t-4,Init Bwd Win Byts
+t-6__Fwd Pkt Len Mean,0.0014543790680209912,t-6,Fwd Pkt Len Mean
+t-2__Fwd IAT Std,0.0014533698627464682,t-2,Fwd IAT Std
+t-9__Pkt Size Avg,0.0014524610560806466,t-9,Pkt Size Avg
+t__Fwd Header Len,0.0014516807305530654,t,Fwd Header Len
+t-8__Idle Max,0.0014508425986074546,t-8,Idle Max
+t-9__Fwd Seg Size Avg,0.001450480174688509,t-9,Fwd Seg Size Avg
+t-5__Fwd Pkt Len Max,0.0014503289990128022,t-5,Fwd Pkt Len Max
+t-4__Bwd IAT Mean,0.0014486932122335986,t-4,Bwd IAT Mean
+t-6__Fwd Header Len,0.0014486402589169523,t-6,Fwd Header Len
+t-2__Idle Max,0.001447323088441367,t-2,Idle Max
+t-5__TotLen Fwd Pkts,0.0014472975463778873,t-5,TotLen Fwd Pkts
+t-7__Flow Byts/s,0.0014467794413243833,t-7,Flow Byts/s
+t-3__Bwd IAT Tot,0.0014446932498338248,t-3,Bwd IAT Tot
+t-3__Fwd Pkt Len Mean,0.001444657835117793,t-3,Fwd Pkt Len Mean
+t-9__Subflow Fwd Byts,0.0014440874841418986,t-9,Subflow Fwd Byts
+t-7__Down/Up Ratio,0.0014440823607243583,t-7,Down/Up Ratio
+t-2__Fwd Pkt Len Std,0.0014433091493638993,t-2,Fwd Pkt Len Std
+t-3__Fwd Pkt Len Max,0.0014423466858799808,t-3,Fwd Pkt Len Max
+t-8__Pkt Size Avg,0.0014405596696263074,t-8,Pkt Size Avg
+t-3__Pkt Size Avg,0.001440183787528746,t-3,Pkt Size Avg
+t-9__Fwd Pkt Len Mean,0.0014380181600478284,t-9,Fwd Pkt Len Mean
+t-8__Fwd Pkt Len Max,0.0014373363965642432,t-8,Fwd Pkt Len Max
+t-9__Idle Max,0.0014369500185342167,t-9,Idle Max
+t-5__Bwd IAT Mean,0.0014365883702332492,t-5,Bwd IAT Mean
+t-3__Pkt Len Mean,0.0014360454920228174,t-3,Pkt Len Mean
+t-7__Bwd IAT Tot,0.0014338421681060348,t-7,Bwd IAT Tot
+t-2__Subflow Fwd Pkts,0.0014310428387358546,t-2,Subflow Fwd Pkts
+t-5__Active Min,0.0014309749616664771,t-5,Active Min
+t-8__Subflow Fwd Byts,0.00143041499245403,t-8,Subflow Fwd Byts
+t-7__Bwd Header Len,0.0014282066035177956,t-7,Bwd Header Len
+t-1__Fwd Pkt Len Max,0.0014268218839833242,t-1,Fwd Pkt Len Max
+t__Fwd IAT Std,0.0014265672511614353,t,Fwd IAT Std
+t-7__Subflow Fwd Byts,0.0014262032252207438,t-7,Subflow Fwd Byts
+t-9__Flow Byts/s,0.0014257136355892085,t-9,Flow Byts/s
+t-8__Fwd Pkt Len Mean,0.0014256704181245352,t-8,Fwd Pkt Len Mean
+t-5__Subflow Fwd Byts,0.0014233313486350595,t-5,Subflow Fwd Byts
+t-5__Fwd IAT Std,0.0014220743759795803,t-5,Fwd IAT Std
+t__Pkt Len Std,0.0014219807195842375,t,Pkt Len Std
+t__Fwd Seg Size Min,0.0014215688447271925,t,Fwd Seg Size Min
+t-5__Pkt Size Avg,0.0014210834601894261,t-5,Pkt Size Avg
+t-7__Pkt Len Std,0.0014208752473720402,t-7,Pkt Len Std
+t-3__Bwd Pkt Len Mean,0.0014205184580686845,t-3,Bwd Pkt Len Mean
+t-1__Bwd IAT Std,0.0014203494185807256,t-1,Bwd IAT Std
+t-9__TotLen Fwd Pkts,0.0014160287960805255,t-9,TotLen Fwd Pkts
+t-4__Fwd Pkt Len Max,0.0014145953624485844,t-4,Fwd Pkt Len Max
+t-7__Pkt Len Mean,0.0014142987455899297,t-7,Pkt Len Mean
+t-8__Pkt Len Var,0.0014139076846571457,t-8,Pkt Len Var
+t__Subflow Fwd Byts,0.001410938975177623,t,Subflow Fwd Byts
+t-8__Pkt Len Mean,0.001407657081021799,t-8,Pkt Len Mean
+t-7__Pkt Len Var,0.001406234301184948,t-7,Pkt Len Var
+t-6__Subflow Fwd Pkts,0.0014038663959852497,t-6,Subflow Fwd Pkts
+t-7__Fwd Pkt Len Mean,0.001401195106784986,t-7,Fwd Pkt Len Mean
+t-1__Pkt Size Avg,0.0014011767790731127,t-1,Pkt Size Avg
+t-4__Fwd Seg Size Avg,0.0013999734421466824,t-4,Fwd Seg Size Avg
+t-5__Pkt Len Mean,0.0013996629729233466,t-5,Pkt Len Mean
+t__Bwd IAT Mean,0.0013995594018953001,t,Bwd IAT Mean
+t-6__Fwd IAT Std,0.0013986946831111334,t-6,Fwd IAT Std
+t-8__Fwd Header Len,0.0013980457165461014,t-8,Fwd Header Len
+t-6__Fwd Pkt Len Max,0.0013970764201574103,t-6,Fwd Pkt Len Max
+t-5__Fwd Header Len,0.0013968981457858898,t-5,Fwd Header Len
+t-7__Bwd IAT Std,0.001395949222499889,t-7,Bwd IAT Std
+t-9__Bwd IAT Tot,0.0013958401587292597,t-9,Bwd IAT Tot
+t-4__TotLen Fwd Pkts,0.0013943232093252766,t-4,TotLen Fwd Pkts
+t-2__Pkt Len Var,0.001393951319306326,t-2,Pkt Len Var
+t-8__Down/Up Ratio,0.001392048582028915,t-8,Down/Up Ratio
+t-4__Pkt Len Var,0.0013918616587628916,t-4,Pkt Len Var
+t-9__Pkt Len Var,0.001390800319311413,t-9,Pkt Len Var
+t-1__Fwd Pkt Len Std,0.0013887208578936595,t-1,Fwd Pkt Len Std
+t-5__Idle Mean,0.001388309290955881,t-5,Idle Mean
+t-6__Bwd IAT Tot,0.001387717382319309,t-6,Bwd IAT Tot
+t-8__Pkt Len Std,0.0013873648422842266,t-8,Pkt Len Std
+t-7__Bwd Pkt Len Mean,0.0013869550003006445,t-7,Bwd Pkt Len Mean
+t-2__Bwd IAT Std,0.0013858889146588069,t-2,Bwd IAT Std
+t-7__Fwd Pkt Len Max,0.0013856347971543158,t-7,Fwd Pkt Len Max
+t-5__Fwd Pkt Len Std,0.0013847262016432416,t-5,Fwd Pkt Len Std
+t-4__Pkt Len Mean,0.0013846486579652424,t-4,Pkt Len Mean
+t-5__Fwd Pkt Len Mean,0.0013830890520864971,t-5,Fwd Pkt Len Mean
+t-2__Bwd Seg Size Avg,0.0013821906374302218,t-2,Bwd Seg Size Avg
+t-1__Bwd IAT Max,0.0013820603729088738,t-1,Bwd IAT Max
+t-3__Bwd Seg Size Avg,0.001381465224916125,t-3,Bwd Seg Size Avg
+t-5__Fwd Seg Size Avg,0.001380979571117502,t-5,Fwd Seg Size Avg
+t-1__Bwd Header Len,0.0013808634089849364,t-1,Bwd Header Len
+t-6__Bwd IAT Mean,0.0013797492470471033,t-6,Bwd IAT Mean
+t-9__Down/Up Ratio,0.001379506552172133,t-9,Down/Up Ratio
+t-1__Fwd Pkt Len Mean,0.0013785815483385359,t-1,Fwd Pkt Len Mean
+t-6__Bwd Seg Size Avg,0.0013776903065685425,t-6,Bwd Seg Size Avg
+t-9__Bwd IAT Mean,0.0013740893613091091,t-9,Bwd IAT Mean
+t-1__Pkt Len Var,0.0013729726307768458,t-1,Pkt Len Var
+t-2__Bwd IAT Tot,0.0013723841547820823,t-2,Bwd IAT Tot
+t-6__Down/Up Ratio,0.0013715766715531518,t-6,Down/Up Ratio
+t-7__Bwd IAT Mean,0.0013711375478473364,t-7,Bwd IAT Mean
+t-6__Fwd Seg Size Min,0.0013709199332641827,t-6,Fwd Seg Size Min
+t-6__Pkt Size Avg,0.0013708482863375934,t-6,Pkt Size Avg
+t-2__Init Bwd Win Byts,0.0013707041386725417,t-2,Init Bwd Win Byts
+t-7__Fwd Seg Size Min,0.0013690446091409667,t-7,Fwd Seg Size Min
+t-8__Bwd Seg Size Avg,0.001368429592158705,t-8,Bwd Seg Size Avg
+t-6__Fwd Seg Size Avg,0.001367068138371537,t-6,Fwd Seg Size Avg
+t-8__Bwd Header Len,0.0013659651323479963,t-8,Bwd Header Len
+t-4__Subflow Fwd Byts,0.00136543383151716,t-4,Subflow Fwd Byts
+t-3__Down/Up Ratio,0.001365271047055943,t-3,Down/Up Ratio
+t-9__Bwd Pkt Len Mean,0.0013652622611861462,t-9,Bwd Pkt Len Mean
+t-6__Active Min,0.0013598275872434404,t-6,Active Min
+t__Bwd IAT Tot,0.0013596867734086875,t,Bwd IAT Tot
+t-8__Fwd Seg Size Avg,0.0013596408448036076,t-8,Fwd Seg Size Avg
+t-9__Pkt Len Max,0.0013586896405367076,t-9,Pkt Len Max
+t-6__Pkt Len Mean,0.0013581435784140144,t-6,Pkt Len Mean
+t-1__Fwd Seg Size Min,0.0013548797172534927,t-1,Fwd Seg Size Min
+t-2__Pkt Size Avg,0.001354490222747161,t-2,Pkt Size Avg
+t-9__Bwd Seg Size Avg,0.0013541567061774989,t-9,Bwd Seg Size Avg
+t-8__Bwd Pkt Len Mean,0.0013525844828044275,t-8,Bwd Pkt Len Mean
+t-2__Pkt Len Mean,0.0013525168538226762,t-2,Pkt Len Mean
+t-4__Fwd Pkt Len Std,0.0013515481763886727,t-4,Fwd Pkt Len Std
+t-2__Fwd Pkt Len Max,0.0013512136313971325,t-2,Fwd Pkt Len Max
+t__Bwd IAT Std,0.0013504327206310261,t,Bwd IAT Std
+t__Bwd Header Len,0.0013497339365134665,t,Bwd Header Len
+t-6__Pkt Len Var,0.001348530326328102,t-6,Pkt Len Var
+t-9__Subflow Fwd Pkts,0.001348056025807192,t-9,Subflow Fwd Pkts
+t-3__Bwd IAT Max,0.001346171151856622,t-3,Bwd IAT Max
+t-8__TotLen Bwd Pkts,0.0013437682981614447,t-8,TotLen Bwd Pkts
+t-2__Bwd Pkt Len Mean,0.001342999884307271,t-2,Bwd Pkt Len Mean
+t-4__Bwd Header Len,0.001340905849057486,t-4,Bwd Header Len
+t-1__Bwd IAT Mean,0.0013407471413402518,t-1,Bwd IAT Mean
+t-8__Bwd IAT Mean,0.001339639847482403,t-8,Bwd IAT Mean
+t-3__Fwd Pkt Len Std,0.0013384667753766736,t-3,Fwd Pkt Len Std
+t-5__Bwd IAT Tot,0.0013352443929501043,t-5,Bwd IAT Tot
+t-2__Pkt Len Std,0.0013342424253710698,t-2,Pkt Len Std
+t-3__Pkt Len Var,0.0013335956342897914,t-3,Pkt Len Var
+t-5__Down/Up Ratio,0.0013330950711452308,t-5,Down/Up Ratio
+t__Subflow Fwd Pkts,0.0013319096827013246,t,Subflow Fwd Pkts
+t-4__Bwd Seg Size Avg,0.0013317245102294469,t-4,Bwd Seg Size Avg
+t-5__Subflow Fwd Pkts,0.0013316552012503035,t-5,Subflow Fwd Pkts
+t-5__Bwd IAT Std,0.0013311104826402818,t-5,Bwd IAT Std
+t-7__Bwd Seg Size Avg,0.0013300012222288598,t-7,Bwd Seg Size Avg
+t-6__Bwd IAT Max,0.0013293933998786323,t-6,Bwd IAT Max
+t__Bwd Pkt Len Std,0.001328851707651938,t,Bwd Pkt Len Std
+t-8__Pkt Len Max,0.0013286335059346877,t-8,Pkt Len Max
+t-7__Bwd IAT Max,0.0013268496079756318,t-7,Bwd IAT Max
+t-8__Fwd IAT Std,0.0013266784976552187,t-8,Fwd IAT Std
+t-9__Bwd Header Len,0.0013258036262863357,t-9,Bwd Header Len
+t-1__Down/Up Ratio,0.00132438633195634,t-1,Down/Up Ratio
+t-3__Tot Fwd Pkts,0.0013208447548989496,t-3,Tot Fwd Pkts
+t-2__Bwd Pkt Len Std,0.0013195032595625287,t-2,Bwd Pkt Len Std
+t-1__Fwd Seg Size Avg,0.0013193267852747409,t-1,Fwd Seg Size Avg
+t-1__Idle Max,0.0013183718657298106,t-1,Idle Max
+t-3__Subflow Fwd Pkts,0.001316728308618787,t-3,Subflow Fwd Pkts
+t-1__Bwd IAT Tot,0.0013147901829563082,t-1,Bwd IAT Tot
+t-2__Fwd Seg Size Min,0.00131364525730753,t-2,Fwd Seg Size Min
+t-1__Pkt Len Mean,0.0013114602678597732,t-1,Pkt Len Mean
+t-1__Pkt Len Std,0.0013101229102188987,t-1,Pkt Len Std
+t-5__Bwd Pkt Len Mean,0.0013092305607821418,t-5,Bwd Pkt Len Mean
+t-4__Tot Fwd Pkts,0.0013084863024580822,t-4,Tot Fwd Pkts
+t-7__Subflow Fwd Pkts,0.0013079264611826822,t-7,Subflow Fwd Pkts
+t-7__Fwd Pkt Len Std,0.0013073322019868342,t-7,Fwd Pkt Len Std
+t__Active Mean,0.0013040506082558903,t,Active Mean
+t-3__Pkt Len Max,0.00130329597856177,t-3,Pkt Len Max
+t-5__Bwd Seg Size Avg,0.001303152613347187,t-5,Bwd Seg Size Avg
+t-9__Bwd Pkt Len Std,0.0013019893337157299,t-9,Bwd Pkt Len Std
+t-2__Bwd Header Len,0.0013012943200965707,t-2,Bwd Header Len
+t-5__Bwd Header Len,0.001300084043422398,t-5,Bwd Header Len
+t-3__Bwd Header Len,0.0012987832561982182,t-3,Bwd Header Len
+t-2__Tot Fwd Pkts,0.0012972367013428516,t-2,Tot Fwd Pkts
+t-4__Fwd Header Len,0.0012967617171314113,t-4,Fwd Header Len
+t-2__Pkt Len Max,0.0012943051000256628,t-2,Pkt Len Max
+t-5__Tot Fwd Pkts,0.00129289367954813,t-5,Tot Fwd Pkts
+t__Pkt Len Var,0.0012902266108512437,t,Pkt Len Var
+t-9__Bwd IAT Max,0.0012900860003825856,t-9,Bwd IAT Max
+t-9__Tot Fwd Pkts,0.001289606929537463,t-9,Tot Fwd Pkts
+t-6__Pkt Len Std,0.0012883233723404934,t-6,Pkt Len Std
+t-1__Tot Fwd Pkts,0.001288001488134723,t-1,Tot Fwd Pkts
+t-4__Pkt Len Std,0.0012849649317425416,t-4,Pkt Len Std
+t-6__Bwd IAT Std,0.0012841173676039778,t-6,Bwd IAT Std
+t-4__Bwd IAT Max,0.0012840633147066214,t-4,Bwd IAT Max
+t-7__Subflow Bwd Pkts,0.0012839283925561973,t-7,Subflow Bwd Pkts
+t-5__Idle Max,0.0012830076091459015,t-5,Idle Max
+t-3__Pkt Len Std,0.0012818866215843952,t-3,Pkt Len Std
+t-3__Bwd IAT Std,0.001280030334723757,t-3,Bwd IAT Std
+t-1__Bwd Pkt Len Mean,0.0012788650945289328,t-1,Bwd Pkt Len Mean
+t__Bwd Seg Size Avg,0.0012770461732928295,t,Bwd Seg Size Avg
+t-8__TotLen Fwd Pkts,0.0012764702971855735,t-8,TotLen Fwd Pkts
+t-8__Active Min,0.0012754391319046046,t-8,Active Min
+t__Bwd Pkt Len Mean,0.001274024042470332,t,Bwd Pkt Len Mean
+t-5__Pkt Len Std,0.0012727969554841537,t-5,Pkt Len Std
+t-2__Bwd IAT Max,0.001270500334899791,t-2,Bwd IAT Max
+t-3__Subflow Bwd Pkts,0.0012672647258355095,t-3,Subflow Bwd Pkts
+t__Bwd IAT Max,0.0012643840464434152,t,Bwd IAT Max
+t-2__Down/Up Ratio,0.0012627314530979266,t-2,Down/Up Ratio
+t-4__Subflow Fwd Pkts,0.0012623707511431328,t-4,Subflow Fwd Pkts
+t-1__Active Mean,0.001259556862739672,t-1,Active Mean
+t-5__Pkt Len Var,0.00125750342134699,t-5,Pkt Len Var
+t-1__Bwd Seg Size Avg,0.001256695885775146,t-1,Bwd Seg Size Avg
+t-8__Fwd Seg Size Min,0.0012552767066948615,t-8,Fwd Seg Size Min
+t-7__Fwd IAT Std,0.001251531622105837,t-7,Fwd IAT Std
+t-8__Bwd IAT Tot,0.0012491134573201204,t-8,Bwd IAT Tot
+t-7__Subflow Bwd Byts,0.001247411287959106,t-7,Subflow Bwd Byts
+t__Pkt Len Max,0.0012460221869704236,t,Pkt Len Max
+t-5__Pkt Len Max,0.0012448177418666023,t-5,Pkt Len Max
+t-8__Tot Fwd Pkts,0.0012445625800545476,t-8,Tot Fwd Pkts
+t-7__Tot Bwd Pkts,0.0012438209651408896,t-7,Tot Bwd Pkts
+t-3__Subflow Bwd Byts,0.0012434147419012,t-3,Subflow Bwd Byts
+t__Subflow Bwd Pkts,0.0012407935202006417,t,Subflow Bwd Pkts
+t-5__Bwd IAT Max,0.00123894553092087,t-5,Bwd IAT Max
+t-8__Subflow Bwd Byts,0.0012386166210978193,t-8,Subflow Bwd Byts
+t-7__TotLen Bwd Pkts,0.0012345984178366914,t-7,TotLen Bwd Pkts
+t-6__Bwd Pkt Len Mean,0.0012330896509023237,t-6,Bwd Pkt Len Mean
+t-1__Pkt Len Max,0.001231139623112729,t-1,Pkt Len Max
+t__Tot Bwd Pkts,0.0012281955026658409,t,Tot Bwd Pkts
+t-8__Bwd IAT Std,0.0012280980705962747,t-8,Bwd IAT Std
+t-8__Subflow Fwd Pkts,0.0012273796533969854,t-8,Subflow Fwd Pkts
+t-8__Bwd IAT Max,0.0012273697570243677,t-8,Bwd IAT Max
+t-3__Active Mean,0.0012253494814027856,t-3,Active Mean
+t-6__Tot Fwd Pkts,0.00122505332435681,t-6,Tot Fwd Pkts
+t-7__Tot Fwd Pkts,0.0012247178181784152,t-7,Tot Fwd Pkts
+t-4__Bwd Pkt Len Std,0.0012179962056388458,t-4,Bwd Pkt Len Std
+t-5__Fwd Seg Size Min,0.0012175690142811515,t-5,Fwd Seg Size Min
+t-2__Fwd Act Data Pkts,0.001214868417280737,t-2,Fwd Act Data Pkts
+t-1__Subflow Fwd Pkts,0.0012117699462977753,t-1,Subflow Fwd Pkts
+t-9__Bwd Pkt Len Max,0.0012098766860470672,t-9,Bwd Pkt Len Max
+t-6__Subflow Bwd Pkts,0.0012094989725611447,t-6,Subflow Bwd Pkts
+t-6__Bwd Header Len,0.0012078707578523397,t-6,Bwd Header Len
+t-8__Subflow Bwd Pkts,0.0012056521172263118,t-8,Subflow Bwd Pkts
+t-1__Bwd Pkt Len Max,0.0012043696476668852,t-1,Bwd Pkt Len Max
+t-3__TotLen Bwd Pkts,0.001203548512807068,t-3,TotLen Bwd Pkts
+t-1__Tot Bwd Pkts,0.001200674722228674,t-1,Tot Bwd Pkts
+t-3__Bwd Pkt Len Max,0.0012006377442439257,t-3,Bwd Pkt Len Max
+t-1__Fwd Act Data Pkts,0.0012003221144981909,t-1,Fwd Act Data Pkts
+t-5__Subflow Bwd Pkts,0.0011964013525822216,t-5,Subflow Bwd Pkts
+t-4__Subflow Bwd Byts,0.0011962544067221964,t-4,Subflow Bwd Byts
+t-7__Pkt Len Max,0.001193727866878964,t-7,Pkt Len Max
+t-5__Bwd Pkt Len Min,0.0011934956676327784,t-5,Bwd Pkt Len Min
+t-2__Tot Bwd Pkts,0.0011915333327031964,t-2,Tot Bwd Pkts
+t-6__Pkt Len Max,0.0011899403036993194,t-6,Pkt Len Max
+t-7__Bwd Pkt Len Max,0.0011885556288762252,t-7,Bwd Pkt Len Max
+t-6__Bwd Pkt Len Max,0.0011856948316179762,t-6,Bwd Pkt Len Max
+t-6__TotLen Bwd Pkts,0.0011835357671255663,t-6,TotLen Bwd Pkts
+t__Tot Fwd Pkts,0.001182278283013793,t,Tot Fwd Pkts
+t-4__Bwd Pkt Len Max,0.0011816851700992468,t-4,Bwd Pkt Len Max
+t-3__Fwd Act Data Pkts,0.0011812522091564461,t-3,Fwd Act Data Pkts
+t-5__Subflow Bwd Byts,0.0011802288075179906,t-5,Subflow Bwd Byts
+t-6__Subflow Bwd Byts,0.0011792835330484616,t-6,Subflow Bwd Byts
+t-1__Subflow Bwd Pkts,0.001176889731104471,t-1,Subflow Bwd Pkts
+t-9__Bwd IAT Std,0.0011765952972947215,t-9,Bwd IAT Std
+t__Bwd Pkt Len Max,0.0011764122041534907,t,Bwd Pkt Len Max
+t-9__Active Min,0.0011722896048365558,t-9,Active Min
+t-5__Bwd Pkt Len Std,0.0011715042798870884,t-5,Bwd Pkt Len Std
+t-4__TotLen Bwd Pkts,0.0011703241355576646,t-4,TotLen Bwd Pkts
+t-7__Bwd Pkt Len Std,0.00116918728821691,t-7,Bwd Pkt Len Std
+t-8__Bwd Pkt Len Std,0.0011691007784486779,t-8,Bwd Pkt Len Std
+t-4__Pkt Len Max,0.0011687308445989324,t-4,Pkt Len Max
+t-6__Bwd Pkt Len Min,0.001166884273268178,t-6,Bwd Pkt Len Min
+t-7__Fwd Act Data Pkts,0.0011666260675120106,t-7,Fwd Act Data Pkts
+t-5__Bwd Pkt Len Max,0.0011657769208459489,t-5,Bwd Pkt Len Max
+t-5__Active Mean,0.0011653898688175222,t-5,Active Mean
+t-2__Subflow Bwd Pkts,0.0011652400695607303,t-2,Subflow Bwd Pkts
+t-1__TotLen Bwd Pkts,0.0011628105881119645,t-1,TotLen Bwd Pkts
+t-1__Subflow Bwd Byts,0.0011623976952887009,t-1,Subflow Bwd Byts
+t-9__Bwd Pkt Len Min,0.0011616639625800262,t-9,Bwd Pkt Len Min
+t-8__Tot Bwd Pkts,0.0011605861056127225,t-8,Tot Bwd Pkts
+t-2__TotLen Bwd Pkts,0.0011578041514420526,t-2,TotLen Bwd Pkts
+t-2__Active Mean,0.0011567493200281315,t-2,Active Mean
+t-9__Subflow Bwd Byts,0.00115401525279627,t-9,Subflow Bwd Byts
+t-9__Tot Bwd Pkts,0.0011499982133776876,t-9,Tot Bwd Pkts
+t-4__Bwd Pkt Len Mean,0.001148832365759836,t-4,Bwd Pkt Len Mean
+t-3__Bwd Pkt Len Std,0.0011464387166963037,t-3,Bwd Pkt Len Std
+t-3__Active Max,0.001144473361445221,t-3,Active Max
+t-6__Fwd Act Data Pkts,0.0011441626260795363,t-6,Fwd Act Data Pkts
+t-9__Subflow Bwd Pkts,0.0011435493319505846,t-9,Subflow Bwd Pkts
+t-8__Bwd Pkt Len Max,0.0011361916057787838,t-8,Bwd Pkt Len Max
+t-8__Bwd Pkt Len Min,0.001134858221758503,t-8,Bwd Pkt Len Min
+t-4__Subflow Bwd Pkts,0.0011335490534758344,t-4,Subflow Bwd Pkts
+t-4__Tot Bwd Pkts,0.001132663358176531,t-4,Tot Bwd Pkts
+t-3__Tot Bwd Pkts,0.0011308694336353768,t-3,Tot Bwd Pkts
+t-6__Active Mean,0.0011286103800863913,t-6,Active Mean
+t-5__Tot Bwd Pkts,0.0011254840275657372,t-5,Tot Bwd Pkts
+t__TotLen Bwd Pkts,0.0011251535955914456,t,TotLen Bwd Pkts
+t__Active Max,0.0011244281441486783,t,Active Max
+t-5__TotLen Bwd Pkts,0.0011231512173533128,t-5,TotLen Bwd Pkts
+t-6__Bwd Pkt Len Std,0.0011193846490380908,t-6,Bwd Pkt Len Std
+t-8__Active Mean,0.0011176403707178902,t-8,Active Mean
+t__Subflow Bwd Byts,0.0011172676391210676,t,Subflow Bwd Byts
+t-6__Tot Bwd Pkts,0.0011159973359284431,t-6,Tot Bwd Pkts
+t__Fwd Act Data Pkts,0.0011136279728800474,t,Fwd Act Data Pkts
+t-2__Subflow Bwd Byts,0.0011100510160449786,t-2,Subflow Bwd Byts
+t-7__Bwd Pkt Len Min,0.0011090600006730936,t-7,Bwd Pkt Len Min
+t-9__TotLen Bwd Pkts,0.0010917371846162302,t-9,TotLen Bwd Pkts
+t-4__Fwd Act Data Pkts,0.0010902689978811953,t-4,Fwd Act Data Pkts
+t-1__Bwd Pkt Len Std,0.0010896755476178062,t-1,Bwd Pkt Len Std
+t-4__Bwd Pkt Len Min,0.0010834573745831745,t-4,Bwd Pkt Len Min
+t-1__Active Max,0.0010799664324507576,t-1,Active Max
+t-2__Active Max,0.0010785144054827076,t-2,Active Max
+t-2__Bwd Pkt Len Max,0.0010778176559470775,t-2,Bwd Pkt Len Max
+t-5__Fwd Act Data Pkts,0.0010719148825919587,t-5,Fwd Act Data Pkts
+t-3__Bwd Pkt Len Min,0.0010617984259571763,t-3,Bwd Pkt Len Min
+t-4__Active Max,0.0010573925772278106,t-4,Active Max
+t-4__Active Mean,0.0010552614351327179,t-4,Active Mean
+t-1__Bwd Pkt Len Min,0.0010529925626727602,t-1,Bwd Pkt Len Min
+t-3__Fwd Pkt Len Min,0.0010499802969420233,t-3,Fwd Pkt Len Min
+t-9__Fwd Act Data Pkts,0.0010458119218404662,t-9,Fwd Act Data Pkts
+t-8__Fwd Act Data Pkts,0.0010445224824952768,t-8,Fwd Act Data Pkts
+t-9__Active Max,0.001044202139018442,t-9,Active Max
+t-6__Fwd Pkt Len Min,0.0010392226278972208,t-6,Fwd Pkt Len Min
+t-5__Idle Std,0.0010315031108433146,t-5,Idle Std
+t-9__Active Mean,0.0010241828162106967,t-9,Active Mean
+t-7__Protocol_6,0.0010239428443811318,t-7,Protocol_6
+t__Protocol_6,0.0010184097299037766,t,Protocol_6
+t-7__Active Mean,0.0010037656301962565,t-7,Active Mean
+t-8__Fwd Pkt Len Min,0.001002645412732497,t-8,Fwd Pkt Len Min
+t-2__Idle Std,0.0009990532194291218,t-2,Idle Std
+t-6__Pkt Len Min,0.0009946448963123217,t-6,Pkt Len Min
+t-9__Fwd Pkt Len Min,0.0009944493508260452,t-9,Fwd Pkt Len Min
+t-4__Protocol_6,0.0009930844144524994,t-4,Protocol_6
+t-5__Protocol_6,0.000985928099405957,t-5,Protocol_6
+t-1__Idle Std,0.000984791925967277,t-1,Idle Std
+t-8__Idle Std,0.0009761280515569189,t-8,Idle Std
+t-9__Protocol_6,0.0009734011871673905,t-9,Protocol_6
+t-8__Active Max,0.0009708113074228072,t-8,Active Max
+t-5__Protocol_17,0.0009704495740078966,t-5,Protocol_17
+t-4__Idle Std,0.0009694782546295114,t-4,Idle Std
+t-6__Idle Std,0.000963589226370379,t-6,Idle Std
+t-7__Pkt Len Min,0.0009623742231809444,t-7,Pkt Len Min
+t-7__Idle Std,0.0009621969410785737,t-7,Idle Std
+t__Bwd Pkt Len Min,0.0009586846393378003,t,Bwd Pkt Len Min
+t-5__Fwd Pkt Len Min,0.0009522468464240754,t-5,Fwd Pkt Len Min
+t-2__Bwd Pkt Len Min,0.0009504992763356672,t-2,Bwd Pkt Len Min
+t-3__Idle Std,0.0009477207476324508,t-3,Idle Std
+t-6__Protocol_6,0.0009467805472722409,t-6,Protocol_6
+t-3__Protocol_6,0.0009409688860172597,t-3,Protocol_6
+t-5__Active Max,0.0009381236692687665,t-5,Active Max
+t-8__Protocol_6,0.000936319385308713,t-8,Protocol_6
+t__Pkt Len Min,0.0009338126746020449,t,Pkt Len Min
+t-8__Pkt Len Min,0.000931238879611155,t-8,Pkt Len Min
+t-7__Fwd Pkt Len Min,0.0009278808221834004,t-7,Fwd Pkt Len Min
+t-4__Fwd Pkt Len Min,0.0009266658189706321,t-4,Fwd Pkt Len Min
+t-6__Active Max,0.0009245132268202112,t-6,Active Max
+t-2__Fwd Pkt Len Min,0.00091077544913655,t-2,Fwd Pkt Len Min
+t__Idle Std,0.0009055563826575221,t,Idle Std
+t-9__Pkt Len Min,0.0008968111652929847,t-9,Pkt Len Min
+t-4__Pkt Len Min,0.0008887510182637322,t-4,Pkt Len Min
+t-1__Protocol_6,0.0008862516341483652,t-1,Protocol_6
+t-3__Pkt Len Min,0.0008849009045749373,t-3,Pkt Len Min
+t-4__Protocol_17,0.0008841486974094076,t-4,Protocol_17
+t-6__Protocol_17,0.0008784165384139778,t-6,Protocol_17
+t-7__Active Max,0.0008777172446567485,t-7,Active Max
+t-9__Active Std,0.0008770748442588337,t-9,Active Std
+t-1__Fwd Pkt Len Min,0.0008697898892155382,t-1,Fwd Pkt Len Min
+t-9__Idle Std,0.0008662282981541105,t-9,Idle Std
+t-6__ACK Flag Cnt,0.0008589629882796777,t-6,ACK Flag Cnt
+t-1__Pkt Len Min,0.0008572972049703518,t-1,Pkt Len Min
+t-3__Protocol_17,0.0008532080439920299,t-3,Protocol_17
+t-2__Protocol_6,0.0008519266453658605,t-2,Protocol_6
+t-8__Protocol_17,0.0008513642556001096,t-8,Protocol_17
+t-5__Pkt Len Min,0.0008457764565490377,t-5,Pkt Len Min
+t__Protocol_17,0.0008422938186975542,t,Protocol_17
+t-8__Active Std,0.0008383169648557152,t-8,Active Std
+t-3__ACK Flag Cnt,0.0008376419518488886,t-3,ACK Flag Cnt
+t__PSH Flag Cnt,0.0008336141003359774,t,PSH Flag Cnt
+t-1__Protocol_17,0.0008332655483922184,t-1,Protocol_17
+t-2__ECE Flag Cnt,0.0008267093094564117,t-2,ECE Flag Cnt
+t-2__Pkt Len Min,0.0008266544167759874,t-2,Pkt Len Min
+t-7__Protocol_17,0.0008133914331831291,t-7,Protocol_17
+t-9__Protocol_17,0.0008066049500290018,t-9,Protocol_17
+t-3__PSH Flag Cnt,0.0008064275958829373,t-3,PSH Flag Cnt
+t-4__Active Std,0.0007995310655809795,t-4,Active Std
+t-7__Protocol_0,0.0007978691153513735,t-7,Protocol_0
+t-2__Protocol_17,0.0007941073230519971,t-2,Protocol_17
+t-2__ACK Flag Cnt,0.000794004095524367,t-2,ACK Flag Cnt
+t-6__Active Std,0.0007886074984487894,t-6,Active Std
+t-6__Protocol_0,0.0007835385778102257,t-6,Protocol_0
+t-2__Active Std,0.0007794624894530961,t-2,Active Std
+t-4__ECE Flag Cnt,0.0007790899813045999,t-4,ECE Flag Cnt
+t__Fwd Pkt Len Min,0.0007778143382584299,t,Fwd Pkt Len Min
+t-7__ACK Flag Cnt,0.0007769799214737598,t-7,ACK Flag Cnt
+t__Active Std,0.0007753896600611014,t,Active Std
+t-9__ACK Flag Cnt,0.0007675498605223852,t-9,ACK Flag Cnt
+t-4__PSH Flag Cnt,0.0007663747633183106,t-4,PSH Flag Cnt
+t-2__RST Flag Cnt,0.0007636593985482243,t-2,RST Flag Cnt
+t-4__RST Flag Cnt,0.0007584546018596747,t-4,RST Flag Cnt
+t-5__ACK Flag Cnt,0.0007576298587039375,t-5,ACK Flag Cnt
+t-8__ACK Flag Cnt,0.0007554447303894714,t-8,ACK Flag Cnt
+t-1__ACK Flag Cnt,0.0007548485696374522,t-1,ACK Flag Cnt
+t-5__Active Std,0.0007529514114532137,t-5,Active Std
+t-3__Active Std,0.0007378379671983511,t-3,Active Std
+t-1__Active Std,0.0007364489742870498,t-1,Active Std
+t-9__PSH Flag Cnt,0.0007352952063986676,t-9,PSH Flag Cnt
+t-3__RST Flag Cnt,0.000732400721077611,t-3,RST Flag Cnt
+t__ACK Flag Cnt,0.0007267224159803676,t,ACK Flag Cnt
+t-3__ECE Flag Cnt,0.0007266612970095779,t-3,ECE Flag Cnt
+t-7__PSH Flag Cnt,0.0007235552897229626,t-7,PSH Flag Cnt
+t-4__ACK Flag Cnt,0.0007120184818817226,t-4,ACK Flag Cnt
+t-7__RST Flag Cnt,0.0007115286276896946,t-7,RST Flag Cnt
+t-7__Active Std,0.0007099822294685261,t-7,Active Std
+t-3__Protocol_0,0.0007087008367462845,t-3,Protocol_0
+t-8__PSH Flag Cnt,0.0007058384743064564,t-8,PSH Flag Cnt
+t-1__PSH Flag Cnt,0.0007035036896906086,t-1,PSH Flag Cnt
+t-2__Protocol_0,0.0007026535581459046,t-2,Protocol_0
+t-2__PSH Flag Cnt,0.0006999692565384054,t-2,PSH Flag Cnt
+t-1__Protocol_0,0.0006927961697184996,t-1,Protocol_0
+t-6__RST Flag Cnt,0.0006811102228446494,t-6,RST Flag Cnt
+t-8__Protocol_0,0.0006780105803150488,t-8,Protocol_0
+t-7__ECE Flag Cnt,0.0006701701039045115,t-7,ECE Flag Cnt
+t-1__RST Flag Cnt,0.0006679081931188545,t-1,RST Flag Cnt
+t-5__ECE Flag Cnt,0.0006657197958351183,t-5,ECE Flag Cnt
+t-5__PSH Flag Cnt,0.0006645920645507394,t-5,PSH Flag Cnt
+t__ECE Flag Cnt,0.0006601688181330353,t,ECE Flag Cnt
+t-8__RST Flag Cnt,0.0006598619230112615,t-8,RST Flag Cnt
+t-6__PSH Flag Cnt,0.00065402500314049,t-6,PSH Flag Cnt
+t-5__Protocol_0,0.0006393838248473111,t-5,Protocol_0
+t-1__ECE Flag Cnt,0.0006340165011771249,t-1,ECE Flag Cnt
+t-8__ECE Flag Cnt,0.0006254366693233103,t-8,ECE Flag Cnt
+t-4__Protocol_0,0.0006194561046111596,t-4,Protocol_0
+t-5__RST Flag Cnt,0.0006167802865267541,t-5,RST Flag Cnt
+t-9__ECE Flag Cnt,0.0006158339552775475,t-9,ECE Flag Cnt
+t__RST Flag Cnt,0.0006120742936052279,t,RST Flag Cnt
+t-6__ECE Flag Cnt,0.0006109374165867486,t-6,ECE Flag Cnt
+t-9__Protocol_0,0.000608531830098789,t-9,Protocol_0
+t__Protocol_0,0.0005962597074474864,t,Protocol_0
+t-1__Fwd PSH Flags,0.0005658476345671524,t-1,Fwd PSH Flags
+t-9__RST Flag Cnt,0.0005373296657330415,t-9,RST Flag Cnt
+t-4__Fwd PSH Flags,0.0004919640331118782,t-4,Fwd PSH Flags
+t__Fwd PSH Flags,0.0004896607997822473,t,Fwd PSH Flags
+t__SYN Flag Cnt,0.00048121774650282444,t,SYN Flag Cnt
+t-1__SYN Flag Cnt,0.0004668968007136854,t-1,SYN Flag Cnt
+t-3__Fwd PSH Flags,0.0004611590405760178,t-3,Fwd PSH Flags
+t-8__Fwd PSH Flags,0.0004593597362140207,t-8,Fwd PSH Flags
+t-8__URG Flag Cnt,0.0004580412449010107,t-8,URG Flag Cnt
+t-7__Fwd PSH Flags,0.0004580291128629522,t-7,Fwd PSH Flags
+t-8__SYN Flag Cnt,0.00045319434609682044,t-8,SYN Flag Cnt
+t-6__Fwd PSH Flags,0.0004529629266180839,t-6,Fwd PSH Flags
+t-7__SYN Flag Cnt,0.0004511778477583466,t-7,SYN Flag Cnt
+t-9__Fwd PSH Flags,0.00045008671360722766,t-9,Fwd PSH Flags
+t-9__SYN Flag Cnt,0.0004447295019603409,t-9,SYN Flag Cnt
+t-6__SYN Flag Cnt,0.00044211124303074226,t-6,SYN Flag Cnt
+t-3__SYN Flag Cnt,0.00044112866622869406,t-3,SYN Flag Cnt
+t-2__SYN Flag Cnt,0.00043328434584105716,t-2,SYN Flag Cnt
+t-5__SYN Flag Cnt,0.000428869551648331,t-5,SYN Flag Cnt
+t-2__Fwd PSH Flags,0.0004278805875989231,t-2,Fwd PSH Flags
+t-4__SYN Flag Cnt,0.0004178120491215239,t-4,SYN Flag Cnt
+t-6__URG Flag Cnt,0.0004153908462981649,t-6,URG Flag Cnt
+t-9__URG Flag Cnt,0.0004072512819502836,t-9,URG Flag Cnt
+t-3__URG Flag Cnt,0.00040588092090531675,t-3,URG Flag Cnt
+t-5__URG Flag Cnt,0.0004024071384004749,t-5,URG Flag Cnt
+t-5__Fwd PSH Flags,0.0003991188675789447,t-5,Fwd PSH Flags
+t-1__URG Flag Cnt,0.00037212757944246415,t-1,URG Flag Cnt
+t-7__URG Flag Cnt,0.00036869052842137515,t-7,URG Flag Cnt
+t-2__URG Flag Cnt,0.00035537076616046513,t-2,URG Flag Cnt
+t__URG Flag Cnt,0.000345556835703685,t,URG Flag Cnt
+t-4__URG Flag Cnt,0.00034372708129770164,t-4,URG Flag Cnt

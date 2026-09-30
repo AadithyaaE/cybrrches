@@ -1,0 +1,176 @@
+{
+  "objective": "Learn P(S(t+1) | S(t-9), ..., S(t)) - next network-state regression, not attack classification.",
+  "world_model_formulation": "S(t-9:t) -> S(t+1), a 68-dimensional continuous state vector predicted from the preceding 10 states.",
+  "model_type": "LSTM-based Network World Model (LSTM temporal network-state dynamics model).",
+  "architecture": {
+    "input_size": 68,
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.2
+  },
+  "training_configuration": {
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "max_epochs": 50,
+    "patience": 7,
+    "seed": 42
+  },
+  "environment": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch_version": "2.14.0+cpu",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "device": "cpu"
+  },
+  "dataset_shapes": {
+    "train": {
+      "X": [
+        15660,
+        10,
+        68
+      ],
+      "y": [
+        15660,
+        68
+      ]
+    },
+    "validation": {
+      "X": [
+        3492,
+        10,
+        68
+      ],
+      "y": [
+        3492,
+        68
+      ]
+    },
+    "test": {
+      "X": [
+        2871,
+        10,
+        68
+      ],
+      "y": [
+        2871,
+        68
+      ]
+    }
+  },
+  "training_behavior": {
+    "epochs_run": 14,
+    "best_epoch": 7,
+    "best_validation_loss": 0.7931001335382462,
+    "early_stopped": true,
+    "training_seconds": 33.19295954704285
+  },
+  "metrics": {
+    "train": {
+      "mse": 0.8312842845916748,
+      "rmse": 0.9117479282080518,
+      "mae": 0.444521427154541
+    },
+    "validation": {
+      "mse": 0.7961475253105164,
+      "rmse": 0.8922709932024667,
+      "mae": 0.46167224645614624
+    },
+    "test": {
+      "mse": 18.77292251586914,
+      "rmse": 4.332773074587353,
+      "mae": 0.47180914878845215
+    }
+  },
+  "label_distributions_target_window": {
+    "train": {
+      "Benign": 10760,
+      "Infilteration": 4900
+    },
+    "validation": {
+      "Benign": 1815,
+      "Infilteration": 1677
+    },
+    "test": {
+      "Benign": 2871
+    }
+  },
+  "test_set_limitation": "The chronological TEST partition's target windows contain {'Benign': 2871} - zero Infilteration examples. Attack-class evaluation (e.g. does next-state prediction error spike before an attack) is NOT possible on this TEST partition because it contains no attack windows at all. This is unchanged from Features 7-9 and was neither modified nor rebalanced here.",
+  "outlier_diagnostics": {
+    "train": {
+      "worst_sample_sequence_id": 11645,
+      "worst_sample_target_timestamp": "2018-03-01 08:26:23",
+      "worst_sample_mse": 1102.88330078125,
+      "dominant_feature": "Bwd Header Len",
+      "dominant_feature_actual_scaled_value": 110.61669158935547,
+      "dominant_feature_predicted_scaled_value": 3.703808546066284,
+      "dominant_feature_train_scaled_range": [
+        -0.09349675476551056,
+        110.61669158935547
+      ],
+      "note": "The single worst sample in train is dominated by feature 'Bwd Header Len' (actual scaled value 110.617 vs TRAIN's observed range [-0.093, 110.617]). This value is within TRAIN's observed range for this feature.",
+      "overall_mse_excluding_this_one_sample_diagnostic_only": 0.7609061598777771
+    },
+    "validation": {
+      "worst_sample_sequence_id": 17197,
+      "worst_sample_target_timestamp": "2018-03-01 10:47:38",
+      "worst_sample_mse": 67.22357177734375,
+      "dominant_feature": "PSH Flag Cnt",
+      "dominant_feature_actual_scaled_value": 63.04072189331055,
+      "dominant_feature_predicted_scaled_value": 0.13219565153121948,
+      "dominant_feature_train_scaled_range": [
+        -0.13068048655986786,
+        63.86732482910156
+      ],
+      "note": "The single worst sample in validation is dominated by feature 'PSH Flag Cnt' (actual scaled value 63.041 vs TRAIN's observed range [-0.131, 63.867]). This value is within TRAIN's observed range for this feature.",
+      "overall_mse_excluding_this_one_sample_diagnostic_only": 0.7771192789077759
+    },
+    "test": {
+      "worst_sample_sequence_id": 19842,
+      "worst_sample_target_timestamp": "2018-03-01 11:53:12",
+      "worst_sample_mse": 51833.4609375,
+      "dominant_feature": "Pkt Len Var",
+      "dominant_feature_actual_scaled_value": 1874.0142822265625,
+      "dominant_feature_predicted_scaled_value": 0.22907495498657227,
+      "dominant_feature_train_scaled_range": [
+        -1.1165771484375,
+        11.80485725402832
+      ],
+      "note": "The single worst sample in test is dominated by feature 'Pkt Len Var' (actual scaled value 1874.014 vs TRAIN's observed range [-1.117, 11.805]). This value falls far outside anything the scaler/model ever saw during TRAIN fitting, i.e. a genuine out-of-distribution event in this partition, not a data or code bug.",
+      "overall_mse_excluding_this_one_sample_diagnostic_only": 0.7190222144126892
+    }
+  },
+  "leakage_checks": {
+    "1_train_input_shape_correct": true,
+    "2_train_target_shape_correct": true,
+    "3_validation_test_shapes_correct": true,
+    "4_no_nan_inf": true,
+    "5_attack_label_not_in_X": true,
+    "6_timestamp_not_in_X": true,
+    "7_sequence_id_not_in_X": true,
+    "8_next_window_features_used_only_as_target": true,
+    "9_test_not_used_during_training": true,
+    "10_test_not_used_for_early_stopping": true,
+    "11_no_new_preprocessing_fit": true
+  },
+  "reproducibility": {
+    "seed": 42,
+    "checkpoint_reload_prediction_match": true,
+    "checkpoint_reload_tolerance": 1e-06,
+    "checkpoint_reload_max_abs_diff": 0.0,
+    "feature7_files_unchanged": true,
+    "feature8_files_unchanged": true,
+    "feature9_files_unchanged": true
+  },
+  "scope_statement": "Feature 10 predicts the next network-state vector. It does not yet perform K-step forecasting or attack-progression classification.",
+  "outputs": {
+    "checkpoint": "results\\lstm\\lstm_world_model.pt",
+    "training_history": "results\\lstm\\lstm_training_history.json",
+    "config": "results\\lstm\\lstm_config.json",
+    "per_feature_metrics": "results\\lstm\\lstm_per_feature_metrics.csv",
+    "predictions_summary": "results\\lstm\\lstm_predictions_summary.csv",
+    "test_predicted_next_state": "data\\processed\\lstm\\test_predicted_next_state.npy",
+    "test_actual_next_state": "data\\processed\\lstm\\test_actual_next_state.npy"
+  }
+}

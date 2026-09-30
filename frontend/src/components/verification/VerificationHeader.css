@@ -1,0 +1,24 @@
+.verification-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--status-warning-dim);
+  border: 1px solid var(--status-warning-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.verification-header__mode {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.verification-header__notice {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 90ch;
+}

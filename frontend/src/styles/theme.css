@@ -1,0 +1,90 @@
+/*
+  CyberChess design tokens.
+  Dark navy/charcoal enterprise SOC theme.
+  Cyan/electric blue = primary accent. Violet = AI/forecasting.
+  Green/amber/red reserved strictly for success/warning/danger status.
+*/
+:root {
+  /* Surfaces */
+  --bg-app: #0a0e17;
+  --bg-panel: #101625;
+  --bg-panel-raised: #141b2d;
+  --bg-hover: #1a2338;
+  --bg-input: #0d1320;
+
+  /* Borders */
+  --border-subtle: #1f2940;
+  --border-default: #2a3650;
+  --border-strong: #3a4a6b;
+
+  /* Text */
+  --text-primary: #e8ecf5;
+  --text-secondary: #9aa5bd;
+  --text-muted: #6b7690;
+  --text-disabled: #4a5468;
+
+  /* Primary accent - cyan/electric blue */
+  --accent-cyan: #22d3ee;
+  --accent-cyan-strong: #06b6d4;
+  --accent-cyan-dim: rgba(34, 211, 238, 0.12);
+  --accent-cyan-border: rgba(34, 211, 238, 0.35);
+
+  /* AI / forecasting accent - violet */
+  --accent-violet: #a78bfa;
+  --accent-violet-strong: #8b5cf6;
+  --accent-violet-dim: rgba(167, 139, 250, 0.12);
+  --accent-violet-border: rgba(167, 139, 250, 0.35);
+
+  /* Status */
+  --status-success: #34d399;
+  --status-success-dim: rgba(52, 211, 153, 0.12);
+  --status-success-border: rgba(52, 211, 153, 0.35);
+
+  --status-warning: #fbbf24;
+  --status-warning-dim: rgba(251, 191, 36, 0.12);
+  --status-warning-border: rgba(251, 191, 36, 0.35);
+
+  --status-danger: #f87171;
+  --status-danger-dim: rgba(248, 113, 113, 0.12);
+  --status-danger-border: rgba(248, 113, 113, 0.35);
+
+  --status-neutral: #7c8aa8;
+  --status-neutral-dim: rgba(124, 138, 168, 0.12);
+  --status-neutral-border: rgba(124, 138, 168, 0.35);
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", Consolas, "Roboto Mono", monospace;
+
+  --fs-xs: 0.6875rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.625rem;
+  --fs-2xl: 2rem;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Shadow */
+  --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-elevated: 0 4px 8px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+
+  /* Layout */
+  --sidebar-width: 248px;
+  --header-height: 60px;
+  --transition-fast: 140ms ease;
+}

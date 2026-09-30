@@ -1,0 +1,50 @@
+======================================================================
+FEATURE 18 - REPRODUCIBILITY REPORT
+======================================================================
+
+PYTHON MANIFEST GENERATOR
+----------------------------
+src/experiments/demo/generate_demo_manifest.py was run twice, independently.
+Both runs selected sequence_id=15853 and produced byte-for-byte identical
+demo_manifest.json output (verified via exact string equality in
+tests/test_demo.py, check "7_manifest_deterministic_rerun"). The selection
+rule reads only an already-fixed, unmodified artifact
+(results/explainability/explanation_examples.json) and contains no
+randomness, so this is expected and required, not merely observed.
+
+FRONTEND MITIGATE/VERIFY PIPELINE
+--------------------------------------
+src/services/demoService.ts::runDemoMitigateVerify() calls only pure
+functions (decideMitigation, buildBeforeTrafficState, simulateMitigation,
+rollbackSimulation, buildVerificationInput, runVerification - all
+EXISTING, unmodified Feature 10/11 engines) against a fixed input
+(the selected ExplanationExample) and a fixed timestamp constant
+(DEMO_FIXED_TIMESTAMP_MS = 1719800000000, never the live wall clock).
+Source-inspected (tests/test_demo.py checks 6): no live wall-clock read,
+no random-number generation, and no network mutation appears anywhere in
+this function or the engines it calls. Clicking "Run Demo" a second time
+in the browser therefore recomputes byte-for-byte identical
+MitigationDecision, MitigationSimulationResult, and VerificationSummary
+objects - this was verified by code inspection (the AST/source-text
+checks in tests/test_demo.py) rather than a live browser re-click, since
+no browser-automation tool was available in this session; the underlying
+guarantee (pure functions + fixed input + fixed timestamp = deterministic
+output) is the same class of proof used throughout this project's Python
+determinism checks (e.g. Feature 17's fixed-seed LSTM re-run).
+
+PROTECTED ARTIFACT INTEGRITY
+--------------------------------
+6,361 protected files hashed before Feature 18 began and again after
+Experiment/build/test completion - IDENTICAL (0 unexpected changes),
+verified in tests/test_demo.py. Two files were intentionally modified
+(frontend/src/routes/AppRoutes.tsx and navConfig.tsx, to add the /demo
+route and its nav entry) and are explicitly excluded from the strict
+hash-identity assertion rather than silently included and ignored - the
+exact one-line diff for each is documented in the final report.
+
+BUILD REPRODUCIBILITY
+-------------------------
+`npm run build` and `npm run lint` were each run twice during this
+feature's development (once before the Date.now()-comment fix, once
+after) - both succeeded both times with 0 TypeScript errors and 0 new
+lint warnings.

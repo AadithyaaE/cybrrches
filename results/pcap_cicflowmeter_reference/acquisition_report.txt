@@ -1,0 +1,76 @@
+======================================================================
+FEATURE L2.7 - CICFLOWMETER REFERENCE ACQUISITION REPORT
+======================================================================
+
+STEP 1 - ENVIRONMENT AUDIT (before installing anything)
+----------------------------------------------------------------------
+  Python interpreters: python 3.12.10 (has scapy), python3 3.14.3 (no scapy)
+  Java: OpenJDK/Java(TM) SE 26.0.2 2026-07-21 (`java -version` confirmed present)
+  Maven installed: False   Gradle installed: False
+  tcpdump/tshark/wireshark/dumpcap installed: False
+  Network access available: True (curl -I https://pypi.org -> HTTP 200 OK)
+  No CICFlowMeter (any version) already present anywhere in this repository or environment.
+  git history: single 'Initial commit', no CICFlowMeter references anywhere in commit log.
+  Existing raw PCAP: only tests/fixtures/pcap/synthetic_benign.pcap (Feature L2's own protected
+    fixture - not reused here; see STEP 3 below for why a new capture was made instead).
+
+STEP 2 - RESEARCH AND ACQUISITION DECISION
+----------------------------------------------------------------------
+  Preference order given by the task: (1) existing local/reference installation - NONE found.
+  (2) reproducible official/open-source repository - the ORIGINAL Java CICFlowMeter
+  (github.com/ahlashkari/CICFlowMeter, the tool that generated CSE-CIC-IDS2018) would require
+  cloning its repository, installing Maven (not present), and building a full Java desktop/CLI
+  application with native packet-capture dependencies (jnetpcap/pcap4j and platform pcap
+  drivers). This was judged to constitute exactly the kind of 'large dependency stack' this
+  task instructs NOT to install blindly, with meaningfully uncertain build success. NOT
+  attempted for this reason - documented here per the task's explicit 'if it cannot reasonably
+  be obtained, document exactly why' instruction.
+  (3) minimal isolated reference environment - USED. The PyPI package `cicflowmeter` 0.5.0
+  (github.com/hieulw/cicflowmeter, MIT license) is a small, pure-Python, scapy-based
+  reimplementation that explicitly cites the original Java CICFlowMeter as its design reference
+  and offers an offline PCAP-to-CSV mode requiring no live capture/root access. Installed into a
+  NEW, ISOLATED virtual environment (python -m venv) at
+  results/pcap_cicflowmeter_reference/reference_venv/ - this does not modify, and is entirely
+  separate from, the project's main Python 3.12/3.14 environments.
+
+  CRITICAL CAVEAT (see STEP 6 below): this is a THIRD-PARTY REIMPLEMENTATION, not the original
+  tool that generated the CSE-CIC-IDS2018 training CSV. 'Same column name' is NOT assumed to
+  mean 'same formula' - see feature_comparison.csv for exactly where they agree and disagree.
+
+  Exact command used to install (isolated, documented before running):
+    python -m venv results/pcap_cicflowmeter_reference/reference_venv
+    reference_venv/Scripts/python.exe -m pip install cicflowmeter==0.5.0
+
+STEP 2b - CONFIRMED REFERENCE-TOOL ISSUES ENCOUNTERED (documented, not silently patched)
+----------------------------------------------------------------------
+  1. CLI entry point (`cicflowmeter -f ... -c ...`) crashes with AttributeError: 'bool' object has no attribute 'split' - sniffer.py's main() calls create_sniffer() with a positional argument order that does not match its own function signature (args.fields lands in the input_directory parameter, args.verbose lands in the fields parameter). Worked around by calling FlowSession.process() directly per packet (see run_cicflowmeter_reference.py) - the installed package itself was NOT modified.
+
+  2. AsyncSniffer(offline=..., filter=...) requires an external `tcpdump` binary to compile the BPF filter even for offline files on this platform; none is installed. Worked around by reading packets via scapy's rdpcap() (the same function CyberChess's own pcap_reader.py uses) and calling FlowSession.process() per packet with no filter object - safe, since process() already discards any non-TCP/UDP packet itself.
+
+  3. FlowSession.process() adds the very first packet of every new flow TWICE (once in Flow.__init__, once more via an unconditional flow.add_packet() call immediately after) - confirmed empirically via syn_flag_cnt showing 3 for a flow with only 2 real SYN packets, and every flow's forward-direction packet count being inflated by exactly 1 versus the known, deterministically-generated fixture. See feature_comparison.csv's `known_root_cause`/`explanation` columns for exactly which features this affects.
+
+STEP 3 - COMPARISON PCAP
+----------------------------------------------------------------------
+  The existing L2 fixture (synthetic_benign.pcap) lacked a zero-duration/single-packet flow,
+  explicitly required by this task. A NEW, separate, deterministic, non-malicious capture was
+  generated instead (not modifying the protected L2 fixture): results/pcap_cicflowmeter_reference/comparison_capture.pcap
+  SHA-256: 464feba27b2841e0d6112a5ede3a49fdcf92a2c8c4ffa77a70c8438ffd5ee6bb
+  27 frames across 7 designed flows:
+    - Flow A (TCP, 9 packets): handshake + bidirectional data + clean FIN/FIN/ACK close
+    - Flow B (TCP, 7 packets): idle gap (~6.5s) between two bursts, for Active/Idle
+    - Flow C (TCP, 3 packets): closed by RST (not FIN)
+    - Flow D (UDP, 4 packets): bidirectional, multiple packets each way
+    - Flow E (TCP, 1 packets): single-packet, zero-duration (no response)
+    - Flow F (UDP, 1 packets): single-packet, zero-duration
+    - Flow G (TCP, 2 packets): two packets at the exact same timestamp (zero duration, nonzero bytes)
+
+STEP 10 - EXACT COMMANDS USED (for reproducibility)
+----------------------------------------------------------------------
+  1. python src/data/pcap_cicflowmeter_reference/generate_comparison_pcap.py
+  2. reference_venv/Scripts/python.exe src/data/pcap_cicflowmeter_reference/run_cicflowmeter_reference.py \
+       results/pcap_cicflowmeter_reference/comparison_capture.pcap \
+       results/pcap_cicflowmeter_reference/cicflowmeter_reference_output_run{1,2}.csv
+  3. CyberChess side: read_pcap() -> reconstruct_flows() -> build_flow_feature_table() (all
+     Feature L2 functions, completely unmodified) on the same PCAP, run twice
+  4. python src/data/pcap_cicflowmeter_reference/compare_features.py
+  See reproducibility_report.txt for hashes proving both tools were deterministic across 2 runs.

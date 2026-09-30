@@ -1,0 +1,161 @@
+{
+  "objective": "Model-grounded, per-prediction explanation of the Feature 10 LSTM -> Feature 11 classifier forecasting path, with optional LLM natural-language rendering.",
+  "scope_statement": "The LLM is an explanation-generation layer only. It does not determine the attack prediction, attack probability, MITRE stage, evidence score, risk score, or mitigation decision.",
+  "global_vs_local_note": "global_feature_importance below is a GLOBAL summary (mean/std of Layer-C contributions across all 3492 VALIDATION sequences); top_contributors inside each entry of explanation_examples.json is the LOCAL, per-prediction attribution for that one sequence. These are never conflated.",
+  "sample_sequence_ids": [
+    15670,
+    15853,
+    16037,
+    16221,
+    16404,
+    16588,
+    16772,
+    16956,
+    17139,
+    17323,
+    17507,
+    17691,
+    17874,
+    18058,
+    18242,
+    18426,
+    18609,
+    18793,
+    18977,
+    19161
+  ],
+  "classifier_attribution_grounding_check_max_diff": 1.5477235154603974e-07,
+  "global_feature_importance_top15": [
+    {
+      "feature": "Protocol_6",
+      "mean_contribution": -1.085958019649996,
+      "mean_abs_contribution": 1.085958019649996,
+      "std_contribution": 0.13965698364129714
+    },
+    {
+      "feature": "Pkt Len Std",
+      "mean_contribution": 0.07584917993099204,
+      "mean_abs_contribution": 0.392978693410832,
+      "std_contribution": 0.4989725844852928
+    },
+    {
+      "feature": "Fwd IAT Mean",
+      "mean_contribution": 0.09059108640520339,
+      "mean_abs_contribution": 0.3294269602578516,
+      "std_contribution": 0.46291870871572144
+    },
+    {
+      "feature": "Flow IAT Mean",
+      "mean_contribution": -0.08836747070556975,
+      "mean_abs_contribution": 0.32463298370756943,
+      "std_contribution": 0.4575111786724708
+    },
+    {
+      "feature": "Fwd IAT Max",
+      "mean_contribution": 0.06579340496519416,
+      "mean_abs_contribution": 0.3068812658450505,
+      "std_contribution": 0.4387179313539578
+    },
+    {
+      "feature": "Fwd Pkt Len Std",
+      "mean_contribution": -0.06724777173454674,
+      "mean_abs_contribution": 0.2020351854027961,
+      "std_contribution": 0.24352085538035328
+    },
+    {
+      "feature": "Flow Duration",
+      "mean_contribution": -0.025633121648981617,
+      "mean_abs_contribution": 0.17243579758626465,
+      "std_contribution": 0.22712240755458193
+    },
+    {
+      "feature": "Fwd IAT Tot",
+      "mean_contribution": 0.025642841326054544,
+      "mean_abs_contribution": 0.15858320196894013,
+      "std_contribution": 0.20458133640611878
+    },
+    {
+      "feature": "Idle Max",
+      "mean_contribution": -0.03279478106940833,
+      "mean_abs_contribution": 0.15674107654567,
+      "std_contribution": 0.2208363592142063
+    },
+    {
+      "feature": "Pkt Len Var",
+      "mean_contribution": -0.011146266037745404,
+      "mean_abs_contribution": 0.13543212784613315,
+      "std_contribution": 0.17781489337358716
+    },
+    {
+      "feature": "Bwd Pkt Len Std",
+      "mean_contribution": -0.024264767789963452,
+      "mean_abs_contribution": 0.12922922364410866,
+      "std_contribution": 0.1615354810664283
+    },
+    {
+      "feature": "Fwd IAT Min",
+      "mean_contribution": -0.03440544031562871,
+      "mean_abs_contribution": 0.12467730373339692,
+      "std_contribution": 0.1750460194436339
+    },
+    {
+      "feature": "Fwd Pkt Len Max",
+      "mean_contribution": 0.035052576177623036,
+      "mean_abs_contribution": 0.11544424491671595,
+      "std_contribution": 0.1421070876761821
+    },
+    {
+      "feature": "Bwd Pkt Len Max",
+      "mean_contribution": -0.01693838224636856,
+      "mean_abs_contribution": 0.0928946190211689,
+      "std_contribution": 0.11744318387487863
+    },
+    {
+      "feature": "Pkt Len Max",
+      "mean_contribution": 0.02038771813540515,
+      "mean_abs_contribution": 0.0900170173902428,
+      "std_contribution": 0.11371818469447594
+    }
+  ],
+  "evaluation_checks": {
+    "feature_name_integrity": true,
+    "temporal_position_integrity": true,
+    "contributions_finite": true,
+    "direction_matches_sign": true,
+    "topk_integrity": true,
+    "prediction_consistency": true,
+    "feature13_integration_integrity": true,
+    "feature14_integration_integrity": true,
+    "no_future_ground_truth_used_as_input": true,
+    "llm_prompt_grounded_in_structured_evidence": true,
+    "feature7_14_artifacts_unchanged": true
+  },
+  "leakage_checks": {
+    "no_model_trained": true,
+    "no_scaler_fitted": true,
+    "no_classifier_fitted": true,
+    "lstm_not_retrained": true,
+    "llm_did_not_alter_prediction": true,
+    "llm_did_not_alter_probability": true,
+    "llm_did_not_alter_mitre_score": true,
+    "llm_did_not_alter_mitre_stage": true,
+    "no_future_ground_truth_used_as_input": true,
+    "feature7_14_artifacts_unchanged": true
+  },
+  "reproducibility": {
+    "pass1_equals_pass2": true,
+    "tolerance": "exact equality (deterministic occlusion/linear-model computation)"
+  },
+  "llm": {
+    "provider": "disabled",
+    "any_live_text_generated": false,
+    "status_note": "DisabledLLMExplainer active (no LLM_API_KEY configured); prompts were built and grounding-validated, but no network call was made."
+  },
+  "outputs": {
+    "feature_attributions_csv": "results\\explainability\\feature_attributions.csv",
+    "temporal_attributions_csv": "results\\explainability\\temporal_attributions.csv",
+    "explanation_examples_json": "results\\explainability\\explanation_examples.json",
+    "llm_explanation_examples_json": "results\\explainability\\llm_explanation_examples.json",
+    "config_json": "results\\explainability\\explainability_config.json"
+  }
+}

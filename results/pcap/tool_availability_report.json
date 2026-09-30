@@ -1,0 +1,23 @@
+{
+  "environment_note": "Two separate Python interpreters exist on this machine. 'python' (3.12.10) has scapy 2.7.0 installed AND the full ML stack (pandas/numpy/sklearn/joblib/torch) used throughout Features 1-16 and Feature L1. 'python3' (3.14.3), used for the rest of this project's development, does NOT have scapy installed. Feature L2 uses the 'python' (3.12.10) interpreter for this reason - no new dependency was installed; scapy was already present.",
+  "tool_actually_used": {
+    "name": "scapy",
+    "version": "2.7.0",
+    "purpose": "offline .pcap/.pcapng file reading (rdpcap) and synthetic fixture generation (wrpcap)"
+  },
+  "cli_tools_checked_and_not_found": [
+    "tshark",
+    "wireshark",
+    "dumpcap",
+    "tcpdump",
+    "cicflowmeter"
+  ],
+  "python_packages_checked": {
+    "scapy": "2.7.0 (found, python 3.12.10 interpreter only)",
+    "pyshark": "not found",
+    "dpkt": "not found",
+    "nfstream": "not found",
+    "cicflowmeter": "not found (no PyPI package of this name checked; no CLI binary found either)"
+  },
+  "conclusion": "scapy is the only packet-parsing library available in this environment; it was used for all PCAP reading in Feature L2. No CICFlowMeter installation is available anywhere in this environment."
+}

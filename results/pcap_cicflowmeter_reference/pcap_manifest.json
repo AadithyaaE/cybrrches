@@ -1,0 +1,54 @@
+{
+  "pcap_file": "results/pcap_cicflowmeter_reference/comparison_capture.pcap",
+  "sha256": "464feba27b2841e0d6112a5ede3a49fdcf92a2c8c4ffa77a70c8438ffd5ee6bb",
+  "generator_script": "src/data/pcap_cicflowmeter_reference/generate_comparison_pcap.py",
+  "frame_count": 27,
+  "deterministic_base_time_epoch_s": 1800000000.0,
+  "flows_designed": [
+    {
+      "label": "Flow A",
+      "protocol": "TCP",
+      "description": "handshake + bidirectional data + clean FIN/FIN/ACK close",
+      "packets": 9
+    },
+    {
+      "label": "Flow B",
+      "protocol": "TCP",
+      "description": "idle gap (~6.5s) between two bursts, for Active/Idle",
+      "packets": 7
+    },
+    {
+      "label": "Flow C",
+      "protocol": "TCP",
+      "description": "closed by RST (not FIN)",
+      "packets": 3
+    },
+    {
+      "label": "Flow D",
+      "protocol": "UDP",
+      "description": "bidirectional, multiple packets each way",
+      "packets": 4
+    },
+    {
+      "label": "Flow E",
+      "protocol": "TCP",
+      "description": "single-packet, zero-duration (no response)",
+      "packets": 1
+    },
+    {
+      "label": "Flow F",
+      "protocol": "UDP",
+      "description": "single-packet, zero-duration",
+      "packets": 1
+    },
+    {
+      "label": "Flow G",
+      "protocol": "TCP",
+      "description": "two packets at the exact same timestamp (zero duration, nonzero bytes)",
+      "packets": 2
+    }
+  ],
+  "total_designed_packets": 27,
+  "malicious_content": false,
+  "note": "Not derived from or reusing the L2/L2.6 protected tests/fixtures/pcap/synthetic_benign.pcap - a separate, dedicated capture for this feature."
+}

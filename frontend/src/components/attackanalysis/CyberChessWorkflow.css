@@ -1,0 +1,65 @@
+.cyberchess-workflow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.cyberchess-workflow__step-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.cyberchess-workflow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 168px;
+  padding: var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.cyberchess-workflow__icon {
+  color: var(--accent-cyan);
+  display: flex;
+}
+
+.cyberchess-workflow__label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cyberchess-workflow__sub {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.cyberchess-workflow__arrow {
+  color: var(--text-disabled);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .cyberchess-workflow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cyberchess-workflow__step-wrap {
+    flex-direction: column;
+  }
+
+  .cyberchess-workflow__arrow {
+    transform: rotate(90deg);
+  }
+
+  .cyberchess-workflow__step {
+    width: 100%;
+  }
+}

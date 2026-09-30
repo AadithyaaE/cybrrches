@@ -1,0 +1,102 @@
+{
+  "changed_features": [
+    "Flow Byts/s",
+    "Fwd Pkts/s",
+    "Bwd Pkts/s",
+    "Fwd Seg Size Min"
+  ],
+  "unchanged_unrelated_features_verified": true,
+  "unrelated_features_that_changed": [],
+  "fwd_seg_size_min": {
+    "old_formula": "== Fwd Pkt Len Min (alias)",
+    "old_formula_real_data_match_rate": {
+      "matches": 7149,
+      "total": 331027,
+      "match_rate": 0.021596425669205232,
+      "max_abs_diff": 1440.0
+    },
+    "new_formula": "min(transport-layer header length) over forward packets",
+    "new_formula_supporting_evidence": {
+      "udp_rows_with_value_8": {
+        "matches": 111016,
+        "total": 111016,
+        "match_rate": 1.0
+      },
+      "protocol0_rows_with_value_0": {
+        "matches": 7149,
+        "total": 7149,
+        "match_rate": 1.0
+      },
+      "tcp_rows_with_value_ge20_and_multiple_of_4": {
+        "matches": 212862,
+        "total": 212862,
+        "match_rate": 1.0
+      },
+      "note": "This validates the HYPOTHESIS that Fwd Seg Size Min represents transport-header length (correlated with Protocol), not the corrected implementation's per-packet computation directly - the training CSV has no raw packets to confirm the latter."
+    },
+    "status_after_correction": "PARTIALLY_VALIDATED"
+  },
+  "flow_byts_per_s": {
+    "old_behavior": "Infinity whenever Flow Duration == 0",
+    "new_behavior": "NaN when Flow Duration == 0 AND total bytes == 0; else Infinity when Flow Duration == 0",
+    "real_data_evidence": {
+      "inf_count_total": 1083,
+      "inf_and_zero_duration": 1083,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 1834,
+      "of_those_inf": 0
+    }
+  },
+  "fwd_pkts_per_s": {
+    "old_behavior": "Infinity whenever Flow Duration == 0",
+    "new_behavior": "0.0 whenever Flow Duration == 0",
+    "real_data_evidence": {
+      "inf_count_total": 0,
+      "inf_and_zero_duration": 0,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 0,
+      "of_those_inf": 0
+    }
+  },
+  "bwd_pkts_per_s": {
+    "old_behavior": "Infinity whenever Flow Duration == 0",
+    "new_behavior": "0.0 whenever Flow Duration == 0",
+    "real_data_evidence": {
+      "inf_count_total": 0,
+      "inf_and_zero_duration": 0,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 2875,
+      "of_those_inf": 0
+    }
+  },
+  "flow_pkts_per_s_unchanged": {
+    "reason": "Already matched real data 100% - total packet count is always >=1 for a real flow, so the 0/0 case never occurs.",
+    "real_data_evidence": {
+      "inf_count_total": 2917,
+      "inf_and_zero_duration": 2917,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 0,
+      "of_those_inf": 0
+    }
+  },
+  "tests": {
+    "l2_pipeline_tests": {
+      "file": "tests\\test_pcap_pipeline.py",
+      "returncode": 0,
+      "passed": 56,
+      "failed": 0,
+      "ok": true
+    },
+    "l2_6_formula_correction_tests": {
+      "file": "tests\\test_formula_corrections.py",
+      "returncode": 0,
+      "passed": 30,
+      "failed": 0,
+      "ok": true
+    }
+  }
+}

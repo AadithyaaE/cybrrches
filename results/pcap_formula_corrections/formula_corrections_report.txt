@@ -1,0 +1,73 @@
+======================================================================
+FEATURE L2.6 - PCAP FEATURE FORMULA CORRECTIONS REPORT
+======================================================================
+
+A. FORMULAS CHANGED (4)
+----------------------------------------------------------------------
+1. Fwd Seg Size Min: alias-of-Fwd-Pkt-Len-Min -> min(transport header length) over forward packets
+2. Flow Byts/s: unconditional Infinity on zero duration -> NaN if bytes==0 too, else Infinity
+3. Fwd Pkts/s: unconditional Infinity on zero duration -> 0.0 on zero duration
+4. Bwd Pkts/s: unconditional Infinity on zero duration -> 0.0 on zero duration
+   (Flow Pkts/s was NOT changed - already matched real data 100%.)
+
+B. WHY EACH CHANGE IS SUPPORTED
+----------------------------------------------------------------------
+Fwd Seg Size Min: real training data has only 10 distinct values that correlate 100% with
+  Protocol across all 331,027 rows: UDP rows -> value 8 (111016/111016, 100%),
+  Protocol==0 rows -> value 0 (7149/7149, 100%), TCP rows -> value
+  >=20 and a multiple of 4 (212862/212862, 100%) - exactly the signature of
+  transport-layer header length (UDP=8 fixed; TCP=20+4k for options). The old alias only matched
+  real data in 2.16% of rows.
+
+Flow Byts/s / Fwd Pkts/s / Bwd Pkts/s: results/feature_selection_report.txt STEP 5 (Feature 3's
+  own pre-existing audit of the real training data) already documents that Flow Byts/s's missing
+  (NaN) rows are exactly the zero-byte/zero-duration rows, and infinite rows are exactly the
+  nonzero-byte/zero-duration rows. Feature L2.5's cross-checks additionally found ZERO Infinity
+  values for Fwd Pkts/s or Bwd Pkts/s anywhere in the real 331,027-row dataset, confirmed also by
+  Feature 3's STEP 5 section listing infinite values ONLY for Flow Byts/s and Flow Pkts/s.
+
+C. WHAT REMAINS UNCERTAIN
+----------------------------------------------------------------------
+- Fwd Seg Size Min's new formula is supported by strong CIRCUMSTANTIAL evidence (protocol
+  correlation, discrete value set) but NOT by a direct packet-level confirmation - the training
+  CSV contains no raw packets, so this implementation's per-flow computation cannot be proven to
+  reproduce real CICFlowMeter output exactly, only that the VALUE FAMILY it targets is correct.
+- All other UNVALIDATED/PARTIALLY_VALIDATED findings from Feature L2.5 (IAT statistics, Active/Idle
+  threshold, Header Len ambiguity, Bwd Pkt Len Mean/Pkt Len Mean discrepancies, etc.) are UNCHANGED
+  by this task - it corrected only the 4 features explicitly in scope.
+- No CICFlowMeter reference tool exists in this environment; no empirical tool-output comparison
+  was performed anywhere in this task.
+
+D. Fwd Seg Size Min STATUS AFTER CORRECTION: PARTIALLY_VALIDATED
+   (upgraded from NOT_REPRODUCIBLE - not VALIDATED, since no raw-packet ground truth confirms the
+   exact per-flow computation, only the value family via protocol correlation.)
+
+E. RATE FEATURE EDGE-CASE CONVENTIONS
+----------------------------------------------------------------------
+   Flow Byts/s: now matches the observed training convention (NaN on 0/0, Infinity on duration==0
+     with nonzero bytes) for all cases this task's evidence covers.
+   Fwd Pkts/s, Bwd Pkts/s: now match the observed training convention (0.0 on zero duration,
+     never Infinity) for all cases this task's evidence covers.
+   Flow Pkts/s: unchanged, already matched (100%).
+
+F. EXISTING L2 TESTS
+----------------------------------------------------------------------
+   tests/test_pcap_pipeline.py: 56 PASS, 0 FAIL, returncode=0
+   tests/test_formula_corrections.py (new, L2.6): 30 PASS, 0 FAIL, returncode=0
+   Regressions: NONE
+
+G. PROTECTED ARTIFACT INTEGRITY
+----------------------------------------------------------------------
+   Verified via tests/test_pcap_pipeline.py's own protected_files_unchanged check (results/,
+   data/processed/splits/, the training CSV, and frontend/ excluding node_modules/dist) - PASSED.
+   Feature 1-16 artifacts, Feature L1, frozen models, and the frontend were not modified by this task.
+   Unrelated PCAP feature outputs changed: NONE (verified against the pre-correction snapshot)
+
+H. IS PCAP NOW SAFE FOR FROZEN MODEL INFERENCE?
+----------------------------------------------------------------------
+   NO. This task corrected 4 of 65 features. Feature L2.5's audit found 37 features UNVALIDATED and
+   1 additional feature (now corrected) NOT_REPRODUCIBLE; those 37 UNVALIDATED features (all 14 IAT
+   statistics, all 8 Active/Idle statistics, Header Len, Fwd Act Data Pkts, Bwd Pkt Len family, Pkt
+   Len Mean/Std/Var, Pkt Size Avg, Bwd Seg Size Avg) remain exactly as UNVALIDATED as before this
+   task, because this was a narrowly-scoped correction of 4 specific features, not a full
+   revalidation. No CICFlowMeter semantic compatibility is established or claimed.

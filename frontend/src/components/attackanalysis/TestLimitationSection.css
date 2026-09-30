@@ -1,0 +1,35 @@
+.test-limitation-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.test-limitation-section__banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--status-danger-dim);
+  border: 1px solid var(--status-danger-border);
+  border-radius: var(--radius-md);
+}
+
+.test-limitation-section__banner p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.test-limitation-section__na {
+  color: var(--text-disabled);
+  font-style: italic;
+}
+
+.test-limitation-section__note {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 90ch;
+  line-height: 1.6;
+}

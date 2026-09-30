@@ -1,0 +1,103 @@
+======================================================================
+MODEL-READY FEATURE PREPARATION REPORT
+======================================================================
+Cleaned dataset: data\processed\Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv
+Row count: 331027
+Feature report used: results\feature_selection_report.json
+
+----------------------------------------------------------------------
+FEATURE PLAN (from Feature 3)
+----------------------------------------------------------------------
+  Selected features (66): ['ACK Flag Cnt', 'Active Max', 'Active Mean', 'Active Min', 'Active Std', 'Bwd Header Len', 'Bwd IAT Max', 'Bwd IAT Mean', 'Bwd IAT Min', 'Bwd IAT Std', 'Bwd IAT Tot', 'Bwd Pkt Len Max', 'Bwd Pkt Len Mean', 'Bwd Pkt Len Min', 'Bwd Pkt Len Std', 'Bwd Pkts/s', 'Bwd Seg Size Avg', 'Down/Up Ratio', 'ECE Flag Cnt', 'Flow Byts/s', 'Flow Duration', 'Flow IAT Max', 'Flow IAT Mean', 'Flow IAT Min', 'Flow IAT Std', 'Flow Pkts/s', 'Fwd Act Data Pkts', 'Fwd Header Len', 'Fwd IAT Max', 'Fwd IAT Mean', 'Fwd IAT Min', 'Fwd IAT Std', 'Fwd IAT Tot', 'Fwd PSH Flags', 'Fwd Pkt Len Max', 'Fwd Pkt Len Mean', 'Fwd Pkt Len Min', 'Fwd Pkt Len Std', 'Fwd Pkts/s', 'Fwd Seg Size Avg', 'Fwd Seg Size Min', 'Idle Max', 'Idle Mean', 'Idle Min', 'Idle Std', 'Init Bwd Win Byts', 'Init Fwd Win Byts', 'PSH Flag Cnt', 'Pkt Len Max', 'Pkt Len Mean', 'Pkt Len Min', 'Pkt Len Std', 'Pkt Len Var', 'Pkt Size Avg', 'Protocol', 'RST Flag Cnt', 'SYN Flag Cnt', 'Subflow Bwd Byts', 'Subflow Bwd Pkts', 'Subflow Fwd Byts', 'Subflow Fwd Pkts', 'Tot Bwd Pkts', 'Tot Fwd Pkts', 'TotLen Bwd Pkts', 'TotLen Fwd Pkts', 'URG Flag Cnt']
+  Reserved features: ['Dst Port', 'Timestamp']
+  Excluded features: ['Bwd PSH Flags', 'Fwd URG Flags', 'Bwd URG Flags', 'FIN Flag Cnt', 'CWE Flag Count', 'Fwd Byts/b Avg', 'Fwd Pkts/b Avg', 'Fwd Blk Rate Avg', 'Bwd Byts/b Avg', 'Bwd Pkts/b Avg', 'Bwd Blk Rate Avg', 'Label']
+  Target column: Label
+  Timestamp column: Timestamp
+
+----------------------------------------------------------------------
+STEP 3: INFINITY HANDLING
+----------------------------------------------------------------------
+  Total rows affected: 2917
+  Columns with Infinity before conversion:
+    Flow Byts/s: 1083
+    Flow Pkts/s: 2917
+  All Infinity values converted to NaN.
+
+----------------------------------------------------------------------
+STEP 4: MISSING VALUE INVESTIGATION
+----------------------------------------------------------------------
+  Flow Byts/s:
+    missing before Infinity conversion: 1834
+    missing after Infinity conversion: 2917
+    rows with Flow Duration == 0: 2917
+    all missing rows have zero duration: True
+  Flow Pkts/s:
+    missing before Infinity conversion: 0
+    missing after Infinity conversion: 2917
+    rows with Flow Duration == 0: 2917
+    all missing rows have zero duration: True
+  Chosen strategy: SimpleImputer(strategy='median')
+  Reason: Network flow rate/byte/timing features are heavily right-skewed with extreme outliers (e.g. burst rates), so the median is a more robust central-tendency estimate than the mean for these NaN values, which were confirmed (Step 4) to originate from mathematically zero-duration flows rather than data-collection loss.
+  Fitted now: False - Must be fit only on the training split, in a later feature (model training), to avoid leaking validation/test statistics into preparation.
+
+----------------------------------------------------------------------
+STEP 5: PROTOCOL ENCODING
+----------------------------------------------------------------------
+  Unique values and counts: {'0': 7149, '6': 212862, '17': 111016}
+  Label crosstab: {'0': {'Benign': 5939, 'Infilteration': 1210}, '6': {'Benign': 147468, 'Infilteration': 65394}, '17': {'Benign': 84580, 'Infilteration': 26436}}
+  Method: one-hot encoding (pandas.get_dummies)
+  Resulting columns: ['Protocol_0', 'Protocol_6', 'Protocol_17']
+  Why safe to apply now: One-hot encoding enumerates fixed, observed categories - a structural transformation, not a statistic computed from the data distribution (unlike imputation medians or scaler means/stds), so it does not leak train/test information and is safe to apply globally.
+
+----------------------------------------------------------------------
+STEP 6: NUMERIC SCALING PIPELINE
+----------------------------------------------------------------------
+  Numeric features: 65
+  Transformer: ColumnTransformer(SimpleImputer(median) -> StandardScaler) on numeric features, passthrough for one-hot Protocol columns
+  Saved to: data\processed\model_ready\preprocessing_pipeline.joblib
+  Is fitted: False
+  Note: Saved UNFITTED. A later feature must call .fit() on the training split only, then .transform() on train/validation/test splits.
+
+----------------------------------------------------------------------
+STEP 7: LABEL ENCODING
+----------------------------------------------------------------------
+  Mapping: {'Benign': 0, 'Infilteration': 1}
+  Original label text preserved in: data\processed\model_ready\target.csv
+
+----------------------------------------------------------------------
+STEP 8: TIMESTAMP
+----------------------------------------------------------------------
+  format_used: %Y-%m-%d %H:%M:%S
+  format_note: The raw CIC-IDS2018 CSV uses DD/MM/YYYY (%d/%m/%Y %H:%M:%S). The cleaned CSV from Feature 2 stores Timestamp as an already-parsed datetime, which pandas.to_csv serializes as unambiguous ISO 8601 (%Y-%m-%d %H:%M:%S). Both formats were tried explicitly (never pandas' default ambiguous inference); '%Y-%m-%d %H:%M:%S' is the one that parsed this file with zero failures.
+  min_timestamp: 2018-03-01 01:00:00
+  max_timestamp: 2018-03-01 12:59:59
+  num_unique_timestamps: 32068
+  time_span: 0 days 11:59:59
+
+----------------------------------------------------------------------
+OUTPUTS
+----------------------------------------------------------------------
+  features_csv: data\processed\model_ready\features.csv
+  target_csv: data\processed\model_ready\target.csv
+  timestamp_csv: data\processed\model_ready\timestamp.csv
+  preprocessing_pipeline: data\processed\model_ready\preprocessing_pipeline.joblib
+  model_feature_list_json: results\model_feature_list.json
+  final_feature_matrix_columns: ['ACK Flag Cnt', 'Active Max', 'Active Mean', 'Active Min', 'Active Std', 'Bwd Header Len', 'Bwd IAT Max', 'Bwd IAT Mean', 'Bwd IAT Min', 'Bwd IAT Std', 'Bwd IAT Tot', 'Bwd Pkt Len Max', 'Bwd Pkt Len Mean', 'Bwd Pkt Len Min', 'Bwd Pkt Len Std', 'Bwd Pkts/s', 'Bwd Seg Size Avg', 'Down/Up Ratio', 'ECE Flag Cnt', 'Flow Byts/s', 'Flow Duration', 'Flow IAT Max', 'Flow IAT Mean', 'Flow IAT Min', 'Flow IAT Std', 'Flow Pkts/s', 'Fwd Act Data Pkts', 'Fwd Header Len', 'Fwd IAT Max', 'Fwd IAT Mean', 'Fwd IAT Min', 'Fwd IAT Std', 'Fwd IAT Tot', 'Fwd PSH Flags', 'Fwd Pkt Len Max', 'Fwd Pkt Len Mean', 'Fwd Pkt Len Min', 'Fwd Pkt Len Std', 'Fwd Pkts/s', 'Fwd Seg Size Avg', 'Fwd Seg Size Min', 'Idle Max', 'Idle Mean', 'Idle Min', 'Idle Std', 'Init Bwd Win Byts', 'Init Fwd Win Byts', 'PSH Flag Cnt', 'Pkt Len Max', 'Pkt Len Mean', 'Pkt Len Min', 'Pkt Len Std', 'Pkt Len Var', 'Pkt Size Avg', 'RST Flag Cnt', 'SYN Flag Cnt', 'Subflow Bwd Byts', 'Subflow Bwd Pkts', 'Subflow Fwd Byts', 'Subflow Fwd Pkts', 'Tot Bwd Pkts', 'Tot Fwd Pkts', 'TotLen Bwd Pkts', 'TotLen Fwd Pkts', 'URG Flag Cnt', 'Protocol_0', 'Protocol_6', 'Protocol_17']
+  final_feature_matrix_column_count: 68
+
+----------------------------------------------------------------------
+VALIDATION (STEP 11)
+----------------------------------------------------------------------
+  raw_csv_unchanged: True
+  cleaned_csv_unchanged: True
+  selected_features_fully_represented: True
+  label_not_in_feature_matrix: True
+  timestamp_preserved_separately: True
+  dst_port_not_in_feature_matrix: True
+  constant_near_constant_not_in_feature_matrix: True
+  protocol_represented_as_onehot: True
+  protocol_onehot_rows_sum_to_one: True
+  no_infinite_values_remain: True
+  missing_values_preserved_for_later_imputation: {'Flow Byts/s': 2917, 'Flow Pkts/s': 2917}
+  preprocessing_pipeline_is_unfitted: True
+  outputs_reload_successfully: True

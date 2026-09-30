@@ -1,0 +1,19 @@
+{
+  "reached_68d_state": true,
+  "reached_10step_sequences": true,
+  "num_flows": 11,
+  "num_windows": 11,
+  "num_sequences": 1,
+  "windows_scaled_shape": [
+    11,
+    68
+  ],
+  "X_sequences_shape": [
+    1,
+    10,
+    68
+  ],
+  "feature_order_length": 68,
+  "label_available": false,
+  "note": "Produced entirely via Feature L1's unmodified prepare_unlabeled_state_pipeline() - no Label was read, required, or fabricated at any point."
+}

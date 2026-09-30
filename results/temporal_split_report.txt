@@ -1,0 +1,111 @@
+======================================================================
+CHRONOLOGICAL TRAIN/VALIDATION/TEST SPLIT REPORT
+======================================================================
+
+----------------------------------------------------------------------
+INPUTS
+----------------------------------------------------------------------
+  temporal_windows_csv: data\processed\temporal\temporal_windows.csv (32068 rows)
+  sequence_metadata_csv: data\processed\temporal\sequences\sequence_metadata.csv (22034 rows)
+
+----------------------------------------------------------------------
+SPLIT STRATEGY
+----------------------------------------------------------------------
+  Chronological split by WINDOW position (windows sorted ascending by window_start; first 70% of windows by count -> TRAIN, next 15% -> VALIDATION, remainder -> TEST). Any sequence whose 11 constituent window_ids (10 input + 1 target) span more than one of these partitions is purged entirely rather than assigned - this is the temporal-leakage boundary protection mechanism.
+  Chronological boundaries: {'train_ends_at': '2018-03-01 10:12:22', 'validation_range': ['2018-03-01 10:12:23', '2018-03-01 11:35:25'], 'test_starts_at': '2018-03-01 11:35:26'}
+
+----------------------------------------------------------------------
+PARTITIONS
+----------------------------------------------------------------------
+  TRAIN:
+    sequence_count: 15660
+    earliest_timestamp: 2018-03-01 01:00:00
+    latest_timestamp: 2018-03-01 10:12:22
+    label_distribution: {'Benign': 10760, 'Infilteration': 4900}
+    num_continuous_segments_represented: 516
+    num_windows_in_partition: 22447
+    infinite_values_before_transform: 0
+    infinite_values_after_transform: 0
+    nan_values_after_transform: 0
+  VALIDATION:
+    sequence_count: 3492
+    earliest_timestamp: 2018-03-01 10:12:23
+    latest_timestamp: 2018-03-01 11:35:25
+    label_distribution: {'Benign': 1815, 'Infilteration': 1677}
+    num_continuous_segments_represented: 104
+    num_windows_in_partition: 4810
+    infinite_values_before_transform: 0
+    infinite_values_after_transform: 0
+    nan_values_after_transform: 0
+  TEST:
+    sequence_count: 2871
+    earliest_timestamp: 2018-03-01 11:35:32
+    latest_timestamp: 2018-03-01 12:59:59
+    label_distribution: {'Benign': 2871}
+    num_continuous_segments_represented: 145
+    num_windows_in_partition: 4811
+    infinite_values_before_transform: 0
+    infinite_values_after_transform: 0
+    nan_values_after_transform: 0
+
+----------------------------------------------------------------------
+PROPORTIONS
+----------------------------------------------------------------------
+  By sequence count: {'train': 71.11, 'validation': 15.86, 'test': 13.04}
+  By window count: {'train': 70.0, 'validation': 15.0, 'test': 15.0}
+
+----------------------------------------------------------------------
+PURGED SEQUENCES
+----------------------------------------------------------------------
+  Count: 11
+    {'sequence_id': 15660, 'window_ids': [22437, 22438, 22439, 22440, 22441, 22442, 22443, 22444, 22445, 22446, 22447], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15661, 'window_ids': [22438, 22439, 22440, 22441, 22442, 22443, 22444, 22445, 22446, 22447, 22448], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15662, 'window_ids': [22439, 22440, 22441, 22442, 22443, 22444, 22445, 22446, 22447, 22448, 22449], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15663, 'window_ids': [22440, 22441, 22442, 22443, 22444, 22445, 22446, 22447, 22448, 22449, 22450], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15664, 'window_ids': [22441, 22442, 22443, 22444, 22445, 22446, 22447, 22448, 22449, 22450, 22451], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15665, 'window_ids': [22442, 22443, 22444, 22445, 22446, 22447, 22448, 22449, 22450, 22451, 22452], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15666, 'window_ids': [22443, 22444, 22445, 22446, 22447, 22448, 22449, 22450, 22451, 22452, 22453], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15667, 'window_ids': [22444, 22445, 22446, 22447, 22448, 22449, 22450, 22451, 22452, 22453, 22454], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15668, 'window_ids': [22445, 22446, 22447, 22448, 22449, 22450, 22451, 22452, 22453, 22454, 22455], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 15669, 'window_ids': [22446, 22447, 22448, 22449, 22450, 22451, 22452, 22453, 22454, 22455, 22456], 'partitions_touched': ['train', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+    {'sequence_id': 19162, 'window_ids': [27247, 27248, 27249, 27250, 27251, 27252, 27253, 27254, 27255, 27256, 27257], 'partitions_touched': ['test', 'validation'], 'reason': "Sequence's input/target windows span more than one chronological partition."}
+
+----------------------------------------------------------------------
+PREPROCESSING
+----------------------------------------------------------------------
+  strategy: SimpleImputer(strategy='median') + StandardScaler on the 65 numeric features; Protocol_0/6/17 one-hot columns passthrough (unscaled) - identical design to Feature 4's unfitted pipeline.
+  fit_source: Unique TRAIN-partition window feature vectors from temporal_windows.csv (deduplicated by window_id), NOT the expanded/overlapping sequence tensor, to avoid overweighting windows reused across multiple overlapping sequences.
+  fitted_pipeline_path: data\processed\splits\preprocessing_pipeline_train_fitted.joblib
+  original_unfitted_pipeline_unchanged: True
+
+----------------------------------------------------------------------
+VALIDATION CHECKS
+----------------------------------------------------------------------
+  1_train_before_validation: True
+  2_validation_before_test: True
+  3_no_sequence_spans_multiple_partitions: True
+  4_no_input_window_id_in_multiple_partitions: True
+  5_no_target_window_id_in_multiple_partitions: True
+  6_no_cross_partition_window_overlap: True
+  7_no_target_overlaps_other_partition_inputs: True
+  8_temporal_gaps_not_bridged: True
+  9_sequence_length_is_10: True
+  10_feature_dimension_is_68: True
+  11_X_and_target_aligned_with_metadata: True
+  12_13_sequence_ids_unique_within_and_across: True
+  14_no_duplicate_window_id_across_partitions: True
+  20_chronological_order_within_partitions: True
+  15_training_preprocessing_fitted_only_on_train: True
+  16_original_pipeline_unfitted_and_unchanged: True
+  17_no_infinity_after_preprocessing: True
+  18_no_unexpected_nan_after_preprocessing: True
+  19_labels_correctly_aligned: True
+
+----------------------------------------------------------------------
+OUTPUTS
+----------------------------------------------------------------------
+  train_dir: data\processed\splits\train
+  validation_dir: data\processed\splits\validation
+  test_dir: data\processed\splits\test
+  split_metadata_json: data\processed\splits\split_metadata.json
+  preprocessing_pipeline_train_fitted: data\processed\splits\preprocessing_pipeline_train_fitted.joblib

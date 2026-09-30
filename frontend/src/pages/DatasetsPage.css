@@ -1,0 +1,12 @@
+.datasets-page__sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.datasets-page__relationship {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 90ch;
+  line-height: 1.6;
+}

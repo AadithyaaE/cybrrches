@@ -1,0 +1,16 @@
+.feature-compatibility-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.feature-compatibility-table__summary {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.feature-compatibility-table .data-table__wrapper {
+  max-height: 420px;
+  overflow-y: auto;
+}

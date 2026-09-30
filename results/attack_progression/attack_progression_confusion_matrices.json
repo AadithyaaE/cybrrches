@@ -1,0 +1,82 @@
+{
+  "full_pipeline_validation": {
+    "1": {
+      "tn": 828,
+      "fp": 987,
+      "fn": 416,
+      "tp": 1261
+    },
+    "2": {
+      "tn": 692,
+      "fp": 1065,
+      "fn": 256,
+      "tp": 1375
+    },
+    "3": {
+      "tn": 595,
+      "fp": 1109,
+      "fn": 176,
+      "tp": 1408
+    },
+    "5": {
+      "tn": 567,
+      "fp": 1027,
+      "fn": 100,
+      "tp": 1398
+    }
+  },
+  "oracle_diagnostic_validation": {
+    "1": {
+      "tn": 1092,
+      "fp": 723,
+      "fn": 655,
+      "tp": 1022
+    },
+    "2": {
+      "tn": 1061,
+      "fp": 696,
+      "fn": 641,
+      "tp": 990
+    },
+    "3": {
+      "tn": 1037,
+      "fp": 667,
+      "fn": 624,
+      "tp": 960
+    },
+    "5": {
+      "tn": 978,
+      "fp": 616,
+      "fn": 590,
+      "tp": 908
+    }
+  },
+  "full_pipeline_test_descriptive": {
+    "1": {
+      "tn": 1550,
+      "fp": 1321,
+      "fn": 0,
+      "tp": 0
+    },
+    "2": {
+      "tn": 1258,
+      "fp": 1468,
+      "fn": 0,
+      "tp": 0
+    },
+    "3": {
+      "tn": 1208,
+      "fp": 1384,
+      "fn": 0,
+      "tp": 0
+    },
+    "5": {
+      "tn": 1118,
+      "fp": 1223,
+      "fn": 0,
+      "tp": 0
+    }
+  },
+  "convention": "tn=actual Benign predicted Benign, fp=actual Benign predicted Infilteration, fn=actual Infilteration predicted Benign, tp=actual Infilteration predicted Infilteration.",
+  "threshold": 0.5
+}

@@ -1,0 +1,88 @@
+.dataset-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.dataset-upload__type-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  width: fit-content;
+}
+
+.dataset-upload__type-tab {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dataset-upload__type-tab--active {
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+
+.dataset-upload__dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-8);
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel-raised);
+  text-align: center;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.dataset-upload__dropzone--active {
+  border-color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+}
+
+.dataset-upload__prompt {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.dataset-upload__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.dataset-upload__selected {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dataset-upload__filename {
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.dataset-upload__note {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}

@@ -1,0 +1,25 @@
+{
+  "candidate_file": "results/pcap_ground_truth_correlation/candidate_part2_172.31.69.13.pcap",
+  "candidate_sha256": "48a0ba4955296db31b3241541aaf2f6fc5b3cb2902b9482813834ae62546ebb5",
+  "candidate_size_bytes": 36372624,
+  "csv_file": "data/raw/Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv",
+  "csv_sha256": "b0534c5d7d8b41e03df71c6966c995d116a8ed28e61f377c8b14cdf5d28f4edf",
+  "csv_observation_window_utc": {
+    "min": "2018-03-01 01:00:00",
+    "max": "2018-03-01 12:59:59",
+    "note": "CSV timestamp convention resolved to UTC in this task (see correlation_report.txt Step 2) - not assumed, cross-verified against real packet timestamps of the documented Infiltration attack sessions."
+  },
+  "candidate_pcap_timestamp_range_utc": {
+    "min": "2018-03-01 14:03:49.678936+00:00",
+    "max": "2018-03-01 14:35:53.592423+00:00",
+    "source": "min/max of PacketRecord.timestamp_us over all packets successfully parsed by CyberChess's own read_pcap()"
+  },
+  "overlap_with_csv_window": false,
+  "gap_analysis": {
+    "csv_window_end_utc": "2018-03-01 12:59:59",
+    "candidate_min_timestamp_utc": "2018-03-01 14:03:49.678936",
+    "gap_seconds": 3829.68,
+    "gap_human": "~1 hour, 3 minutes, 50 seconds between the CSV's last covered second and this candidate's first packet"
+  },
+  "conclusion": "ZERO timestamp overlap between this specific candidate PCAP and the CSV's observation window. This candidate cannot be used for direct flow-level correlation against the CSV's rows. See correlation_report.txt for the independent, separate finding that this candidate's timestamps DO align with the officially documented SECOND Infiltration attack session (14:00-15:37 UTC), which is simply outside the CSV's exported window - a provenance corroboration, not a correlation result."
+}

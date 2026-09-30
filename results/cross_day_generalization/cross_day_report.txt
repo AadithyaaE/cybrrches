@@ -1,0 +1,285 @@
+======================================================================
+FEATURE 17 - CROSS-DAY GENERALIZATION & MULTI-DAY TRAINING
+======================================================================
+Cross-day generalization was evaluated on the available compatible
+CSE-CIC-IDS2018 days. This is an ADDITIVE research experiment - Features
+1-16, L1, L2.x, and L3.1/L3.2 are frozen and untouched (verified, see
+Section 11).
+
+----------------------------------------------------------------------
+RESEARCH QUESTIONS
+----------------------------------------------------------------------
+RQ1: How well does the existing Thursday-trained CyberChess model
+     generalize to previously unseen traffic days?
+RQ2: Does training the same model family on multiple traffic days improve
+     performance on a completely held-out day?
+
+----------------------------------------------------------------------
+1. DATASETS / DAYS USED
+----------------------------------------------------------------------
+4 days were eligible (Benign=0/Attack=1 binary semantics, 80-column
+schema): Thursday-01-03-2018 (original training day), Wednesday-28-02-2018,
+Wednesday-14-02-2018, Wednesday-21-02-2018.
+
+Tuesday-20-02-2018 was excluded per instruction: its raw schema has 84
+columns (extra Flow ID/Src IP/Src Port/Dst IP) and has never been mapped
+or validated against the 65-feature contract - it was never downloaded or
+prepared for this project.
+
+See dataset_summary.csv for exact row/window/sequence counts, timestamp
+ranges, and preserved caveats for every day. Key facts:
+  - Wednesday-28-02-2018: 606,982 cleaned rows, 31,854 windows, 22,006
+    sequences, 22.48% attack windows. No major caveat.
+  - Wednesday-14-02-2018: raw file has exactly 1,048,575 rows (one less
+    than Excel's row limit - truncation signature), 21.5% exact-duplicate
+    rate, a corrupted 1970-01-05 timestamp present in raw data. EXCLUDED
+    from Experiment B training (see Section 3); still evaluated in
+    Experiment A.
+  - Wednesday-21-02-2018: raw file also exactly 1,048,575 rows (same
+    truncation signature), timestamp range ends at 10:43:21 (covers only
+    ~8h47m), extremely bursty traffic (mean 316.7 flows/window, max 811) -
+    a volumetric DDoS flood.
+
+----------------------------------------------------------------------
+2. EXPERIMENT A - FROZEN BASELINE (inference only, no retraining)
+----------------------------------------------------------------------
+The existing frozen Thursday-trained models (LogReg, RandomForest, LSTM,
+next-state oracle/full-pipeline) were re-evaluated on all 3 external days
+via .transform()/.predict() only - reproducing Feature 16's own numbers
+exactly (verified: Wednesday-28-02-2018 full-pipeline recall=0.8228,
+precision=0.2770, ROC-AUC=0.5649, FPR=0.7668 - matches the known baseline
+to 4 decimal places) and extending them with Brier score, degenerate-
+prediction flags, median/P95/max absolute forecasting error, per-feature
+breakdown, and outlier-dominated-dimension flags that Feature 16's
+original run did not compute.
+
+Full-pipeline (LSTM-predicted-state -> classifier) binary results:
+  Wednesday-28-02-2018: recall=0.8228 precision=0.2770 roc_auc=0.5649 fpr=0.7668
+  Wednesday-14-02-2018: recall=0.6613 precision=0.4036 roc_auc=0.5825 fpr=0.6180
+  Wednesday-21-02-2018: recall=0.7447 precision=0.9859 roc_auc=0.7995 fpr=0.2375
+
+RQ1 ANSWER: Generalization is inconsistent and day-dependent. The frozen
+Thursday model shows moderate-to-high recall on all 3 external days
+(0.66-0.82) but combined with a persistently high false-positive rate on
+the two days sharing Thursday's attack type or a related profile
+(Wed-28: FPR=0.77; Wed-14: FPR=0.62). Wed-21 (volumetric DDoS, extreme
+class imbalance at 95.7% positive) shows a deceptively strong precision
+(0.99) that is largely an artifact of class imbalance, not evidence of
+transfer to DDoS specifically - ROC-AUC (0.80) is the more informative
+number there. No claim of "good generalization" is supportable across all
+3 days simultaneously.
+
+See experiment_a_frozen_baseline.json, forecasting_metrics.csv,
+attack_progression_metrics.csv, confusion_matrices/experiment_a_*.json for
+full detail (all 4 model families x 3 days x 4 horizons).
+
+----------------------------------------------------------------------
+3. EXPERIMENT B - MULTI-DAY TRAINING
+----------------------------------------------------------------------
+STRONGEST DEFENSIBLE PROTOCOL EXECUTED (not a full 4-day leave-one-day-out):
+Two folds were trained and evaluated, both EXCLUDING Wednesday-14-02-2018
+from any training combination due to its documented truncation/duplicate
+caveat (21.5% duplicate rate, corrupted timestamps) - a real data-quality
+concern, not merely a computational-cost decision, though the exclusion
+also kept total training time tractable within this session. Wed-14
+remains fully evaluated as a frozen-baseline day in Experiment A.
+
+  FOLD fold_holdout_Wed21: TRAIN=[Thursday-01-03-2018, Wednesday-28-02-2018]
+    (44,040 combined training sequences), HOLDOUT=Wednesday-21-02-2018
+    (1,870 sequences, completely isolated - see leakage_audit.json).
+  FOLD fold_holdout_Wed28: TRAIN=[Thursday-01-03-2018, Wednesday-21-02-2018]
+    (23,904 combined training sequences), HOLDOUT=Wednesday-28-02-2018
+    (22,006 sequences, completely isolated).
+
+A full 4-day leave-one-day-out (4 folds, each excluding one day) was NOT
+performed in this session - each fold takes several minutes end-to-end
+(data prep + preprocessing fit + LogReg/RF/LSTM/classifier training), and
+a 3rd/4th fold would require including Wednesday-14-02-2018 in training,
+which was excluded on data-quality grounds above. This is documented, not
+silently reduced - no fold was fabricated.
+
+For every fold: preprocessing was fit ONLY on the training days' window
+feature vectors (fresh unfitted clone of the Feature 4 template,
+data/processed/model_ready/preprocessing_pipeline.joblib, fit via a single
+.fit() call - never the frozen Feature 7 artifact, never touched by
+writing); LogReg (max_iter=2000, class_weight=balanced, solver=lbfgs),
+RandomForest (n_estimators=300, class_weight=balanced), LSTM (Feature 10's
+exact architecture: LSTM(68,128,2 layers,dropout=0.2)->Linear(128,68),
+Adam lr=1e-3, batch_size=128, MSELoss, max_epochs=50/patience=7), and the
+next-state classifier (LogisticRegression on 68D state, Feature 11's
+philosophy) were all trained ONLY on the training days' data. Random seed:
+42 (Python/NumPy/PyTorch), recorded per fold in configs/*.json. The
+classification threshold was NOT tuned - fixed at 0.50 throughout (see
+compute_classification_metrics()'s default).
+
+RESULTS (full-pipeline binary metrics, held-out day):
+  fold_holdout_Wed21 (train=Thu+Wed28): recall=0.9894 precision=0.9568
+    roc_auc=0.8082 fpr=1.0000 (!)
+  fold_holdout_Wed28 (train=Thu+Wed21): recall=0.5832 precision=0.3177
+    roc_auc=0.6078 fpr=0.4471
+
+IMPORTANT DEGENERATE-BEHAVIOR FLAGS (automated, not overlooked):
+  - RandomForest, BOTH folds, showed severely degraded or fully degenerate
+    behavior: fold_holdout_Wed21's RF predicted recall=0.0/precision=0.0
+    (flagged degenerate=True by the automated check - it predicted
+    essentially all-negative on the held-out day).
+  - fold_holdout_Wed21's full-pipeline classifier achieved high recall
+    (0.9894) ONLY by also reaching FPR=1.0 - i.e. it is close to
+    predicting almost everything positive on a day that is itself 95.7%
+    positive; this recall figure is NOT evidence of good detection and is
+    explicitly flagged here as such, per instruction not to describe a
+    higher F1/recall as an improvement without checking FPR and class
+    balance.
+
+RQ2 ANSWER: Training on multiple days did NOT uniformly improve
+performance, and in one case (RandomForest) made it categorically worse
+(degenerate all-negative prediction). The two folds moved in OPPOSITE
+directions relative to their respective frozen baselines (see Section 4) -
+multi-day training is not shown to be a reliable improvement strategy for
+this model family on these days, though it did not need to be, since
+evidence here is genuinely mixed, not negative-only, for the LogReg model
+on the fold_holdout_Wed21 comparison. Do not read this as evidence that
+multi-day training helps OR hurts in general - only that it changed
+results, non-uniformly, on the 2 folds tested.
+
+See fold_holdout_Wed21_results.json, fold_holdout_Wed28_results.json,
+fold_summary.csv, trained_models/fold_*/ for full detail and saved
+artifacts (kept separate from Features 1-16's frozen models).
+
+----------------------------------------------------------------------
+4. SAME-HELD-OUT-DAY COMPARISON (frozen Thursday-only vs multi-day)
+----------------------------------------------------------------------
+Neutral differences only - no winner declared. Full detail in
+model_comparison.csv (32 metric rows x 2 folds).
+
+Held-out = Wednesday-21-02-2018:
+  Full-pipeline: Frozen F1=0.8485, FPR=0.2375 | Multi-day F1=0.9728, FPR=1.0000
+    Difference: F1 changed by +0.1243; FPR changed by +0.7625 (much worse)
+  Multi-day training changed recall/F1 upward but changed FPR sharply
+  upward too (degenerate-adjacent behavior, see Section 3).
+
+Held-out = Wednesday-28-02-2018:
+  Full-pipeline: Frozen F1=0.4144, FPR=0.7668 | Multi-day F1=0.4113, FPR=0.4471
+    Difference: F1 changed by -0.0031 (essentially unchanged); FPR changed
+    by -0.3197 (substantially improved)
+  Multi-day training changed FPR substantially downward with F1 essentially
+  unchanged - a genuinely different, arguably more balanced operating
+  point, not simply "worse" or "better" on a single number.
+
+----------------------------------------------------------------------
+5. WORLD MODEL FORECASTING RESULTS
+----------------------------------------------------------------------
+K=1/2/3/5 MSE/RMSE/MAE/median/P95 for every day and fold are in
+forecasting_metrics.csv. Headline K=1 one-step MAE:
+  Experiment A (frozen): Wed-28=0.499, Wed-14=0.408, Wed-21=14.586 (!)
+  fold_holdout_Wed21 (multi-day, holdout=Wed-21): MAE=7.517 (LOWER error
+    than frozen's 14.586 on the SAME held-out day - a genuine improvement
+    on this specific metric)
+  fold_holdout_Wed28 (multi-day, holdout=Wed-28): MAE=0.405 (essentially
+    unchanged vs frozen's 0.499)
+
+Wed-21's forecasting error is an order of magnitude larger than the other
+days in EVERY configuration (frozen or multi-day) - consistent with its
+extreme, bursty DDoS traffic profile producing genuinely harder-to-predict
+raw feature magnitudes even after scaling. Per-feature outlier-dominated
+dimensions are listed explicitly per day/fold in the JSON results (not
+hidden) - e.g. fold_holdout_Wed21 flags 20 of 68 dimensions (Active/Idle/
+IAT statistics, several count features, Protocol_0) as outlier-dominated
+(max error >10x mean error for that feature).
+
+----------------------------------------------------------------------
+6. ATTACK PROGRESSION RESULTS
+----------------------------------------------------------------------
+Per-horizon (K=1,2,3,5) precision/recall/F1/ROC-AUC/FPR/Brier score for
+every day and fold are in attack_progression_metrics.csv. No degenerate
+(near-all-one-class) attack-progression prediction was found at any
+horizon beyond the RandomForest cases already flagged in Section 3 - all
+non-RF classifiers' predictions stayed in a non-degenerate range
+(positive-prediction fraction strictly between 1% and 99%) at every
+horizon checked, per the automated degenerate_prediction_check.
+
+----------------------------------------------------------------------
+7. DATA QUALITY / FAIRNESS OF COMPARISON
+----------------------------------------------------------------------
+See dataset_summary.csv for the full per-day table. Both Wednesday-14 and
+Wednesday-21's truncation caveats are preserved and explicitly repeated
+here (not hidden): both raw files are exactly 1,048,575 rows (one below
+Excel's row limit), Wed-14 has a 21.5% duplicate rate and a corrupted
+1970-01-05 timestamp, Wed-21's file ends at 10:43:21 (partial day) with
+extremely bursty traffic. Wednesday-14-02-2018 is a diagnostic-only day in
+this feature (evaluated in Experiment A, excluded from Experiment B
+training) rather than silently dropped.
+
+----------------------------------------------------------------------
+8. LEAKAGE AUDIT RESULTS
+----------------------------------------------------------------------
+See leakage_audit.json. ALL automated checks passed:
+  - no_fit_call_references_a_holdout_named_variable: PASS
+  - no_label_or_timestamp_in_feature_order: PASS
+  - no_random_shuffle_outside_DataLoader_minibatch_order: PASS
+  - uses_chronological_split_only: PASS
+  - holdout_day_not_in_train_days_set (both folds): PASS
+  - protected_artifacts_unchanged: PASS (549 files, 0 changed)
+
+----------------------------------------------------------------------
+9. REPRODUCIBILITY RESULTS
+----------------------------------------------------------------------
+See reproducibility_report.txt for full detail. Summary: Experiment A is
+bit-for-bit deterministic across 2 independent runs (exact JSON equality).
+fold_holdout_Wed21 was run twice independently; every quantity comparable
+across both runs (LSTM training trajectory, all forecasting stats, all
+classification metrics) was bit-for-bit identical; the one field that
+differed did so because of a documented mid-session code correction
+between the two runs (P95-based outlier flag -> MAX-based), not
+non-determinism - both raw result files are preserved for independent
+verification. fold_holdout_Wed28 was run once (time constraint, disclosed).
+
+----------------------------------------------------------------------
+10. PROTECTED ARTIFACT INTEGRITY
+----------------------------------------------------------------------
+549 protected files (Features 1-16 results/data/model artifacts, L1, all
+L2.x, L3.1/L3.2, frontend) hashed before Feature 17 began and again after
+completion - IDENTICAL, 0 files changed. Verified independently by both
+leakage_audit.json and tests/test_cross_day_generalization.py.
+
+----------------------------------------------------------------------
+11. IMPORTANT LIMITATIONS
+----------------------------------------------------------------------
+  - This is NOT a full 4-day leave-one-day-out (only 2 of 4 possible folds
+    were run; Wednesday-14-02-2018 never contributed to any training
+    combination, per its documented data-quality caveat).
+  - fold_holdout_Wed28 was not independently re-run for determinism
+    verification (time constraint).
+  - No hyperparameter search was performed for any model in Experiment B -
+    Feature 8/9/10/11's original hyperparameters were reused as-is
+    ("same general architecture and training philosophy as Feature 10",
+    per instruction).
+  - Multi-day training's LSTM validation split is a simple per-day
+    chronological last-10% holdout, not a principled hyperparameter-tuned
+    validation scheme - sufficient for early-stopping only.
+  - Results here do NOT establish universal generalization, production
+    readiness, real-time detection, actual firewall mitigation, that
+    multi-day training necessarily improves performance, that attack
+    progression has been proven, or that LSTM forecasting is universally
+    accurate. None of these claims are made.
+  - The severe FPR degradation seen in fold_holdout_Wed21's full-pipeline
+    result, and RandomForest's degenerate behavior in both folds, mean
+    NEITHER trained multi-day model should be treated as a drop-in
+    improvement over the frozen Thursday-only model without further
+    investigation.
+
+----------------------------------------------------------------------
+12. DOES THE EVIDENCE SUPPORT FURTHER MODEL WORK?
+----------------------------------------------------------------------
+Yes, cautiously: the mixed, day-dependent results (Section 4) and the
+concrete failure modes surfaced (RandomForest degeneracy, one fold's
+FPR collapse) are themselves useful, actionable findings that justify
+further investigation (e.g. class-balance-aware training, a principled
+validation scheme, and completing the remaining 2 folds of the
+leave-one-day-out protocol) - but the evidence gathered here does not
+itself demonstrate that multi-day training is a beneficial direction; it
+demonstrates that the question is answerable and worth pursuing further
+with more folds and more careful handling of class imbalance.
+
+No overall "winner" is declared between the frozen Thursday-only model and
+the multi-day-trained models, per instruction.

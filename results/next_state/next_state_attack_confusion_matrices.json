@@ -1,0 +1,47 @@
+{
+  "oracle": {
+    "train": {
+      "tn": 5948,
+      "fp": 4812,
+      "fn": 1848,
+      "tp": 3052
+    },
+    "validation": {
+      "tn": 1092,
+      "fp": 723,
+      "fn": 655,
+      "tp": 1022
+    },
+    "test": {
+      "tn": 1960,
+      "fp": 911,
+      "fn": 0,
+      "tp": 0
+    }
+  },
+  "pipeline": {
+    "train": {
+      "tn": 4940,
+      "fp": 5820,
+      "fn": 1293,
+      "tp": 3607
+    },
+    "validation": {
+      "tn": 828,
+      "fp": 987,
+      "fn": 416,
+      "tp": 1261
+    },
+    "test": {
+      "tn": 1550,
+      "fp": 1321,
+      "fn": 0,
+      "tp": 0
+    }
+  },
+  "labels_order": [
+    "Benign(0)",
+    "Infilteration(1)"
+  ],
+  "convention": "tn=actual Benign predicted Benign, fp=actual Benign predicted Infilteration, fn=actual Infilteration predicted Benign, tp=actual Infilteration predicted Infilteration."
+}

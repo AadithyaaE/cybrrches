@@ -1,0 +1,176 @@
+======================================================================
+EXTERNAL DATASET PREPARATION - DOWNLOAD, VERIFY, ORGANIZE, INSPECT
+======================================================================
+
+SCOPE: download + integrity verification + inspection ONLY. No cleaning,
+no preprocessing, no model training, no modification of Features 1-15.
+
+Source: s3://cse-cic-ids2018/Processed Traffic Data for ML Algorithms/
+        (public bucket, --no-sign-request), per
+        results/dataset_generalization_inspection/inspection_report.txt
+
+----------------------------------------------------------------------
+A. DOWNLOADED FILES
+----------------------------------------------------------------------
+All 3 requested files are now present under data/raw/external_evaluation/:
+
+  Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv  (SUCCESS, 1st attempt)
+  Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv  (SUCCESS, 3rd attempt - see D)
+  Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv  (SUCCESS, 2nd attempt - see D)
+
+Files explicitly NOT downloaded (per instructions): Friday-02-03-2018,
+Thursday-22-02-2018, Friday-23-02-2018, Tuesday-20-02-2018.
+
+----------------------------------------------------------------------
+B. SIZES AND SHA256  [VERIFIED]
+----------------------------------------------------------------------
+  Wednesday-28-02-2018: 209,249,758 bytes (matches expected exactly)
+    sha256: f15e2a12304446058a0186c8ad67de2bd15735a9ba5c70c9a1f4c4242ab06771
+  Wednesday-14-02-2018: 358,223,333 bytes (matches expected exactly)
+    sha256: acff8bc61376ee031d80878ee6099e0b1a87a1bd711d8068298421418c9f8147
+  Wednesday-21-02-2018: 328,893,673 bytes (matches expected exactly)
+    sha256: a5f4a1c2689e0aa6566c03a58466de9c407c0be0cbd3cc69306544026611be04
+
+Note on failures encountered: Wednesday-14-02-2018 failed twice and
+Wednesday-21-02-2018 failed once, all with the identical error
+"ConnectionResetError(10054, 'An existing connection was forcibly closed
+by the remote host')" at various byte offsets. Each failure was retried
+with the IDENTICAL source/destination (no dataset substitution, no
+workaround). No partial/corrupt file was left on disk after any failure.
+Full attempt-by-attempt detail is in download_manifest.json.
+
+----------------------------------------------------------------------
+C. LABEL DISTRIBUTIONS  [VERIFIED, full-file chunked read]
+----------------------------------------------------------------------
+  Wednesday-28-02-2018 (613,071 real rows, excl. 33 embedded headers):
+    Benign: 544,200 (88.76%)   Infilteration: 68,871 (11.24%)
+
+  Wednesday-14-02-2018 (1,048,575 rows, 0 embedded headers):
+    Benign: 667,626 (63.68%)  FTP-BruteForce: 193,360 (18.44%)
+    SSH-Bruteforce: 187,589 (17.89%)
+
+  Wednesday-21-02-2018 (1,048,575 rows, 0 embedded headers):
+    DDOS attack-HOIC: 686,012 (65.42%)  Benign: 360,833 (34.42%)
+    DDOS attack-LOIC-UDP: 1,730 (0.16%)
+
+All labels match the documented attack categories from the earlier
+dataset-generalization inspection, now with exact full-file counts
+rather than partial samples.
+
+----------------------------------------------------------------------
+D. TIMESTAMP COVERAGE  [VERIFIED]
+----------------------------------------------------------------------
+  Wednesday-28-02-2018: 2018-02-28 01:00:00 -> 12:59:59 (31,854 unique
+    timestamps; 0 parse failures)
+  Wednesday-14-02-2018: 1970-01-05 03:01:17 -> 2018-02-14 12:59:59
+    (32,043 unique timestamps; 0 parse failures - see CRITICAL FINDING 3 below)
+  Wednesday-21-02-2018: 2018-02-21 01:55:46 -> 10:43:21 (3,256 unique
+    timestamps; 0 parse failures - see CRITICAL FINDING 2 below)
+
+----------------------------------------------------------------------
+E. SCHEMA COMPARISON  [VERIFIED]
+----------------------------------------------------------------------
+All 3 files have the EXACT same 80-column schema (names and order) as
+the current cleaned development dataset
+(data/processed/Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv):
+Timestamp, Label, Protocol, Dst Port all present in the expected
+positions. No adaptation needed for these 3 files (unlike the excluded
+Tuesday-20-02-2018, which has 84 columns per the earlier inspection).
+
+----------------------------------------------------------------------
+F. DATA-QUALITY FINDINGS  [VERIFIED / OBSERVED]
+----------------------------------------------------------------------
+
+1. EMBEDDED HEADER ROWS vary by file: Wednesday-28-02-2018 has 33
+   (same CICFlowMeter artifact as the 25 found in the current dev
+   dataset); Wednesday-14-02-2018 and Wednesday-21-02-2018 have 0
+   (independently confirmed via grep).
+
+2. *** CRITICAL *** Wednesday-14-02-2018 AND Wednesday-21-02-2018 both
+   contain EXACTLY 1,048,575 rows = 2^20 - 1 = Excel's maximum
+   worksheet row limit (1,048,576) minus one header row. This is very
+   unlikely to be coincidental and strongly suggests both files were
+   TRUNCATED during CIC's dataset preparation (e.g. an Excel open/
+   re-save step), and may NOT contain the complete day's capture. This
+   is confirmed NOT to be a download artifact: each file's byte size on
+   S3 is fully self-consistent with exactly this many rows.
+   Corroborating evidence: Wednesday-21-02-2018 stops at 10:43:21, over
+   two hours before the ~12:59:59 end-time pattern seen in the other
+   two files - consistent with a mid-capture cutoff. Wednesday-14-02-2018
+   does reach 12:59:59, so it is less clearly affected by this
+   particular signal, but the row-count coincidence is unexplained.
+   RECOMMENDATION: treat both as POSSIBLY INCOMPLETE, especially
+   Wednesday-21-02-2018, when designing any evaluation that depends on
+   complete-day coverage.
+
+3. Wednesday-14-02-2018 has 5 rows (0.0005%) with implausible pre-2018
+   timestamps (e.g. "05/01/1970 03:01:17"), all with Dst Port=0,
+   Protocol=0, Label=Benign. A genuine pre-existing source-data issue,
+   negligible in scale, not modified here.
+
+4. Exact duplicate rows: Wednesday-28-02-2018 has 6,089 (~1.0%),
+   Wednesday-21-02-2018 has 17,557 (~1.7%), Wednesday-14-02-2018 has an
+   unusually high 225,628 (~21.5%, independently verified with
+   pandas.duplicated()). Investigated: Wednesday-14-02's duplicates are
+   concentrated almost entirely in FTP-BruteForce/SSH-Bruteforce rows,
+   consistent with automated brute-force tooling generating many
+   byte-identical flow records - likely a genuine attack-traffic
+   characteristic, not necessarily a pipeline defect. This needs a
+   deliberate decision in a future cleaning step, not blind removal.
+
+5. Flow Byts/s / Flow Pkts/s Infinity values: present in
+   Wednesday-28-02-2018 (2,128 / 6,169) and Wednesday-14-02-2018
+   (1,547 / 3,824), matching the known CICFlowMeter zero-duration-flow
+   division-by-zero pattern documented in Feature 2. ZERO Infinity
+   values in Wednesday-21-02-2018 (DDoS traffic rarely has zero-duration
+   flows). No literal "NaN" strings found in any of the 3 files.
+
+None of these issues were cleaned, removed, or modified - inspection
+only, as required.
+
+----------------------------------------------------------------------
+G. FEATURE COMPATIBILITY  [VERIFIED structurally, NOT executed]
+----------------------------------------------------------------------
+Reviewed: results/feature_selection_report.json (66 core features),
+results/model_feature_list.json, results/state_schema.json (68 state
+features), data/processed/temporal/temporal_aggregation_policy.json
+(18 SUM + 50 MEAN features). Because all 3 files match the reference
+80-column schema exactly, the existing Feature 2-6 pipeline should apply
+without modification to the 68-feature state representation - this is a
+structural conclusion only; no pipeline code was run against these files.
+
+----------------------------------------------------------------------
+H. EXACT LOCAL PATHS
+----------------------------------------------------------------------
+  data/raw/external_evaluation/Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv
+  data/raw/external_evaluation/Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv
+  data/raw/external_evaluation/Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv
+
+----------------------------------------------------------------------
+I. EXISTING-ARTIFACT INTEGRITY  [VERIFIED]
+----------------------------------------------------------------------
+14 key Feature 1-15 artifacts (LSTM checkpoint, Feature 11 classifier,
+baseline models, train/validation/test scaled arrays, fitted
+preprocessing pipeline, current cleaned dataset, feature/state/schema
+JSONs) were MD5-hashed before this task began and re-hashed after all
+downloads and inspection completed. RESULT: 0 mismatches out of 14 -
+no existing artifact was modified.
+
+----------------------------------------------------------------------
+J. READY FOR NEXT FROZEN-EVALUATION STAGE?
+----------------------------------------------------------------------
+Wednesday-28-02-2018: READY. Same label family (Benign/Infiltration) as
+  current training, complete-day coverage, standard schema.
+Wednesday-14-02-2018: READY WITH CAVEATS. Usable, but the possible
+  Excel-row-limit truncation (Finding 2) and the unusually high
+  duplicate rate in attack rows (Finding 4) should be explicitly
+  accounted for in the next cleaning/evaluation design, not ignored.
+Wednesday-21-02-2018: READY WITH CAVEATS - LIKELY INCOMPLETE. The
+  10:43:21 cutoff strongly suggests missing data for the remainder of
+  the intended ~13:00 capture window. Evaluation results from this file
+  should note this explicitly and not be presented as if from a
+  complete day.
+
+======================================================================
+END OF REPORT
+======================================================================

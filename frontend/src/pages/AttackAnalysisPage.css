@@ -1,0 +1,22 @@
+.attack-analysis-page__badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.attack-analysis-page__sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.attack-analysis-page__loading {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.attack-analysis-page__error {
+  color: var(--status-danger);
+  font-size: var(--fs-sm);
+  margin: 0;
+}

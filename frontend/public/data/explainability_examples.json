@@ -1,0 +1,5087 @@
+[
+  {
+    "sequence_id": 15670,
+    "prediction": "Benign",
+    "attack_probability": 0.4749237298965454,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.2565271854400635,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.5279834270477295,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.3195290267467499,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.2734432518482208,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.24130994081497192,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.2241228073835373,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.1939595341682434,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "time_step": "t+1",
+        "contribution": 0.18752524256706238,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.1812586933374405,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.1595136672258377,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.0040645599365234375,
+          "direction": "attack",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.47085925936698914
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -0.02740803360939026,
+          "direction": "benign",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.5023318529129028
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.012930214405059814,
+          "direction": "attack",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.46199360489845276
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.017171144485473633,
+          "direction": "benign",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.4920949637889862
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.01844772696495056,
+          "direction": "attack",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.456476092338562
+        },
+        {
+          "time_step": "t-4",
+          "contribution": -0.017001062631607056,
+          "direction": "benign",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.49192488193511963
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.009925127029418945,
+          "direction": "benign",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.4848489463329315
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.03560337424278259,
+          "direction": "attack",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.43932044506073
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.017371922731399536,
+          "direction": "attack",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.45755189657211304
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.00909501314163208,
+          "direction": "benign",
+          "full_probability": 0.4749238193035126,
+          "occluded_probability": 0.48401883244514465
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": -0.00044665634632110594,
+        "sum_contribution": -0.00446656346321106,
+        "sum_abs_contribution": 0.048135906457901
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.004452413320541382,
+        "sum_contribution": -0.04452413320541382,
+        "sum_abs_contribution": 0.04790365695953369
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": -0.0006090551614761353,
+        "sum_contribution": -0.0060905516147613525,
+        "sum_abs_contribution": 0.04010477662086487
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": 0.0010411709547042847,
+        "sum_contribution": 0.010411709547042847,
+        "sum_abs_contribution": 0.03444895148277283
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.001585516333580017,
+        "sum_contribution": 0.01585516333580017,
+        "sum_abs_contribution": 0.03345140814781189
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": 0.0024907588958740234,
+        "sum_contribution": 0.024907588958740234,
+        "sum_abs_contribution": 0.030797302722930908
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -0.000221368670463562,
+        "sum_contribution": -0.00221368670463562,
+        "sum_abs_contribution": 0.029424697160720825
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0010108917951583863,
+        "sum_contribution": 0.010108917951583862,
+        "sum_abs_contribution": 0.02699306607246399
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": -0.0003668159246444702,
+        "sum_contribution": -0.003668159246444702,
+        "sum_abs_contribution": 0.026712864637374878
+      },
+      {
+        "feature": "Fwd PSH Flags",
+        "mean_contribution": 0.0015853732824325562,
+        "sum_contribution": 0.01585373282432556,
+        "sum_abs_contribution": 0.02447625994682312
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.47492373,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.48988473,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.50905055,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.5221088,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Command and Control",
+      "stage_scores": {
+        "discovery": 30.0,
+        "command_and_control": 60.0,
+        "exfiltration": 0.0,
+        "impact": 0.0,
+        "reconnaissance": 0.0,
+        "initial_access": 40.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "MEDIUM",
+        "command_and_control": "HIGH",
+        "exfiltration": "LOW",
+        "impact": "LOW",
+        "reconnaissance": "LOW",
+        "initial_access": "MEDIUM",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 15853,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5651593804359436,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.204080581665039,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 1.0652291774749756,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.5298424959182739,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.4033191204071045,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.3778039216995239,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.36020880937576294,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.3391788899898529,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.33642709255218506,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.31236469745635986,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.29330235719680786,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.002039670944213867,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.563119649887085
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.0009528398513793945,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5642064809799194
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.003022491931915283,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5621368288993835
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.0038777589797973633,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5612815618515015
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.005817532539367676,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5593417882919312
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.007691800594329834,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.557467520236969
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.008897006511688232,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5562623143196106
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.002090275287628174,
+          "direction": "benign",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.567249596118927
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.008813023567199707,
+          "direction": "attack",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5563462972640991
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.0038517117500305176,
+          "direction": "benign",
+          "full_probability": 0.5651593208312988,
+          "occluded_probability": 0.5690110325813293
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd PSH Flags",
+        "mean_contribution": 0.000170665979385376,
+        "sum_contribution": 0.0017066597938537598,
+        "sum_abs_contribution": 0.013388335704803467
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": 0.0009646594524383544,
+        "sum_contribution": 0.009646594524383545,
+        "sum_abs_contribution": 0.012952029705047607
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": 0.00023605823516845704,
+        "sum_contribution": 0.0023605823516845703,
+        "sum_abs_contribution": 0.012398123741149902
+      },
+      {
+        "feature": "Active Min",
+        "mean_contribution": -0.001032710075378418,
+        "sum_contribution": -0.01032710075378418,
+        "sum_abs_contribution": 0.010803699493408203
+      },
+      {
+        "feature": "Fwd Seg Size Avg",
+        "mean_contribution": 0.0008389949798583984,
+        "sum_contribution": 0.008389949798583984,
+        "sum_abs_contribution": 0.009267330169677734
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": -0.00019600391387939454,
+        "sum_contribution": -0.0019600391387939453,
+        "sum_abs_contribution": 0.00693356990814209
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": -0.00015593767166137694,
+        "sum_contribution": -0.0015593767166137695,
+        "sum_abs_contribution": 0.0058710575103759766
+      },
+      {
+        "feature": "Active Max",
+        "mean_contribution": 0.0005485355854034424,
+        "sum_contribution": 0.005485355854034424,
+        "sum_abs_contribution": 0.005733907222747803
+      },
+      {
+        "feature": "Pkt Len Max",
+        "mean_contribution": 0.0004971861839294433,
+        "sum_contribution": 0.004971861839294434,
+        "sum_abs_contribution": 0.005597472190856934
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": -0.000491023063659668,
+        "sum_contribution": -0.00491023063659668,
+        "sum_abs_contribution": 0.005327463150024414
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5651594,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.5668227,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.5642348,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.55713755,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 15.0,
+        "command_and_control": 25.0,
+        "exfiltration": 40.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "MEDIUM",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 16037,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5509618520736694,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.0224459171295166,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.23520037531852722,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.1662309169769287,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.1465807855129242,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.13000160455703735,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.12264713644981384,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.10886140912771225,
+        "direction": "attack"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.10018497705459595,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.08347757905721664,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "time_step": "t+1",
+        "contribution": 0.07182015478610992,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.0006396174430847168,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5503222942352295
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.00021010637283325195,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.550751805305481
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.002320528030395508,
+          "direction": "benign",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5532824397087097
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.0009176135063171387,
+          "direction": "benign",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5518795251846313
+        },
+        {
+          "time_step": "t-5",
+          "contribution": -0.006944119930267334,
+          "direction": "benign",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5579060316085815
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.00289839506149292,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5480635166168213
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.015026986598968506,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5359349250793457
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.02082747220993042,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5301344394683838
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.00464630126953125,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.546315610408783
+        },
+        {
+          "time_step": "t",
+          "contribution": 0.010637402534484863,
+          "direction": "attack",
+          "full_probability": 0.5509619116783142,
+          "occluded_probability": 0.5403245091438293
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": 0.0004754424095153809,
+        "sum_contribution": 0.004754424095153809,
+        "sum_abs_contribution": 0.009813308715820312
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": 0.0006300926208496094,
+        "sum_contribution": 0.006300926208496094,
+        "sum_abs_contribution": 0.008088469505310059
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": 0.0005360424518585205,
+        "sum_contribution": 0.005360424518585205,
+        "sum_abs_contribution": 0.007197439670562744
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": 0.00022161006927490234,
+        "sum_contribution": 0.0022161006927490234,
+        "sum_abs_contribution": 0.006210446357727051
+      },
+      {
+        "feature": "URG Flag Cnt",
+        "mean_contribution": 0.0004328489303588867,
+        "sum_contribution": 0.004328489303588867,
+        "sum_abs_contribution": 0.006181240081787109
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "mean_contribution": 0.0003712296485900879,
+        "sum_contribution": 0.003712296485900879,
+        "sum_abs_contribution": 0.005754590034484863
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": 0.0001423954963684082,
+        "sum_contribution": 0.001423954963684082,
+        "sum_abs_contribution": 0.0054738521575927734
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": 0.00022920370101928711,
+        "sum_contribution": 0.002292037010192871,
+        "sum_abs_contribution": 0.005461692810058594
+      },
+      {
+        "feature": "Idle Std",
+        "mean_contribution": -2.282857894897461e-05,
+        "sum_contribution": -0.0002282857894897461,
+        "sum_abs_contribution": 0.005326032638549805
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0003333091735839844,
+        "sum_contribution": 0.0033330917358398438,
+        "sum_abs_contribution": 0.004826068878173828
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.55096185,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.54068995,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.52773595,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.52412826,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Command and Control",
+      "stage_scores": {
+        "discovery": 15.0,
+        "command_and_control": 60.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "HIGH",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 16221,
+    "prediction": "Infiltration",
+    "attack_probability": 0.543203592300415,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.2077780961990356,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.5076285004615784,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.2643081545829773,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.2624489963054657,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.24724707007408142,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.24715198576450348,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.19779044389724731,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.1648256778717041,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.16069748997688293,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.15496478974819183,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.0013127923011779785,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5418906807899475
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.0001691579818725586,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5430343151092529
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.0009369254112243652,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5422665476799011
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.001651465892791748,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5415520071983337
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.0036840438842773438,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5395194292068481
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.0009812116622924805,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.542222261428833
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.0041016340255737305,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5391018390655518
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.0033010244369506836,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5399024486541748
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.0024150609970092773,
+          "direction": "attack",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5407884120941162
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.0008414983749389648,
+          "direction": "benign",
+          "full_probability": 0.5432034730911255,
+          "occluded_probability": 0.5440449714660645
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd Pkt Len Min",
+        "mean_contribution": -0.00019000172615051268,
+        "sum_contribution": -0.001900017261505127,
+        "sum_abs_contribution": 0.00394517183303833
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0003451168537139893,
+        "sum_contribution": 0.0034511685371398926,
+        "sum_abs_contribution": 0.003774583339691162
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "mean_contribution": 7.932186126708984e-05,
+        "sum_contribution": 0.0007932186126708984,
+        "sum_abs_contribution": 0.0033740997314453125
+      },
+      {
+        "feature": "Down/Up Ratio",
+        "mean_contribution": -0.0002956986427307129,
+        "sum_contribution": -0.002956986427307129,
+        "sum_abs_contribution": 0.003257155418395996
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -3.203749656677246e-05,
+        "sum_contribution": -0.0003203749656677246,
+        "sum_abs_contribution": 0.0030664801597595215
+      },
+      {
+        "feature": "Bwd Pkt Len Mean",
+        "mean_contribution": -8.565187454223633e-05,
+        "sum_contribution": -0.0008565187454223633,
+        "sum_abs_contribution": 0.002946615219116211
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": -0.0002637326717376709,
+        "sum_contribution": -0.002637326717376709,
+        "sum_abs_contribution": 0.0028197169303894043
+      },
+      {
+        "feature": "Bwd IAT Tot",
+        "mean_contribution": -0.00018485188484191896,
+        "sum_contribution": -0.0018485188484191895,
+        "sum_abs_contribution": 0.0028037428855895996
+      },
+      {
+        "feature": "Idle Std",
+        "mean_contribution": 0.0002607285976409912,
+        "sum_contribution": 0.002607285976409912,
+        "sum_abs_contribution": 0.0027880072593688965
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "mean_contribution": 0.0002293527126312256,
+        "sum_contribution": 0.002293527126312256,
+        "sum_abs_contribution": 0.0027704834938049316
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5432036,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.5398866,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.53905374,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.53859913,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 16404,
+    "prediction": "Benign",
+    "attack_probability": 0.4936843812465668,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.0296516418457031,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.4449833631515503,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.18876516819000244,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.18260803818702698,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.17194201052188873,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.1604224592447281,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.1408226639032364,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.11555296182632446,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": 0.11460086703300476,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.10874603688716888,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.0024711191654205322,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.4961555004119873
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -0.002733469009399414,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.4964178502559662
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.00214347243309021,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.495827853679657
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.00537639856338501,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.4990607798099518
+        },
+        {
+          "time_step": "t-5",
+          "contribution": -0.01135227084159851,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.5050366520881653
+        },
+        {
+          "time_step": "t-4",
+          "contribution": -0.005639076232910156,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.49932345747947693
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.007880985736846924,
+          "direction": "attack",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.48580339550971985
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.014546722173690796,
+          "direction": "attack",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.479137659072876
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.0052096545696258545,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.4988940358161926
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.016287237405776978,
+          "direction": "benign",
+          "full_probability": 0.4936843812465668,
+          "occluded_probability": 0.5099716186523438
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.0007301300764083862,
+        "sum_contribution": -0.007301300764083862,
+        "sum_abs_contribution": 0.014235049486160278
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -0.00027253329753875735,
+        "sum_contribution": -0.0027253329753875732,
+        "sum_abs_contribution": 0.006612628698348999
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": -1.3312697410583496e-05,
+        "sum_contribution": -0.00013312697410583496,
+        "sum_abs_contribution": 0.005472451448440552
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0004146695137023926,
+        "sum_contribution": -0.004146695137023926,
+        "sum_abs_contribution": 0.005143582820892334
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 8.471906185150146e-05,
+        "sum_contribution": 0.0008471906185150146,
+        "sum_abs_contribution": 0.00514259934425354
+      },
+      {
+        "feature": "URG Flag Cnt",
+        "mean_contribution": 7.490813732147217e-05,
+        "sum_contribution": 0.0007490813732147217,
+        "sum_abs_contribution": 0.00490984320640564
+      },
+      {
+        "feature": "Bwd IAT Std",
+        "mean_contribution": -0.00037809014320373536,
+        "sum_contribution": -0.0037809014320373535,
+        "sum_abs_contribution": 0.004471778869628906
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0001498788595199585,
+        "sum_contribution": 0.001498788595199585,
+        "sum_abs_contribution": 0.004168599843978882
+      },
+      {
+        "feature": "Fwd Pkts/s",
+        "mean_contribution": 0.00034185051918029786,
+        "sum_contribution": 0.0034185051918029785,
+        "sum_abs_contribution": 0.004154205322265625
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 2.3636221885681153e-05,
+        "sum_contribution": 0.00023636221885681152,
+        "sum_abs_contribution": 0.003954440355300903
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.49368438,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.49645698,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.4979284,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.5037808,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Command and Control",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 60.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "HIGH",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 16588,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5015611052513123,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.072771668434143,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.18280741572380066,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.1746043860912323,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.14514273405075073,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.12369516491889954,
+        "direction": "benign"
+      },
+      {
+        "feature": "Protocol_0",
+        "time_step": "t+1",
+        "contribution": 0.08097200095653534,
+        "direction": "attack"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.07388808578252792,
+        "direction": "benign"
+      },
+      {
+        "feature": "Protocol_17",
+        "time_step": "t+1",
+        "contribution": 0.06929925829172134,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "time_step": "t+1",
+        "contribution": -0.06513240188360214,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.058083247393369675,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.006422936916351318,
+          "direction": "attack",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.49513810873031616
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.0015985965728759766,
+          "direction": "attack",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.4999624490737915
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.02789461612701416,
+          "direction": "attack",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.4736664295196533
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.011135458946228027,
+          "direction": "attack",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.49042558670043945
+        },
+        {
+          "time_step": "t-5",
+          "contribution": -0.014687597751617432,
+          "direction": "benign",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.5162486433982849
+        },
+        {
+          "time_step": "t-4",
+          "contribution": -0.002501964569091797,
+          "direction": "benign",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.5040630102157593
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.012510955333709717,
+          "direction": "benign",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.5140720009803772
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.004472970962524414,
+          "direction": "attack",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.49708807468414307
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.013505518436431885,
+          "direction": "benign",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.5150665640830994
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.020455539226531982,
+          "direction": "benign",
+          "full_probability": 0.5015610456466675,
+          "occluded_probability": 0.5220165848731995
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0024806320667266845,
+        "sum_contribution": -0.024806320667266846,
+        "sum_abs_contribution": 0.0265008807182312
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": -0.0009160816669464111,
+        "sum_contribution": -0.009160816669464111,
+        "sum_abs_contribution": 0.025539934635162354
+      },
+      {
+        "feature": "URG Flag Cnt",
+        "mean_contribution": 0.0008715659379959107,
+        "sum_contribution": 0.008715659379959106,
+        "sum_abs_contribution": 0.01916995644569397
+      },
+      {
+        "feature": "Fwd PSH Flags",
+        "mean_contribution": -0.0010059654712677002,
+        "sum_contribution": -0.010059654712677002,
+        "sum_abs_contribution": 0.017913639545440674
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": 0.0012740939855575562,
+        "sum_contribution": 0.012740939855575562,
+        "sum_abs_contribution": 0.013323396444320679
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": -0.0006366074085235596,
+        "sum_contribution": -0.006366074085235596,
+        "sum_abs_contribution": 0.013283789157867432
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0007366538047790527,
+        "sum_contribution": 0.007366538047790527,
+        "sum_abs_contribution": 0.013173341751098633
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0007754445075988769,
+        "sum_contribution": 0.0077544450759887695,
+        "sum_abs_contribution": 0.013170003890991211
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": -0.0009957075119018555,
+        "sum_contribution": -0.009957075119018555,
+        "sum_abs_contribution": 0.011670112609863281
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": 0.0007825195789337158,
+        "sum_contribution": 0.007825195789337158,
+        "sum_abs_contribution": 0.011463463306427002
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5015611,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.5081203,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.5288007,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.5267756,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 16772,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5237641930580139,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 1.1874279975891113,
+        "direction": "attack"
+      },
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.1640186309814453,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.4881998896598816,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.4274587035179138,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.41050371527671814,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.3503592610359192,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.3485012948513031,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.33726146817207336,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.2937716841697693,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.2641817629337311,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.003964424133300781,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5277286171913147
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -7.11679458618164e-05,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5238353610038757
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.0009829401969909668,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5247471332550049
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -8.51750373840332e-05,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.523849368095398
+        },
+        {
+          "time_step": "t-5",
+          "contribution": -0.025940775871276855,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5497049689292908
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.005191624164581299,
+          "direction": "attack",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5185725688934326
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.009388387203216553,
+          "direction": "attack",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5143758058547974
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.01315772533416748,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5369219183921814
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.024181723594665527,
+          "direction": "benign",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5479459166526794
+        },
+        {
+          "time_step": "t",
+          "contribution": 0.006514310836791992,
+          "direction": "attack",
+          "full_probability": 0.5237641930580139,
+          "occluded_probability": 0.5172498822212219
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": -0.001274442672729492,
+        "sum_contribution": -0.012744426727294922,
+        "sum_abs_contribution": 0.02069103717803955
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.00018468499183654785,
+        "sum_contribution": -0.0018468499183654785,
+        "sum_abs_contribution": 0.01937013864517212
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": -0.0011425256729125977,
+        "sum_contribution": -0.011425256729125977,
+        "sum_abs_contribution": 0.01909041404724121
+      },
+      {
+        "feature": "Fwd PSH Flags",
+        "mean_contribution": -0.0011581003665924073,
+        "sum_contribution": -0.011581003665924072,
+        "sum_abs_contribution": 0.011921226978302002
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -0.0008271396160125733,
+        "sum_contribution": -0.008271396160125732,
+        "sum_abs_contribution": 0.011913836002349854
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": -0.0007680237293243408,
+        "sum_contribution": -0.007680237293243408,
+        "sum_abs_contribution": 0.011704862117767334
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0008677482604980469,
+        "sum_contribution": 0.008677482604980469,
+        "sum_abs_contribution": 0.010959863662719727
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.0002254486083984375,
+        "sum_contribution": -0.002254486083984375,
+        "sum_abs_contribution": 0.010870933532714844
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0007667124271392822,
+        "sum_contribution": 0.007667124271392822,
+        "sum_abs_contribution": 0.01030653715133667
+      },
+      {
+        "feature": "URG Flag Cnt",
+        "mean_contribution": -0.0004519045352935791,
+        "sum_contribution": -0.004519045352935791,
+        "sum_abs_contribution": 0.010168731212615967
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5237642,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.5295874,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.54779863,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.52990866,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 40.0,
+        "command_and_control": 25.0,
+        "exfiltration": 40.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "MEDIUM",
+        "command_and_control": "LOW",
+        "exfiltration": "MEDIUM",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 16956,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5327009558677673,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.132348895072937,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.2673399746417999,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.23382997512817383,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.22537042200565338,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.21309763193130493,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.20255133509635925,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.12394142150878906,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.11396797001361847,
+        "direction": "benign"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.10252836346626282,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.09744110703468323,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.0016442537307739258,
+          "direction": "benign",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5343452095985413
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -0.00043886899948120117,
+          "direction": "benign",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5331398248672485
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.005610525608062744,
+          "direction": "benign",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5383114814758301
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.0026204586029052734,
+          "direction": "benign",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5353214144706726
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.003089606761932373,
+          "direction": "attack",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.529611349105835
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.006056010723114014,
+          "direction": "attack",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5266449451446533
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.01039189100265503,
+          "direction": "attack",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5223090648651123
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.004796862602233887,
+          "direction": "benign",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5374978184700012
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.008409082889556885,
+          "direction": "attack",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5242918729782104
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.0035323500633239746,
+          "direction": "benign",
+          "full_probability": 0.5327009558677673,
+          "occluded_probability": 0.5362333059310913
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": 0.0005987286567687988,
+        "sum_contribution": 0.005987286567687988,
+        "sum_abs_contribution": 0.007553219795227051
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "mean_contribution": -0.0005746304988861084,
+        "sum_contribution": -0.005746304988861084,
+        "sum_abs_contribution": 0.007067859172821045
+      },
+      {
+        "feature": "Down/Up Ratio",
+        "mean_contribution": -0.0003002762794494629,
+        "sum_contribution": -0.003002762794494629,
+        "sum_abs_contribution": 0.006539821624755859
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0003504753112792969,
+        "sum_contribution": -0.0035047531127929688,
+        "sum_abs_contribution": 0.006284475326538086
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": 0.0006112515926361084,
+        "sum_contribution": 0.006112515926361084,
+        "sum_abs_contribution": 0.006112515926361084
+      },
+      {
+        "feature": "Pkt Len Std",
+        "mean_contribution": -0.00024036169052124023,
+        "sum_contribution": -0.0024036169052124023,
+        "sum_abs_contribution": 0.0060770511627197266
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": 0.0005699634552001953,
+        "sum_contribution": 0.005699634552001953,
+        "sum_abs_contribution": 0.005905628204345703
+      },
+      {
+        "feature": "Fwd Pkt Len Mean",
+        "mean_contribution": -0.00010156631469726562,
+        "sum_contribution": -0.0010156631469726562,
+        "sum_abs_contribution": 0.005769491195678711
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": 0.0003762543201446533,
+        "sum_contribution": 0.003762543201446533,
+        "sum_abs_contribution": 0.005637705326080322
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0002869844436645508,
+        "sum_contribution": 0.002869844436645508,
+        "sum_abs_contribution": 0.005346536636352539
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.53270096,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.52914476,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.5277475,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.5259703,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Discovery",
+      "stage_scores": {
+        "discovery": 30.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "MEDIUM",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 17139,
+    "prediction": "Benign",
+    "attack_probability": 0.4942253828048706,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.1185246706008911,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.41767629981040955,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.31462234258651733,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.1784622222185135,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.15033259987831116,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.14637257158756256,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.12339241802692413,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.12030299752950668,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": 0.11316360533237457,
+        "direction": "attack"
+      },
+      {
+        "feature": "Init Bwd Win Byts",
+        "time_step": "t+1",
+        "contribution": 0.10707513242959976,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.003711193799972534,
+          "direction": "attack",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.4905141294002533
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.0006987154483795166,
+          "direction": "attack",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.4935266077518463
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.007811486721038818,
+          "direction": "benign",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.5020368099212646
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.008545160293579102,
+          "direction": "benign",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.5027704834938049
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.006713509559631348,
+          "direction": "attack",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.4875118136405945
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.012846589088439941,
+          "direction": "attack",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.4813787341117859
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.04840978980064392,
+          "direction": "attack",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.4458155333995819
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.014258861541748047,
+          "direction": "attack",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.4799664616584778
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.01838153600692749,
+          "direction": "benign",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.5126068592071533
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.03819262981414795,
+          "direction": "benign",
+          "full_probability": 0.49422532320022583,
+          "occluded_probability": 0.5324179530143738
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.002408432960510254,
+        "sum_contribution": -0.02408432960510254,
+        "sum_abs_contribution": 0.02524566650390625
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0020310819149017335,
+        "sum_contribution": 0.020310819149017334,
+        "sum_abs_contribution": 0.024529099464416504
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.00121384859085083,
+        "sum_contribution": -0.0121384859085083,
+        "sum_abs_contribution": 0.02072232961654663
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0016017496585845948,
+        "sum_contribution": 0.016017496585845947,
+        "sum_abs_contribution": 0.018665075302124023
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": -0.000978514552116394,
+        "sum_contribution": -0.00978514552116394,
+        "sum_abs_contribution": 0.01755616068840027
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0012958943843841553,
+        "sum_contribution": 0.012958943843841553,
+        "sum_abs_contribution": 0.01700127124786377
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": -0.0011303365230560304,
+        "sum_contribution": -0.011303365230560303,
+        "sum_abs_contribution": 0.01659250259399414
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "mean_contribution": 0.00040736496448516845,
+        "sum_contribution": 0.004073649644851685,
+        "sum_abs_contribution": 0.015868812799453735
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": 0.0003706812858581543,
+        "sum_contribution": 0.003706812858581543,
+        "sum_abs_contribution": 0.01573812961578369
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": 0.0009809881448745728,
+        "sum_contribution": 0.009809881448745728,
+        "sum_abs_contribution": 0.01541033387184143
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.49422538,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.48985603,
+        "predicted_class": 0,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.5029453,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.5126993,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Command and Control",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 60.0,
+        "exfiltration": 0.0,
+        "impact": 0.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "HIGH",
+        "exfiltration": "LOW",
+        "impact": "LOW",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 17323,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5095569491386414,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.154081106185913,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.2932127118110657,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.2499569207429886,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.2150256335735321,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.21069328486919403,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.20332393050193787,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.13913550972938538,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.1249932125210762,
+        "direction": "attack"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.10927006602287292,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.09974320232868195,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.0029429197311401367,
+          "direction": "benign",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5124998092651367
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.003238081932067871,
+          "direction": "attack",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5063188076019287
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.004490017890930176,
+          "direction": "attack",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5050668716430664
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.001954317092895508,
+          "direction": "benign",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5115112066268921
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.013864398002624512,
+          "direction": "attack",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.49569249153137207
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.011793702840805054,
+          "direction": "attack",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.49776318669319153
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.0037431716918945312,
+          "direction": "attack",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.505813717842102
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.0024944543838500977,
+          "direction": "attack",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5070624351501465
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.013663113117218018,
+          "direction": "benign",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5232200026512146
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.032156169414520264,
+          "direction": "benign",
+          "full_probability": 0.5095568895339966,
+          "occluded_probability": 0.5417130589485168
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Init Bwd Win Byts",
+        "mean_contribution": -0.0006750047206878663,
+        "sum_contribution": -0.006750047206878662,
+        "sum_abs_contribution": 0.008871734142303467
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0003891825675964355,
+        "sum_contribution": -0.0038918256759643555,
+        "sum_abs_contribution": 0.008650779724121094
+      },
+      {
+        "feature": "Pkt Len Var",
+        "mean_contribution": 0.0001940608024597168,
+        "sum_contribution": 0.001940608024597168,
+        "sum_abs_contribution": 0.007429838180541992
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "mean_contribution": -0.0005549848079681397,
+        "sum_contribution": -0.0055498480796813965,
+        "sum_abs_contribution": 0.007426440715789795
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0006062984466552734,
+        "sum_contribution": 0.006062984466552734,
+        "sum_abs_contribution": 0.007365584373474121
+      },
+      {
+        "feature": "Bwd IAT Tot",
+        "mean_contribution": -0.00031853318214416506,
+        "sum_contribution": -0.0031853318214416504,
+        "sum_abs_contribution": 0.007084667682647705
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": 0.00015657544136047364,
+        "sum_contribution": 0.0015657544136047363,
+        "sum_abs_contribution": 0.006904661655426025
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": -0.0004574835300445557,
+        "sum_contribution": -0.004574835300445557,
+        "sum_abs_contribution": 0.006879270076751709
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.00010929107666015624,
+        "sum_contribution": 0.0010929107666015625,
+        "sum_abs_contribution": 0.0068503618240356445
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0002444148063659668,
+        "sum_contribution": 0.002444148063659668,
+        "sum_abs_contribution": 0.0066214799880981445
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.50955695,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "2": {
+        "probability": 0.5107203,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "3": {
+        "probability": 0.51421106,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      },
+      "5": {
+        "probability": 0.51179194,
+        "predicted_class": 1,
+        "actual_future_label": "Infilteration"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "UNKNOWN / INSUFFICIENT_EVIDENCE",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 0.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "LOW",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 17507,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5500661730766296,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.2223215103149414,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.2798554599285126,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.24351558089256287,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.18490247428417206,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.17140232026576996,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.10381857305765152,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.08986297994852066,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.08112412691116333,
+        "direction": "benign"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.07951739430427551,
+        "direction": "benign"
+      },
+      {
+        "feature": "Protocol_0",
+        "time_step": "t+1",
+        "contribution": 0.07840238511562347,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.0006398558616638184,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.549426257610321
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -9.036064147949219e-05,
+          "direction": "benign",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5501564741134644
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.0005662441253662109,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5494998693466187
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.002097010612487793,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5479691028594971
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.005771994590759277,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5442941188812256
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.008586525917053223,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5414795875549316
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.008162915706634521,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5419031977653503
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.018497705459594727,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5315684080123901
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.0020284652709960938,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5480376482009888
+        },
+        {
+          "time_step": "t",
+          "contribution": 0.003709852695465088,
+          "direction": "attack",
+          "full_probability": 0.5500661134719849,
+          "occluded_probability": 0.5463562607765198
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Idle Std",
+        "mean_contribution": 0.001255565881729126,
+        "sum_contribution": 0.01255565881729126,
+        "sum_abs_contribution": 0.015261590480804443
+      },
+      {
+        "feature": "Flow IAT Std",
+        "mean_contribution": 0.0008455157279968262,
+        "sum_contribution": 0.008455157279968262,
+        "sum_abs_contribution": 0.009931087493896484
+      },
+      {
+        "feature": "Fwd Pkt Len Mean",
+        "mean_contribution": -0.00046560168266296387,
+        "sum_contribution": -0.004656016826629639,
+        "sum_abs_contribution": 0.008457005023956299
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": 1.150369644165039e-05,
+        "sum_contribution": 0.0001150369644165039,
+        "sum_abs_contribution": 0.00833439826965332
+      },
+      {
+        "feature": "Fwd IAT Std",
+        "mean_contribution": 0.00045543909072875977,
+        "sum_contribution": 0.004554390907287598,
+        "sum_abs_contribution": 0.008168697357177734
+      },
+      {
+        "feature": "Fwd Seg Size Avg",
+        "mean_contribution": -8.76009464263916e-05,
+        "sum_contribution": -0.000876009464263916,
+        "sum_abs_contribution": 0.007885158061981201
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.00017388463020324708,
+        "sum_contribution": -0.0017388463020324707,
+        "sum_abs_contribution": 0.0073389410972595215
+      },
+      {
+        "feature": "Pkt Len Max",
+        "mean_contribution": 0.0007046937942504882,
+        "sum_contribution": 0.007046937942504883,
+        "sum_abs_contribution": 0.007156848907470703
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "mean_contribution": 0.0006794214248657226,
+        "sum_contribution": 0.0067942142486572266,
+        "sum_abs_contribution": 0.006839275360107422
+      },
+      {
+        "feature": "Pkt Len Min",
+        "mean_contribution": 0.0003576040267944336,
+        "sum_contribution": 0.003576040267944336,
+        "sum_abs_contribution": 0.00650477409362793
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5500662,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.5458224,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.5455425,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.53775734,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 15.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 17691,
+    "prediction": "Benign",
+    "attack_probability": 0.4668177664279938,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.222976803779602,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.29026204347610474,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.18061406910419464,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.17139436304569244,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.1363571584224701,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.10959622263908386,
+        "direction": "benign"
+      },
+      {
+        "feature": "Protocol_0",
+        "time_step": "t+1",
+        "contribution": 0.09474213421344757,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.09088123589754105,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.08854881674051285,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.08805064111948013,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.00639718770980835,
+          "direction": "attack",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4604206383228302
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.0064792633056640625,
+          "direction": "attack",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4603385627269745
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.0019044280052185059,
+          "direction": "benign",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.46872225403785706
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.006332486867904663,
+          "direction": "attack",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4604853391647339
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.0068433284759521484,
+          "direction": "attack",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4599744975566864
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.003927677869796753,
+          "direction": "attack",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4628901481628418
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.0010536015033721924,
+          "direction": "benign",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.46787142753601074
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.013792663812637329,
+          "direction": "benign",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4806104898452759
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.028659045696258545,
+          "direction": "benign",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.4954768717288971
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.04581126570701599,
+          "direction": "benign",
+          "full_probability": 0.46681782603263855,
+          "occluded_probability": 0.5126290917396545
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": 0.000375637412071228,
+        "sum_contribution": 0.0037563741207122803,
+        "sum_abs_contribution": 0.021826893091201782
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0008643388748168946,
+        "sum_contribution": 0.008643388748168945,
+        "sum_abs_contribution": 0.021315574645996094
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": -0.00017381608486175538,
+        "sum_contribution": -0.0017381608486175537,
+        "sum_abs_contribution": 0.020592540502548218
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": -0.0015161275863647462,
+        "sum_contribution": -0.015161275863647461,
+        "sum_abs_contribution": 0.019347190856933594
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.001176103949546814,
+        "sum_contribution": -0.01176103949546814,
+        "sum_abs_contribution": 0.01917615532875061
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.00022855103015899657,
+        "sum_contribution": 0.002285510301589966,
+        "sum_abs_contribution": 0.01649758219718933
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": -0.00034077167510986327,
+        "sum_contribution": -0.003407716751098633,
+        "sum_abs_contribution": 0.015518784523010254
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": 0.00010030567646026611,
+        "sum_contribution": 0.0010030567646026611,
+        "sum_abs_contribution": 0.013599485158920288
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": 0.000844159722328186,
+        "sum_contribution": 0.00844159722328186,
+        "sum_abs_contribution": 0.013115018606185913
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": 0.00010832548141479493,
+        "sum_contribution": 0.0010832548141479492,
+        "sum_abs_contribution": 0.012325167655944824
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.46681777,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.4840098,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.50468874,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.5053769,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Command and Control",
+      "stage_scores": {
+        "discovery": 15.0,
+        "command_and_control": 60.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "HIGH",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 17874,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5201101899147034,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.1792259216308594,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.3643534183502197,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.11079150438308716,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.10757088661193848,
+        "direction": "benign"
+      },
+      {
+        "feature": "Protocol_0",
+        "time_step": "t+1",
+        "contribution": 0.09090252220630646,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "time_step": "t+1",
+        "contribution": 0.08291425555944443,
+        "direction": "attack"
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.08062008023262024,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.08037048578262329,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.0770910456776619,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.07571271061897278,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.00038230419158935547,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5197278261184692
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.01787853240966797,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5022315979003906
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.007241427898406982,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5128687024116516
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.010710060596466064,
+          "direction": "benign",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5308201909065247
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.0014554262161254883,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5186547040939331
+        },
+        {
+          "time_step": "t-4",
+          "contribution": -0.024207472801208496,
+          "direction": "benign",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5443176031112671
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.028386980295181274,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.4917231500148773
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.019292593002319336,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5008175373077393
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.0011403560638427734,
+          "direction": "attack",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5189697742462158
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.031720757484436035,
+          "direction": "benign",
+          "full_probability": 0.5201101303100586,
+          "occluded_probability": 0.5518308877944946
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": -0.0037613391876220705,
+        "sum_contribution": -0.0376133918762207,
+        "sum_abs_contribution": 0.040537118911743164
+      },
+      {
+        "feature": "Bwd IAT Max",
+        "mean_contribution": 0.0017596662044525146,
+        "sum_contribution": 0.017596662044525146,
+        "sum_abs_contribution": 0.027437269687652588
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": 0.00022861957550048828,
+        "sum_contribution": 0.002286195755004883,
+        "sum_abs_contribution": 0.023899435997009277
+      },
+      {
+        "feature": "Fwd IAT Std",
+        "mean_contribution": 9.341239929199219e-05,
+        "sum_contribution": 0.0009341239929199219,
+        "sum_abs_contribution": 0.022757768630981445
+      },
+      {
+        "feature": "Flow IAT Std",
+        "mean_contribution": -3.0714273452758786e-05,
+        "sum_contribution": -0.0003071427345275879,
+        "sum_abs_contribution": 0.021864473819732666
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": 0.001635950803756714,
+        "sum_contribution": 0.01635950803756714,
+        "sum_abs_contribution": 0.02119988203048706
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": -0.0010981082916259766,
+        "sum_contribution": -0.010981082916259766,
+        "sum_abs_contribution": 0.021186351776123047
+      },
+      {
+        "feature": "Idle Max",
+        "mean_contribution": 0.0016279876232147216,
+        "sum_contribution": 0.016279876232147217,
+        "sum_abs_contribution": 0.020766794681549072
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": 9.064078330993653e-05,
+        "sum_contribution": 0.0009064078330993652,
+        "sum_abs_contribution": 0.018830835819244385
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": -0.0008875668048858642,
+        "sum_contribution": -0.008875668048858643,
+        "sum_abs_contribution": 0.017820298671722412
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5201102,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.54473764,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.5464773,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.53729135,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "UNKNOWN / INSUFFICIENT_EVIDENCE",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 0.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "LOW",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 18058,
+    "prediction": "Benign",
+    "attack_probability": 0.4647587835788727,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.1942087411880493,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.7981511950492859,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.29364433884620667,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.27034619450569153,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.24622952938079834,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.2004852443933487,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.18037547171115875,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.17778629064559937,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.17243692278862,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.15695986151695251,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.01115068793296814,
+          "direction": "attack",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4536082446575165
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.01527780294418335,
+          "direction": "attack",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.44948112964630127
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.02939307689666748,
+          "direction": "benign",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4941520094871521
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.010943979024887085,
+          "direction": "benign",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4757029116153717
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.001984834671020508,
+          "direction": "attack",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4627740979194641
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.038406580686569214,
+          "direction": "attack",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4263523519039154
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.0223962664604187,
+          "direction": "benign",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4871551990509033
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.013166159391403198,
+          "direction": "benign",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4779250919818878
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.02824917435646057,
+          "direction": "benign",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.4930081069469452
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.03335079550743103,
+          "direction": "benign",
+          "full_probability": 0.4647589325904846,
+          "occluded_probability": 0.49810972809791565
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -0.005266907811164856,
+        "sum_contribution": -0.05266907811164856,
+        "sum_abs_contribution": 0.06076684594154358
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0005032718181610107,
+        "sum_contribution": -0.005032718181610107,
+        "sum_abs_contribution": 0.056637346744537354
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": -0.0018542349338531495,
+        "sum_contribution": -0.018542349338531494,
+        "sum_abs_contribution": 0.04794752597808838
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0010888099670410157,
+        "sum_contribution": 0.010888099670410156,
+        "sum_abs_contribution": 0.04456239938735962
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0022253334522247315,
+        "sum_contribution": 0.022253334522247314,
+        "sum_abs_contribution": 0.04303485155105591
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": -0.0018203288316726684,
+        "sum_contribution": -0.018203288316726685,
+        "sum_abs_contribution": 0.04241439700126648
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 8.411705493927002e-05,
+        "sum_contribution": 0.0008411705493927002,
+        "sum_abs_contribution": 0.0296306312084198
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": 0.0013360977172851562,
+        "sum_contribution": 0.013360977172851562,
+        "sum_abs_contribution": 0.02669304609298706
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": 0.0011500656604766847,
+        "sum_contribution": 0.011500656604766846,
+        "sum_abs_contribution": 0.023413002490997314
+      },
+      {
+        "feature": "Bwd IAT Min",
+        "mean_contribution": -0.0007793188095092773,
+        "sum_contribution": -0.0077931880950927734,
+        "sum_abs_contribution": 0.0228959321975708
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.46475878,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.50246763,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.5188823,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.45554838,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 18242,
+    "prediction": "Benign",
+    "attack_probability": 0.4828716218471527,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.0653795003890991,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.5064986348152161,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.2409551590681076,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.2244989573955536,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.15464560687541962,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.1483866274356842,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.14771264791488647,
+        "direction": "benign"
+      },
+      {
+        "feature": "Bwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": -0.13619917631149292,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.13027243316173553,
+        "direction": "attack"
+      },
+      {
+        "feature": "Init Bwd Win Byts",
+        "time_step": "t+1",
+        "contribution": -0.10565602034330368,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.0043919384479522705,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.47847968339920044
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.023017048835754395,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.4598545730113983
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.09902319312095642,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.3838484287261963
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.013070762157440186,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.4698008596897125
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.05732867121696472,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.425542950630188
+        },
+        {
+          "time_step": "t-4",
+          "contribution": -0.023083776235580444,
+          "direction": "benign",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.5059553980827332
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.058155566453933716,
+          "direction": "benign",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.5410271883010864
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.020304322242736816,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.4625672996044159
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.012296468019485474,
+          "direction": "attack",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.47057515382766724
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.02067294716835022,
+          "direction": "benign",
+          "full_probability": 0.4828716218471527,
+          "occluded_probability": 0.5035445690155029
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": -0.0032714873552322386,
+        "sum_contribution": -0.03271487355232239,
+        "sum_abs_contribution": 0.0698600709438324
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": -0.0006459116935729981,
+        "sum_contribution": -0.0064591169357299805,
+        "sum_abs_contribution": 0.05773913860321045
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.00019466280937194825,
+        "sum_contribution": 0.0019466280937194824,
+        "sum_abs_contribution": 0.05618840456008911
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0007762163877487183,
+        "sum_contribution": 0.007762163877487183,
+        "sum_abs_contribution": 0.053419798612594604
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -0.00038179457187652587,
+        "sum_contribution": -0.003817945718765259,
+        "sum_abs_contribution": 0.05177077651023865
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": 0.003784182667732239,
+        "sum_contribution": 0.03784182667732239,
+        "sum_abs_contribution": 0.05143466591835022
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": -0.0022804617881774904,
+        "sum_contribution": -0.022804617881774902,
+        "sum_abs_contribution": 0.04822087287902832
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": 0.0002743244171142578,
+        "sum_contribution": 0.002743244171142578,
+        "sum_abs_contribution": 0.04635167121887207
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": 0.0016433894634246826,
+        "sum_contribution": 0.016433894634246826,
+        "sum_abs_contribution": 0.04506629705429077
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": 0.0013329356908798218,
+        "sum_contribution": 0.013329356908798218,
+        "sum_abs_contribution": 0.04413154721260071
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.48287162,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.501758,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.526462,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.49384946,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 18426,
+    "prediction": "Infiltration",
+    "attack_probability": 0.521295964717865,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.0258705615997314,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": -0.29261064529418945,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.2779248058795929,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.24942617118358612,
+        "direction": "attack"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.16893981397151947,
+        "direction": "attack"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": 0.15450918674468994,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": 0.14677613973617554,
+        "direction": "attack"
+      },
+      {
+        "feature": "Protocol_0",
+        "time_step": "t+1",
+        "contribution": 0.14056816697120667,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "time_step": "t+1",
+        "contribution": 0.12187223136425018,
+        "direction": "attack"
+      },
+      {
+        "feature": "Subflow Bwd Pkts",
+        "time_step": "t+1",
+        "contribution": 0.10955781489610672,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.0035335421562194824,
+          "direction": "benign",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5248295068740845
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -0.004302859306335449,
+          "direction": "benign",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5255988240242004
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.005632221698760986,
+          "direction": "benign",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.526928186416626
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.02683788537979126,
+          "direction": "benign",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5481338500976562
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.01469576358795166,
+          "direction": "attack",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5066002011299133
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.00816357135772705,
+          "direction": "attack",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5131323933601379
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.01359546184539795,
+          "direction": "attack",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.507700502872467
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.03573864698410034,
+          "direction": "benign",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5570346117019653
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.021199285984039307,
+          "direction": "attack",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5000966787338257
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.011439144611358643,
+          "direction": "benign",
+          "full_probability": 0.521295964717865,
+          "occluded_probability": 0.5327351093292236
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": 0.0013048350811004639,
+        "sum_contribution": 0.013048350811004639,
+        "sum_abs_contribution": 0.03334742784500122
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": 0.0020325958728790285,
+        "sum_contribution": 0.020325958728790283,
+        "sum_abs_contribution": 0.030622422695159912
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": -0.0002615690231323242,
+        "sum_contribution": -0.002615690231323242,
+        "sum_abs_contribution": 0.02966892719268799
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": 0.0010130822658538819,
+        "sum_contribution": 0.010130822658538818,
+        "sum_abs_contribution": 0.028730571269989014
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": -8.713603019714356e-05,
+        "sum_contribution": -0.0008713603019714355,
+        "sum_abs_contribution": 0.02675837278366089
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0007269978523254395,
+        "sum_contribution": 0.0072699785232543945,
+        "sum_abs_contribution": 0.02632749080657959
+      },
+      {
+        "feature": "Bwd IAT Tot",
+        "mean_contribution": -0.0021981656551361083,
+        "sum_contribution": -0.021981656551361084,
+        "sum_abs_contribution": 0.024601519107818604
+      },
+      {
+        "feature": "Idle Min",
+        "mean_contribution": -0.0003340423107147217,
+        "sum_contribution": -0.003340423107147217,
+        "sum_abs_contribution": 0.02215641736984253
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": -0.00010689496994018555,
+        "sum_contribution": -0.0010689496994018555,
+        "sum_abs_contribution": 0.021622538566589355
+      },
+      {
+        "feature": "Idle Max",
+        "mean_contribution": -0.000660562515258789,
+        "sum_contribution": -0.006605625152587891,
+        "sum_abs_contribution": 0.020286083221435547
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.52129596,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.25469968,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.5512336,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.4967299,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 18609,
+    "prediction": "Benign",
+    "attack_probability": 0.4876693785190582,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -0.8667324185371399,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.26805344223976135,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.2625339925289154,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.223784938454628,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "time_step": "t+1",
+        "contribution": -0.16574092209339142,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": 0.12792238593101501,
+        "direction": "attack"
+      },
+      {
+        "feature": "Protocol_17",
+        "time_step": "t+1",
+        "contribution": 0.11698535084724426,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Max",
+        "time_step": "t+1",
+        "contribution": 0.11503904312849045,
+        "direction": "attack"
+      },
+      {
+        "feature": "Init Bwd Win Byts",
+        "time_step": "t+1",
+        "contribution": -0.11388775706291199,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": -0.10984405875205994,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -5.9664249420166016e-05,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.4877290427684784
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -0.0029816031455993652,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.4906509816646576
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.0008945465087890625,
+          "direction": "attack",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.48677483201026917
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.006716042757034302,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.49438542127609253
+        },
+        {
+          "time_step": "t-5",
+          "contribution": -0.0033271610736846924,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.4909965395927429
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.0008455216884613037,
+          "direction": "attack",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.4868238568305969
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.015179812908172607,
+          "direction": "attack",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.4724895656108856
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.016992181539535522,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.5046615600585938
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.006586998701095581,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.4942563772201538
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.04001316428184509,
+          "direction": "benign",
+          "full_probability": 0.4876693785190582,
+          "occluded_probability": 0.5276825428009033
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.0019752651453018187,
+        "sum_contribution": -0.01975265145301819,
+        "sum_abs_contribution": 0.02342119812965393
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": -0.0016129791736602783,
+        "sum_contribution": -0.016129791736602783,
+        "sum_abs_contribution": 0.0192641019821167
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": 8.115172386169434e-06,
+        "sum_contribution": 8.115172386169434e-05,
+        "sum_abs_contribution": 0.013086944818496704
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0006095856428146362,
+        "sum_contribution": -0.006095856428146362,
+        "sum_abs_contribution": 0.012318521738052368
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0005465507507324219,
+        "sum_contribution": 0.005465507507324219,
+        "sum_abs_contribution": 0.012226283550262451
+      },
+      {
+        "feature": "Idle Max",
+        "mean_contribution": 0.00014345645904541017,
+        "sum_contribution": 0.0014345645904541016,
+        "sum_abs_contribution": 0.011395394802093506
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": 0.0004749506711959839,
+        "sum_contribution": 0.004749506711959839,
+        "sum_abs_contribution": 0.009250670671463013
+      },
+      {
+        "feature": "Pkt Len Max",
+        "mean_contribution": 0.00044474899768829344,
+        "sum_contribution": 0.004447489976882935,
+        "sum_abs_contribution": 0.008673995733261108
+      },
+      {
+        "feature": "Pkt Size Avg",
+        "mean_contribution": -0.0005979061126708985,
+        "sum_contribution": -0.005979061126708984,
+        "sum_abs_contribution": 0.008288562297821045
+      },
+      {
+        "feature": "Idle Min",
+        "mean_contribution": 0.0003332793712615967,
+        "sum_contribution": 0.003332793712615967,
+        "sum_abs_contribution": 0.007391750812530518
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.48766938,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.34451538,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.5347949,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.51638526,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 18793,
+    "prediction": "Benign",
+    "attack_probability": 0.22419439256191254,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": -2.0617318153381348,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": 1.9656862020492554,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": -1.842587947845459,
+        "direction": "benign"
+      },
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.081006407737732,
+        "direction": "benign"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": 0.9154924154281616,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "time_step": "t+1",
+        "contribution": 0.7953248620033264,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": 0.636269748210907,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": -0.5746541023254395,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Min",
+        "time_step": "t+1",
+        "contribution": -0.5393952131271362,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.47428441047668457,
+        "direction": "attack"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.0002593100070953369,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.22445373237133026
+        },
+        {
+          "time_step": "t-8",
+          "contribution": -0.003701835870742798,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.22789625823497772
+        },
+        {
+          "time_step": "t-7",
+          "contribution": -0.15146152675151825,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.3756559491157532
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.01496879756450653,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.23916321992874146
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.00884556770324707,
+          "direction": "attack",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.21534885466098785
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.012718409299850464,
+          "direction": "attack",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.21147601306438446
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.13026906549930573,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.35446348786354065
+        },
+        {
+          "time_step": "t-2",
+          "contribution": -0.005058407783508301,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.22925283014774323
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.010637611150741577,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.2348320335149765
+        },
+        {
+          "time_step": "t",
+          "contribution": -0.06613413989543915,
+          "direction": "benign",
+          "full_probability": 0.22419442236423492,
+          "occluded_probability": 0.2903285622596741
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Fwd IAT Tot",
+        "mean_contribution": -0.004034225642681122,
+        "sum_contribution": -0.04034225642681122,
+        "sum_abs_contribution": 0.049797043204307556
+      },
+      {
+        "feature": "Fwd Seg Size Min",
+        "mean_contribution": -0.0021559610962867738,
+        "sum_contribution": -0.021559610962867737,
+        "sum_abs_contribution": 0.04131312668323517
+      },
+      {
+        "feature": "Flow Duration",
+        "mean_contribution": -0.0026772692799568176,
+        "sum_contribution": -0.026772692799568176,
+        "sum_abs_contribution": 0.03362874686717987
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": 0.0013703525066375733,
+        "sum_contribution": 0.013703525066375732,
+        "sum_abs_contribution": 0.025715798139572144
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": 0.0002926155924797058,
+        "sum_contribution": 0.002926155924797058,
+        "sum_abs_contribution": 0.020227953791618347
+      },
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": -0.0011011958122253418,
+        "sum_contribution": -0.011011958122253418,
+        "sum_abs_contribution": 0.019555330276489258
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": 0.0001572340726852417,
+        "sum_contribution": 0.001572340726852417,
+        "sum_abs_contribution": 0.017642229795455933
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "mean_contribution": -0.0015222355723381042,
+        "sum_contribution": -0.015222355723381042,
+        "sum_abs_contribution": 0.017169877886772156
+      },
+      {
+        "feature": "Idle Max",
+        "mean_contribution": 0.0008970975875854492,
+        "sum_contribution": 0.008970975875854492,
+        "sum_abs_contribution": 0.01716369390487671
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0008190110325813294,
+        "sum_contribution": -0.008190110325813293,
+        "sum_abs_contribution": 0.016741469502449036
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.2241944,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.5370981,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.529624,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.2516126,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 25.0,
+        "exfiltration": 0.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "LOW",
+        "exfiltration": "LOW",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 18977,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5182949900627136,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.054917812347412,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.44333982467651367,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.28518787026405334,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.26434728503227234,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.22660642862319946,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": -0.16793401539325714,
+        "direction": "benign"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.16693821549415588,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Var",
+        "time_step": "t+1",
+        "contribution": -0.15093573927879333,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.1439550518989563,
+        "direction": "attack"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.13685056567192078,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": -0.013659000396728516,
+          "direction": "benign",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5319539904594421
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.005178570747375488,
+          "direction": "attack",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5131164193153381
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 0.0034395456314086914,
+          "direction": "attack",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5148554444313049
+        },
+        {
+          "time_step": "t-6",
+          "contribution": 0.0031089186668395996,
+          "direction": "attack",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.515186071395874
+        },
+        {
+          "time_step": "t-5",
+          "contribution": -0.015501797199249268,
+          "direction": "benign",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5337967872619629
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.0029484033584594727,
+          "direction": "attack",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5153465867042542
+        },
+        {
+          "time_step": "t-3",
+          "contribution": -0.005291581153869629,
+          "direction": "benign",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5235865712165833
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.0006485581398010254,
+          "direction": "attack",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.5176464319229126
+        },
+        {
+          "time_step": "t-1",
+          "contribution": -0.011299371719360352,
+          "direction": "benign",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.529594361782074
+        },
+        {
+          "time_step": "t",
+          "contribution": 0.008420825004577637,
+          "direction": "attack",
+          "full_probability": 0.5182949900627136,
+          "occluded_probability": 0.509874165058136
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": -0.0015369832515716552,
+        "sum_contribution": -0.015369832515716553,
+        "sum_abs_contribution": 0.01839393377304077
+      },
+      {
+        "feature": "RST Flag Cnt",
+        "mean_contribution": -0.0001508176326751709,
+        "sum_contribution": -0.001508176326751709,
+        "sum_abs_contribution": 0.010243475437164307
+      },
+      {
+        "feature": "Bwd Pkt Len Std",
+        "mean_contribution": -0.00044884681701660154,
+        "sum_contribution": -0.004488468170166016,
+        "sum_abs_contribution": 0.010097146034240723
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": -0.0003384590148925781,
+        "sum_contribution": -0.0033845901489257812,
+        "sum_abs_contribution": 0.009411811828613281
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": -0.00021341443061828613,
+        "sum_contribution": -0.0021341443061828613,
+        "sum_abs_contribution": 0.009308397769927979
+      },
+      {
+        "feature": "ECE Flag Cnt",
+        "mean_contribution": -0.00044525861740112304,
+        "sum_contribution": -0.0044525861740112305,
+        "sum_abs_contribution": 0.009162306785583496
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "mean_contribution": -0.0003105580806732178,
+        "sum_contribution": -0.0031055808067321777,
+        "sum_abs_contribution": 0.008528053760528564
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": 0.0007399082183837891,
+        "sum_contribution": 0.007399082183837891,
+        "sum_abs_contribution": 0.00799715518951416
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": -0.0002472102642059326,
+        "sum_contribution": -0.002472102642059326,
+        "sum_abs_contribution": 0.007797896862030029
+      },
+      {
+        "feature": "Bwd Pkt Len Min",
+        "mean_contribution": 0.00012465119361877442,
+        "sum_contribution": 0.0012465119361877441,
+        "sum_abs_contribution": 0.007769286632537842
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.518295,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "2": {
+        "probability": 0.5106134,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      },
+      "3": {
+        "probability": 0.29743466,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      },
+      "5": {
+        "probability": 0.4920163,
+        "predicted_class": 0,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Command and Control",
+      "stage_scores": {
+        "discovery": 15.0,
+        "command_and_control": 35.0,
+        "exfiltration": 35.0,
+        "impact": 30.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "MEDIUM",
+        "exfiltration": "MEDIUM",
+        "impact": "MEDIUM",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  },
+  {
+    "sequence_id": 19161,
+    "prediction": "Infiltration",
+    "attack_probability": 0.5408384799957275,
+    "prediction_source": "Feature 10 LSTM (frozen, K=1 rollout) -> Feature 11 next-state classifier (frozen), full recursive pipeline",
+    "top_contributors": [
+      {
+        "feature": "Protocol_6",
+        "time_step": "t+1",
+        "contribution": -1.1037224531173706,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Max",
+        "time_step": "t+1",
+        "contribution": 0.3117736876010895,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Mean",
+        "time_step": "t+1",
+        "contribution": 0.287662148475647,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "time_step": "t+1",
+        "contribution": -0.23039358854293823,
+        "direction": "benign"
+      },
+      {
+        "feature": "Idle Max",
+        "time_step": "t+1",
+        "contribution": -0.16598768532276154,
+        "direction": "benign"
+      },
+      {
+        "feature": "Pkt Len Std",
+        "time_step": "t+1",
+        "contribution": 0.12609273195266724,
+        "direction": "attack"
+      },
+      {
+        "feature": "Protocol_0",
+        "time_step": "t+1",
+        "contribution": 0.12501832842826843,
+        "direction": "attack"
+      },
+      {
+        "feature": "Flow Duration",
+        "time_step": "t+1",
+        "contribution": -0.12112171947956085,
+        "direction": "benign"
+      },
+      {
+        "feature": "Fwd IAT Tot",
+        "time_step": "t+1",
+        "contribution": 0.11071079969406128,
+        "direction": "attack"
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "time_step": "t+1",
+        "contribution": -0.09216519445180893,
+        "direction": "benign"
+      }
+    ],
+    "classifier_attribution_note": "Exact linear-model decomposition of the classifier's logit for the LSTM-predicted next state (temporal position t+1, a single future point).",
+    "temporal_summary": {
+      "method": "LSTM occlusion diagnostic: replace one whole historical timestep with the TRAIN-mean state vector, rerun frozen LSTM->classifier, record change in P(Infiltration). Approximate, NOT an exact attribution.",
+      "per_timestep": [
+        {
+          "time_step": "t-9",
+          "contribution": 0.0012500882148742676,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5395885109901428
+        },
+        {
+          "time_step": "t-8",
+          "contribution": 0.0034410953521728516,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5373975038528442
+        },
+        {
+          "time_step": "t-7",
+          "contribution": 1.5974044799804688e-05,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5408226251602173
+        },
+        {
+          "time_step": "t-6",
+          "contribution": -0.0010808110237121582,
+          "direction": "benign",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5419194102287292
+        },
+        {
+          "time_step": "t-5",
+          "contribution": 0.0012938380241394043,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5395447611808777
+        },
+        {
+          "time_step": "t-4",
+          "contribution": 0.0019702911376953125,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5388683080673218
+        },
+        {
+          "time_step": "t-3",
+          "contribution": 0.009072482585906982,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5317661166191101
+        },
+        {
+          "time_step": "t-2",
+          "contribution": 0.015498220920562744,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5253403782844543
+        },
+        {
+          "time_step": "t-1",
+          "contribution": 0.02690786123275757,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.5139307379722595
+        },
+        {
+          "time_step": "t",
+          "contribution": 0.03393155336380005,
+          "direction": "attack",
+          "full_probability": 0.5408385992050171,
+          "occluded_probability": 0.506907045841217
+        }
+      ]
+    },
+    "feature_group_summary": [
+      {
+        "feature": "Init Fwd Win Byts",
+        "mean_contribution": 0.0004560887813568115,
+        "sum_contribution": 0.004560887813568115,
+        "sum_abs_contribution": 0.017369449138641357
+      },
+      {
+        "feature": "Fwd PSH Flags",
+        "mean_contribution": 0.001717895269393921,
+        "sum_contribution": 0.01717895269393921,
+        "sum_abs_contribution": 0.01717895269393921
+      },
+      {
+        "feature": "SYN Flag Cnt",
+        "mean_contribution": 0.0016684293746948241,
+        "sum_contribution": 0.016684293746948242,
+        "sum_abs_contribution": 0.016814708709716797
+      },
+      {
+        "feature": "ACK Flag Cnt",
+        "mean_contribution": 0.0012027144432067872,
+        "sum_contribution": 0.012027144432067871,
+        "sum_abs_contribution": 0.015245318412780762
+      },
+      {
+        "feature": "Flow IAT Min",
+        "mean_contribution": -0.00021876692771911622,
+        "sum_contribution": -0.002187669277191162,
+        "sum_abs_contribution": 0.01074761152267456
+      },
+      {
+        "feature": "Flow IAT Mean",
+        "mean_contribution": -9.298920631408691e-05,
+        "sum_contribution": -0.0009298920631408691,
+        "sum_abs_contribution": 0.00982445478439331
+      },
+      {
+        "feature": "Fwd IAT Min",
+        "mean_contribution": -3.252625465393067e-05,
+        "sum_contribution": -0.00032526254653930664,
+        "sum_abs_contribution": 0.009246528148651123
+      },
+      {
+        "feature": "Idle Max",
+        "mean_contribution": -0.0002487540245056152,
+        "sum_contribution": -0.0024875402450561523,
+        "sum_abs_contribution": 0.00864863395690918
+      },
+      {
+        "feature": "Flow IAT Max",
+        "mean_contribution": 0.00024057626724243163,
+        "sum_contribution": 0.0024057626724243164,
+        "sum_abs_contribution": 0.006838321685791016
+      },
+      {
+        "feature": "Down/Up Ratio",
+        "mean_contribution": 0.00011019706726074218,
+        "sum_contribution": 0.0011019706726074219,
+        "sum_abs_contribution": 0.006016731262207031
+      }
+    ],
+    "feature_13_probability": {
+      "1": {
+        "probability": 0.5408385,
+        "predicted_class": 1,
+        "actual_future_label": "Benign"
+      }
+    },
+    "mitre_evidence": {
+      "primary_stage": "Impact",
+      "stage_scores": {
+        "discovery": 0.0,
+        "command_and_control": 60.0,
+        "exfiltration": 40.0,
+        "impact": 80.0,
+        "reconnaissance": 0.0,
+        "initial_access": 0.0,
+        "lateral_movement": 0.0
+      },
+      "stage_labels": {
+        "discovery": "LOW",
+        "command_and_control": "HIGH",
+        "exfiltration": "MEDIUM",
+        "impact": "VERY HIGH",
+        "reconnaissance": "LOW",
+        "initial_access": "LOW",
+        "lateral_movement": "LOW"
+      }
+    },
+    "limitations": [
+      "Classifier attribution (Layer C) is exact for the linear classifier but explains only the mapping from the LSTM's predicted state to P(Infiltration), not the LSTM's internal computation.",
+      "Temporal occlusion (Layer D) is an approximate perturbation-based diagnostic, not an exact attribution and not SHAP.",
+      "MITRE evidence score is NOT a probability and must not be interpreted as one.",
+      "Feature 13 probability at horizons >1 uses the LSTM's own free-running recursive predictions as input, which compounds regression error at longer horizons (see Feature 12)."
+    ]
+  }
+]

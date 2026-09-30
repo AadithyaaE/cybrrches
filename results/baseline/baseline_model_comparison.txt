@@ -1,0 +1,13 @@
+======================================================================
+BASELINE MODEL COMPARISON: LOGISTIC REGRESSION vs RANDOM FOREST
+======================================================================
+
+VALIDATION is the meaningful attack-class comparison point for the current single-day chronological dataset, because it is the only partition (besides TRAIN, which the models were fit on) where both Benign and Infilteration examples are present. TEST metrics for recall and ROC-AUC are not comparable between models because they are undefined (TEST has zero positive examples) - only accuracy, precision, F1 (both 0.0 unless a model has TP>0), and FPR are computable on TEST, and they characterize false-positive behavior on benign traffic only, not attack-detection capability. No winner is declared and no ranking is implied; these are benchmark measurements for later comparison against the LSTM World Model.
+
+----------------------------------------------------------------------
+LogisticRegression   train        acc=0.7089399744572158 prec=0.5233670401749112 rec=0.7816326530612245 f1=0.6269438533311508 roc_auc=0.8013822547606404 fpr=0.3241635687732342 n=15660 pos=4900 neg=10760
+LogisticRegression   validation   acc=0.7574455899198167 prec=0.7060575968222443 rec=0.8479427549194991 f1=0.77052289352479 roc_auc=0.8409352920980828 fpr=0.3261707988980716 n=3492 pos=1677 neg=1815
+LogisticRegression   test         acc=0.9380006966213863 prec=0.0 rec=None f1=0.0 roc_auc=None fpr=0.06199930337861372 n=2871 pos=0 neg=2871
+RandomForest         train        acc=1.0 prec=1.0 rec=1.0 f1=1.0 roc_auc=1.0 fpr=0.0 n=15660 pos=4900 neg=10760
+RandomForest         validation   acc=0.7242268041237113 prec=0.7560975609756098 rec=0.6285032796660703 f1=0.6864213611201563 roc_auc=0.8423148380865083 fpr=0.18732782369146006 n=3492 pos=1677 neg=1815
+RandomForest         test         acc=0.9933820968303727 prec=0.0 rec=None f1=0.0 roc_auc=None fpr=0.0066179031696273075 n=2871 pos=0 neg=2871

@@ -1,0 +1,405 @@
+{
+  "objective": "Recursive K-step forecasting of future network-state vectors using the frozen Feature 10 LSTM World Model.",
+  "scope_statement": "Feature 12 performs recursive K-step forecasting using the frozen LSTM World Model. After the first prediction, each subsequent forecast uses the model's own previous prediction rather than the ground-truth future state.",
+  "attack_progression_scope_statement": "Feature 12 predicts future network-state vectors. It does not yet calculate attacker-progression probability.",
+  "mathematical_formulation": "S(t+2) = F_theta(S(t-8),...,S(t),Shat(t+1)); S(t+3) = F_theta(S(t-7),...,S(t),Shat(t+1),Shat(t+2)); etc.",
+  "horizons_evaluated": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "sample_counts": {
+    "train": 15660,
+    "validation": 3492,
+    "test": 2871
+  },
+  "exclusions_per_horizon": {
+    "train": {
+      "1": 0,
+      "2": 516,
+      "3": 1009,
+      "5": 1933
+    },
+    "validation": {
+      "1": 0,
+      "2": 104,
+      "3": 204,
+      "5": 400
+    },
+    "test": {
+      "1": 0,
+      "2": 145,
+      "3": 279,
+      "5": 530
+    }
+  },
+  "ground_truth_derivation": {
+    "method": "Applied the Feature 7 train-fitted preprocessing pipeline's .transform() (never .fit()) to the relevant rows of Feature 6's temporal_windows.csv.",
+    "h1_consistency_with_feature7_max_diff": {
+      "train": 0.0,
+      "validation": 0.0,
+      "test": 0.0
+    }
+  },
+  "horizon_metrics": {
+    "1": {
+      "train": {
+        "mse": 0.8312842845916748,
+        "rmse": 0.911747932434082,
+        "mae": 0.444521427154541,
+        "n": 15660
+      },
+      "validation": {
+        "mse": 0.7961475253105164,
+        "rmse": 0.8922709822654724,
+        "mae": 0.46167224645614624,
+        "n": 3492
+      },
+      "test": {
+        "mse": 18.77292251586914,
+        "rmse": 4.332773208618164,
+        "mae": 0.47180914878845215,
+        "n": 2871
+      }
+    },
+    "2": {
+      "train": {
+        "mse": 0.8631632924079895,
+        "rmse": 0.9290658235549927,
+        "mae": 0.45521673560142517,
+        "n": 15144
+      },
+      "validation": {
+        "mse": 0.8329390287399292,
+        "rmse": 0.9126549363136292,
+        "mae": 0.4731771647930145,
+        "n": 3388
+      },
+      "test": {
+        "mse": 19.76334571838379,
+        "rmse": 4.445598602294922,
+        "mae": 0.48139914870262146,
+        "n": 2726
+      }
+    },
+    "3": {
+      "train": {
+        "mse": 0.881429135799408,
+        "rmse": 0.9388445615768433,
+        "mae": 0.4597964584827423,
+        "n": 14651
+      },
+      "validation": {
+        "mse": 0.843924880027771,
+        "rmse": 0.9186538457870483,
+        "mae": 0.4771537184715271,
+        "n": 3288
+      },
+      "test": {
+        "mse": 20.75524139404297,
+        "rmse": 4.555791854858398,
+        "mae": 0.48362573981285095,
+        "n": 2592
+      }
+    },
+    "5": {
+      "train": {
+        "mse": 0.8977382779121399,
+        "rmse": 0.9474905133247375,
+        "mae": 0.46620988845825195,
+        "n": 13727
+      },
+      "validation": {
+        "mse": 0.8701534271240234,
+        "rmse": 0.9328201413154602,
+        "mae": 0.48244526982307434,
+        "n": 3092
+      },
+      "test": {
+        "mse": 22.912490844726562,
+        "rmse": 4.786699295043945,
+        "mae": 0.4895744323730469,
+        "n": 2341
+      }
+    }
+  },
+  "error_accumulation": {
+    "train": {
+      "horizons": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "mse_by_horizon": [
+        0.8312842845916748,
+        0.8631632924079895,
+        0.881429135799408,
+        0.8977382779121399
+      ],
+      "mae_by_horizon": [
+        0.444521427154541,
+        0.45521673560142517,
+        0.4597964584827423,
+        0.46620988845825195
+      ],
+      "mse_monotonically_non_decreasing": true
+    },
+    "validation": {
+      "horizons": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "mse_by_horizon": [
+        0.7961475253105164,
+        0.8329390287399292,
+        0.843924880027771,
+        0.8701534271240234
+      ],
+      "mae_by_horizon": [
+        0.46167224645614624,
+        0.4731771647930145,
+        0.4771537184715271,
+        0.48244526982307434
+      ],
+      "mse_monotonically_non_decreasing": true
+    },
+    "test": {
+      "horizons": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "mse_by_horizon": [
+        18.77292251586914,
+        19.76334571838379,
+        20.75524139404297,
+        22.912490844726562
+      ],
+      "mae_by_horizon": [
+        0.47180914878845215,
+        0.48139914870262146,
+        0.48362573981285095,
+        0.4895744323730469
+      ],
+      "mse_monotonically_non_decreasing": true
+    }
+  },
+  "outlier_diagnostics": {
+    "1": {
+      "train": {
+        "worst_sample_sequence_id": 11645,
+        "worst_sample_mse": 1102.88330078125,
+        "dominant_feature": "Bwd Header Len",
+        "official_mse_all_observations": 0.8312842845916748,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7609061598777771,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "validation": {
+        "worst_sample_sequence_id": 17197,
+        "worst_sample_mse": 67.22357177734375,
+        "dominant_feature": "PSH Flag Cnt",
+        "official_mse_all_observations": 0.7961475253105164,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7771192789077759,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "test": {
+        "worst_sample_sequence_id": 19842,
+        "worst_sample_mse": 51833.4609375,
+        "dominant_feature": "Pkt Len Var",
+        "official_mse_all_observations": 18.77292251586914,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7190222144126892,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      }
+    },
+    "2": {
+      "train": {
+        "worst_sample_sequence_id": 11644,
+        "worst_sample_mse": 1109.7137451171875,
+        "dominant_feature": "Bwd Header Len",
+        "official_mse_all_observations": 0.8631632924079895,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7899380922317505,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "validation": {
+        "worst_sample_sequence_id": 17196,
+        "worst_sample_mse": 66.81217956542969,
+        "dominant_feature": "PSH Flag Cnt",
+        "official_mse_all_observations": 0.8329390287399292,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.8134589791297913,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "test": {
+        "worst_sample_sequence_id": 19841,
+        "worst_sample_mse": 51838.3046875,
+        "dominant_feature": "Pkt Len Var",
+        "official_mse_all_observations": 19.76334571838379,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7473709583282471,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      }
+    },
+    "3": {
+      "train": {
+        "worst_sample_sequence_id": 11643,
+        "worst_sample_mse": 1115.833740234375,
+        "dominant_feature": "Bwd Header Len",
+        "official_mse_all_observations": 0.881429135799408,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.8053231239318848,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "validation": {
+        "worst_sample_sequence_id": 17195,
+        "worst_sample_mse": 67.99304962158203,
+        "dominant_feature": "PSH Flag Cnt",
+        "official_mse_all_observations": 0.843924880027771,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.8234960436820984,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "test": {
+        "worst_sample_sequence_id": 19840,
+        "worst_sample_mse": 51836.2578125,
+        "dominant_feature": "Pkt Len Var",
+        "official_mse_all_observations": 20.75524139404297,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7569757699966431,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      }
+    },
+    "5": {
+      "train": {
+        "worst_sample_sequence_id": 11641,
+        "worst_sample_mse": 1120.046875,
+        "dominant_feature": "Bwd Header Len",
+        "official_mse_all_observations": 0.8977382779121399,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.8162033557891846,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "validation": {
+        "worst_sample_sequence_id": 17193,
+        "worst_sample_mse": 67.8623275756836,
+        "dominant_feature": "PSH Flag Cnt",
+        "official_mse_all_observations": 0.8701534271240234,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.848480224609375,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      },
+      "test": {
+        "worst_sample_sequence_id": 19838,
+        "worst_sample_mse": 51841.734375,
+        "dominant_feature": "Pkt Len Var",
+        "official_mse_all_observations": 22.912490844726562,
+        "diagnostic_mse_excluding_worst_sample_ONLY": 0.7676916122436523,
+        "note": "Diagnostic only; the official MSE above already includes every observation with no exclusions."
+      }
+    }
+  },
+  "label_distributions_per_horizon": {
+    "1": {
+      "train": {
+        "Benign": 10760,
+        "Infilteration": 4900
+      },
+      "validation": {
+        "Benign": 1815,
+        "Infilteration": 1677
+      },
+      "test": {
+        "Benign": 2871
+      }
+    },
+    "2": {
+      "train": {
+        "Benign": 10355,
+        "Infilteration": 4789
+      },
+      "validation": {
+        "Benign": 1757,
+        "Infilteration": 1631
+      },
+      "test": {
+        "Benign": 2726
+      }
+    },
+    "3": {
+      "train": {
+        "Benign": 9968,
+        "Infilteration": 4683
+      },
+      "validation": {
+        "Benign": 1704,
+        "Infilteration": 1584
+      },
+      "test": {
+        "Benign": 2592
+      }
+    },
+    "5": {
+      "train": {
+        "Benign": 9247,
+        "Infilteration": 4480
+      },
+      "validation": {
+        "Benign": 1594,
+        "Infilteration": 1498
+      },
+      "test": {
+        "Benign": 2341
+      }
+    }
+  },
+  "one_step_consistency_check": {
+    "test_vs_feature10_saved_predictions": {
+      "max_abs_diff": 0.0,
+      "tolerance": 1e-06,
+      "match": true
+    },
+    "train_rollout_k1_vs_fresh_forward_pass": {
+      "max_abs_diff": 0.0,
+      "tolerance": 1e-06,
+      "match": true
+    },
+    "validation_rollout_k1_vs_fresh_forward_pass": {
+      "max_abs_diff": 0.0,
+      "tolerance": 1e-06,
+      "match": true
+    },
+    "test_rollout_k1_vs_fresh_forward_pass": {
+      "max_abs_diff": 0.0,
+      "tolerance": 1e-06,
+      "match": true
+    }
+  },
+  "leakage_checks": {
+    "1_feature10_weights_frozen": true,
+    "2_model_eval_mode_used": true,
+    "3_no_grad_used": true,
+    "4_no_optimizer_created": true,
+    "5_no_model_training_occurs": true,
+    "6_no_scaler_fitting_occurs": true,
+    "7_validation_test_never_changes_model": true,
+    "8_ground_truth_future_states_used_only_for_evaluation": true,
+    "9_ground_truth_never_reinserted_after_step1": true,
+    "10_no_temporal_gap_crossed": true,
+    "11_no_partition_boundary_crossed": true,
+    "12_no_attack_labels_as_model_input": true,
+    "13_feature7_11_artifacts_unchanged": true
+  },
+  "reproducibility": {
+    "seed": 42,
+    "repeat_rollout_match": true,
+    "repeat_rollout_max_abs_diff": 0.0,
+    "fresh_checkpoint_reload_match": true,
+    "fresh_checkpoint_reload_max_abs_diff": 0.0
+  },
+  "test_set_limitation": "The current TEST partition contains 2871 sequences: 2871 Benign, 0 Infiltration. Feature 12 can evaluate future-state REGRESSION on the TEST partition (MSE/RMSE/MAE at each horizon), but it cannot establish attack-class detection or attack-progression performance on TEST, because there are no positive examples to detect. Attack progression evaluation will come later.",
+  "outputs": {
+    "horizon_metrics_csv": "results\\forecasting\\k_step_forecast_horizon_metrics.csv",
+    "summary_csv": "results\\forecasting\\k_step_forecast_summary.csv",
+    "per_feature_metrics_csv": "results\\forecasting\\k_step_forecast_per_feature_metrics.csv",
+    "predictions_summary_csv": "results\\forecasting\\k_step_forecast_predictions_summary.csv",
+    "config": "results\\forecasting\\k_step_forecast_config.json",
+    "test_rollout_predictions_npy": "data\\processed\\forecasting\\test_rollout_predictions.npy"
+  }
+}

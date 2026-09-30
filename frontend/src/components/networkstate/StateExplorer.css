@@ -1,0 +1,103 @@
+.state-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.state-explorer__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.state-explorer__filters {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.state-explorer__filter {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.state-explorer__filter--active {
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+
+.state-explorer__select {
+  flex: 1;
+  min-width: 220px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+}
+
+.state-explorer__nav {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.state-explorer__details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.state-explorer__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.state-explorer__field-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.state-explorer__field-value {
+  font-size: var(--fs-md);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.state-explorer__sample-note {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}
+
+@media (max-width: 900px) {
+  .state-explorer__details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .state-explorer__details {
+    grid-template-columns: 1fr;
+  }
+}

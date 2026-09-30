@@ -1,0 +1,12 @@
+.attack-stage-map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.attack-stage-map__note {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}

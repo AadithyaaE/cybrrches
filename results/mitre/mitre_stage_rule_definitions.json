@@ -1,0 +1,286 @@
+{
+  "stages": [
+    "Discovery",
+    "Command and Control",
+    "Exfiltration",
+    "Impact",
+    "Reconnaissance",
+    "Initial Access",
+    "Lateral Movement"
+  ],
+  "technique_map": {
+    "Discovery": {
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery"
+    },
+    "Command and Control": {
+      "technique_id": "T1071",
+      "technique_name": "Application Layer Protocol (C2)"
+    },
+    "Exfiltration": {
+      "technique_id": "T1041",
+      "technique_name": "Exfiltration Over C2 Channel"
+    },
+    "Impact": {
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service"
+    },
+    "Reconnaissance": {
+      "technique_id": "T1595",
+      "technique_name": "Active Scanning (candidate)"
+    },
+    "Initial Access": {
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application (candidate)"
+    },
+    "Lateral Movement": {
+      "technique_id": "T1021",
+      "technique_name": "Remote Services (candidate)"
+    }
+  },
+  "thresholds": {
+    "impact": {
+      "packets_per_second": {
+        "normal_max": 50,
+        "high_min": 200
+      },
+      "bytes_per_second": {
+        "normal_max": 50000,
+        "high_min": 500000
+      },
+      "connection_frequency": {
+        "normal_max": 3,
+        "high_min": 15
+      },
+      "traffic_growth_pct": {
+        "medium_min": 50.0,
+        "high_min": 150.0
+      }
+    },
+    "discovery": {
+      "dst_port_nunique_high": 10,
+      "dst_port_nunique_medium": 5,
+      "short_flow_duration_us": 1000000,
+      "min_observation_count_repeated": 5,
+      "low_avg_bytes_per_flow": 200
+    },
+    "command_and_control": {
+      "iat_regularity_cv_max": 0.3,
+      "min_observation_count_persistent": 2
+    },
+    "exfiltration": {
+      "high_outbound_bytes_per_s": 500000,
+      "high_outbound_inbound_ratio": 10.0
+    },
+    "reconnaissance_max_score": 55,
+    "initial_access_max_score": 50,
+    "lateral_movement_max_score": 0,
+    "min_evidence_threshold_for_primary_stage": 30
+  },
+  "evidence_label_bands": {
+    "LOW": "0-29",
+    "MEDIUM": "30-59",
+    "HIGH": "60-79",
+    "VERY HIGH": "80-100"
+  },
+  "rules": [
+    {
+      "rule_id": "discovery_high_port_diversity",
+      "stage": "Discovery",
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery",
+      "conditions": [
+        "dst_port_nunique >= 10"
+      ],
+      "supporting_features": [
+        "dst_port_nunique"
+      ],
+      "score_contribution": 40,
+      "explanation": "A high number of distinct destination ports contacted within a single 1-second window is consistent with network service discovery.",
+      "limitation": "Flow telemetry cannot independently establish attacker intent; high port diversity can also occur from legitimate multi-service clients."
+    },
+    {
+      "rule_id": "discovery_repeated_short_flows",
+      "stage": "Discovery",
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery",
+      "conditions": [
+        "observation_count >= 5",
+        "flow_duration_mean_us <= 1000000"
+      ],
+      "supporting_features": [
+        "observation_count",
+        "Flow Duration"
+      ],
+      "score_contribution": 30,
+      "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+      "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives)."
+    },
+    {
+      "rule_id": "discovery_low_bytes_per_flow",
+      "stage": "Discovery",
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery",
+      "conditions": [
+        "avg_bytes_per_flow <= 200"
+      ],
+      "supporting_features": [
+        "TotLen Fwd Pkts",
+        "observation_count"
+      ],
+      "score_contribution": 15,
+      "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+      "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only."
+    },
+    {
+      "rule_id": "c2_regular_beacon_timing",
+      "stage": "Command and Control",
+      "technique_id": "T1071",
+      "technique_name": "Application Layer Protocol (C2)",
+      "conditions": [
+        "flow_iat_coefficient_of_variation <= 0.3"
+      ],
+      "supporting_features": [
+        "Flow IAT Mean",
+        "Flow IAT Std"
+      ],
+      "score_contribution": 35,
+      "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic.",
+      "limitation": "Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic."
+    },
+    {
+      "rule_id": "c2_persistent_bidirectional_traffic",
+      "stage": "Command and Control",
+      "technique_id": "T1071",
+      "technique_name": "Application Layer Protocol (C2)",
+      "conditions": [
+        "Tot Fwd Pkts > 0",
+        "Tot Bwd Pkts > 0",
+        "observation_count >= 2"
+      ],
+      "supporting_features": [
+        "Tot Fwd Pkts",
+        "Tot Bwd Pkts",
+        "observation_count"
+      ],
+      "score_contribution": 25,
+      "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+      "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing."
+    },
+    {
+      "rule_id": "exfil_high_outbound_volume",
+      "stage": "Exfiltration",
+      "technique_id": "T1041",
+      "technique_name": "Exfiltration Over C2 Channel",
+      "conditions": [
+        "flow_byts_per_s >= 500000"
+      ],
+      "supporting_features": [
+        "Flow Byts/s"
+      ],
+      "score_contribution": 40,
+      "explanation": "Unusually high outbound transfer volume relative to typical flow rates is consistent with possible data exfiltration.",
+      "limitation": "High-throughput legitimate transfers (backups, large downloads) produce the same signature; data content/destination cannot be verified."
+    },
+    {
+      "rule_id": "exfil_high_outbound_inbound_ratio",
+      "stage": "Exfiltration",
+      "technique_id": "T1041",
+      "technique_name": "Exfiltration Over C2 Channel",
+      "conditions": [
+        "outbound_inbound_byte_ratio >= 10.0"
+      ],
+      "supporting_features": [
+        "TotLen Fwd Pkts",
+        "TotLen Bwd Pkts"
+      ],
+      "score_contribution": 35,
+      "explanation": "The flow shows unusually large outbound transfer volume relative to inbound traffic, which is consistent with possible data exfiltration.",
+      "limitation": "Never claims that data was actually exfiltrated; asymmetric flows are also produced by e.g. uploads, backups, telemetry."
+    },
+    {
+      "rule_id": "impact_high_rate_and_growth",
+      "stage": "Impact",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
+      "conditions": [
+        "flow_pkts_per_s >= 200",
+        "traffic_growth_pct >= 150.0"
+      ],
+      "supporting_features": [
+        "Flow Pkts/s",
+        "traffic_growth_pct"
+      ],
+      "score_contribution": 50,
+      "explanation": "Traffic volume and growth indicate a network availability-disruption pattern consistent with Network Denial of Service.",
+      "limitation": "Interpretable evidence only; does not override Random Forest, LSTM, or Feature 13 predictions."
+    },
+    {
+      "rule_id": "impact_elevated_volume_or_frequency",
+      "stage": "Impact",
+      "technique_id": "T1498",
+      "technique_name": "Network Denial of Service",
+      "conditions": [
+        "flow_pkts_per_s >= 200",
+        "OR flow_byts_per_s >= 500000",
+        "OR connection_frequency >= 15"
+      ],
+      "supporting_features": [
+        "Flow Pkts/s",
+        "Flow Byts/s",
+        "observation_count"
+      ],
+      "score_contribution": 30,
+      "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+      "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition."
+    },
+    {
+      "rule_id": "recon_port_scanning_pattern",
+      "stage": "Reconnaissance",
+      "technique_id": "T1595",
+      "technique_name": "Active Scanning (candidate)",
+      "conditions": [
+        "dst_port_nunique >= 5",
+        "flow_duration_mean_us <= 1000000"
+      ],
+      "supporting_features": [
+        "dst_port_nunique",
+        "Flow Duration"
+      ],
+      "score_contribution": 45,
+      "explanation": "The observed network probing behaviour is consistent with reconnaissance activity, but the available flow telemetry cannot establish attacker intent.",
+      "limitation": "CANDIDATE mapping only, score capped at 55/100: the flow dataset cannot reliably distinguish external reconnaissance from internal discovery."
+    },
+    {
+      "rule_id": "initial_access_suspicious_connection_pattern",
+      "stage": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application (candidate)",
+      "conditions": [
+        "SYN Flag Cnt > 0",
+        "ACK Flag Cnt < SYN Flag Cnt"
+      ],
+      "supporting_features": [
+        "SYN Flag Cnt",
+        "ACK Flag Cnt"
+      ],
+      "score_contribution": 40,
+      "explanation": "The observed traffic is consistent with an attempted network-entry pattern (connection attempts without full handshake completion), but flow telemetry alone cannot confirm successful compromise.",
+      "limitation": "CANDIDATE mapping only, score capped at 50/100: no process, authentication, or host telemetry is available in this dataset; successful Initial Access can never be confirmed from flow data alone."
+    },
+    {
+      "rule_id": "lateral_movement_internal_destination_count",
+      "stage": "Lateral Movement",
+      "technique_id": "T1021",
+      "technique_name": "Remote Services (candidate)",
+      "conditions": [
+        "NOT COMPUTABLE: requires source/destination IP addresses, which are absent from this dataset"
+      ],
+      "supporting_features": [],
+      "score_contribution": 0,
+      "explanation": "Lateral movement evidence requires tracking one source contacting multiple internal destinations, which requires IP-address identity information.",
+      "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect."
+    }
+  ],
+  "threshold_provenance": "No pre-existing reasoning.py or threshold module was found anywhere in this repository (verified by repository-wide search, logged above). All thresholds are defined fresh in mitre_stage_mapper.py using exactly the numeric values given in the Feature 14 specification."
+}

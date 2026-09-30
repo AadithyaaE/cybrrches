@@ -1,0 +1,110 @@
+======================================================================
+K-STEP FORECASTING REPORT (FEATURE 12)
+======================================================================
+
+1. OBJECTIVE
+   Recursive K-step forecasting of future network-state vectors using the frozen Feature 10 LSTM World Model.
+
+2. MATHEMATICAL FORMULATION
+   S(t+2) = F_theta(S(t-8),...,S(t),Shat(t+1)); S(t+3) = F_theta(S(t-7),...,S(t),Shat(t+1),Shat(t+2)); etc.
+
+3. RECURSIVE ROLLOUT METHOD
+   Feature 12 performs recursive K-step forecasting using the frozen LSTM World Model. After the first prediction, each subsequent forecast uses the model's own previous prediction rather than the ground-truth future state.
+
+4. WHY RECURSIVE FORECASTING IS USED
+   Research question: how far into the future can the learned network-state dynamics
+   model forecast before prediction error becomes substantial? Recursive (free-running)
+   rollout is the only way to measure this honestly, since teacher forcing (feeding the
+   true future state at every step) would not measure the model's own error compounding.
+
+5. DATASET AND PARTITIONS
+   Sample counts: {'train': 15660, 'validation': 3492, 'test': 2871}
+
+6. HORIZON DEFINITIONS
+   Horizons evaluated: [1, 2, 3, 5]
+
+7. GAP-HANDLING RULES
+   A sequence is excluded from horizon h's evaluation if the target window at
+   input_end_window+h falls in a different continuous segment (crosses a temporal gap).
+
+8. PARTITION-BOUNDARY RULES
+   A sequence is excluded from horizon h's evaluation if the target window at
+   input_end_window+h falls in a different partition than the sequence's own split.
+   Exclusions per horizon: {'train': {1: 0, 2: 516, 3: 1009, 5: 1933}, 'validation': {1: 0, 2: 104, 3: 204, 5: 400}, 'test': {1: 0, 2: 145, 3: 279, 5: 530}}
+
+9. ONE-STEP CONSISTENCY CHECK
+   {'test_vs_feature10_saved_predictions': {'max_abs_diff': 0.0, 'tolerance': 1e-06, 'match': True}, 'train_rollout_k1_vs_fresh_forward_pass': {'max_abs_diff': 0.0, 'tolerance': 1e-06, 'match': True}, 'validation_rollout_k1_vs_fresh_forward_pass': {'max_abs_diff': 0.0, 'tolerance': 1e-06, 'match': True}, 'test_rollout_k1_vs_fresh_forward_pass': {'max_abs_diff': 0.0, 'tolerance': 1e-06, 'match': True}}
+
+10. HORIZON METRICS
+   h=1 train: {'mse': 0.8312842845916748, 'rmse': 0.911747932434082, 'mae': 0.444521427154541, 'n': 15660}
+   h=1 validation: {'mse': 0.7961475253105164, 'rmse': 0.8922709822654724, 'mae': 0.46167224645614624, 'n': 3492}
+   h=1 test: {'mse': 18.77292251586914, 'rmse': 4.332773208618164, 'mae': 0.47180914878845215, 'n': 2871}
+   h=2 train: {'mse': 0.8631632924079895, 'rmse': 0.9290658235549927, 'mae': 0.45521673560142517, 'n': 15144}
+   h=2 validation: {'mse': 0.8329390287399292, 'rmse': 0.9126549363136292, 'mae': 0.4731771647930145, 'n': 3388}
+   h=2 test: {'mse': 19.76334571838379, 'rmse': 4.445598602294922, 'mae': 0.48139914870262146, 'n': 2726}
+   h=3 train: {'mse': 0.881429135799408, 'rmse': 0.9388445615768433, 'mae': 0.4597964584827423, 'n': 14651}
+   h=3 validation: {'mse': 0.843924880027771, 'rmse': 0.9186538457870483, 'mae': 0.4771537184715271, 'n': 3288}
+   h=3 test: {'mse': 20.75524139404297, 'rmse': 4.555791854858398, 'mae': 0.48362573981285095, 'n': 2592}
+   h=5 train: {'mse': 0.8977382779121399, 'rmse': 0.9474905133247375, 'mae': 0.46620988845825195, 'n': 13727}
+   h=5 validation: {'mse': 0.8701534271240234, 'rmse': 0.9328201413154602, 'mae': 0.48244526982307434, 'n': 3092}
+   h=5 test: {'mse': 22.912490844726562, 'rmse': 4.786699295043945, 'mae': 0.4895744323730469, 'n': 2341}
+
+11. ERROR ACCUMULATION ANALYSIS
+   train: horizons=[1, 2, 3, 5] mse=[0.8312842845916748, 0.8631632924079895, 0.881429135799408, 0.8977382779121399] monotonically_non_decreasing=True
+   validation: horizons=[1, 2, 3, 5] mse=[0.7961475253105164, 0.8329390287399292, 0.843924880027771, 0.8701534271240234] monotonically_non_decreasing=True
+   test: horizons=[1, 2, 3, 5] mse=[18.77292251586914, 19.76334571838379, 20.75524139404297, 22.912490844726562] monotonically_non_decreasing=True
+
+12. PER-FEATURE ERROR ANALYSIS (K=1,3,5)
+   See k_step_forecast_per_feature_metrics.csv (68 rows)
+
+13. OUTLIER ANALYSIS (diagnostic only; official metrics include all observations)
+   h=1 test: {'worst_sample_sequence_id': 19842, 'worst_sample_mse': 51833.4609375, 'dominant_feature': 'Pkt Len Var', 'official_mse_all_observations': 18.77292251586914, 'diagnostic_mse_excluding_worst_sample_ONLY': 0.7190222144126892, 'note': 'Diagnostic only; the official MSE above already includes every observation with no exclusions.'}
+   h=2 test: {'worst_sample_sequence_id': 19841, 'worst_sample_mse': 51838.3046875, 'dominant_feature': 'Pkt Len Var', 'official_mse_all_observations': 19.76334571838379, 'diagnostic_mse_excluding_worst_sample_ONLY': 0.7473709583282471, 'note': 'Diagnostic only; the official MSE above already includes every observation with no exclusions.'}
+   h=3 test: {'worst_sample_sequence_id': 19840, 'worst_sample_mse': 51836.2578125, 'dominant_feature': 'Pkt Len Var', 'official_mse_all_observations': 20.75524139404297, 'diagnostic_mse_excluding_worst_sample_ONLY': 0.7569757699966431, 'note': 'Diagnostic only; the official MSE above already includes every observation with no exclusions.'}
+   h=5 test: {'worst_sample_sequence_id': 19838, 'worst_sample_mse': 51841.734375, 'dominant_feature': 'Pkt Len Var', 'official_mse_all_observations': 22.912490844726562, 'diagnostic_mse_excluding_worst_sample_ONLY': 0.7676916122436523, 'note': 'Diagnostic only; the official MSE above already includes every observation with no exclusions.'}
+
+14. REPRODUCIBILITY CHECKS
+   {'seed': 42, 'repeat_rollout_match': True, 'repeat_rollout_max_abs_diff': 0.0, 'fresh_checkpoint_reload_match': True, 'fresh_checkpoint_reload_max_abs_diff': 0.0}
+
+15. LEAKAGE CHECKS
+   1_feature10_weights_frozen: PASS
+   2_model_eval_mode_used: PASS
+   3_no_grad_used: PASS
+   4_no_optimizer_created: PASS
+   5_no_model_training_occurs: PASS
+   6_no_scaler_fitting_occurs: PASS
+   7_validation_test_never_changes_model: PASS
+   8_ground_truth_future_states_used_only_for_evaluation: PASS
+   9_ground_truth_never_reinserted_after_step1: PASS
+   10_no_temporal_gap_crossed: PASS
+   11_no_partition_boundary_crossed: PASS
+   12_no_attack_labels_as_model_input: PASS
+   13_feature7_11_artifacts_unchanged: PASS
+
+16. TEST LIMITATION
+   The current TEST partition contains 2871 sequences: 2871 Benign, 0 Infiltration. Feature 12 can evaluate future-state REGRESSION on the TEST partition (MSE/RMSE/MAE at each horizon), but it cannot establish attack-class detection or attack-progression performance on TEST, because there are no positive examples to detect. Attack progression evaluation will come later.
+
+17. KNOWN LIMITATIONS
+   - Ground-truth future states beyond h=1 are derived via pipeline.transform(), not
+     stored natively by Feature 7; verified consistent with Feature 7's own h=1 arrays.
+   - Recursive rollout compounds LSTM regression-to-mean behavior (documented in Feature
+     10/11) across steps; see error accumulation results for whether this worsens error.
+   - Single continuous-day capture: generalization to other days/networks is untested.
+
+18. WHAT FEATURE 12 DOES NOT IMPLEMENT
+   Feature 12 predicts future network-state vectors. It does not yet calculate attacker-progression probability.
+   Also not implemented: MITRE ATT&CK mapping, SHAP/attention explanations, risk scoring,
+   mitigation, dashboard changes, or multi-day dataset expansion.
+
+19. RECOMMENDED FEATURE 13
+   Use the K-step forecast trajectory (and/or Feature 11's frozen classifier applied to
+   each forecasted state) to define an attack-progression probability over the forecast
+   horizon, still respecting the chronological split and TEST-set label limitation.
+
+OUTPUTS:
+   horizon_metrics_csv: results\forecasting\k_step_forecast_horizon_metrics.csv
+   summary_csv: results\forecasting\k_step_forecast_summary.csv
+   per_feature_metrics_csv: results\forecasting\k_step_forecast_per_feature_metrics.csv
+   predictions_summary_csv: results\forecasting\k_step_forecast_predictions_summary.csv
+   config: results\forecasting\k_step_forecast_config.json
+   test_rollout_predictions_npy: data\processed\forecasting\test_rollout_predictions.npy

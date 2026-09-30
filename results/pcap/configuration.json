@@ -1,0 +1,14 @@
+{
+  "flow_timeout_us": 120000000,
+  "active_idle_threshold_us": 5000000,
+  "flow_key": "canonical (order-independent) pair of (ip, port) endpoints + protocol",
+  "direction_rule": "forward = direction of the first packet observed for a flow (the initiator)",
+  "tcp_closure_rules": [
+    "RST in either direction closes immediately",
+    "FIN seen in BOTH directions closes immediately"
+  ],
+  "udp_closure_rule": "timeout or end-of-capture only",
+  "malformed_packet_handling": "reported with a reason, never silently dropped",
+  "unassignable_packet_handling": "reported with a reason (e.g. non-TCP/UDP), never forced into an arbitrary flow",
+  "pcap_source_file": "tests\\fixtures\\pcap\\synthetic_benign.pcap"
+}

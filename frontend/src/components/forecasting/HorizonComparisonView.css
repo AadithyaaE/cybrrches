@@ -1,0 +1,90 @@
+.horizon-comparison-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.horizon-comparison-view__select-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.horizon-comparison-view__select {
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  min-width: 220px;
+}
+
+.horizon-comparison-view__strip {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.horizon-comparison-view__point {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  min-width: 120px;
+}
+
+.horizon-comparison-view__point--observed {
+  border-color: var(--accent-cyan-border);
+  background: var(--accent-cyan-dim);
+}
+
+.horizon-comparison-view__k {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.horizon-comparison-view__value {
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.horizon-comparison-view__value--forecast {
+  color: var(--accent-violet);
+}
+
+.horizon-comparison-view__value--truth {
+  color: var(--status-success);
+}
+
+.horizon-comparison-view__legend {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  font-size: var(--fs-xs);
+}
+
+.horizon-comparison-view__legend-item--forecast {
+  color: var(--accent-violet);
+}
+
+.horizon-comparison-view__legend-item--truth {
+  color: var(--status-success);
+}
+
+.horizon-comparison-view__caption {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}

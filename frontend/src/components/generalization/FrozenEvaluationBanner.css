@@ -1,0 +1,20 @@
+.frozen-evaluation-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding: var(--space-4) var(--space-5);
+  background: var(--accent-cyan-dim);
+  border: 1px solid var(--accent-cyan-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.frozen-evaluation-banner p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  min-width: 260px;
+}

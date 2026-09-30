@@ -1,0 +1,37 @@
+{
+  "featureDimensionality": 68,
+  "aggregationSeconds": 1,
+  "totalStates": 331027,
+  "uniqueTimestamps": 32068,
+  "totalTemporalWindows": 32068,
+  "labelDistributionStates": {
+    "Benign": 237987,
+    "Infilteration": 93040
+  },
+  "labelDistributionWindows": {
+    "Benign": 23592,
+    "Infilteration": 8476
+  },
+  "timestampRange": {
+    "min": "2018-03-01 01:00:00",
+    "max": "2018-03-01 12:59:59"
+  },
+  "observationsPerTimestampSummary": {
+    "min": 1,
+    "max": 2050,
+    "mean": 10.3227,
+    "median": 5.0
+  },
+  "missingValueFeaturesAtStateLevel": {
+    "Flow Byts/s": 2917,
+    "Flow Pkts/s": 2917
+  },
+  "missingValueFeaturesAtWindowLevel": {
+    "Flow Byts/s": 21,
+    "Flow Pkts/s": 21
+  },
+  "numValidSequences": 22034,
+  "sequenceLength": 10,
+  "numTemporalGaps": 1365,
+  "source": "CSE-CIC-IDS2018"
+}

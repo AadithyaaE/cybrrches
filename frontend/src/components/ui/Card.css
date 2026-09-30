@@ -1,0 +1,10 @@
+.cc-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+.cc-card--padded {
+  padding: var(--space-5);
+}

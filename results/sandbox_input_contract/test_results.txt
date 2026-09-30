@@ -1,0 +1,43 @@
+Hashing protected files (pre-run) ...
+  440 protected files hashed.
+Building a genuinely well-formed flow table via Feature L2's existing, unmodified pipeline ...
+Hashing protected files (post-run) ...
+
+======================================================================
+FEATURE L3.1 - SANDBOX INPUT CONTRACT TEST RESULTS
+======================================================================
+  [PASS] 1_exactly_65_required_features
+  [PASS] 1_state_order_is_68_dimensional
+  [PASS] 1_state_order_ends_with_protocol_onehot_in_order
+  [PASS] 1_protocol_onehot_columns_match
+  [PASS] 1_state_order_65_features_plus_3_protocol_cols
+  [PASS] 1_every_required_feature_has_a_dtype
+  [PASS] 1_sequence_length_is_10
+  [PASS] 1_window_is_1_second
+  [PASS] 1_schema_65_features_match_feature_mapping_py
+  [PASS] 2_flow_table_columns_is_timestamp_protocol_plus_65
+  [PASS] 3_required_packet_fields_subset_of_real_dataclass
+  [PASS] 3_required_packet_fields_nonempty
+  [PASS] 4_provenance_has_exactly_6_categories
+  [PASS] 5_exactly_2_input_forms
+  [PASS] 6_rejection_reasons_cover_documented_failure_conditions
+  [PASS] 7_wellformed_table_accepted
+  [PASS] 7_wellformed_table_has_no_reasons
+  [PASS] 8_missing_feature_table_rejected
+  [PASS] 8_missing_feature_reason_is_missing_required_column
+  [PASS] 8_missing_feature_never_silently_filled
+  [PASS] 9_bad_protocol_table_rejected
+  [PASS] 9_bad_protocol_reason_correct
+  [PASS] 10_labeled_table_rejected
+  [PASS] 10_labeled_reason_correct
+  [PASS] 11_missing_timestamp_rejected
+  [PASS] 11_missing_timestamp_reason_correct
+  [PASS] 12_full_packetrecord_fields_accepted
+  [PASS] 12_incomplete_fields_rejected
+  [PASS] 12_incomplete_fields_reason_correct
+  [PASS] 13_pcap_reader_documents_ipv6_rejection
+  [PASS] 14_no_fit_call_in_L3_1_code
+  [PASS] 15_no_model_inference_code_introduced
+  [PASS] protected_files_unchanged
+
+ALL FEATURE L3.1 SANDBOX INPUT CONTRACT CHECKS PASSED.

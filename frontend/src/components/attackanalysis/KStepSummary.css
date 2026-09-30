@@ -1,0 +1,31 @@
+.k-step-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.k-step-summary__block-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  margin: 0 0 var(--space-2) 0;
+}
+
+.k-step-summary__block-title--pipeline {
+  color: var(--accent-violet);
+}
+
+.k-step-summary__block-title--oracle {
+  color: var(--text-secondary);
+}
+
+.k-step-summary__na {
+  color: var(--text-disabled);
+  font-style: italic;
+}
+
+.k-step-summary__note {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}

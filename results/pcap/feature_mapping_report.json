@@ -1,0 +1,603 @@
+{
+  "total_features": 65,
+  "category_counts": {
+    "A": 16,
+    "B": 20,
+    "C": 25,
+    "D": 4
+  },
+  "category_legend": {
+    "A": "directly extractable from a single packet field or trivial per-packet aggregate",
+    "B": "derivable from a reconstructed bidirectional flow (straightforward statistic)",
+    "C": "derivable from packet timing/statistics (inter-arrival times, active/idle segmentation)",
+    "D": "not currently reproducible with full confidence - documented simplification used instead"
+  },
+  "critical_note": "training_definition_validated is False for EVERY feature - no CICFlowMeter installation exists in this environment to empirically validate against. See each row's 'limitation' field.",
+  "rows": [
+    {
+      "feature": "Tot Fwd Pkts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets where direction == forward)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Tot Bwd Pkts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets where direction == backward)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "TotLen Fwd Pkts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "sum(IP total length for forward packets)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "TotLen Bwd Pkts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "sum(IP total length for backward packets)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "ACK Flag Cnt",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets, both directions, with TCP ACK flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "SYN Flag Cnt",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets, both directions, with TCP SYN flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "RST Flag Cnt",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets, both directions, with TCP RST flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "PSH Flag Cnt",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets, both directions, with TCP PSH flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "URG Flag Cnt",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets, both directions, with TCP URG flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "ECE Flag Cnt",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(packets, both directions, with TCP ECE flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd PSH Flags",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(forward packets with TCP PSH flag set)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd Act Data Pkts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "count(forward packets where TCP/UDP payload length > 0)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Init Fwd Win Byts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "TCP window field of the FIRST forward packet that carries a TCP header; -1 if the flow is not TCP or no forward TCP packet exists",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Not applicable to UDP flows; represented as -1 (CICFlowMeter's own documented convention for 'not applicable'), never fabricated."
+    },
+    {
+      "feature": "Init Bwd Win Byts",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "TCP window field of the FIRST backward packet that carries a TCP header; -1 if not TCP or no backward TCP packet exists",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Not applicable to UDP flows; represented as -1, never fabricated."
+    },
+    {
+      "feature": "Fwd Header Len",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "sum(IP header length + TCP/UDP header length, for forward packets)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd Header Len",
+      "category": "A",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "sum(IP header length + TCP/UDP header length, for backward packets)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Flow Duration",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "(timestamp of last packet - timestamp of first packet in the flow), microseconds",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd Pkt Len Max",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max(IP total length) over forward packets, 0 if none",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd Pkt Len Min",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min(IP total length) over forward packets, 0 if none",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd Pkt Len Mean",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean(IP total length) over forward packets, 0.0 if none",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd Pkt Len Std",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of IP total length over forward packets, 0.0 if <2 packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd Pkt Len Max",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max(IP total length) over backward packets, 0 if none",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd Pkt Len Min",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min(IP total length) over backward packets, 0 if none",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd Pkt Len Mean",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean(IP total length) over backward packets, 0.0 if none",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd Pkt Len Std",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of IP total length over backward packets, 0.0 if <2 packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Pkt Len Max",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max(IP total length) over all packets in the flow (both directions)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Pkt Len Min",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min(IP total length) over all packets in the flow (both directions)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Pkt Len Mean",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean(IP total length) over all packets in the flow (both directions)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Pkt Len Std",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of IP total length over all packets (both directions)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Pkt Len Var",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population variance of IP total length over all packets (both directions)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Pkt Size Avg",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "sum(IP total length, both directions) / total packet count",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Numerically identical to 'Pkt Len Mean' under this implementation; CICFlowMeter's own source has historically defined these two features near-identically, which this module does not attempt to second-guess."
+    },
+    {
+      "feature": "Down/Up Ratio",
+      "category": "B",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "int(Tot Bwd Pkts / Tot Fwd Pkts) if Tot Fwd Pkts > 0 else 0",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Integer-truncating ratio, matching state_schema.json's int64 dtype for this feature."
+    },
+    {
+      "feature": "Flow Byts/s",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "(TotLen Fwd Pkts + TotLen Bwd Pkts) / (Flow Duration in seconds); inf if Flow Duration == 0",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Zero-duration flows (single-packet or same-microsecond flows) legitimately produce Infinity, matching the EXISTING documented pipeline convention (results/model_preparation_report.json 'infinity_handling') - never silently replaced with 0."
+    },
+    {
+      "feature": "Flow Pkts/s",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "(Tot Fwd Pkts + Tot Bwd Pkts) / (Flow Duration in seconds); inf if Flow Duration == 0",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Same zero-duration Infinity convention as Flow Byts/s."
+    },
+    {
+      "feature": "Fwd Pkts/s",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "Tot Fwd Pkts / (Flow Duration in seconds); inf if Flow Duration == 0",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd Pkts/s",
+      "category": "B",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "Tot Bwd Pkts / (Flow Duration in seconds); inf if Flow Duration == 0",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Flow IAT Mean",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean(inter-arrival time in microseconds) between consecutive packets, both directions merged and time-sorted",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Flow IAT Std",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of the same inter-arrival series",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Flow IAT Max",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max of the same inter-arrival series",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Flow IAT Min",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min of the same inter-arrival series",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd IAT Tot",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "sum(inter-arrival time in microseconds) between consecutive FORWARD-only packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd IAT Mean",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean of the same forward-only inter-arrival series, 0.0 if <2 forward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd IAT Std",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of the same series, 0.0 if <2 forward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd IAT Max",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max of the same series, 0 if <2 forward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Fwd IAT Min",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min of the same series, 0 if <2 forward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd IAT Tot",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "sum(inter-arrival time in microseconds) between consecutive BACKWARD-only packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd IAT Mean",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean of the same backward-only inter-arrival series, 0.0 if <2 backward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd IAT Std",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of the same series, 0.0 if <2 backward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd IAT Max",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max of the same series, 0 if <2 backward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Bwd IAT Min",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min of the same series, 0 if <2 backward packets",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json)."
+    },
+    {
+      "feature": "Active Mean",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean(duration of each active burst, microseconds)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Active Std",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of active-burst durations",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Active Max",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max active-burst duration",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Active Min",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min active-burst duration",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Idle Mean",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "mean(duration of each idle gap >= threshold, microseconds)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Idle Std",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "population std-dev of idle-gap durations",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Idle Max",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "max idle-gap duration",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Idle Min",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "min idle-gap duration",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Uses the explicit, configurable activeIdleThreshold_us parameter (default 5,000,000us / 5s, matching CICFlowMeter's published default 'activeTimeout') to segment the flow's merged packet timestamps into bursts ('active' periods) separated by gaps >= threshold ('idle' periods). A flow with 0 or 1 active periods (no gap ever exceeded the threshold) has no idle statistics at all (0.0/0, not fabricated)."
+    },
+    {
+      "feature": "Fwd Seg Size Avg",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "== Fwd Pkt Len Mean (see limitation)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Implemented as a direct alias of the corresponding Pkt-Len statistic for that direction. CICFlowMeter's own 'segment size' terminology is not consistently distinguished from packet length across its published versions; this module does not invent a different formula to manufacture an artificial distinction."
+    },
+    {
+      "feature": "Fwd Seg Size Min",
+      "category": "C",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "== Fwd Pkt Len Min (see limitation)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Implemented as a direct alias of the corresponding Pkt-Len statistic for that direction. CICFlowMeter's own 'segment size' terminology is not consistently distinguished from packet length across its published versions; this module does not invent a different formula to manufacture an artificial distinction."
+    },
+    {
+      "feature": "Bwd Seg Size Avg",
+      "category": "C",
+      "level": "flow",
+      "dtype": "float64",
+      "formula": "== Bwd Pkt Len Mean (see limitation)",
+      "training_definition_validated": false,
+      "limitation": "Formula follows CICFlowMeter's published/documented definition, but has NOT been empirically cross-checked against a real CICFlowMeter installation (none available in this environment - see tool_availability_report.json). Implemented as a direct alias of the corresponding Pkt-Len statistic for that direction. CICFlowMeter's own 'segment size' terminology is not consistently distinguished from packet length across its published versions; this module does not invent a different formula to manufacture an artificial distinction."
+    },
+    {
+      "feature": "Subflow Fwd Pkts",
+      "category": "D",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "== Tot Fwd Pkts (single-subflow simplification)",
+      "training_definition_validated": false,
+      "limitation": "CICFlowMeter's true subflow-splitting algorithm (bulk-flow/idle-based subdivision of a single flow into multiple 'subflows') is NOT reimplemented here - published descriptions of it are inconsistent across CICFlowMeter versions and no reference implementation is available in this environment to validate against. This module reports the whole flow as a single subflow (Subflow *Pkts/Byts == Tot/TotLen *Pkts), which is a DOCUMENTED SIMPLIFICATION, not a validated reproduction of the original feature. Flows with long idle gaps are the most likely to diverge from true CICFlowMeter output for these 4 fields."
+    },
+    {
+      "feature": "Subflow Fwd Byts",
+      "category": "D",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "== TotLen Fwd Pkts (single-subflow simplification)",
+      "training_definition_validated": false,
+      "limitation": "CICFlowMeter's true subflow-splitting algorithm (bulk-flow/idle-based subdivision of a single flow into multiple 'subflows') is NOT reimplemented here - published descriptions of it are inconsistent across CICFlowMeter versions and no reference implementation is available in this environment to validate against. This module reports the whole flow as a single subflow (Subflow *Pkts/Byts == Tot/TotLen *Pkts), which is a DOCUMENTED SIMPLIFICATION, not a validated reproduction of the original feature. Flows with long idle gaps are the most likely to diverge from true CICFlowMeter output for these 4 fields."
+    },
+    {
+      "feature": "Subflow Bwd Pkts",
+      "category": "D",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "== Tot Bwd Pkts (single-subflow simplification)",
+      "training_definition_validated": false,
+      "limitation": "CICFlowMeter's true subflow-splitting algorithm (bulk-flow/idle-based subdivision of a single flow into multiple 'subflows') is NOT reimplemented here - published descriptions of it are inconsistent across CICFlowMeter versions and no reference implementation is available in this environment to validate against. This module reports the whole flow as a single subflow (Subflow *Pkts/Byts == Tot/TotLen *Pkts), which is a DOCUMENTED SIMPLIFICATION, not a validated reproduction of the original feature. Flows with long idle gaps are the most likely to diverge from true CICFlowMeter output for these 4 fields."
+    },
+    {
+      "feature": "Subflow Bwd Byts",
+      "category": "D",
+      "level": "flow",
+      "dtype": "int64",
+      "formula": "== TotLen Bwd Pkts (single-subflow simplification)",
+      "training_definition_validated": false,
+      "limitation": "CICFlowMeter's true subflow-splitting algorithm (bulk-flow/idle-based subdivision of a single flow into multiple 'subflows') is NOT reimplemented here - published descriptions of it are inconsistent across CICFlowMeter versions and no reference implementation is available in this environment to validate against. This module reports the whole flow as a single subflow (Subflow *Pkts/Byts == Tot/TotLen *Pkts), which is a DOCUMENTED SIMPLIFICATION, not a validated reproduction of the original feature. Flows with long idle gaps are the most likely to diverge from true CICFlowMeter output for these 4 fields."
+    }
+  ]
+}

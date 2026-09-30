@@ -1,0 +1,20 @@
+{
+  "source_file": "C:\\Users\\Eswaran D\\OneDrive\\Documents\\sih_main_project\\tests\\fixtures\\pcap\\synthetic_benign.pcap",
+  "total_frames_in_capture": 37,
+  "packets_parsed": 36,
+  "packets_malformed": 1,
+  "malformed_reasons": [
+    "packet 36: No IPv4 layer present (e.g. ARP or other non-IP frame)."
+  ],
+  "flows_reconstructed": 11,
+  "packets_unassigned_to_a_flow": 0,
+  "unassigned_reasons": [],
+  "flow_timeout_us": 120000000,
+  "flow_timeout_us_default": 120000000,
+  "active_idle_threshold_us": 5000000,
+  "active_idle_threshold_us_default": 5000000,
+  "protocol_breakdown": {
+    "tcp_flows": 2,
+    "udp_flows": 9
+  }
+}

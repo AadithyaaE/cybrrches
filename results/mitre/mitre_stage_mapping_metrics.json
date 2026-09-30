@@ -1,0 +1,307 @@
+{
+  "objective": "Deterministic, rule-based mapping of observed/predicted network evidence and Feature 13 context onto candidate MITRE ATT&CK stages.",
+  "note_no_attck_ground_truth": "The current dataset (Benign/Infilteration binary labels) contains NO legitimate ATT&CK stage ground truth. mitre_stage_confusion_matrix.json was intentionally NOT created, per the Feature 14 specification: 'Only create mitre_stage_confusion_matrix.json IF a legitimate ground-truth ATT&CK stage label actually exists.' ATT&CK classification accuracy/precision/recall/F1 CANNOT be claimed or computed.",
+  "self_test_results": {
+    "empty_evidence_all_scores_zero": true,
+    "empty_evidence_primary_is_unknown": true,
+    "max_evidence_scores_within_0_100": true,
+    "max_evidence_recon_capped": true,
+    "max_evidence_initial_access_capped": true,
+    "max_evidence_lateral_movement_always_zero": true,
+    "max_evidence_lateral_movement_zero_triggered_rules": true,
+    "max_evidence_triggered_rules_are_valid_ids": true,
+    "max_evidence_primary_is_one_of_seven_stages": true,
+    "rule_definition_count": 12,
+    "stage_count": 7,
+    "all_stages_have_at_least_one_rule": true
+  },
+  "sample_counts": {
+    "sequences": 3492,
+    "evidence_points_per_sequence": 5,
+    "total_audit_records": 17460
+  },
+  "primary_stage_distribution": {
+    "Impact": 12828,
+    "Exfiltration": 2356,
+    "Command and Control": 1183,
+    "UNKNOWN / INSUFFICIENT_EVIDENCE": 676,
+    "Discovery": 327,
+    "Reconnaissance": 61,
+    "Initial Access": 29
+  },
+  "rule_coverage": {
+    "discovery_high_port_diversity": 225,
+    "discovery_repeated_short_flows": 434,
+    "discovery_low_bytes_per_flow": 991,
+    "c2_regular_beacon_timing": 2548,
+    "c2_persistent_bidirectional_traffic": 3188,
+    "exfil_high_outbound_volume": 2498,
+    "exfil_high_outbound_inbound_ratio": 5038,
+    "impact_high_rate_and_growth": 9856,
+    "impact_elevated_volume_or_frequency": 16459,
+    "recon_port_scanning_pattern": 274,
+    "initial_access_suspicious_connection_pattern": 55,
+    "lateral_movement_internal_destination_count": 0
+  },
+  "rules_never_triggered": [
+    "lateral_movement_internal_destination_count"
+  ],
+  "evidence_feature_availability": {
+    "dst_port_nunique": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    "flow_duration_mean_us": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "observation_count": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    "avg_bytes_per_flow": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    "flow_iat_coefficient_of_variation": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 99.4,
+        "2": 99.7,
+        "3": 99.8,
+        "5": 99.9
+      }
+    },
+    "tot_fwd_pkts": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "tot_bwd_pkts": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "flow_byts_per_s": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "flow_pkts_per_s": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "outbound_inbound_byte_ratio": {
+      "observed_availability_pct": 95.6,
+      "predicted_availability_pct_by_horizon": {
+        "1": 94.7,
+        "2": 94.8,
+        "3": 96.0,
+        "5": 98.2
+      }
+    },
+    "traffic_growth_pct": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "connection_frequency": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      }
+    },
+    "syn_flag_cnt": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    },
+    "ack_flag_cnt": {
+      "observed_availability_pct": 100.0,
+      "predicted_availability_pct_by_horizon": {
+        "1": 100.0,
+        "2": 100.0,
+        "3": 100.0,
+        "5": 100.0
+      }
+    }
+  },
+  "reproducibility": {
+    "pass1_equals_pass2": true,
+    "audit_record_count": 17460
+  },
+  "leakage_checks": {
+    "no_model_trained": true,
+    "no_scaler_fitted": true,
+    "no_classifier_fitted": true,
+    "feature13_not_tuned": true,
+    "validation_labels_not_used_to_alter_rules": true,
+    "future_ground_truth_not_used_as_inference_input": true,
+    "lstm_unmodified": true,
+    "classifier_unmodified": true,
+    "forecasting_unmodified": true,
+    "feature13_probabilities_unmodified": true,
+    "feature7_13_artifacts_unchanged": true
+  },
+  "example_audit_record": {
+    "window_identifier": "seq15670_observed_t",
+    "primary_stage": "Command and Control",
+    "feature13_attack_probability": null,
+    "stages": {
+      "Discovery": {
+        "technique_id": "T1046",
+        "technique_name": "Network Service Discovery",
+        "evidence_score": 30.0,
+        "evidence_label": "MEDIUM",
+        "triggered_rules": [
+          "discovery_repeated_short_flows"
+        ],
+        "supporting_features": [
+          "Flow Duration",
+          "observation_count"
+        ],
+        "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+        "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+        "is_primary": false
+      },
+      "Command and Control": {
+        "technique_id": "T1071",
+        "technique_name": "Application Layer Protocol (C2)",
+        "evidence_score": 60.0,
+        "evidence_label": "HIGH",
+        "triggered_rules": [
+          "c2_regular_beacon_timing",
+          "c2_persistent_bidirectional_traffic"
+        ],
+        "supporting_features": [
+          "Flow IAT Mean",
+          "Flow IAT Std",
+          "Tot Bwd Pkts",
+          "Tot Fwd Pkts",
+          "observation_count"
+        ],
+        "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+        "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+        "is_primary": true
+      },
+      "Exfiltration": {
+        "technique_id": "T1041",
+        "technique_name": "Exfiltration Over C2 Channel",
+        "evidence_score": 0.0,
+        "evidence_label": "LOW",
+        "triggered_rules": [],
+        "supporting_features": [],
+        "explanation": "Insufficient evidence for this stage.",
+        "limitation": "",
+        "is_primary": false
+      },
+      "Impact": {
+        "technique_id": "T1498",
+        "technique_name": "Network Denial of Service",
+        "evidence_score": 0.0,
+        "evidence_label": "LOW",
+        "triggered_rules": [],
+        "supporting_features": [],
+        "explanation": "Insufficient evidence for this stage.",
+        "limitation": "",
+        "is_primary": false
+      },
+      "Reconnaissance": {
+        "technique_id": "T1595",
+        "technique_name": "Active Scanning (candidate)",
+        "evidence_score": 0.0,
+        "evidence_label": "LOW",
+        "triggered_rules": [],
+        "supporting_features": [],
+        "explanation": "Insufficient evidence for this stage.",
+        "limitation": "",
+        "is_primary": false
+      },
+      "Initial Access": {
+        "technique_id": "T1190",
+        "technique_name": "Exploit Public-Facing Application (candidate)",
+        "evidence_score": 40.0,
+        "evidence_label": "MEDIUM",
+        "triggered_rules": [
+          "initial_access_suspicious_connection_pattern"
+        ],
+        "supporting_features": [
+          "ACK Flag Cnt",
+          "SYN Flag Cnt"
+        ],
+        "explanation": "The observed traffic is consistent with an attempted network-entry pattern (connection attempts without full handshake completion), but flow telemetry alone cannot confirm successful compromise.",
+        "limitation": "CANDIDATE mapping only, score capped at 50/100: no process, authentication, or host telemetry is available in this dataset; successful Initial Access can never be confirmed from flow data alone.",
+        "is_primary": false
+      },
+      "Lateral Movement": {
+        "technique_id": "T1021",
+        "technique_name": "Remote Services (candidate)",
+        "evidence_score": 0.0,
+        "evidence_label": "LOW",
+        "triggered_rules": [],
+        "supporting_features": [],
+        "explanation": "Insufficient evidence for this stage.",
+        "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+        "is_primary": false
+      }
+    },
+    "sequence_id": 15670,
+    "evidence_point": "observed_t",
+    "horizon": 0,
+    "timestamp": "2018-03-01 10:12:32"
+  },
+  "outputs": {
+    "predictions_csv": "results\\mitre\\mitre_stage_predictions.csv",
+    "evidence_csv": "results\\mitre\\mitre_stage_evidence.csv",
+    "rule_definitions_json": "results\\mitre\\mitre_stage_rule_definitions.json",
+    "config_json": "results\\mitre\\mitre_stage_mapping_config.json"
+  }
+}

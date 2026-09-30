@@ -1,0 +1,161 @@
+======================================================================
+EXTERNAL DATASET RE-VERIFICATION (POST MANUAL DOWNLOAD)
+======================================================================
+
+SCOPE: independent, from-scratch re-verification and inspection ONLY.
+No cleaning, no preprocessing, no training, no Feature 16, no
+modification of Features 1-15 or the downloaded CSVs.
+
+Context: Wednesday-14-02-2018 and Wednesday-21-02-2018 were reported as
+manually downloaded after automated attempts failed repeatedly with
+ConnectionResetError(10054). This task independently re-verifies all
+three files from scratch rather than assuming prior results still hold.
+
+----------------------------------------------------------------------
+ANOMALY DETECTED (unrelated to the CyberChess dataset)
+----------------------------------------------------------------------
+An unexpected file, "AadithyaaE_resume_ORIGINAL.pdf", was found sitting
+in data/raw/external_evaluation/ alongside the three CSVs (timestamp
+concurrent with this session). This is NOT part of the CSE-CIC-IDS2018
+dataset and was not created by any script in this project - it appears
+to have been placed there manually, possibly during the manual download
+process. It was NOT deleted or modified; flagged here for your
+awareness only, since it does not belong in this directory.
+
+----------------------------------------------------------------------
+A. FILE VERIFICATION  [VERIFIED]
+----------------------------------------------------------------------
+  data/raw/external_evaluation/Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv
+    size: 209,249,758 bytes (matches expected exactly)
+  data/raw/external_evaluation/Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv
+    size: 358,223,333 bytes (matches expected exactly)
+  data/raw/external_evaluation/Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv
+    size: 328,893,673 bytes (matches expected exactly)
+
+All three files exist at their expected paths with exact expected sizes
+(not merely "close" - byte-for-byte exact).
+
+----------------------------------------------------------------------
+B. SHA256  [VERIFIED, freshly recomputed]
+----------------------------------------------------------------------
+  Wednesday-28-02-2018: f15e2a12304446058a0186c8ad67de2bd15735a9ba5c70c9a1f4c4242ab06771
+    -> MATCHES the previously verified hash exactly.
+  Wednesday-14-02-2018: acff8bc61376ee031d80878ee6099e0b1a87a1bd711d8068298421418c9f8147
+    -> MATCHES the hash recorded during the earlier successful automated
+       download attempt exactly.
+  Wednesday-21-02-2018: a5f4a1c2689e0aa6566c03a58466de9c407c0be0cbd3cc69306544026611be04
+    -> MATCHES the hash recorded during the earlier successful automated
+       download attempt exactly.
+
+CONCLUSION: all three files are byte-for-byte identical to the versions
+already inspected in the previous task. No corruption, truncation, or
+substitution occurred, regardless of whether the "manual download"
+replaced the files or not - the content is confirmed identical either way.
+
+----------------------------------------------------------------------
+C. CSV SCHEMA  [VERIFIED]
+----------------------------------------------------------------------
+All three files match the reference schema
+(data/processed/Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv,
+80 columns) EXACTLY - same column names, same order, including
+Timestamp, Label, Protocol, and Dst Port in their expected positions.
+No differences found. No schema was modified.
+
+----------------------------------------------------------------------
+D. LABEL COMPOSITION  [VERIFIED, full-file chunked read]
+----------------------------------------------------------------------
+  Wednesday-28-02-2018 (613,071 rows excl. embedded headers):
+    Benign: 544,200 (88.76%)   Infilteration: 68,871 (11.24%)
+  Wednesday-14-02-2018 (1,048,575 rows):
+    Benign: 667,626 (63.68%)   FTP-BruteForce: 193,360 (18.44%)
+    SSH-Bruteforce: 187,589 (17.89%)
+  Wednesday-21-02-2018 (1,048,575 rows):
+    DDOS attack-HOIC: 686,012 (65.42%)   Benign: 360,833 (34.42%)
+    DDOS attack-LOIC-UDP: 1,730 (0.16%)
+
+----------------------------------------------------------------------
+E. TIMESTAMP COVERAGE  [VERIFIED]
+----------------------------------------------------------------------
+  Wednesday-28-02-2018: 2018-02-28 01:00:00 -> 12:59:59
+    (31,854 unique; 0 invalid)
+  Wednesday-14-02-2018: 1970-01-05 03:01:17 -> 2018-02-14 12:59:59
+    (32,043 unique; 0 invalid - the 1970 minimum comes from 5 rows with
+    implausible source-data timestamps, see Section F)
+  Wednesday-21-02-2018: 2018-02-21 01:55:46 -> 10:43:21
+    (3,256 unique; 0 invalid - stops notably earlier than the other
+    files' ~12:59:59 pattern, see Section F)
+
+----------------------------------------------------------------------
+F. DATA QUALITY INSPECTION  [VERIFIED / OBSERVED]
+----------------------------------------------------------------------
+  Embedded header rows: Wed-28=33, Wed-14=0, Wed-21=0
+  Exact duplicate rows: Wed-28=6,089 (~1.0%), Wed-14=225,628 (~21.5%,
+    concentrated in FTP-BruteForce/SSH-Bruteforce - consistent with
+    automated brute-force tooling producing identical flow records),
+    Wed-21=17,557 (~1.7%)
+  Literal "NaN" strings in Flow Byts/s or Flow Pkts/s: 0 in all 3 files
+  Infinity in Flow Byts/s: Wed-28=2,128, Wed-14=1,547, Wed-21=0
+  Infinity in Flow Pkts/s: Wed-28=6,169, Wed-14=3,824, Wed-21=0
+  Missing Label: 0 in all 3 files
+  Missing Timestamp: 0 in all 3 files
+  Unexpected Protocol values: NONE - all 3 files use only {0, 6, 17},
+    the same set observed in the current cleaned dev dataset.
+
+  Notable findings carried over from the prior inspection (unchanged,
+  since files are byte-identical):
+    - Wed-14-02-2018 and Wed-21-02-2018 BOTH contain exactly 1,048,575
+      rows (2^20 - 1, Excel's row limit minus a header) - possible
+      upstream truncation during dataset preparation, not a download
+      defect (file byte-sizes are internally consistent with this row
+      count).
+    - Wed-21-02-2018's capture stops at 10:43:21, over 2 hours before
+      the ~12:59:59 pattern seen in the other files - likely an
+      incomplete capture for this reason.
+    - Wed-14-02-2018 has 5 rows (0.0005%) with implausible pre-2018
+      timestamps (Dst Port=0, Protocol=0, Label=Benign in all 5) -
+      negligible in scale, a genuine source-data defect.
+
+  None of these were cleaned or modified - inspection only.
+
+----------------------------------------------------------------------
+G. FEATURE COMPATIBILITY  [VERIFIED structurally, NOT executed]
+----------------------------------------------------------------------
+Reviewed: results/feature_selection_report.json (66 core features),
+results/model_feature_list.json, results/state_schema.json (68 state
+features), data/processed/temporal/temporal_aggregation_policy.json
+(18 SUM + 50 MEAN features). All three files' exact 80-column schema
+match means the existing Feature 2-6 pipeline should apply without any
+change to the 68-feature representation or preprocessing. The feature
+list and preprocessing configuration were NOT modified in this task.
+
+----------------------------------------------------------------------
+H. EXISTING-ARTIFACT INTEGRITY  [VERIFIED]
+----------------------------------------------------------------------
+Re-hashed the same 14 key Feature 1-15 artifacts recorded in
+results/external_dataset_preparation/_pre_task_integrity_hashes.json
+(LSTM checkpoint, Feature 11 classifier, baseline models, train/
+validation/test scaled arrays, fitted preprocessing pipeline, current
+cleaned dev dataset, feature/state/schema JSONs).
+RESULT: 0 mismatches out of 14. No existing artifact was modified.
+
+----------------------------------------------------------------------
+I. FINAL VERDICT (per dataset)
+----------------------------------------------------------------------
+  Wednesday-28-02-2018: READY_FOR_FROZEN_EVALUATION
+  Wednesday-14-02-2018: READY_FOR_FROZEN_EVALUATION
+    (caveat: possible row-limit truncation and high attack-class
+    duplicate rate should be accounted for explicitly, not ignored,
+    when this file is used)
+  Wednesday-21-02-2018: READY_FOR_FROZEN_EVALUATION
+    (caveat: likely incomplete capture after 10:43:21 - results from
+    this file should not be presented as reflecting a complete day)
+
+None of these caveats are structural blockers (schema matches, labels
+present and correctly typed, no missing Label/Timestamp, no unexpected
+Protocol values) - they are data-completeness/characteristics notes
+that must be carried forward into any future cleaning or evaluation
+design, not silently ignored.
+
+======================================================================
+END OF REPORT
+======================================================================

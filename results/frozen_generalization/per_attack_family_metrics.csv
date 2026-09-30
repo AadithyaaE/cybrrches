@@ -1,0 +1,6 @@
+day,attack_family,n_sequences,detected_as_attack_count,detection_recall,note
+Wednesday-28-02-2018,Infilteration,5789,4763,0.8228,"Direct, training-label-compatible detection recall."
+Wednesday-14-02-2018,FTP-BruteForce,5826,3686,0.6327,"Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+Wednesday-14-02-2018,SSH-Bruteforce,5442,3766,0.692,"Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+Wednesday-21-02-2018,DDOS attack-HOIC,1332,1332,1.0,"Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+Wednesday-21-02-2018,DDOS attack-LOIC-UDP,458,1,0.0022,"Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."

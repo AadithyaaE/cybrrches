@@ -1,0 +1,137 @@
+{
+  "inputs": {
+    "features_csv": {
+      "path": "data\\processed\\model_ready\\features.csv",
+      "row_count": 331027
+    },
+    "target_csv": {
+      "path": "data\\processed\\model_ready\\target.csv",
+      "row_count": 331027
+    },
+    "timestamp_csv": {
+      "path": "data\\processed\\model_ready\\timestamp.csv",
+      "row_count": 331027
+    }
+  },
+  "alignment_validation": {
+    "features_row_id_unique": true,
+    "target_row_id_unique": true,
+    "timestamp_row_id_unique": true,
+    "row_id_sets_identical": true,
+    "same_row_count_all_files": true,
+    "features_row_count": 331027,
+    "target_row_count": 331027,
+    "timestamp_row_count": 331027,
+    "merged_row_count": 331027,
+    "no_row_lost_in_join": true,
+    "no_duplicate_row_id_after_join": true
+  },
+  "final_state_row_count": 331027,
+  "state_feature_count": 68,
+  "feature_names": [
+    "ACK Flag Cnt",
+    "Active Max",
+    "Active Mean",
+    "Active Min",
+    "Active Std",
+    "Bwd Header Len",
+    "Bwd IAT Max",
+    "Bwd IAT Mean",
+    "Bwd IAT Min",
+    "Bwd IAT Std",
+    "Bwd IAT Tot",
+    "Bwd Pkt Len Max",
+    "Bwd Pkt Len Mean",
+    "Bwd Pkt Len Min",
+    "Bwd Pkt Len Std",
+    "Bwd Pkts/s",
+    "Bwd Seg Size Avg",
+    "Down/Up Ratio",
+    "ECE Flag Cnt",
+    "Flow Byts/s",
+    "Flow Duration",
+    "Flow IAT Max",
+    "Flow IAT Mean",
+    "Flow IAT Min",
+    "Flow IAT Std",
+    "Flow Pkts/s",
+    "Fwd Act Data Pkts",
+    "Fwd Header Len",
+    "Fwd IAT Max",
+    "Fwd IAT Mean",
+    "Fwd IAT Min",
+    "Fwd IAT Std",
+    "Fwd IAT Tot",
+    "Fwd PSH Flags",
+    "Fwd Pkt Len Max",
+    "Fwd Pkt Len Mean",
+    "Fwd Pkt Len Min",
+    "Fwd Pkt Len Std",
+    "Fwd Pkts/s",
+    "Fwd Seg Size Avg",
+    "Fwd Seg Size Min",
+    "Idle Max",
+    "Idle Mean",
+    "Idle Min",
+    "Idle Std",
+    "Init Bwd Win Byts",
+    "Init Fwd Win Byts",
+    "PSH Flag Cnt",
+    "Pkt Len Max",
+    "Pkt Len Mean",
+    "Pkt Len Min",
+    "Pkt Len Std",
+    "Pkt Len Var",
+    "Pkt Size Avg",
+    "RST Flag Cnt",
+    "SYN Flag Cnt",
+    "Subflow Bwd Byts",
+    "Subflow Bwd Pkts",
+    "Subflow Fwd Byts",
+    "Subflow Fwd Pkts",
+    "Tot Bwd Pkts",
+    "Tot Fwd Pkts",
+    "TotLen Bwd Pkts",
+    "TotLen Fwd Pkts",
+    "URG Flag Cnt",
+    "Protocol_0",
+    "Protocol_6",
+    "Protocol_17"
+  ],
+  "timestamp_range": {
+    "min": "2018-03-01 01:00:00",
+    "max": "2018-03-01 12:59:59"
+  },
+  "unique_timestamp_count": 32068,
+  "duplicate_timestamp_count": 29101,
+  "timestamps_monotonically_non_decreasing": true,
+  "observations_per_timestamp_summary": {
+    "min": 1,
+    "max": 2050,
+    "mean": 10.3227,
+    "median": 5.0
+  },
+  "label_distribution": {
+    "Benign": 237987,
+    "Infilteration": 93040
+  },
+  "missing_values_in_state_features": {
+    "Flow Byts/s": 2917,
+    "Flow Pkts/s": 2917
+  },
+  "infinite_values_in_state_features": {},
+  "duplicate_row_id_count": 0,
+  "confirmations": {
+    "target_excluded_from_feature_vector": true,
+    "timestamp_is_metadata_only": true,
+    "dst_port_absent": true,
+    "row_id_is_metadata_only": true,
+    "no_additional_derived_features_created": true,
+    "feature_count_is_68": true
+  },
+  "outputs": {
+    "states_csv": "data\\processed\\states\\states.csv",
+    "state_metadata_json": "data\\processed\\states\\state_metadata.json",
+    "state_schema_json": "results\\state_schema.json"
+  }
+}

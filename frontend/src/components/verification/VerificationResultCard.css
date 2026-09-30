@@ -1,0 +1,48 @@
+.verification-result-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+}
+
+.verification-result-card--success {
+  background: var(--status-success-dim);
+  border-color: var(--status-success-border);
+}
+
+.verification-result-card--warning {
+  background: var(--status-warning-dim);
+  border-color: var(--status-warning-border);
+}
+
+.verification-result-card--danger {
+  background: var(--status-danger-dim);
+  border-color: var(--status-danger-border);
+}
+
+.verification-result-card--neutral {
+  background: var(--status-neutral-dim);
+  border-color: var(--status-neutral-border);
+}
+
+.verification-result-card__meaning {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.verification-result-card__reason {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.verification-result-card__timestamp {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}

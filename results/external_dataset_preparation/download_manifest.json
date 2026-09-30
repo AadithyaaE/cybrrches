@@ -1,0 +1,70 @@
+{
+  "task": "Download, verify, organize, and inspect (NOT clean/preprocess) three external CSE-CIC-IDS2018 capture days for future frozen-model evaluation.",
+  "source": "s3://cse-cic-ids2018/Processed Traffic Data for ML Algorithms/ (public bucket, --no-sign-request), as identified in results/dataset_generalization_inspection/inspection_report.txt",
+  "target_directory": "data/raw/external_evaluation/",
+  "requested_files": [
+    "Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv",
+    "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+    "Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv"
+  ],
+  "excluded_files_not_downloaded": [
+    "Friday-02-03-2018_TrafficForML_CICFlowMeter.csv",
+    "Thursday-22-02-2018_TrafficForML_CICFlowMeter.csv",
+    "Friday-23-02-2018_TrafficForML_CICFlowMeter.csv",
+    "Thuesday-20-02-2018_TrafficForML_CICFlowMeter.csv"
+  ],
+  "download_attempts": [
+    {
+      "file": "Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv",
+      "attempt": 1,
+      "result": "SUCCESS",
+      "expected_bytes": 209249758,
+      "downloaded_bytes": 209249758,
+      "sha256": "f15e2a12304446058a0186c8ad67de2bd15735a9ba5c70c9a1f4c4242ab06771",
+      "local_path": "data/raw/external_evaluation/Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv"
+    },
+    {
+      "file": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "attempt": 1,
+      "result": "FAILED",
+      "error": "Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",
+      "failed_at_approx_mib": "267.2 of 341.6 MiB"
+    },
+    {
+      "file": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "attempt": 2,
+      "result": "FAILED",
+      "error": "Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",
+      "failed_at_approx_mib": "97.8 of 341.6 MiB (after an internal multipart backoff/retry from ~105 MiB)"
+    },
+    {
+      "file": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv",
+      "attempt": 3,
+      "result": "SUCCESS",
+      "note": "Network throughput improved substantially for this attempt (observed 7-8.6 MiB/s vs ~0.2-0.5 MiB/s on attempts 1-2).",
+      "expected_bytes": 358223333,
+      "downloaded_bytes": 358223333,
+      "sha256": "acff8bc61376ee031d80878ee6099e0b1a87a1bd711d8068298421418c9f8147",
+      "local_path": "data/raw/external_evaluation/Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv"
+    },
+    {
+      "file": "Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv",
+      "attempt": 1,
+      "result": "FAILED",
+      "error": "Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)",
+      "failed_at_approx_mib": "81.8 of 313.7 MiB"
+    },
+    {
+      "file": "Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv",
+      "attempt": 2,
+      "result": "SUCCESS",
+      "expected_bytes": 328893673,
+      "downloaded_bytes": 328893673,
+      "sha256": "a5f4a1c2689e0aa6566c03a58466de9c407c0be0cbd3cc69306544026611be04",
+      "local_path": "data/raw/external_evaluation/Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv"
+    }
+  ],
+  "final_outcome": "All 3 requested files downloaded and byte-size-verified successfully after retries. Every failed attempt left no partial/corrupt file on disk (aws s3 cp cleaned up automatically) and was retried with the IDENTICAL source/destination - no dataset was substituted, no workaround was improvised.",
+  "network_observation": "This session experienced repeated ConnectionResetError(10054) failures specifically on the two largest transfers (329-342 MB), while the smallest (209 MB) succeeded on the first attempt. Throughput was highly variable throughout (as low as ~17-30 KB/s true average in some windows, as high as 8.6 MiB/s on the final successful Wednesday-14-02-2018 attempt). This appears to be a transient network/connection characteristic of this session's environment, not a data-source or dataset problem.",
+  "etag_note": "S3 ETags were not recorded/compared here because for this bucket's object sizes it cannot be assumed the ETag is a plain MD5 (S3 multipart-uploaded objects produce a non-MD5 composite ETag). Byte-size match plus a locally-computed SHA256 (not comparable to any published reference SHA256 for this dataset, since none was supplied) was used as the integrity check instead."
+}

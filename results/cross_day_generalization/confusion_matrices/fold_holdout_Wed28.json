@@ -1,0 +1,26 @@
+{
+  "logistic_regression_binary": {
+    "tn": 4700,
+    "fp": 11517,
+    "fn": 942,
+    "tp": 4847
+  },
+  "random_forest_binary": {
+    "tn": 7230,
+    "fp": 8987,
+    "fn": 1642,
+    "tp": 4147
+  },
+  "next_state_classifier_oracle_binary": {
+    "tn": 9891,
+    "fp": 6326,
+    "fn": 2713,
+    "tp": 3076
+  },
+  "next_state_classifier_full_pipeline_binary": {
+    "tn": 8966,
+    "fp": 7251,
+    "fn": 2413,
+    "tp": 3376
+  }
+}

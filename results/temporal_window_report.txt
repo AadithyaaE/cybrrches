@@ -1,0 +1,56 @@
+======================================================================
+TEMPORAL WINDOW AND SEQUENCE CONSTRUCTION REPORT
+======================================================================
+States input: data\processed\states\states.csv
+Schema input: results\state_schema.json
+Window size: 1 second(s)
+Sequence length: 10 input windows, stride 1
+
+----------------------------------------------------------------------
+VALIDATION
+----------------------------------------------------------------------
+  input_state_row_count: 331027
+  input_unique_timestamp_count: 32068
+  num_temporal_windows: 32068
+  window_duration_seconds: 1
+  windows_sorted_ascending: True
+  feature_count_is_68: True
+  feature_order_matches_state_schema: True
+  num_temporal_gaps: 1365
+  largest_temporal_gap: 0 days 02:31:00
+  num_continuous_segments: 1366
+  num_valid_sequences: 22034
+  X_sequences_shape: [22034, 10, 68]
+  next_window_features_shape: [22034, 68]
+  target_or_label_inside_X_sequences: False
+  label_distribution_window_level: {'Benign': 23592, 'Infilteration': 8476}
+  num_benign_windows: 23592
+  num_infiltration_windows: 8476
+  observation_count_per_window: {'min': 1, 'max': 2050, 'mean': 10.3227, 'median': 5.0}
+  missing_values_in_aggregated_features: {'Flow Byts/s': 21, 'Flow Pkts/s': 21}
+  infinite_values_in_aggregated_features: {}
+  no_data_shuffling: True
+  no_preprocessing_fitted: True
+  source_files_modified: False
+  x_sequences_shape_check_10: True
+  x_sequences_shape_check_68: True
+  next_window_features_shape_check_68: True
+
+----------------------------------------------------------------------
+AGGREGATION POLICY SUMMARY
+----------------------------------------------------------------------
+  SUM features: 18
+  MEAN features: 50
+  Features needing documented judgment calls: ['Bwd Header Len', 'Bwd IAT Tot', 'Down/Up Ratio', 'Fwd Header Len', 'Fwd IAT Tot', 'Fwd Seg Size Min', 'Init Bwd Win Byts', 'Init Fwd Win Byts']
+
+----------------------------------------------------------------------
+OUTPUTS
+----------------------------------------------------------------------
+  temporal_windows_csv: data\processed\temporal\temporal_windows.csv
+  temporal_window_metadata_json: data\processed\temporal\temporal_window_metadata.json
+  temporal_aggregation_policy_json: data\processed\temporal\temporal_aggregation_policy.json
+  temporal_feature_order_json: results\temporal_feature_order.json
+  x_sequences_npy: data\processed\temporal\sequences\X_sequences.npy
+  next_window_features_npy: data\processed\temporal\sequences\next_window_features.npy
+  sequence_metadata_csv: data\processed\temporal\sequences\sequence_metadata.csv
+  sequence_metadata_json: data\processed\temporal\sequences\sequence_metadata.json

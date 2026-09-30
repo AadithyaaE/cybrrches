@@ -1,0 +1,70 @@
+======================================================================
+FEATURE L3.2 - SANDBOX/LAB TRAFFIC CAPTURE - INSPECTION REPORT
+======================================================================
+
+Inspection platform: Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.42
+All interfaces found: ['eth0', 'lo']
+
+Target interface 'ens3':
+  exists: False
+  admin/link state: None / None
+  MAC: None
+  IPv4: ()
+  IPv6: ()
+  MTU: None
+  rx/tx packets: None/None  rx/tx bytes: None/None
+  note: /sys/class/net/ens3 does not exist on this Linux host - interface not present.
+
+Capture mechanism: tcpdump (found=True, path=/usr/bin/tcpdump)
+  running_as_root: False
+  capabilities: (no capabilities set)
+  capture_likely_permitted: False
+  reason: Not running as root and tcpdump has no CAP_NET_RAW capability set - capture would require sudo (interactive password) or a capability change, neither of which this read-only check performs or recommends performing automatically.
+
+Capture attempt accepted: False
+Errors: ["Interface 'ens3' does not exist: /sys/class/net/ens3 does not exist on this Linux host - interface not present.", 'Capture permission unavailable: Not running as root and tcpdump has no CAP_NET_RAW capability set - capture would require sudo (interactive password) or a capability change, neither of which this read-only check performs or recommends performing automatically.']
+Capture performed: False
+Passes L3.1 RAW_PCAP_FILE gate: None (N/A - no PCAP was produced)
+
+NOTE: everything above this line reflects environments genuinely reachable from
+THIS session's own tools (native Windows + WSL) at the time this report was
+generated. This session still has no direct tool access to the actual Sandbox
+node - see the section below for a separately-sourced update.
+
+======================================================================
+ADDENDUM - MANUAL ENVIRONMENT VALIDATION RECORD (real Sandbox node)
+======================================================================
+Full structured record: results/sandbox_capture/manual_lab_validation_ens3.json
+
+This section records findings the USER manually verified on the actual
+Sandbox Linux node, OUTSIDE this session's tool access. It is transcribed
+from the user's report, not independently re-executed or re-verified by
+Claude Code's own tools. It is a MANUAL ENVIRONMENT VALIDATION RECORD, NOT
+a CyberChess dataset capture.
+
+  Sandbox node hostname: ubuntu
+  Interface: ens3 - administratively UP, link RUNNING/CONNECTED
+  IPv4 address: none (ens3 still has no IPv4 - consistent with prior known info)
+  Capture mechanism confirmed working: tcpdump, via `sudo tcpdump -i ens3 -c 10 -nn`
+  Result: 1 packet captured, 1 received by filter, 0 dropped by kernel
+  Observed packet: DHCP, 0.0.0.0 -> 255.255.255.255 (a DHCP client broadcast)
+
+WHAT THIS DOES establish: the real Sandbox node exists, ens3 is genuinely
+up, and a bounded tcpdump capture with sudo permission works end-to-end on
+that node - real capture mechanics are confirmed viable there.
+
+WHAT THIS DOES NOT establish (do not read further than this):
+  - This is NOT a CyberChess dataset capture. A single DHCP broadcast from
+    0.0.0.0 has no valid bidirectional flow and was not, and cannot
+    meaningfully be, run through CyberChess's 65-feature extractor.
+  - Lab traffic has NOT been shown to pass through the complete CyberChess
+    feature pipeline (PCAP -> flow reconstruction -> 65 features -> 68D
+    state -> frozen preprocessing). No such run was attempted.
+  - This does NOT change any L2.5-L2.9 PCAP feature-validation finding.
+  - This session's own capture_adapter.py code was NOT exercised against
+    this real node (no tool access to it) - only against environments this
+    session can actually reach, per the un-addended report above.
+  - No PCAP file from this manual capture was provided to or inspected by
+    this session.
+
+Passes L3.1 RAW_PCAP_FILE gate: NOT EVALUATED (no PCAP file was provided to check against the gate)

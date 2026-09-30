@@ -1,0 +1,43 @@
+{
+  "day_label": "Wednesday-21-02-2018",
+  "input_file": "data\\raw\\external_evaluation\\Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv",
+  "cleaning_report_summary": {
+    "raw_row_count": 1048575,
+    "embedded_header_rows_removed": 0,
+    "exact_duplicate_rows_removed": 17557,
+    "final_row_count": 1031018,
+    "label_distribution_raw_rows": {
+      "DDOS attack-HOIC": 668461,
+      "Benign": 360827,
+      "DDOS attack-LOIC-UDP": 1730
+    },
+    "timestamp_min": "2018-02-21 01:55:46",
+    "timestamp_max": "2018-02-21 10:43:21"
+  },
+  "unexpected_protocol_values": [],
+  "infinity_counts_pre_conversion": {},
+  "window_summary": {
+    "num_windows": 3256,
+    "num_continuous_segments": 629,
+    "num_gaps": 628,
+    "label_distribution_windows": {
+      "DDOS attack-HOIC": 1342,
+      "DDOS attack-LOIC-UDP": 985,
+      "Benign": 929
+    },
+    "observation_count_stats": {
+      "min": 1,
+      "max": 811,
+      "mean": 316.652
+    }
+  },
+  "sequence_summary": {
+    "num_valid_sequences": 1870,
+    "sequence_length": 10,
+    "feature_count": 68
+  },
+  "preprocessing": {
+    "pipeline_path": "data\\processed\\splits\\preprocessing_pipeline_train_fitted.joblib",
+    "fit_source": "Feature 7 TRAIN partition of the ORIGINAL Thursday-01-03-2018 dataset - NOT refit on this external data."
+  }
+}

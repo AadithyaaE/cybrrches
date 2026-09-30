@@ -1,0 +1,88 @@
+.top-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.top-features__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.top-features__row {
+  display: grid;
+  grid-template-columns: 24px 140px 1fr 72px 100px;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.top-features__rank {
+  font-size: var(--fs-xs);
+  color: var(--text-disabled);
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+.top-features__label {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-features__track {
+  height: 8px;
+  background: var(--bg-input);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.top-features__fill {
+  height: 100%;
+  background: var(--accent-cyan);
+  border-radius: 4px;
+}
+
+.top-features__value {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.top-features__sign {
+  font-size: 10px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.top-features__sign--attack {
+  color: var(--status-danger);
+}
+
+.top-features__sign--benign {
+  color: var(--status-success);
+}
+
+.top-features__caption {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}
+
+@media (max-width: 720px) {
+  .top-features__row {
+    grid-template-columns: 20px 96px 1fr 60px;
+  }
+
+  .top-features__sign {
+    display: none;
+  }
+}

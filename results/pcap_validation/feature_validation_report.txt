@@ -1,0 +1,273 @@
+======================================================================
+FEATURE L2.5 - PCAP FEATURE DEFINITION VALIDATION REPORT
+======================================================================
+
+Total features audited: 65
+VALIDATED: 6
+PARTIALLY_VALIDATED: 21
+UNVALIDATED: 37
+NOT_REPRODUCIBLE: 1
+
+----------------------------------------------------------------------
+PER-FEATURE DETAIL
+----------------------------------------------------------------------
+
+[NOT_REPRODUCIBLE / class D] Fwd Seg Size Min
+  formula: == Fwd Pkt Len Min (see limitation)
+  reason: MAJOR FINDING: only matches Fwd Pkt Len Min in 7149/331027 rows (2.16%, max_abs_diff=1440.0). Real Fwd Seg Size Min's value range (0-48, per results/feature_inventory.csv) is far tighter than Fwd Pkt Len Min's (0-1460), strongly suggesting CICFlowMeter's 'segment size' here is NOT packet length (e.g. may be TCP-payload-only or otherwise bounded by MSS/options size). This implementation's alias-based formula is empirically wrong for ~98% of real rows and no alternative formula derivable from this repo's artifacts is known to be correct - the most clearly incorrect/unreproducible formula found by this audit. NOT fixed here per the audit-only scope; needs a genuinely different formula, not a tuning adjustment.
+
+[PARTIALLY_VALIDATED / class B] ACK Flag Cnt
+  formula: count(packets, both directions, with TCP ACK flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[PARTIALLY_VALIDATED / class B] ECE Flag Cnt
+  formula: count(packets, both directions, with TCP ECE flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[PARTIALLY_VALIDATED / class B] Flow Duration
+  formula: (timestamp of last packet - timestamp of first packet in the flow), microseconds
+  reason: Real training data's max Flow Duration is 119999992us, just below 120,000,000us (120s) - consistent with (and the only available evidence for) this implementation's flow_timeout_us=120,000,000 default. Does not validate the per-flow start/end timestamp computation itself.
+
+[PARTIALLY_VALIDATED / class B] Fwd PSH Flags
+  formula: count(forward packets with TCP PSH flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[PARTIALLY_VALIDATED / class B] Fwd Pkt Len Max
+  formula: max(IP total length) over forward packets, 0 if none
+  reason: Standard statistic over forward packet lengths; dtype matches. Fwd Pkt Len Mean (same underlying packet-length series) is separately VALIDATED, which corroborates the underlying per-packet length values used here, though Max/Min/Std themselves are not independently cross-checked.
+
+[PARTIALLY_VALIDATED / class B] Fwd Pkt Len Min
+  formula: min(IP total length) over forward packets, 0 if none
+  reason: Standard statistic over forward packet lengths; dtype matches. Fwd Pkt Len Mean (same underlying packet-length series) is separately VALIDATED, which corroborates the underlying per-packet length values used here, though Max/Min/Std themselves are not independently cross-checked.
+
+[PARTIALLY_VALIDATED / class B] Fwd Pkt Len Std
+  formula: population std-dev of IP total length over forward packets, 0.0 if <2 packets
+  reason: Standard statistic over forward packet lengths; dtype matches. Fwd Pkt Len Mean (same underlying packet-length series) is separately VALIDATED, which corroborates the underlying per-packet length values used here, though Max/Min/Std themselves are not independently cross-checked.
+
+[PARTIALLY_VALIDATED / class A] Init Bwd Win Byts
+  formula: TCP window field of the FIRST backward packet that carries a TCP header; -1 if not TCP or no backward TCP packet exists
+  reason: The '-1 for not-applicable' convention this implementation uses is EMPIRICALLY CONFIRMED present in real CICFlowMeter output: 159413 rows have exactly -1 in this column (min observed = -1.0). The core 'first TCP packet's window field' formula for TCP flows themselves is not independently confirmed (no raw packets in the training CSV).
+
+[PARTIALLY_VALIDATED / class A] Init Fwd Win Byts
+  formula: TCP window field of the FIRST forward packet that carries a TCP header; -1 if the flow is not TCP or no forward TCP packet exists
+  reason: The '-1 for not-applicable' convention this implementation uses is EMPIRICALLY CONFIRMED present in real CICFlowMeter output: 118165 rows have exactly -1 in this column (min observed = -1.0). The core 'first TCP packet's window field' formula for TCP flows themselves is not independently confirmed (no raw packets in the training CSV).
+
+[PARTIALLY_VALIDATED / class B] PSH Flag Cnt
+  formula: count(packets, both directions, with TCP PSH flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[PARTIALLY_VALIDATED / class B] RST Flag Cnt
+  formula: count(packets, both directions, with TCP RST flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[PARTIALLY_VALIDATED / class B] SYN Flag Cnt
+  formula: count(packets, both directions, with TCP SYN flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[PARTIALLY_VALIDATED / class B] Subflow Bwd Byts
+  formula: == TotLen Bwd Pkts (single-subflow simplification)
+  reason: Single-subflow simplification (this feature == TotLen Bwd Pkts) EMPIRICALLY MATCHES real CICFlowMeter output in 331009/331027 rows (99.9946%). The 18 mismatches occur specifically on long-duration, high-packet-count flows, exactly matching feature_mapping.py's documented caveat that long idle gaps are where this simplification is most likely to diverge. This is strong evidence the simplification is safe for typical flows, but does NOT prove CICFlowMeter's true subflow-splitting algorithm was reimplemented - only that its output coincides with the simplification for effectively all of this dataset's real flows. The caveat in feature_mapping.py is NOT removed.
+
+[PARTIALLY_VALIDATED / class B] Subflow Bwd Pkts
+  formula: == Tot Bwd Pkts (single-subflow simplification)
+  reason: Single-subflow simplification (this feature == Tot Bwd Pkts) EMPIRICALLY MATCHES real CICFlowMeter output in 331027/331027 rows (100.0000%). This is strong evidence the simplification is safe for typical flows, but does NOT prove CICFlowMeter's true subflow-splitting algorithm was reimplemented - only that its output coincides with the simplification for effectively all of this dataset's real flows. The caveat in feature_mapping.py is NOT removed.
+
+[PARTIALLY_VALIDATED / class B] Subflow Fwd Byts
+  formula: == TotLen Fwd Pkts (single-subflow simplification)
+  reason: Single-subflow simplification (this feature == TotLen Fwd Pkts) EMPIRICALLY MATCHES real CICFlowMeter output in 331027/331027 rows (100.0000%). This is strong evidence the simplification is safe for typical flows, but does NOT prove CICFlowMeter's true subflow-splitting algorithm was reimplemented - only that its output coincides with the simplification for effectively all of this dataset's real flows. The caveat in feature_mapping.py is NOT removed.
+
+[PARTIALLY_VALIDATED / class B] Subflow Fwd Pkts
+  formula: == Tot Fwd Pkts (single-subflow simplification)
+  reason: Single-subflow simplification (this feature == Tot Fwd Pkts) EMPIRICALLY MATCHES real CICFlowMeter output in 331027/331027 rows (100.0000%). This is strong evidence the simplification is safe for typical flows, but does NOT prove CICFlowMeter's true subflow-splitting algorithm was reimplemented - only that its output coincides with the simplification for effectively all of this dataset's real flows. The caveat in feature_mapping.py is NOT removed.
+
+[PARTIALLY_VALIDATED / class B] Tot Bwd Pkts
+  formula: count(packets where direction == backward)
+  reason: Direct per-packet counting/summation, standard and unambiguous; dtype matches. Also indirectly corroborated: this exact column is the RHS of the Down/Up Ratio check (100% match, see down_up_ratio_eq_int_bwd_over_fwd) and the Subflow simplification checks (>99.99% match), both of which succeeded against real CICFlowMeter output.
+
+[PARTIALLY_VALIDATED / class B] Tot Fwd Pkts
+  formula: count(packets where direction == forward)
+  reason: Direct per-packet counting/summation, standard and unambiguous; dtype matches. Also indirectly corroborated: this exact column is the RHS of the Down/Up Ratio check (100% match, see down_up_ratio_eq_int_bwd_over_fwd) and the Subflow simplification checks (>99.99% match), both of which succeeded against real CICFlowMeter output.
+
+[PARTIALLY_VALIDATED / class B] TotLen Bwd Pkts
+  formula: sum(IP total length for backward packets)
+  reason: Direct per-packet counting/summation, standard and unambiguous; dtype matches. Also indirectly corroborated: this exact column is the RHS of the Down/Up Ratio check (100% match, see down_up_ratio_eq_int_bwd_over_fwd) and the Subflow simplification checks (>99.99% match), both of which succeeded against real CICFlowMeter output.
+
+[PARTIALLY_VALIDATED / class B] TotLen Fwd Pkts
+  formula: sum(IP total length for forward packets)
+  reason: Direct per-packet counting/summation, standard and unambiguous; dtype matches. Also indirectly corroborated: this exact column is the RHS of the Down/Up Ratio check (100% match, see down_up_ratio_eq_int_bwd_over_fwd) and the Subflow simplification checks (>99.99% match), both of which succeeded against real CICFlowMeter output.
+
+[PARTIALLY_VALIDATED / class B] URG Flag Cnt
+  formula: count(packets, both directions, with TCP URG flag set)
+  reason: TCP flag semantics are an unambiguous IETF standard (RFC 793); dtype matches results/feature_inventory.csv. No reference tool exists to confirm CICFlowMeter's exact per-packet counting rule (e.g. retransmission handling), so this is not fully VALIDATED.
+
+[UNVALIDATED / class B] Active Max
+  formula: max active-burst duration
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class B] Active Mean
+  formula: mean(duration of each active burst, microseconds)
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class B] Active Min
+  formula: min active-burst duration
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class B] Active Std
+  formula: population std-dev of active-burst durations
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class D] Bwd Header Len
+  formula: sum(IP header length + TCP/UDP header length, for backward packets)
+  reason: Which header components CICFlowMeter sums (IP header only vs. IP+TCP/UDP header vs. TCP options) is a known ambiguity across CICFlowMeter versions/forks; this repo documents no formula and the training CSV alone cannot disambiguate a header-length sum from other columns.
+
+[UNVALIDATED / class B] Bwd IAT Max
+  formula: max of the same series, 0 if <2 backward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Bwd IAT Mean
+  formula: mean of the same backward-only inter-arrival series, 0.0 if <2 backward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Bwd IAT Min
+  formula: min of the same series, 0 if <2 backward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Bwd IAT Std
+  formula: population std-dev of the same series, 0.0 if <2 backward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Bwd IAT Tot
+  formula: sum(inter-arrival time in microseconds) between consecutive BACKWARD-only packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Bwd Pkt Len Max
+  formula: max(IP total length) over backward packets, 0 if none
+  reason: Standard statistic over backward packet lengths; dtype matches, but Bwd Pkt Len Mean (same underlying series) was found UNVALIDATED (~15% mismatch vs. TotLen Bwd/Tot Bwd) - the same uncertainty about which packets CICFlowMeter includes applies here.
+
+[UNVALIDATED / class C] Bwd Pkt Len Mean
+  formula: mean(IP total length) over backward packets, 0.0 if none
+  reason: Bwd Pkt Len Mean == TotLen Bwd Pkts / Tot Bwd Pkts holds in only 281091/331027 rows (84.91%, max_abs_diff=4.0746). This implementation computes Bwd Pkt Len Mean as a direct mean of backward packet lengths, which is mathematically forced to equal TotLen Bwd/Tot Bwd - yet real CICFlowMeter output disagrees with that identity in ~15% of rows, indicating CICFlowMeter's real Bwd Pkt Len Mean excludes or weights some packets differently than TotLen Bwd Pkts/Tot Bwd Pkts do. Concrete, unresolved discrepancy - NOT fixed in this audit per the audit-only scope.
+
+[UNVALIDATED / class B] Bwd Pkt Len Min
+  formula: min(IP total length) over backward packets, 0 if none
+  reason: Standard statistic over backward packet lengths; dtype matches, but Bwd Pkt Len Mean (same underlying series) was found UNVALIDATED (~15% mismatch vs. TotLen Bwd/Tot Bwd) - the same uncertainty about which packets CICFlowMeter includes applies here.
+
+[UNVALIDATED / class B] Bwd Pkt Len Std
+  formula: population std-dev of IP total length over backward packets, 0.0 if <2 packets
+  reason: Standard statistic over backward packet lengths; dtype matches, but Bwd Pkt Len Mean (same underlying series) was found UNVALIDATED (~15% mismatch vs. TotLen Bwd/Tot Bwd) - the same uncertainty about which packets CICFlowMeter includes applies here.
+
+[UNVALIDATED / class C] Bwd Pkts/s
+  formula: Tot Bwd Pkts / (Flow Duration in seconds); inf if Flow Duration == 0
+  reason: MAJOR FINDING: Bwd Pkts/s is NEVER Infinity anywhere in the real 331,027-row training dataset (0 Infinity values total), even though 2917 rows have Flow Duration==0 (and in the numerator-nonzero cases, a naive count/duration rule would demand Infinity). Real CICFlowMeter output instead uses 0.0 for this feature whenever duration==0. This implementation's _rate() helper returns math.inf unconditionally when duration==0, which is a systematic, 100%-consistent mismatch with real behavior for this feature - NOT fixed in this audit per the audit-only scope.
+
+[UNVALIDATED / class C] Bwd Seg Size Avg
+  formula: == Bwd Pkt Len Mean (see limitation)
+  reason: Exactly equals Bwd Pkt Len Mean in 331027/331027 real rows (100.0000%) - the ALIAS relationship itself is confirmed. However Bwd Pkt Len Mean was found UNVALIDATED (~15% mismatch against its own simple-mean formula), so this feature inherits that same underlying uncertainty about what quantity is actually being measured.
+
+[UNVALIDATED / class C] Flow Byts/s
+  formula: (TotLen Fwd Pkts + TotLen Bwd Pkts) / (Flow Duration in seconds); inf if Flow Duration == 0
+  reason: Real data: of 1834 rows with zero duration AND zero total bytes, only 0 are Infinity - the rest are NaN (0/0). This implementation's _rate() helper unconditionally returns math.inf whenever duration==0, regardless of the numerator, so it would incorrectly return Infinity instead of NaN for these zero-byte/zero-duration flows. For the 1083 zero-duration rows WITH nonzero bytes, Infinity is correct (0 Infinity values occur at nonzero duration, i.e. 0 - consistent). Concrete, unresolved discrepancy in the 0/0 edge case - NOT fixed in this audit.
+
+[UNVALIDATED / class B] Flow IAT Max
+  formula: max of the same inter-arrival series
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Flow IAT Mean
+  formula: mean(inter-arrival time in microseconds) between consecutive packets, both directions merged and time-sorted
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Flow IAT Min
+  formula: min of the same inter-arrival series
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Flow IAT Std
+  formula: population std-dev of the same inter-arrival series
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Fwd Act Data Pkts
+  formula: count(forward packets where TCP/UDP payload length > 0)
+  reason: Definition of 'has data' (payload_len > 0) is an assumption; CICFlowMeter's own threshold for what counts as a 'data packet' (e.g. whether a TCP payload of exactly the MSS boundary or options-only packets count) is not documented in this repo and cannot be cross-checked from the training CSV alone.
+
+[UNVALIDATED / class D] Fwd Header Len
+  formula: sum(IP header length + TCP/UDP header length, for forward packets)
+  reason: Which header components CICFlowMeter sums (IP header only vs. IP+TCP/UDP header vs. TCP options) is a known ambiguity across CICFlowMeter versions/forks; this repo documents no formula and the training CSV alone cannot disambiguate a header-length sum from other columns.
+
+[UNVALIDATED / class B] Fwd IAT Max
+  formula: max of the same series, 0 if <2 forward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Fwd IAT Mean
+  formula: mean of the same forward-only inter-arrival series, 0.0 if <2 forward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Fwd IAT Min
+  formula: min of the same series, 0 if <2 forward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Fwd IAT Std
+  formula: population std-dev of the same series, 0.0 if <2 forward packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class B] Fwd IAT Tot
+  formula: sum(inter-arrival time in microseconds) between consecutive FORWARD-only packets
+  reason: IAT is a well-defined algorithm GIVEN packet timestamps (inter-arrival gaps between consecutive packets), but cannot be cross-checked from the training CSV alone (no other column is a deterministic function of it) and no reference tool exists to validate against real packet-level timing.
+
+[UNVALIDATED / class C] Fwd Pkts/s
+  formula: Tot Fwd Pkts / (Flow Duration in seconds); inf if Flow Duration == 0
+  reason: MAJOR FINDING: Fwd Pkts/s is NEVER Infinity anywhere in the real 331,027-row training dataset (0 Infinity values total), even though 2917 rows have Flow Duration==0 (and in the numerator-nonzero cases, a naive count/duration rule would demand Infinity). Real CICFlowMeter output instead uses 0.0 for this feature whenever duration==0. This implementation's _rate() helper returns math.inf unconditionally when duration==0, which is a systematic, 100%-consistent mismatch with real behavior for this feature - NOT fixed in this audit per the audit-only scope.
+
+[UNVALIDATED / class B] Idle Max
+  formula: max idle-gap duration
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class B] Idle Mean
+  formula: mean(duration of each idle gap >= threshold, microseconds)
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class B] Idle Min
+  formula: min idle-gap duration
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class B] Idle Std
+  formula: population std-dev of idle-gap durations
+  reason: Well-defined algorithm GIVEN a threshold, but the threshold itself (this implementation uses 5,000,000us / 5s) is not documented anywhere in this repository and cannot be empirically confirmed from the training CSV. Weak bound-consistency evidence only: Active Max's real max (114000000us) and Idle Max's real max (120000000us) are both <= Flow Duration's real max (119999992us), which is consistent with (but does not prove) the active/idle segmentation algorithm and its threshold.
+
+[UNVALIDATED / class C] Pkt Len Mean
+  formula: mean(IP total length) over all packets in the flow (both directions)
+  reason: A simple weighted-mean formula ((TotLen Fwd+TotLen Bwd)/(Tot Fwd+Tot Bwd)) matches real Pkt Len Mean in only 31.8% of rows (see feature_validation_report.txt for the exact check). This, combined with the Bwd Pkt Len Mean discrepancy above, indicates CICFlowMeter's 'TotLen'-family and 'Pkt Len'-family columns may use materially different per-packet length definitions (e.g. payload-only vs. full IP packet) that this repository does not document and the training CSV alone cannot fully disambiguate.
+
+[UNVALIDATED / class B] Pkt Len Std
+  formula: population std-dev of IP total length over all packets (both directions)
+  reason: Depends on the same underlying per-packet length series as Pkt Len Mean, which was found UNVALIDATED (only 31.8% agreement with a simple weighted-mean formula) - inherits that uncertainty.
+
+[UNVALIDATED / class B] Pkt Len Var
+  formula: population variance of IP total length over all packets (both directions)
+  reason: Depends on the same underlying per-packet length series as Pkt Len Mean, which was found UNVALIDATED (only 31.8% agreement with a simple weighted-mean formula) - inherits that uncertainty.
+
+[UNVALIDATED / class C] Pkt Size Avg
+  formula: sum(IP total length, both directions) / total packet count
+  reason: IMPORTANT CORRECTION to Feature L2's prior assumption: feature_mapping.py's limitation text stated Pkt Size Avg is 'numerically identical to Pkt Len Mean'. Empirically checked against real training data: 101268/331027 rows match (30.59%, max_abs_diff=394.0) - they are NOT identical in ~69% of real rows. This implementation's current formula (alias of Pkt Len Mean) is therefore not empirically supported and should not be treated as validated.
+
+[VALIDATED / class A] Down/Up Ratio
+  formula: int(Tot Bwd Pkts / Tot Fwd Pkts) if Tot Fwd Pkts > 0 else 0
+  reason: int(Tot Bwd Pkts / Tot Fwd Pkts) (0 if Tot Fwd Pkts==0) matches the real Down/Up Ratio column in 331027/331027 rows (100.0000%) - exact agreement, zero exceptions. This IS the formula this implementation uses.
+
+[VALIDATED / class A] Flow Pkts/s
+  formula: (Tot Fwd Pkts + Tot Bwd Pkts) / (Flow Duration in seconds); inf if Flow Duration == 0
+  reason: Infinity occurs in exactly 2917 rows, and ALL 2917 exactly match Flow Duration==0 (2917/2917, 100% match), with 0 Infinity values at nonzero duration. Since total packet count is always >=1 for any real flow, the 0/0 case never occurs for this feature, so this implementation's 'inf iff duration==0' rule is fully consistent with real data.
+
+[VALIDATED / class A] Fwd Pkt Len Mean
+  formula: mean(IP total length) over forward packets, 0.0 if none
+  reason: Fwd Pkt Len Mean == TotLen Fwd Pkts / Tot Fwd Pkts holds in 331027/331027 real training rows (100.0000%, max_abs_diff=4.44e-07). This IS the formula this implementation uses (_mean of forward packet lengths).
+
+[VALIDATED / class A] Fwd Seg Size Avg
+  formula: == Fwd Pkt Len Mean (see limitation)
+  reason: Exactly equals Fwd Pkt Len Mean in 331027/331027 real rows (100.0000%). Fwd Pkt Len Mean was itself separately VALIDATED, so this alias is doubly corroborated.
+
+[VALIDATED / class A] Pkt Len Max
+  formula: max(IP total length) over all packets in the flow (both directions)
+  reason: Pkt Len Max == max(Fwd Pkt Len Max, Bwd Pkt Len Max) holds in 331027/331027 rows (100.0000%). This implementation computes Pkt Len Max directly as max() over the full packet list (both directions merged), which is consistent with this confirmed combination rule.
+
+[VALIDATED / class A] Pkt Len Min
+  formula: min(IP total length) over all packets in the flow (both directions)
+  reason: Naive min(Fwd Pkt Len Min, Bwd Pkt Len Min) matches Pkt Len Min in 328653/331027 rows (99.2828%); ALL mismatches are explained by Tot Bwd Pkts==0 (all_mismatches_explained_by_zero_bwd_packets=True) - i.e. the naive combine formula is wrong only when one direction has zero packets. This implementation computes Pkt Len Min directly as min() over the full real packet list (not via the naive combine), which correctly avoids that edge case.

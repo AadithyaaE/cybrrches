@@ -1,0 +1,91 @@
+{
+  "feature": "L3.2 - Sandbox/Lab Traffic Capture",
+  "inspection_platform": "Linux",
+  "inspection_platform_detail": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.42",
+  "target_interface": "ens3",
+  "all_interfaces_found": [
+    "eth0",
+    "lo"
+  ],
+  "target_interface_inspection": {
+    "name": "ens3",
+    "exists": false,
+    "admin_state": null,
+    "link_state": null,
+    "mac_address": null,
+    "ipv4_addresses": [],
+    "ipv6_addresses": [],
+    "mtu": null,
+    "rx_packets": null,
+    "tx_packets": null,
+    "rx_bytes": null,
+    "tx_bytes": null,
+    "inspection_platform": "Linux",
+    "inspection_method": "/sys/class/net",
+    "note": "/sys/class/net/ens3 does not exist on this Linux host - interface not present."
+  },
+  "capture_permission": {
+    "mechanism": "tcpdump",
+    "mechanism_found": true,
+    "mechanism_path": "/usr/bin/tcpdump",
+    "running_as_root": false,
+    "capabilities": "(no capabilities set)",
+    "capture_likely_permitted": false,
+    "reason": "Not running as root and tcpdump has no CAP_NET_RAW capability set - capture would require sudo (interactive password) or a capability change, neither of which this read-only check performs or recommends performing automatically."
+  },
+  "capture_attempt": {
+    "accepted": false,
+    "config": {
+      "interface": "ens3",
+      "output_path": "/mnt/c/Users/Eswaran D/OneDrive/Documents/sih_main_project/results/sandbox_capture/attempted_capture_ens3.pcap",
+      "max_duration_s": 10,
+      "max_packets": 50,
+      "max_file_size_bytes": null,
+      "mechanism": "tcpdump"
+    },
+    "interface_info": {
+      "name": "ens3",
+      "exists": false,
+      "admin_state": null,
+      "link_state": null,
+      "mac_address": null,
+      "ipv4_addresses": [],
+      "ipv6_addresses": [],
+      "mtu": null,
+      "rx_packets": null,
+      "tx_packets": null,
+      "rx_bytes": null,
+      "tx_bytes": null,
+      "inspection_platform": "Linux",
+      "inspection_method": "/sys/class/net",
+      "note": "/sys/class/net/ens3 does not exist on this Linux host - interface not present."
+    },
+    "permission_status": {
+      "mechanism": "tcpdump",
+      "mechanism_found": true,
+      "mechanism_path": "/usr/bin/tcpdump",
+      "running_as_root": false,
+      "capabilities": "(no capabilities set)",
+      "capture_likely_permitted": false,
+      "reason": "Not running as root and tcpdump has no CAP_NET_RAW capability set - capture would require sudo (interactive password) or a capability change, neither of which this read-only check performs or recommends performing automatically."
+    },
+    "start_time_utc": null,
+    "end_time_utc": null,
+    "output_path": "/mnt/c/Users/Eswaran D/OneDrive/Documents/sih_main_project/results/sandbox_capture/attempted_capture_ens3.pcap",
+    "file_size_bytes": 0,
+    "progress": [],
+    "tcpdump_returncode": null,
+    "tcpdump_stderr": "",
+    "errors": [
+      "Interface 'ens3' does not exist: /sys/class/net/ens3 does not exist on this Linux host - interface not present.",
+      "Capture permission unavailable: Not running as root and tcpdump has no CAP_NET_RAW capability set - capture would require sudo (interactive password) or a capability change, neither of which this read-only check performs or recommends performing automatically."
+    ],
+    "provenance": "OBSERVED_LAB_TRAFFIC (raw capture, no computation applied) - see docs/sandbox_input_contract/SANDBOX_INPUT_CONTRACT.md DataProvenance"
+  },
+  "capture_performed": false,
+  "passes_l3_1_raw_pcap_file_gate": null,
+  "manual_environment_validation_record": {
+    "see_file": "results/sandbox_capture/manual_lab_validation_ens3.json",
+    "summary": "User manually verified the real Sandbox node (hostname 'ubuntu') has ens3 UP/RUNNING with no IPv4, and that a bounded 'sudo tcpdump -i ens3 -c 10 -nn' capture works, observing 1 DHCP broadcast packet. This was NOT performed or independently verified by this session's own tools (still no reachable connection to that node) and is NOT a CyberChess dataset capture - see the referenced file for full detail and explicit non-claims."
+  }
+}

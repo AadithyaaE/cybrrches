@@ -1,0 +1,618 @@
+======================================================================
+FEATURE AUDIT AND SELECTION REPORT
+======================================================================
+Input file: data\processed\Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv
+Rows: 331027  Columns: 80
+
+----------------------------------------------------------------------
+STEP 1-2: COLUMN INVENTORY AND CLASSIFICATION
+----------------------------------------------------------------------
+  [NETWORK_IDENTIFIER] Dst Port
+      dtype=int64 unique=16149 (4.878454%) missing=0 (0.0%) inf=0
+      min=0.0 max=65535.0 mean=8755.076120678978 std=17987.513721571217
+      reason: Dst Port identifies the network context of a flow (port/protocol) rather than describing its behaviour. Retained for analysis, but potentially excluded from the first ML baseline if it creates memorization/leakage risk (see Step 3).
+  [NETWORK_IDENTIFIER] Protocol
+      dtype=int64 unique=3 (0.000906%) missing=0 (0.0%) inf=0
+      min=0.0 max=17.0 mean=9.559474000610223 std=5.356050870315237
+      reason: Protocol identifies the network context of a flow (port/protocol) rather than describing its behaviour. Retained for analysis, but potentially excluded from the first ML baseline if it creates memorization/leakage risk (see Step 3).
+  [TIMESTAMP] Timestamp
+      dtype=str unique=32068 (9.687427%) missing=0 (0.0%) inf=0
+      reason: Records when the flow occurred. Essential for temporal ordering and later World Model sequence construction, but not treated as a normal predictive feature (see leakage analysis).
+  [NETWORK_FEATURE] Flow Duration
+      dtype=int64 unique=153887 (46.487749%) missing=0 (0.0%) inf=0
+      min=0.0 max=119999992.0 mean=14061622.18662224 std=34668415.43714946
+      reason: Flow Duration anchors all rate-based features and reflects how long a network interaction persisted, a core behavioural signal.
+  [NETWORK_FEATURE] Tot Fwd Pkts
+      dtype=int64 unique=328 (0.099086%) missing=0 (0.0%) inf=0
+      min=1.0 max=18291.0 mean=5.553154274424744 std=74.03143997066844
+      reason: Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.
+  [NETWORK_FEATURE] Tot Bwd Pkts
+      dtype=int64 unique=408 (0.123253%) missing=0 (0.0%) inf=0
+      min=0.0 max=35547.0 mean=5.647865581961592 std=158.05586726941323
+      reason: Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.
+  [NETWORK_FEATURE] TotLen Fwd Pkts
+      dtype=int64 unique=3953 (1.194162%) missing=0 (0.0%) inf=0
+      min=0.0 max=9789747.0 mean=470.94597117455675 std=24749.54477690103
+      reason: Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic.
+  [NETWORK_FEATURE] TotLen Bwd Pkts
+      dtype=int64 unique=8805 (2.659904%) missing=0 (0.0%) inf=0
+      min=0.0 max=41900000.0 mean=3307.7331698018593 std=220373.71912396568
+      reason: Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic.
+  [NETWORK_FEATURE] Fwd Pkt Len Max
+      dtype=int64 unique=1340 (0.404801%) missing=0 (0.0%) inf=0
+      min=0.0 max=1968.0 mean=164.1952197252792 std=263.73787580827576
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Fwd Pkt Len Min
+      dtype=int64 unique=126 (0.038063%) missing=0 (0.0%) inf=0
+      min=0.0 max=1460.0 mean=16.2715125956493 std=41.12813612603741
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Fwd Pkt Len Mean
+      dtype=float64 unique=10070 (3.042048%) missing=0 (0.0%) inf=0
+      min=0.0 max=1460.0 mean=46.15544598476167 std=61.57902256902497
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Fwd Pkt Len Std
+      dtype=float64 unique=13857 (4.186063%) missing=0 (0.0%) inf=0
+      min=0.0 max=1324.411001 mean=49.77782594595291 std=89.5204729518995
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Bwd Pkt Len Max
+      dtype=int64 unique=857 (0.258891%) missing=0 (0.0%) inf=0
+      min=0.0 max=65160.0 mean=320.70556178196944 std=519.2012098417792
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Bwd Pkt Len Min
+      dtype=int64 unique=273 (0.082471%) missing=0 (0.0%) inf=0
+      min=0.0 max=1212.0 mean=33.5705486259429 std=54.83067543746765
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Bwd Pkt Len Mean
+      dtype=float64 unique=13136 (3.968256%) missing=0 (0.0%) inf=0
+      min=0.0 max=33879.28358 mean=107.81986297635018 std=176.07750412597835
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Bwd Pkt Len Std
+      dtype=float64 unique=14800 (4.470934%) missing=0 (0.0%) inf=0
+      min=0.0 max=21326.2385 mean=109.27832175239304 std=208.04097766952577
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Flow Byts/s
+      dtype=float64 unique=171540 (51.820546%) missing=1834 (0.554033%) inf=1083
+      min=0.0 max=708000000.0 mean=287480.30891631305 std=3557484.438234642
+      reason: Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5).
+  [NETWORK_FEATURE] Flow Pkts/s
+      dtype=float64 unique=155521 (46.981364%) missing=0 (0.0%) inf=2917
+      min=0.016743497 max=3000000.0 mean=87008.63094416303 std=318999.4170004056
+      reason: Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5).
+  [NETWORK_FEATURE] Flow IAT Mean
+      dtype=float64 unique=146408 (44.228416%) missing=0 (0.0%) inf=0
+      min=0.0 max=119000000.0 mean=2484330.7785879937 std=11842388.004552936
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Flow IAT Std
+      dtype=float64 unique=127942 (38.650019%) missing=0 (0.0%) inf=0
+      min=0.0 max=69200000.0 mean=1178949.7734972097 std=3722896.503429404
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Flow IAT Max
+      dtype=int64 unique=83986 (25.371344%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=5756143.424832416 std=16557348.930284912
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Flow IAT Min
+      dtype=int64 unique=24730 (7.47069%) missing=0 (0.0%) inf=0
+      min=0.0 max=119000000.0 mean=1923907.5969603688 std=11756339.144680984
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Fwd IAT Tot
+      dtype=int64 unique=96006 (29.002468%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=13807005.32577403 std=34595720.13659257
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Fwd IAT Mean
+      dtype=float64 unique=130082 (39.296492%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=2890908.0573682343 std=12096981.43589205
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Fwd IAT Std
+      dtype=float64 unique=97961 (29.593054%) missing=0 (0.0%) inf=0
+      min=0.0 max=84700000.0 mean=1362743.482049042 std=4504680.402113382
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Fwd IAT Max
+      dtype=int64 unique=95023 (28.705513%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=5637021.25242956 std=16500242.610969152
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Fwd IAT Min
+      dtype=int64 unique=42617 (12.874176%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=2030286.0010029394 std=11920058.636529919
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Bwd IAT Tot
+      dtype=int64 unique=69546 (21.009162%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=9928893.70967927 std=29903967.89352735
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Bwd IAT Mean
+      dtype=float64 unique=100353 (30.315654%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=977226.6477101678 std=4176676.2141461764
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Bwd IAT Std
+      dtype=float64 unique=85205 (25.739592%) missing=0 (0.0%) inf=0
+      min=0.0 max=84700000.0 mean=1065984.6339207124 std=3915400.4902466186
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Bwd IAT Max
+      dtype=int64 unique=52382 (15.824087%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=3273376.5796566443 std=11564178.593771301
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Bwd IAT Min
+      dtype=int64 unique=50729 (15.324732%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=301262.285318116 std=3453862.9023021194
+      reason: Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.
+  [NETWORK_FEATURE] Fwd PSH Flags
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.06471979627039486 std=0.24603115067059586
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [CONSTANT_OR_NEAR_CONSTANT] Bwd PSH Flags
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Fwd URG Flags
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.0028094385050162073 std=0.05292970832643821
+      reason: NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Bwd URG Flags
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [NETWORK_FEATURE] Fwd Header Len
+      dtype=int64 unique=608 (0.183671%) missing=0 (0.0%) inf=0
+      min=0.0 max=332000.0 mean=102.74137154975274 std=1405.810303105616
+      reason: Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic.
+  [NETWORK_FEATURE] Bwd Header Len
+      dtype=int64 unique=876 (0.264631%) missing=0 (0.0%) inf=0
+      min=0.0 max=531332.0 mean=114.50831503170436 std=2926.3480858608755
+      reason: Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic.
+  [NETWORK_FEATURE] Fwd Pkts/s
+      dtype=float64 unique=155224 (46.891643%) missing=0 (0.0%) inf=0
+      min=0.0 max=3000000.0 mean=55682.08513624909 std=243091.65687665978
+      reason: Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5).
+  [NETWORK_FEATURE] Bwd Pkts/s
+      dtype=float64 unique=137952 (41.673942%) missing=0 (0.0%) inf=0
+      min=0.0 max=2000000.0 mean=30559.82836048826 std=121366.38045296058
+      reason: Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5).
+  [NETWORK_FEATURE] Pkt Len Min
+      dtype=int64 unique=85 (0.025678%) missing=0 (0.0%) inf=0
+      min=0.0 max=1460.0 mean=16.03558622106354 std=39.09881154075221
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Pkt Len Max
+      dtype=int64 unique=1026 (0.309945%) missing=0 (0.0%) inf=0
+      min=0.0 max=65160.0 mean=338.372374458881 std=522.5890423468297
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Pkt Len Mean
+      dtype=float64 unique=19124 (5.777172%) missing=0 (0.0%) inf=0
+      min=0.0 max=17344.98473 mean=73.95394947863493 std=106.94180475457036
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Pkt Len Std
+      dtype=float64 unique=21705 (6.556867%) missing=0 (0.0%) inf=0
+      min=0.0 max=22788.28621 mean=101.47701666141403 std=162.87226433741324
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Pkt Len Var
+      dtype=float64 unique=21705 (6.556867%) missing=0 (0.0%) inf=0
+      min=0.0 max=519000000.0 mean=36823.95490152122 std=905513.9100803644
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [CONSTANT_OR_NEAR_CONSTANT] FIN Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.005893779057297441 std=0.07654449768184136
+      reason: NEAR_CONSTANT: dominant value '0' accounts for 99.41% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.
+  [NETWORK_FEATURE] SYN Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.06471979627039486 std=0.24603115067059586
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [NETWORK_FEATURE] RST Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.19908647935062698 std=0.39931382993555187
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [NETWORK_FEATURE] PSH Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.43086213511284577 std=0.4951976337044072
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [NETWORK_FEATURE] ACK Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.20664477519960608 std=0.40489900881406304
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [NETWORK_FEATURE] URG Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.05007144432327272 std=0.21809272907216162
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [CONSTANT_OR_NEAR_CONSTANT] CWE Flag Count
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.0028094385050162073 std=0.05292970832643821
+      reason: NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.
+  [NETWORK_FEATURE] ECE Flag Cnt
+      dtype=int64 unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      min=0.0 max=1.0 mean=0.19908647935062698 std=0.39931382993555187
+      reason: TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.
+  [NETWORK_FEATURE] Down/Up Ratio
+      dtype=int64 unique=28 (0.008459%) missing=0 (0.0%) inf=0
+      min=0.0 max=237.0 mean=0.6259217526062829 std=1.0405490929655592
+      reason: Forward/backward traffic ratios and bulk-transfer statistics describe directional asymmetry, useful for identifying one-sided (e.g. scanning) vs bidirectional (e.g. normal session) behaviour.
+  [NETWORK_FEATURE] Pkt Size Avg
+      dtype=float64 unique=18849 (5.694097%) missing=0 (0.0%) inf=0
+      min=0.0 max=17478.40769 mean=86.77129413325153 std=112.66175684791936
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Fwd Seg Size Avg
+      dtype=float64 unique=10070 (3.042048%) missing=0 (0.0%) inf=0
+      min=0.0 max=1460.0 mean=46.15544598476167 std=61.57902256902497
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Bwd Seg Size Avg
+      dtype=float64 unique=13136 (3.968256%) missing=0 (0.0%) inf=0
+      min=0.0 max=33879.28358 mean=107.81986297635018 std=176.07750412597835
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [CONSTANT_OR_NEAR_CONSTANT] Fwd Byts/b Avg
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Fwd Pkts/b Avg
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Fwd Blk Rate Avg
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Bwd Byts/b Avg
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Bwd Pkts/b Avg
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [CONSTANT_OR_NEAR_CONSTANT] Bwd Blk Rate Avg
+      dtype=int64 unique=1 (0.000302%) missing=0 (0.0%) inf=0
+      min=0.0 max=0.0 mean=0.0 std=0.0
+      reason: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  [NETWORK_FEATURE] Subflow Fwd Pkts
+      dtype=int64 unique=328 (0.099086%) missing=0 (0.0%) inf=0
+      min=1.0 max=18291.0 mean=5.553154274424744 std=74.03143997066844
+      reason: Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.
+  [NETWORK_FEATURE] Subflow Fwd Byts
+      dtype=int64 unique=3953 (1.194162%) missing=0 (0.0%) inf=0
+      min=0.0 max=9789747.0 mean=470.94597117455675 std=24749.54477690103
+      reason: Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic.
+  [NETWORK_FEATURE] Subflow Bwd Pkts
+      dtype=int64 unique=408 (0.123253%) missing=0 (0.0%) inf=0
+      min=0.0 max=35547.0 mean=5.647865581961592 std=158.05586726941323
+      reason: Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.
+  [NETWORK_FEATURE] Subflow Bwd Byts
+      dtype=int64 unique=8806 (2.660206%) missing=0 (0.0%) inf=0
+      min=0.0 max=41866587.0 mean=3307.1614702123998 std=220318.8608791571
+      reason: Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic.
+  [NETWORK_FEATURE] Init Fwd Win Byts
+      dtype=int64 unique=2409 (0.727735%) missing=0 (0.0%) inf=0
+      min=-1.0 max=65535.0 mean=4737.369256888411 std=10792.57519297474
+      reason: Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic.
+  [NETWORK_FEATURE] Init Bwd Win Byts
+      dtype=int64 unique=2108 (0.636806%) missing=0 (0.0%) inf=0
+      min=-1.0 max=65535.0 mean=8820.786144332638 std=21251.091622075914
+      reason: Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic.
+  [NETWORK_FEATURE] Fwd Act Data Pkts
+      dtype=int64 unique=131 (0.039574%) missing=0 (0.0%) inf=0
+      min=0.0 max=18290.0 mean=2.1838853024073566 std=41.68586106563904
+      reason: Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.
+  [NETWORK_FEATURE] Fwd Seg Size Min
+      dtype=int64 unique=10 (0.003021%) missing=0 (0.0%) inf=0
+      min=0.0 max=48.0 mean=16.34215940089479 std=7.117274125223098
+      reason: Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.
+  [NETWORK_FEATURE] Active Mean
+      dtype=float64 unique=42185 (12.743673%) missing=0 (0.0%) inf=0
+      min=0.0 max=114000000.0 mean=289856.03733677417 std=3182662.791633142
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Active Std
+      dtype=float64 unique=29300 (8.851242%) missing=0 (0.0%) inf=0
+      min=0.0 max=72200000.0 mean=130736.03455797798 std=1903422.510307136
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Active Max
+      dtype=int64 unique=41165 (12.435542%) missing=0 (0.0%) inf=0
+      min=0.0 max=114000000.0 mean=418288.69244200626 std=4192125.0917360648
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Active Min
+      dtype=int64 unique=27466 (8.297208%) missing=0 (0.0%) inf=0
+      min=0.0 max=114000000.0 mean=201497.5508855773 std=2702097.3412671885
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Idle Mean
+      dtype=float64 unique=16389 (4.950956%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=5223228.632217571 std=16131783.082864447
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Idle Std
+      dtype=float64 unique=30560 (9.231875%) missing=0 (0.0%) inf=0
+      min=0.0 max=55200000.0 mean=275482.32022673776 std=2081495.4032065533
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Idle Max
+      dtype=int64 unique=7999 (2.416419%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=5483582.056508985 std=16570625.927482082
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [NETWORK_FEATURE] Idle Min
+      dtype=int64 unique=19571 (5.912207%) missing=0 (0.0%) inf=0
+      min=0.0 max=120000000.0 mean=4969095.41332278 std=15933498.574516162
+      reason: Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.
+  [TARGET] Label
+      dtype=str unique=2 (0.000604%) missing=0 (0.0%) inf=0
+      reason: This is the ground-truth label column produced by the dataset authors. It must never be used as an input feature.
+
+----------------------------------------------------------------------
+STEP 3: LEAKAGE RISK
+----------------------------------------------------------------------
+  Label: N/A - Target column; never used as an input feature.
+  Timestamp: HIGH - Several hours contain exclusively Benign traffic and others contain exclusively (or almost exclusively) Infilteration traffic. Because this dataset is a single day's capture with a scripted attack window, raw Timestamp (or any hour/time-of-day feature derived from it) would let a model memorize 'when the attack happened' instead of learning attack behaviour. Timestamp is therefore HIGH leakage risk as a direct predictive feature, even though it remains essential for later temporal / World Model work (state ordering, sequence construction).
+  Dst Port: MEDIUM - Dst Port has 16149 unique values with a weighted average label purity of 77.27% per value. High cardinality plus moderate-to-high per-value label purity creates a real risk that a model memorizes specific ports from this capture rather than learning generalizable port-usage behaviour.
+  Protocol: LOW - Protocol has only 3 unique values and traffic is present for both labels under every protocol value observed, so it behaves as a legitimate low-cardinality categorical network feature rather than an identifier that enables memorization.
+  Flow Duration: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Tot Fwd Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Tot Bwd Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  TotLen Fwd Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  TotLen Bwd Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Pkt Len Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Pkt Len Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Pkt Len Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Pkt Len Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Pkt Len Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Pkt Len Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Pkt Len Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Pkt Len Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Flow Byts/s: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Flow Pkts/s: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Flow IAT Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Flow IAT Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Flow IAT Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Flow IAT Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd IAT Tot: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd IAT Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd IAT Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd IAT Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd IAT Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd IAT Tot: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd IAT Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd IAT Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd IAT Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd IAT Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd PSH Flags: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd PSH Flags: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Fwd URG Flags: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Bwd URG Flags: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Fwd Header Len: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Header Len: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Pkts/s: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Pkts/s: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Pkt Len Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Pkt Len Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Pkt Len Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Pkt Len Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Pkt Len Var: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  FIN Flag Cnt: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  SYN Flag Cnt: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  RST Flag Cnt: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  PSH Flag Cnt: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  ACK Flag Cnt: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  URG Flag Cnt: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  CWE Flag Count: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  ECE Flag Cnt: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Down/Up Ratio: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Pkt Size Avg: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Seg Size Avg: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Bwd Seg Size Avg: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Byts/b Avg: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Fwd Pkts/b Avg: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Fwd Blk Rate Avg: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Bwd Byts/b Avg: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Bwd Pkts/b Avg: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Bwd Blk Rate Avg: LOW - Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4).
+  Subflow Fwd Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Subflow Fwd Byts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Subflow Bwd Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Subflow Bwd Byts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Init Fwd Win Byts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Init Bwd Win Byts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Act Data Pkts: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Fwd Seg Size Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Active Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Active Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Active Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Active Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Idle Mean: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Idle Std: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Idle Max: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+  Idle Min: LOW - No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5).
+
+  Top behavioural features by |correlation| with label:
+    Fwd Seg Size Min: 0.141246
+    PSH Flag Cnt: 0.111426
+    Fwd Pkt Len Mean: -0.102598
+    Fwd Seg Size Avg: -0.102598
+    Pkt Size Avg: -0.088573
+    Fwd Pkt Len Max: -0.08595
+    Fwd IAT Mean: -0.08162
+    Pkt Len Mean: -0.080695
+    Fwd IAT Max: -0.079581
+    Flow IAT Mean: -0.077003
+    Pkt Len Max: -0.076597
+    Flow IAT Max: -0.075495
+    Fwd IAT Min: -0.07364
+    Idle Max: -0.072985
+    Fwd Pkt Len Std: -0.072746
+  Conclusion: No individual behavioural feature shows strong direct correlation with the label (max |correlation| well below 0.5), so there is no evidence of a behavioural feature directly encoding the label. Leakage risk for NETWORK_FEATURE columns is assessed as LOW on this basis.
+
+----------------------------------------------------------------------
+STEP 4: CONSTANT / NEAR-CONSTANT FEATURES
+----------------------------------------------------------------------
+  Bwd PSH Flags: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Fwd URG Flags: NEAR_CONSTANT (unique=2, dominant_value=0, fraction=99.72%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Bwd URG Flags: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  FIN Flag Cnt: NEAR_CONSTANT (unique=2, dominant_value=0, fraction=99.41%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  CWE Flag Count: NEAR_CONSTANT (unique=2, dominant_value=0, fraction=99.72%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Fwd Byts/b Avg: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Fwd Pkts/b Avg: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Fwd Blk Rate Avg: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Bwd Byts/b Avg: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Bwd Pkts/b Avg: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+  Bwd Blk Rate Avg: CONSTANT (unique=1, dominant_value=0, fraction=100.0%)
+    Recommendation: exclude from first ML baseline (retained in cleaned dataset).
+
+----------------------------------------------------------------------
+STEP 5: INFINITY / MISSINGNESS ANALYSIS
+----------------------------------------------------------------------
+  Flow Byts/s: missing=1834 infinite=1083
+    Missing cause: Investigated: of 1834 missing rows, 1834 have Flow Duration == 0 with zero forward and backward byte totals, consistent with a mathematical 0/0 division (zero-byte, zero-duration flow) rather than data-collection loss.
+    Infinite cause: Investigated: all 1083 infinite rows have Flow Duration == 0 with nonzero packet/byte activity, consistent with division-by-zero on a near-zero-duration flow (rate = bytes or packets / duration).
+  Flow Pkts/s: missing=0 infinite=2917
+    Infinite cause: Investigated: all 2917 infinite rows have Flow Duration == 0 with nonzero packet/byte activity, consistent with division-by-zero on a near-zero-duration flow (rate = bytes or packets / duration).
+
+----------------------------------------------------------------------
+STEP 6: CORRELATION / REDUNDANCY AUDIT
+----------------------------------------------------------------------
+  Threshold: |correlation| >= 0.95
+  Pairs found: 43
+    Tot Fwd Pkts <-> Subflow Fwd Pkts: 1.0
+    Tot Bwd Pkts <-> Subflow Bwd Pkts: 1.0
+    TotLen Fwd Pkts <-> Subflow Fwd Byts: 1.0
+    TotLen Bwd Pkts <-> Subflow Bwd Byts: 1.0
+    Fwd Pkt Len Mean <-> Fwd Seg Size Avg: 1.0
+    Bwd Pkt Len Mean <-> Bwd Seg Size Avg: 1.0
+    Fwd PSH Flags <-> SYN Flag Cnt: 1.0
+    Fwd URG Flags <-> CWE Flag Count: 1.0
+    RST Flag Cnt <-> ECE Flag Cnt: 0.999962
+    Flow Duration <-> Fwd IAT Tot: 0.997344
+    Flow IAT Max <-> Idle Max: 0.995432
+    Idle Mean <-> Idle Min: 0.994182
+    Flow IAT Max <-> Fwd IAT Max: 0.994064
+    Idle Mean <-> Idle Max: 0.992436
+    Pkt Len Mean <-> Pkt Size Avg: 0.991254
+    Tot Bwd Pkts <-> TotLen Bwd Pkts: 0.990151
+    TotLen Bwd Pkts <-> Subflow Bwd Pkts: 0.990151
+    Tot Bwd Pkts <-> Subflow Bwd Byts: 0.990132
+    Subflow Bwd Pkts <-> Subflow Bwd Byts: 0.990132
+    Fwd IAT Max <-> Idle Max: 0.98963
+    Flow IAT Mean <-> Fwd IAT Mean: 0.988635
+    Flow IAT Max <-> Idle Mean: 0.987979
+    Flow IAT Mean <-> Flow IAT Min: 0.987061
+    Bwd Pkt Len Max <-> Pkt Len Max: 0.985696
+    Flow IAT Min <-> Fwd IAT Min: 0.98477
+    Flow IAT Mean <-> Fwd IAT Min: 0.983385
+    Fwd IAT Max <-> Idle Mean: 0.982905
+    Bwd Header Len <-> Subflow Bwd Byts: 0.979571
+    TotLen Bwd Pkts <-> Bwd Header Len: 0.979528
+    Fwd IAT Mean <-> Fwd IAT Min: 0.976175
+    Bwd Pkt Len Max <-> Bwd Pkt Len Std: 0.975501
+    Idle Max <-> Idle Min: 0.974366
+    Flow IAT Max <-> Idle Min: 0.970089
+    Tot Bwd Pkts <-> Bwd Header Len: 0.969388
+    Bwd Header Len <-> Subflow Bwd Pkts: 0.969388
+    Pkt Len Max <-> Pkt Len Std: 0.965794
+    Fwd IAT Max <-> Idle Min: 0.965767
+    Fwd Pkt Len Max <-> Fwd Pkt Len Std: 0.96512
+    Bwd Pkt Len Std <-> Pkt Len Std: 0.963407
+    Bwd Pkt Len Std <-> Pkt Len Max: 0.962802
+    Flow IAT Min <-> Fwd IAT Mean: 0.960778
+    Bwd Pkt Len Max <-> Pkt Len Std: 0.958179
+    Fwd Pkt Len Min <-> Pkt Len Min: 0.951379
+  Note: No features were removed based on this audit. Redundancy decisions are deferred to a later feature.
+
+----------------------------------------------------------------------
+STEP 7: RECOMMENDED CORE FEATURE SET
+----------------------------------------------------------------------
+  Count: 66
+  packet_counts (Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.):
+    - Tot Fwd Pkts
+    - Tot Bwd Pkts
+    - Subflow Fwd Pkts
+    - Subflow Bwd Pkts
+    - Fwd Act Data Pkts
+  byte_counts (Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic.):
+    - TotLen Fwd Pkts
+    - TotLen Bwd Pkts
+    - Subflow Fwd Byts
+    - Subflow Bwd Byts
+  duration (Flow Duration anchors all rate-based features and reflects how long a network interaction persisted, a core behavioural signal.):
+    - Flow Duration
+  rates (Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5).):
+    - Flow Byts/s
+    - Flow Pkts/s
+    - Fwd Pkts/s
+    - Bwd Pkts/s
+  packet_size_stats (Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.):
+    - Fwd Pkt Len Max
+    - Fwd Pkt Len Min
+    - Fwd Pkt Len Mean
+    - Fwd Pkt Len Std
+    - Bwd Pkt Len Max
+    - Bwd Pkt Len Min
+    - Bwd Pkt Len Mean
+    - Bwd Pkt Len Std
+    - Pkt Len Min
+    - Pkt Len Max
+    - Pkt Len Mean
+    - Pkt Len Std
+    - Pkt Len Var
+    - Pkt Size Avg
+    - Fwd Seg Size Avg
+    - Bwd Seg Size Avg
+    - Fwd Seg Size Min
+  inter_arrival_stats (Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.):
+    - Flow IAT Mean
+    - Flow IAT Std
+    - Flow IAT Max
+    - Flow IAT Min
+    - Fwd IAT Tot
+    - Fwd IAT Mean
+    - Fwd IAT Std
+    - Fwd IAT Max
+    - Fwd IAT Min
+    - Bwd IAT Tot
+    - Bwd IAT Mean
+    - Bwd IAT Std
+    - Bwd IAT Max
+    - Bwd IAT Min
+  tcp_flags (TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.):
+    - Fwd PSH Flags
+    - SYN Flag Cnt
+    - RST Flag Cnt
+    - PSH Flag Cnt
+    - ACK Flag Cnt
+    - URG Flag Cnt
+    - ECE Flag Cnt
+  header_and_window (Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic.):
+    - Fwd Header Len
+    - Bwd Header Len
+    - Init Fwd Win Byts
+    - Init Bwd Win Byts
+  fwd_bwd_traffic_stats (Forward/backward traffic ratios and bulk-transfer statistics describe directional asymmetry, useful for identifying one-sided (e.g. scanning) vs bidirectional (e.g. normal session) behaviour.):
+    - Down/Up Ratio
+  active_idle_behaviour (Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage.):
+    - Active Mean
+    - Active Std
+    - Active Max
+    - Active Min
+    - Idle Mean
+    - Idle Std
+    - Idle Max
+    - Idle Min
+  Protocol (low-cardinality, low leakage risk; legitimate network-context signal):
+    - Protocol
+
+----------------------------------------------------------------------
+STEP 8: FEATURES RESERVED FOR LATER
+----------------------------------------------------------------------
+  Dst Port: High-cardinality identifier with medium leakage risk (memorization risk); may be useful later via bucketing/embedding rather than raw value.
+  Timestamp: High leakage risk as a raw predictive feature in this single-day capture, but required for temporal ordering and the eventual World Model S(t) sequence construction.
+
+----------------------------------------------------------------------
+FEATURES EXCLUDED FROM FIRST ML BASELINE
+----------------------------------------------------------------------
+  Bwd PSH Flags: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Fwd URG Flags: NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.
+  Bwd URG Flags: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  FIN Flag Cnt: NEAR_CONSTANT: dominant value '0' accounts for 99.41% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.
+  CWE Flag Count: NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.
+  Fwd Byts/b Avg: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Fwd Pkts/b Avg: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Fwd Blk Rate Avg: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Bwd Byts/b Avg: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Bwd Pkts/b Avg: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Bwd Blk Rate Avg: CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.
+  Label: Target column; never used as an input feature.

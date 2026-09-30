@@ -1,0 +1,498 @@
+{
+  "window_size_seconds": 1,
+  "policy_by_feature": {
+    "ACK Flag Cnt": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count - number of ACK-flagged packets; summing gives total ACK activity in the window.",
+      "needs_documentation": false
+    },
+    "Active Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Active Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Active Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Active Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Bwd Header Len": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "NEEDS_DOCUMENTATION: same reasoning as Fwd Header Len - cumulative header byte volume, summed for total window volume.",
+      "needs_documentation": true
+    },
+    "Bwd IAT Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family.",
+      "needs_documentation": false
+    },
+    "Bwd IAT Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family (backward direction).",
+      "needs_documentation": false
+    },
+    "Bwd IAT Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family.",
+      "needs_documentation": false
+    },
+    "Bwd IAT Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family.",
+      "needs_documentation": false
+    },
+    "Bwd IAT Tot": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "NEEDS_DOCUMENTATION: same reasoning as Fwd IAT Tot.",
+      "needs_documentation": true
+    },
+    "Bwd Pkt Len Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Bwd Pkt Len Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Bwd Pkt Len Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Bwd Pkt Len Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Bwd Pkts/s": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Rate feature (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Bwd Seg Size Avg": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Segment-size statistic (explicit spec example: Avg Bwd Segment Size).",
+      "needs_documentation": false
+    },
+    "Down/Up Ratio": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "NEEDS_DOCUMENTATION: a per-flow ratio (down/up packet ratio), not a count. Ratios are distribution-like descriptive statistics, so MEAN (average ratio across the window's flows) is the defensible choice, consistent with how other per-flow ratios/statistics in this feature set are handled.",
+      "needs_documentation": true
+    },
+    "ECE Flag Cnt": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count.",
+      "needs_documentation": false
+    },
+    "Flow Byts/s": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Rate feature (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Flow Duration": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Duration feature (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Flow IAT Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature (explicit spec example: IAT Max).",
+      "needs_documentation": false
+    },
+    "Flow IAT Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature (explicit spec example: IAT Mean).",
+      "needs_documentation": false
+    },
+    "Flow IAT Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature (explicit spec example: IAT Min).",
+      "needs_documentation": false
+    },
+    "Flow IAT Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature (explicit spec example: IAT Std).",
+      "needs_documentation": false
+    },
+    "Flow Pkts/s": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Rate feature (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Fwd Act Data Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Packet count (forward data packets).",
+      "needs_documentation": false
+    },
+    "Fwd Header Len": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "NEEDS_DOCUMENTATION: not explicitly listed in the spec's SUM examples, but represents cumulative header bytes for a flow (a byte-volume quantity, same family as TotLen Fwd/Bwd Pkts), so it is summed to represent total header byte volume observed across all flows in the window.",
+      "needs_documentation": true
+    },
+    "Fwd IAT Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family.",
+      "needs_documentation": false
+    },
+    "Fwd IAT Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family (forward direction).",
+      "needs_documentation": false
+    },
+    "Fwd IAT Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family.",
+      "needs_documentation": false
+    },
+    "Fwd IAT Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Distribution/statistical feature, same family.",
+      "needs_documentation": false
+    },
+    "Fwd IAT Tot": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "NEEDS_DOCUMENTATION: not explicitly listed. 'IAT Tot' is the total inter-arrival time accumulated within a single flow (a per-flow duration-like total, closely related to that flow's own duration), not a literal event/packet count. Summing durations across unrelated concurrent flows has no clean physical meaning, so it is treated like Flow Duration and averaged (MEAN) across the window's flows.",
+      "needs_documentation": true
+    },
+    "Fwd PSH Flags": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count (forward direction).",
+      "needs_documentation": false
+    },
+    "Fwd Pkt Len Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family as Pkt Len Max/Min/Mean/Std.",
+      "needs_documentation": false
+    },
+    "Fwd Pkt Len Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Fwd Pkt Len Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Fwd Pkt Len Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic, same family.",
+      "needs_documentation": false
+    },
+    "Fwd Pkts/s": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Rate feature (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Fwd Seg Size Avg": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Segment-size statistic (explicit spec example: Avg Fwd Segment Size).",
+      "needs_documentation": false
+    },
+    "Fwd Seg Size Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "NEEDS_DOCUMENTATION: not explicitly listed, but is a segment-size statistic in the same family as Fwd/Bwd Seg Size Avg (explicit MEAN examples), so extended consistently as MEAN.",
+      "needs_documentation": true
+    },
+    "Idle Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Idle Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Idle Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Idle Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Active/idle statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Init Bwd Win Byts": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "NEEDS_DOCUMENTATION: same reasoning as Init Fwd Win Byts.",
+      "needs_documentation": true
+    },
+    "Init Fwd Win Byts": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "NEEDS_DOCUMENTATION: the initial TCP window size negotiated for a flow - a per-connection size/characteristic value, not a cumulative volume. Treated like other size statistics (MEAN) rather than summed, since summing window sizes across unrelated flows has no meaningful 'total' interpretation.",
+      "needs_documentation": true
+    },
+    "PSH Flag Cnt": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count.",
+      "needs_documentation": false
+    },
+    "Pkt Len Max": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic; same family as Pkt Len Mean/Std, extended consistently.",
+      "needs_documentation": false
+    },
+    "Pkt Len Mean": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Pkt Len Min": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic; same family as Pkt Len Mean/Std, extended consistently.",
+      "needs_documentation": false
+    },
+    "Pkt Len Std": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Pkt Len Var": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Packet-length statistic (explicit spec example: Packet Length Variance).",
+      "needs_documentation": false
+    },
+    "Pkt Size Avg": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "Average packet size (explicit spec example: Average Packet Size).",
+      "needs_documentation": false
+    },
+    "RST Flag Cnt": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count.",
+      "needs_documentation": false
+    },
+    "SYN Flag Cnt": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count.",
+      "needs_documentation": false
+    },
+    "Subflow Bwd Byts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Byte count.",
+      "needs_documentation": false
+    },
+    "Subflow Bwd Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Packet count.",
+      "needs_documentation": false
+    },
+    "Subflow Fwd Byts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Byte count.",
+      "needs_documentation": false
+    },
+    "Subflow Fwd Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Packet count.",
+      "needs_documentation": false
+    },
+    "Tot Bwd Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Packet count.",
+      "needs_documentation": false
+    },
+    "Tot Fwd Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Packet count.",
+      "needs_documentation": false
+    },
+    "TotLen Bwd Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Byte count (total length of backward packets).",
+      "needs_documentation": false
+    },
+    "TotLen Fwd Pkts": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Byte count (total length of forward packets).",
+      "needs_documentation": false
+    },
+    "URG Flag Cnt": {
+      "aggregation": "sum",
+      "category": "count_or_event_like",
+      "reason": "Flag count.",
+      "needs_documentation": false
+    },
+    "Protocol_0": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "One-hot Protocol indicator; mean = proportion of window's observations using this protocol (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Protocol_6": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "One-hot Protocol indicator; mean = proportion (explicit spec example).",
+      "needs_documentation": false
+    },
+    "Protocol_17": {
+      "aggregation": "mean",
+      "category": "rate_duration_size_or_distribution",
+      "reason": "One-hot Protocol indicator; mean = proportion (explicit spec example).",
+      "needs_documentation": false
+    }
+  },
+  "sum_feature_count": 18,
+  "mean_feature_count": 50,
+  "sum_features": [
+    "ACK Flag Cnt",
+    "Bwd Header Len",
+    "ECE Flag Cnt",
+    "Fwd Act Data Pkts",
+    "Fwd Header Len",
+    "Fwd PSH Flags",
+    "PSH Flag Cnt",
+    "RST Flag Cnt",
+    "SYN Flag Cnt",
+    "Subflow Bwd Byts",
+    "Subflow Bwd Pkts",
+    "Subflow Fwd Byts",
+    "Subflow Fwd Pkts",
+    "Tot Bwd Pkts",
+    "Tot Fwd Pkts",
+    "TotLen Bwd Pkts",
+    "TotLen Fwd Pkts",
+    "URG Flag Cnt"
+  ],
+  "mean_features": [
+    "Active Max",
+    "Active Mean",
+    "Active Min",
+    "Active Std",
+    "Bwd IAT Max",
+    "Bwd IAT Mean",
+    "Bwd IAT Min",
+    "Bwd IAT Std",
+    "Bwd IAT Tot",
+    "Bwd Pkt Len Max",
+    "Bwd Pkt Len Mean",
+    "Bwd Pkt Len Min",
+    "Bwd Pkt Len Std",
+    "Bwd Pkts/s",
+    "Bwd Seg Size Avg",
+    "Down/Up Ratio",
+    "Flow Byts/s",
+    "Flow Duration",
+    "Flow IAT Max",
+    "Flow IAT Mean",
+    "Flow IAT Min",
+    "Flow IAT Std",
+    "Flow Pkts/s",
+    "Fwd IAT Max",
+    "Fwd IAT Mean",
+    "Fwd IAT Min",
+    "Fwd IAT Std",
+    "Fwd IAT Tot",
+    "Fwd Pkt Len Max",
+    "Fwd Pkt Len Mean",
+    "Fwd Pkt Len Min",
+    "Fwd Pkt Len Std",
+    "Fwd Pkts/s",
+    "Fwd Seg Size Avg",
+    "Fwd Seg Size Min",
+    "Idle Max",
+    "Idle Mean",
+    "Idle Min",
+    "Idle Std",
+    "Init Bwd Win Byts",
+    "Init Fwd Win Byts",
+    "Pkt Len Max",
+    "Pkt Len Mean",
+    "Pkt Len Min",
+    "Pkt Len Std",
+    "Pkt Len Var",
+    "Pkt Size Avg",
+    "Protocol_0",
+    "Protocol_6",
+    "Protocol_17"
+  ],
+  "features_needing_documented_decision": [
+    "Bwd Header Len",
+    "Bwd IAT Tot",
+    "Down/Up Ratio",
+    "Fwd Header Len",
+    "Fwd IAT Tot",
+    "Fwd Seg Size Min",
+    "Init Bwd Win Byts",
+    "Init Fwd Win Byts"
+  ],
+  "nan_handling": "SUM columns use groupby.sum(min_count=1): NaN values are ignored when summing, and the result is NaN (not 0) only if every value in the window is NaN. MEAN columns use groupby.mean(), which skips NaN and returns NaN only if every value in the window is NaN. No missing values were filled; no global statistics were computed; no future-window information was used."
+}

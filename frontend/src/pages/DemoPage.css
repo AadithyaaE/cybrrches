@@ -1,0 +1,101 @@
+.demo-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.demo-page__badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.demo-page__selection-note {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.demo-page__selection-note h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--text-primary);
+  font-size: var(--fs-base);
+}
+
+.demo-page__selection-note p {
+  margin: 0 0 var(--space-2);
+}
+
+.demo-page__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-color);
+}
+
+.demo-page__step:first-of-type {
+  border-top: none;
+}
+
+.demo-page__metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.demo-page__two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-4);
+}
+
+.demo-page__subheading {
+  margin: var(--space-2) 0 0;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.demo-page__divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: var(--space-4) 0;
+}
+
+.demo-page__limitations-note {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.demo-page__distinction-note {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  background: var(--status-warning-dim, rgba(251, 191, 36, 0.08));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.demo-page__excluded-day {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.demo-page__failure-list {
+  margin: 0;
+  padding-left: var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.demo-page__verdict-note {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}

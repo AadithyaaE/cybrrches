@@ -1,0 +1,82 @@
+{
+  "feature": "Feature 17 - Cross-Day Generalization & Multi-Day Training",
+  "days_eligible": [
+    "Thursday-01-03-2018",
+    "Wednesday-28-02-2018",
+    "Wednesday-14-02-2018",
+    "Wednesday-21-02-2018"
+  ],
+  "days_excluded": {
+    "Tuesday-20-02-2018": "schema-incompatible (84 columns), never prepared"
+  },
+  "experiment_a_frozen_baseline_summary": {
+    "Wednesday-28-02-2018": {
+      "precision": 0.27695080823351553,
+      "recall": 0.8227673173259631,
+      "f1": 0.41440814373341456,
+      "fpr": 0.7667879385829685,
+      "brier_score": 0.2602655001274515,
+      "roc_auc": 0.5648882741669963
+    },
+    "Wednesday-14-02-2018": {
+      "precision": 0.4035524748185855,
+      "recall": 0.6613418530351438,
+      "f1": 0.501244366718235,
+      "fpr": 0.6179655501318521,
+      "brier_score": 0.24915438030950746,
+      "roc_auc": 0.5825045335456686
+    },
+    "Wednesday-21-02-2018": {
+      "precision": 0.9859467455621301,
+      "recall": 0.7446927374301676,
+      "f1": 0.8485041374920432,
+      "fpr": 0.2375,
+      "brier_score": 0.2515710765116943,
+      "roc_auc": 0.7994902234636873
+    }
+  },
+  "experiment_b_folds_summary": {
+    "fold_holdout_Wed21": {
+      "train_days": [
+        "Thursday-01-03-2018",
+        "Wednesday-28-02-2018"
+      ],
+      "holdout_day": "Wednesday-21-02-2018",
+      "full_pipeline": {
+        "precision": 0.9567801188546732,
+        "recall": 0.9893854748603352,
+        "f1": 0.972809667673716,
+        "fpr": 1.0,
+        "brier_score": 0.16727744090078436,
+        "roc_auc": 0.8082122905027932
+      }
+    },
+    "fold_holdout_Wed28": {
+      "train_days": [
+        "Thursday-01-03-2018",
+        "Wednesday-21-02-2018"
+      ],
+      "holdout_day": "Wednesday-28-02-2018",
+      "full_pipeline": {
+        "precision": 0.31768137762303567,
+        "recall": 0.5831749870443945,
+        "f1": 0.41130604288499023,
+        "fpr": 0.4471233890361966,
+        "brier_score": 0.2418622468528331,
+        "roc_auc": 0.6077778338658009
+      }
+    }
+  },
+  "leakage_audit_all_checks_passed": true,
+  "protected_artifacts_unchanged": true,
+  "no_winner_declared": true,
+  "claim_limits_respected": [
+    "no universal generalization claimed",
+    "no production readiness claimed",
+    "no real-time detection claimed",
+    "no firewall mitigation claimed",
+    "multi-day training NOT claimed to necessarily improve performance",
+    "attack progression NOT claimed proven",
+    "LSTM forecasting NOT claimed universally accurate"
+  ]
+}

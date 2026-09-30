@@ -1,0 +1,65 @@
+======================================================================
+FEATURE L2.9 - REPRODUCIBILITY REPORT
+======================================================================
+
+Scope: this run used ONLY the already-downloaded local file
+candidate_part2_172.31.69.13.pcap. No network download was performed by
+this task (per explicit instruction). Reproducibility was verified for
+the parsing/flow-reconstruction pipeline applied to that existing file.
+
+INPUT FILE INTEGRITY
+----------------------
+  File: results/pcap_ground_truth_correlation/candidate_part2_172.31.69.13.pcap
+  Size: 36,372,624 bytes
+  SHA-256: 48a0ba4955296db31b3241541aaf2f6fc5b3cb2902b9482813834ae62546ebb5
+  (unchanged from the file as extracted in the earlier, separate
+  download step - this task did not modify it)
+
+CSV INTEGRITY
+--------------
+  File: data/raw/Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv
+  SHA-256: b0534c5d7d8b41e03df71c6966c995d116a8ed28e61f377c8b14cdf5d28f4edf
+  (matches the hash recorded in results/pcap_ground_truth_discovery/
+  hash_manifest.json from Feature L2.8 - unchanged)
+
+DETERMINISM OF read_pcap() + reconstruct_flows()
+----------------------------------------------------
+  The candidate PCAP was parsed and flow-reconstructed TWICE, independently,
+  using CyberChess's existing, unmodified src/data/pcap/pcap_reader.py and
+  flow_reconstruction.py.
+
+  Run 1: 121,086 packets parsed, 50,434 flows reconstructed, 33.2s wall time
+  Run 2: 121,086 packets parsed, 50,434 flows reconstructed (re-confirmed)
+
+  A combined signature (SHA-256 over packet count, malformed count, flow
+  count, and every flow's key/protocol/start/end/packet-count/closed-reason)
+  was computed for both runs:
+    Run 1: 2feee61273782178ac0aec04b4aae70156f673a0509d358d65e6272ddf066885
+    Run 2: 2feee61273782178ac0aec04b4aae70156f673a0509d358d65e6272ddf066885
+  IDENTICAL - deterministic, confirmed.
+
+OUTPUT FILE HASHES (this run's own generated artifacts)
+------------------------------------------------------------
+  candidate_flow_summary.csv: 7e2fb74e026a7efaac50d240a935fa2ffc718ac00e6e3a19a840fa2c8014d9f1
+  flow_matches.csv (empty by design - see correlation_report.txt): e00d5dada2ddf97dffa4f95bc4ebc8143147f54a7e0c3da057a075389f426c11
+  timestamp_analysis.json: 6cb24a2883dfccbb861aa4cb7b07cbd37ed1a38f33a981656d90b2a2c3ee5458
+  correlation_metrics.json: 2c5e875ba28b6a42f59ab7eaf673bdc3964c9e167b3ecc7e52bb1cdff15ddc78
+
+PROTECTED-FILE INTEGRITY
+--------------------------
+  No file under src/data/pcap/, src/data/prepare_unlabeled_state.py,
+  results/pcap/, results/pcap_validation/, results/pcap_formula_corrections/,
+  results/pcap_cicflowmeter_reference/, results/pcap_ground_truth_discovery/,
+  frontend/, or any Feature 1-16 artifact was modified by this task -
+  verified via `git status --short`, which shows only new additions under
+  results/pcap_ground_truth_correlation/ and
+  src/data/pcap_ground_truth_correlation/.
+
+WHAT WAS NOT RE-VERIFIED THIS RUN (by design, per explicit instruction)
+----------------------------------------------------------------------------
+  - The candidate PCAP's own extraction from the remote pcap.zip archive
+    (S3 range requests) was NOT repeated - that already happened in the
+    prior extraction step and is out of scope for this run ("do not
+    download anything").
+  - No correlation matching was run twice, because none was run at all
+    (zero timestamp overlap with the CSV - see correlation_report.txt).

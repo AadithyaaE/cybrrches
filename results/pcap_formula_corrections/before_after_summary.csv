@@ -1,0 +1,67 @@
+feature,is_a_feature_this_task_changed,identical_before_after,num_flows_differing
+Protocol,False,True,0
+Tot Fwd Pkts,False,True,0
+Tot Bwd Pkts,False,True,0
+TotLen Fwd Pkts,False,True,0
+TotLen Bwd Pkts,False,True,0
+ACK Flag Cnt,False,True,0
+SYN Flag Cnt,False,True,0
+RST Flag Cnt,False,True,0
+PSH Flag Cnt,False,True,0
+URG Flag Cnt,False,True,0
+ECE Flag Cnt,False,True,0
+Fwd PSH Flags,False,True,0
+Fwd Act Data Pkts,False,True,0
+Init Fwd Win Byts,False,True,0
+Init Bwd Win Byts,False,True,0
+Fwd Header Len,False,True,0
+Bwd Header Len,False,True,0
+Flow Duration,False,True,0
+Fwd Pkt Len Max,False,True,0
+Fwd Pkt Len Min,False,True,0
+Fwd Pkt Len Mean,False,True,0
+Fwd Pkt Len Std,False,True,0
+Bwd Pkt Len Max,False,True,0
+Bwd Pkt Len Min,False,True,0
+Bwd Pkt Len Mean,False,True,0
+Bwd Pkt Len Std,False,True,0
+Pkt Len Max,False,True,0
+Pkt Len Min,False,True,0
+Pkt Len Mean,False,True,0
+Pkt Len Std,False,True,0
+Pkt Len Var,False,True,0
+Pkt Size Avg,False,True,0
+Down/Up Ratio,False,True,0
+Flow Byts/s,True,True,0
+Flow Pkts/s,False,True,0
+Fwd Pkts/s,True,True,0
+Bwd Pkts/s,True,True,0
+Flow IAT Mean,False,True,0
+Flow IAT Std,False,True,0
+Flow IAT Max,False,True,0
+Flow IAT Min,False,True,0
+Fwd IAT Tot,False,True,0
+Fwd IAT Mean,False,True,0
+Fwd IAT Std,False,True,0
+Fwd IAT Max,False,True,0
+Fwd IAT Min,False,True,0
+Bwd IAT Tot,False,True,0
+Bwd IAT Mean,False,True,0
+Bwd IAT Std,False,True,0
+Bwd IAT Max,False,True,0
+Bwd IAT Min,False,True,0
+Active Mean,False,True,0
+Active Std,False,True,0
+Active Max,False,True,0
+Active Min,False,True,0
+Idle Mean,False,True,0
+Idle Std,False,True,0
+Idle Max,False,True,0
+Idle Min,False,True,0
+Fwd Seg Size Avg,False,True,0
+Fwd Seg Size Min,True,False,11
+Bwd Seg Size Avg,False,True,0
+Subflow Fwd Pkts,False,True,0
+Subflow Fwd Byts,False,True,0
+Subflow Bwd Pkts,False,True,0
+Subflow Bwd Byts,False,True,0

@@ -1,0 +1,104 @@
+.dataset-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.dataset-overview__dev {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--status-neutral-dim);
+  border: 1px solid var(--status-neutral-border);
+  border-radius: var(--radius-md);
+}
+
+.dataset-overview__dev p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.dataset-overview__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.dataset-overview__card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.dataset-overview__card-header h4 {
+  margin: 0;
+  font-size: var(--fs-md);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.dataset-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.dataset-overview__field-label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 2px;
+}
+
+.dataset-overview__field-value {
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.dataset-overview__label-chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+.dataset-overview__label-chip {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+}
+
+.dataset-overview__timestamp {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.dataset-overview__caveat {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--status-warning);
+  line-height: 1.5;
+  max-width: 90ch;
+}
+
+@media (max-width: 720px) {
+  .dataset-overview__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,4 @@
+fold_name,train_days,holdout_day,n_train_sequences,n_holdout_sequences,lstm_epochs_run,lstm_best_epoch,lstm_training_seconds
+fold_holdout_Wed21_PRE_OUTLIER_FIX,Thursday-01-03-2018|Wednesday-28-02-2018,Wednesday-21-02-2018,44040,1870,17,10,104.9
+fold_holdout_Wed21,Thursday-01-03-2018|Wednesday-28-02-2018,Wednesday-21-02-2018,44040,1870,17,10,102.0
+fold_holdout_Wed28,Thursday-01-03-2018|Wednesday-21-02-2018,Wednesday-28-02-2018,23904,22006,15,8,46.1

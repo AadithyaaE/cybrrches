@@ -1,0 +1,148 @@
+======================================================================
+LSTM WORLD MODEL REPORT (FEATURE 10)
+======================================================================
+
+1. OBJECTIVE
+   Learn P(S(t+1) | S(t-9), ..., S(t)) - next network-state regression, not attack classification.
+
+2. INPUT REPRESENTATION
+   10 consecutive 68-dimensional network states (X_sequences_scaled from Feature 7),
+   shape (batch, 10, 68). Target: next_window_features_scaled, shape (batch, 68).
+
+3. WORLD MODEL FORMULATION
+   S(t-9:t) -> S(t+1), a 68-dimensional continuous state vector predicted from the preceding 10 states.
+   Model type: LSTM-based Network World Model (LSTM temporal network-state dynamics model).
+
+4. ARCHITECTURE
+   input_size: 68
+   hidden_size: 128
+   num_layers: 2
+   dropout: 0.2
+   Output head: Linear(hidden_size -> input_size) applied to the final LSTM hidden state.
+
+5. TRAINING CONFIGURATION
+   hidden_size: 128
+   num_layers: 2
+   dropout: 0.2
+   batch_size: 128
+   learning_rate: 0.001
+   max_epochs: 50
+   patience: 7
+   seed: 42
+   environment: {'python_version': '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]', 'torch_version': '2.14.0+cpu', 'platform': 'Windows-11-10.0.22631-SP0', 'device': 'cpu'}
+
+6. DATASET SHAPES
+   train: X=[15660, 10, 68] y=[15660, 68]
+   validation: X=[3492, 10, 68] y=[3492, 68]
+   test: X=[2871, 10, 68] y=[2871, 68]
+
+7. TRAINING BEHAVIOR
+   epochs_run: 14
+   best_epoch: 7
+   best_validation_loss: 0.7931001335382462
+   early_stopped: True
+   training_seconds: 33.19295954704285
+
+8. TRAIN METRICS
+   mse: 0.8312842845916748
+   rmse: 0.9117479282080518
+   mae: 0.444521427154541
+
+9. VALIDATION METRICS
+   mse: 0.7961475253105164
+   rmse: 0.8922709932024667
+   mae: 0.46167224645614624
+
+10. TEST METRICS
+   mse: 18.77292251586914
+   rmse: 4.332773074587353
+   mae: 0.47180914878845215
+   NOTE: MSE/MAE here measure next-state regression accuracy, NOT attack detection
+   performance. Attack-state classification is handled in a later feature.
+
+10b. OUTLIER DIAGNOSTIC (why MSE and MAE can diverge)
+   MSE is sensitive to a small number of extreme errors; MAE is not. Where the two
+   diverge sharply for a split, the single largest-error sample/feature is identified
+   below (computed from the actual data, not hardcoded). This is diagnostic context,
+   not a metric exclusion - the officially reported MSE/RMSE/MAE above include every
+   sample with no exclusions.
+   train: worst sample mse=1102.8833 (sequence_id=11645, target_timestamp=2018-03-01 08:26:23)
+     The single worst sample in train is dominated by feature 'Bwd Header Len' (actual scaled value 110.617 vs TRAIN's observed range [-0.093, 110.617]). This value is within TRAIN's observed range for this feature.
+     Diagnostic MSE excluding this one sample: 0.7609061598777771
+   validation: worst sample mse=67.2236 (sequence_id=17197, target_timestamp=2018-03-01 10:47:38)
+     The single worst sample in validation is dominated by feature 'PSH Flag Cnt' (actual scaled value 63.041 vs TRAIN's observed range [-0.131, 63.867]). This value is within TRAIN's observed range for this feature.
+     Diagnostic MSE excluding this one sample: 0.7771192789077759
+   test: worst sample mse=51833.4609 (sequence_id=19842, target_timestamp=2018-03-01 11:53:12)
+     The single worst sample in test is dominated by feature 'Pkt Len Var' (actual scaled value 1874.014 vs TRAIN's observed range [-1.117, 11.805]). This value falls far outside anything the scaler/model ever saw during TRAIN fitting, i.e. a genuine out-of-distribution event in this partition, not a data or code bug.
+     Diagnostic MSE excluding this one sample: 0.7190222144126892
+
+11. PER-FEATURE PREDICTION ANALYSIS (hardest 10 features to predict, by validation MSE)
+   PSH Flag Cnt: val_mse=6.440636 val_mae=0.195748
+   Flow IAT Std: val_mse=1.263437 val_mae=0.612960
+   Bwd IAT Min: val_mse=1.161899 val_mae=0.359535
+   Pkt Len Min: val_mse=1.149177 val_mae=0.496672
+   Fwd Pkt Len Min: val_mse=1.125760 val_mae=0.496537
+   Bwd IAT Mean: val_mse=1.114413 val_mae=0.450304
+   Pkt Size Avg: val_mse=1.064975 val_mae=0.725407
+   Fwd Seg Size Min: val_mse=1.049830 val_mae=0.786464
+   Fwd IAT Std: val_mse=1.046031 val_mae=0.584895
+   Fwd Seg Size Avg: val_mse=1.021299 val_mae=0.666367
+   (Full table: lstm_per_feature_metrics.csv, all 68 features)
+
+12. LABEL DISTRIBUTION LIMITATION
+   Target-window label distributions: {'train': {'Benign': 10760, 'Infilteration': 4900}, 'validation': {'Benign': 1815, 'Infilteration': 1677}, 'test': {'Benign': 2871}}
+   The chronological TEST partition's target windows contain {'Benign': 2871} - zero Infilteration examples. Attack-class evaluation (e.g. does next-state prediction error spike before an attack) is NOT possible on this TEST partition because it contains no attack windows at all. This is unchanged from Features 7-9 and was neither modified nor rebalanced here.
+
+13. LEAKAGE CHECKS
+   1_train_input_shape_correct: PASS
+   2_train_target_shape_correct: PASS
+   3_validation_test_shapes_correct: PASS
+   4_no_nan_inf: PASS
+   5_attack_label_not_in_X: PASS
+   6_timestamp_not_in_X: PASS
+   7_sequence_id_not_in_X: PASS
+   8_next_window_features_used_only_as_target: PASS
+   9_test_not_used_during_training: PASS
+   10_test_not_used_for_early_stopping: PASS
+   11_no_new_preprocessing_fit: PASS
+
+14. REPRODUCIBILITY CHECKS
+   seed: 42
+   checkpoint_reload_prediction_match: True
+   checkpoint_reload_tolerance: 1e-06
+   checkpoint_reload_max_abs_diff: 0.0
+   feature7_files_unchanged: True
+   feature8_files_unchanged: True
+   feature9_files_unchanged: True
+
+15. KNOWN LIMITATIONS
+   - TEST partition contains no Infilteration target windows, so this feature cannot
+     report whether prediction error is informative about attacks (see item 12).
+   - No hyperparameter search was performed; the recommended default architecture/
+     training configuration was used as-is.
+   - Per-feature MAE/MSE varies across the 68 state dimensions (see item 11); some
+     rate/IAT-style features are harder to predict than count-like features.
+   - Single continuous-day capture: generalization to other days/networks is untested.
+
+16. WHAT FEATURE 10 DOES NOT YET IMPLEMENT
+   - K-step forecasting (rolling multi-step prediction)
+   - Attack-progression probability / classification
+   - MITRE ATT&CK stage mapping
+   - Explainability (SHAP or otherwise)
+   - Autonomous mitigation
+
+17. RECOMMENDED NEXT STEP
+   Feature 11: use this trained World Model's next-state predictions (or prediction
+   error) as the basis for attack-progression / K-step forecasting evaluation, still
+   respecting the chronological split and the TEST-set label limitation documented above.
+
+SCOPE STATEMENT: Feature 10 predicts the next network-state vector. It does not yet perform K-step forecasting or attack-progression classification.
+
+OUTPUTS:
+   checkpoint: results\lstm\lstm_world_model.pt
+   training_history: results\lstm\lstm_training_history.json
+   config: results\lstm\lstm_config.json
+   per_feature_metrics: results\lstm\lstm_per_feature_metrics.csv
+   predictions_summary: results\lstm\lstm_predictions_summary.csv
+   test_predicted_next_state: data\processed\lstm\test_predicted_next_state.npy
+   test_actual_next_state: data\processed\lstm\test_actual_next_state.npy

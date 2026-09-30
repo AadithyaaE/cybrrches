@@ -1,0 +1,5 @@
+day,attack_family,model,n_sequences,detected_as_attack_count,detection_recall,note
+Wednesday-28-02-2018,Infilteration,logistic_regression_baseline,5789,4644,0.8022,"Direct, training-label-compatible detection recall (Infilteration is exactly the trained positive class)."
+Wednesday-28-02-2018,Infilteration,random_forest_baseline,5789,3804,0.6571,"Direct, training-label-compatible detection recall (Infilteration is exactly the trained positive class)."
+Wednesday-28-02-2018,Infilteration,next_state_classifier_oracle,5789,4356,0.7525,"Direct, training-label-compatible detection recall (Infilteration is exactly the trained positive class)."
+Wednesday-28-02-2018,Infilteration,next_state_classifier_full_pipeline,5789,4763,0.8228,"Direct, training-label-compatible detection recall (Infilteration is exactly the trained positive class)."

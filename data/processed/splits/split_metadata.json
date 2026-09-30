@@ -1,0 +1,311 @@
+{
+  "split_strategy": "Chronological split by WINDOW position (windows sorted ascending by window_start; first 70% of windows by count -> TRAIN, next 15% -> VALIDATION, remainder -> TEST). Any sequence whose 11 constituent window_ids (10 input + 1 target) span more than one of these partitions is purged entirely rather than assigned - this is the temporal-leakage boundary protection mechanism.",
+  "chronological_boundaries": {
+    "train_ends_at": "2018-03-01 10:12:22",
+    "validation_range": [
+      "2018-03-01 10:12:23",
+      "2018-03-01 11:35:25"
+    ],
+    "test_starts_at": "2018-03-01 11:35:26"
+  },
+  "target_proportions_pct": {
+    "train": 70.0,
+    "validation": 15.0,
+    "test": 15.000000000000005
+  },
+  "actual_proportions_pct_by_sequence_count": {
+    "train": 71.11,
+    "validation": 15.86,
+    "test": 13.04
+  },
+  "actual_proportions_pct_by_window_count": {
+    "train": 70.0,
+    "validation": 15.0,
+    "test": 15.0
+  },
+  "num_sequences_total_before_purge": 22034,
+  "num_sequences_purged": 11,
+  "num_windows_total": 32068,
+  "num_windows_discarded": 0,
+  "num_continuous_segments_total": 1366,
+  "label_distribution_by_partition": {
+    "train": {
+      "Benign": 10760,
+      "Infilteration": 4900
+    },
+    "validation": {
+      "Benign": 1815,
+      "Infilteration": 1677
+    },
+    "test": {
+      "Benign": 2871
+    }
+  },
+  "purge_records": [
+    {
+      "sequence_id": 15660,
+      "window_ids": [
+        22437,
+        22438,
+        22439,
+        22440,
+        22441,
+        22442,
+        22443,
+        22444,
+        22445,
+        22446,
+        22447
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15661,
+      "window_ids": [
+        22438,
+        22439,
+        22440,
+        22441,
+        22442,
+        22443,
+        22444,
+        22445,
+        22446,
+        22447,
+        22448
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15662,
+      "window_ids": [
+        22439,
+        22440,
+        22441,
+        22442,
+        22443,
+        22444,
+        22445,
+        22446,
+        22447,
+        22448,
+        22449
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15663,
+      "window_ids": [
+        22440,
+        22441,
+        22442,
+        22443,
+        22444,
+        22445,
+        22446,
+        22447,
+        22448,
+        22449,
+        22450
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15664,
+      "window_ids": [
+        22441,
+        22442,
+        22443,
+        22444,
+        22445,
+        22446,
+        22447,
+        22448,
+        22449,
+        22450,
+        22451
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15665,
+      "window_ids": [
+        22442,
+        22443,
+        22444,
+        22445,
+        22446,
+        22447,
+        22448,
+        22449,
+        22450,
+        22451,
+        22452
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15666,
+      "window_ids": [
+        22443,
+        22444,
+        22445,
+        22446,
+        22447,
+        22448,
+        22449,
+        22450,
+        22451,
+        22452,
+        22453
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15667,
+      "window_ids": [
+        22444,
+        22445,
+        22446,
+        22447,
+        22448,
+        22449,
+        22450,
+        22451,
+        22452,
+        22453,
+        22454
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15668,
+      "window_ids": [
+        22445,
+        22446,
+        22447,
+        22448,
+        22449,
+        22450,
+        22451,
+        22452,
+        22453,
+        22454,
+        22455
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 15669,
+      "window_ids": [
+        22446,
+        22447,
+        22448,
+        22449,
+        22450,
+        22451,
+        22452,
+        22453,
+        22454,
+        22455,
+        22456
+      ],
+      "partitions_touched": [
+        "train",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    },
+    {
+      "sequence_id": 19162,
+      "window_ids": [
+        27247,
+        27248,
+        27249,
+        27250,
+        27251,
+        27252,
+        27253,
+        27254,
+        27255,
+        27256,
+        27257
+      ],
+      "partitions_touched": [
+        "test",
+        "validation"
+      ],
+      "reason": "Sequence's input/target windows span more than one chronological partition."
+    }
+  ],
+  "random_seed": null,
+  "random_seed_note": "No random operation is used anywhere in this split (purely chronological + deterministic purge).",
+  "preprocessing_strategy": "SimpleImputer(strategy='median') + StandardScaler on the 65 numeric features; Protocol_0/6/17 one-hot columns passthrough (unscaled) - identical design to Feature 4's unfitted pipeline.",
+  "preprocessing_fit_source": "Unique TRAIN-partition window feature vectors from temporal_windows.csv (deduplicated by window_id), NOT the expanded/overlapping sequence tensor, to avoid overweighting windows reused across multiple overlapping sequences.",
+  "feature_count": 68,
+  "sequence_length": 10,
+  "dataset_version_source": {
+    "temporal_windows_csv": "data\\processed\\temporal\\temporal_windows.csv",
+    "sequence_metadata_csv": "data\\processed\\temporal\\sequences\\sequence_metadata.csv",
+    "x_sequences_npy": "data\\processed\\temporal\\sequences\\X_sequences.npy",
+    "next_window_features_npy": "data\\processed\\temporal\\sequences\\next_window_features.npy",
+    "feature_order_json": "results\\temporal_feature_order.json"
+  },
+  "validation_checks": {
+    "1_train_before_validation": true,
+    "2_validation_before_test": true,
+    "3_no_sequence_spans_multiple_partitions": true,
+    "4_no_input_window_id_in_multiple_partitions": true,
+    "5_no_target_window_id_in_multiple_partitions": true,
+    "6_no_cross_partition_window_overlap": true,
+    "7_no_target_overlaps_other_partition_inputs": true,
+    "8_temporal_gaps_not_bridged": true,
+    "9_sequence_length_is_10": true,
+    "10_feature_dimension_is_68": true,
+    "11_X_and_target_aligned_with_metadata": true,
+    "12_13_sequence_ids_unique_within_and_across": true,
+    "14_no_duplicate_window_id_across_partitions": true,
+    "20_chronological_order_within_partitions": true,
+    "15_training_preprocessing_fitted_only_on_train": true,
+    "16_original_pipeline_unfitted_and_unchanged": true,
+    "17_no_infinity_after_preprocessing": true,
+    "18_no_unexpected_nan_after_preprocessing": true,
+    "19_labels_correctly_aligned": true
+  }
+}

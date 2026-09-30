@@ -1,0 +1,15 @@
+======================================================================
+ORACLE vs FULL WORLD-MODEL PIPELINE COMPARISON (VALIDATION)
+======================================================================
+
+VALIDATION is the meaningful comparison point because it is the only evaluation partition (besides TRAIN, which the classifier was fit on) containing both classes. The difference (pipeline - oracle) provides an empirical indication of how errors in future-state prediction affect downstream attack-state classification; it does not establish that this difference is solely or causally due to LSTM prediction error, since other factors (e.g. classifier decision boundary sensitivity near the LSTM's smoothed/regression-toward-mean predictions) could also contribute. No overall winner or ranking is declared.
+
+metric                    oracle    pipeline    difference
+accuracy            0.60538373424971360.5982245131729668-0.0071592210767468245
+precision           0.58567335243553010.5609430604982206-0.024730291937309468
+recall              0.60942158616577220.7519379844961240.1425163983303518
+f1                  0.59731151373465810.6425477707006370.04523625696597888
+roc_auc             0.66665007531815150.6601401886814148-0.006509886636736684
+false_positive_rate 0.398347107438016550.5438016528925620.14545454545454545
+
+Feature 8's Logistic Regression was trained on a FLATTENED 10x68=680-dimensional historical sequence (t-9..t) to predict the NEXT window's label directly. Feature 11's Logistic Regression is a different model: it maps ONE 68-dimensional FUTURE state vector (ground-truth or LSTM-predicted S(t+1)) to its attack-state label. They are not interchangeable and are not directly comparable as classifiers of the same input.

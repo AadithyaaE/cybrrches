@@ -1,0 +1,84 @@
+{
+  "statement": "VALIDATION is the meaningful attack-class comparison point for the current single-day chronological dataset, because it is the only partition (besides TRAIN, which the models were fit on) where both Benign and Infilteration examples are present. TEST metrics for recall and ROC-AUC are not comparable between models because they are undefined (TEST has zero positive examples) - only accuracy, precision, F1 (both 0.0 unless a model has TP>0), and FPR are computable on TEST, and they characterize false-positive behavior on benign traffic only, not attack-detection capability. No winner is declared and no ranking is implied; these are benchmark measurements for later comparison against the LSTM World Model.",
+  "rows": [
+    {
+      "model": "LogisticRegression",
+      "split": "train",
+      "accuracy": 0.7089399744572158,
+      "precision": 0.5233670401749112,
+      "recall": 0.7816326530612245,
+      "f1": 0.6269438533311508,
+      "roc_auc": 0.8013822547606404,
+      "fpr": 0.3241635687732342,
+      "sample_count": 15660,
+      "positive_count": 4900,
+      "negative_count": 10760
+    },
+    {
+      "model": "LogisticRegression",
+      "split": "validation",
+      "accuracy": 0.7574455899198167,
+      "precision": 0.7060575968222443,
+      "recall": 0.8479427549194991,
+      "f1": 0.77052289352479,
+      "roc_auc": 0.8409352920980828,
+      "fpr": 0.3261707988980716,
+      "sample_count": 3492,
+      "positive_count": 1677,
+      "negative_count": 1815
+    },
+    {
+      "model": "LogisticRegression",
+      "split": "test",
+      "accuracy": 0.9380006966213863,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "roc_auc": null,
+      "fpr": 0.06199930337861372,
+      "sample_count": 2871,
+      "positive_count": 0,
+      "negative_count": 2871
+    },
+    {
+      "model": "RandomForest",
+      "split": "train",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "fpr": 0.0,
+      "sample_count": 15660,
+      "positive_count": 4900,
+      "negative_count": 10760
+    },
+    {
+      "model": "RandomForest",
+      "split": "validation",
+      "accuracy": 0.7242268041237113,
+      "precision": 0.7560975609756098,
+      "recall": 0.6285032796660703,
+      "f1": 0.6864213611201563,
+      "roc_auc": 0.8423148380865083,
+      "fpr": 0.18732782369146006,
+      "sample_count": 3492,
+      "positive_count": 1677,
+      "negative_count": 1815
+    },
+    {
+      "model": "RandomForest",
+      "split": "test",
+      "accuracy": 0.9933820968303727,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "roc_auc": null,
+      "fpr": 0.0066179031696273075,
+      "sample_count": 2871,
+      "positive_count": 0,
+      "negative_count": 2871
+    }
+  ],
+  "note": "Only metrics that are mathematically valid for each split are populated; undefined metrics are null, never fabricated."
+}

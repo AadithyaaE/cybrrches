@@ -1,0 +1,106 @@
+======================================================================
+MITRE ATT&CK STAGE MAPPING REPORT (FEATURE 14)
+======================================================================
+
+1. OBJECTIVE
+   Deterministic, rule-based mapping of observed/predicted network evidence and Feature 13 context onto candidate MITRE ATT&CK stages.
+
+2. INPUT ARTIFACTS
+   - data/processed/temporal/temporal_windows.csv (Feature 6, raw window aggregates)
+   - data/processed/Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv (Feature 2, for Dst Port diversity)
+   - results/lstm/lstm_world_model.pt (Feature 10, frozen)
+   - data/processed/splits/preprocessing_pipeline_train_fitted.joblib (Feature 7, inverse_transform only)
+   - results/attack_progression/attack_progression_predictions.csv (Feature 13, contextual only)
+   - reasoning.py search result: NOT FOUND anywhere in this repository - thresholds defined fresh, see rule_definitions artifact.
+
+3-4. ATT&CK STAGES / TECHNIQUES IMPLEMENTED
+   Discovery: T1046 Network Service Discovery
+   Command and Control: T1071 Application Layer Protocol (C2)
+   Exfiltration: T1041 Exfiltration Over C2 Channel
+   Impact: T1498 Network Denial of Service
+   Reconnaissance: T1595 Active Scanning (candidate)
+   Initial Access: T1190 Exploit Public-Facing Application (candidate)
+   Lateral Movement: T1021 Remote Services (candidate)
+
+5. COMPLETE RULE TABLE
+   See mitre_stage_rule_definitions.json (all rules, conditions, thresholds, explanations, limitations)
+
+6. THRESHOLDS
+   Impact: {'packets_per_second': {'normal_max': 50, 'high_min': 200}, 'bytes_per_second': {'normal_max': 50000, 'high_min': 500000}, 'connection_frequency': {'normal_max': 3, 'high_min': 15}, 'traffic_growth_pct': {'medium_min': 50.0, 'high_min': 150.0}}
+   Discovery/Recon: {'dst_port_nunique_high': 10, 'dst_port_nunique_medium': 5, 'short_flow_duration_us': 1000000, 'min_observation_count_repeated': 5, 'low_avg_bytes_per_flow': 200}
+   Command and Control: {'iat_regularity_cv_max': 0.3, 'min_observation_count_persistent': 2}
+   Exfiltration: {'high_outbound_bytes_per_s': 500000, 'high_outbound_inbound_ratio': 10.0}
+   Recon max score: 55  Initial Access max score: 50  Lateral Movement max score: 0
+   Minimum evidence threshold for primary_stage: 30
+
+7. EVIDENCE SCORING METHOD
+   Sum of triggered rules' score_contribution per stage, capped at 100 (or the stage's explicit
+   cap for candidate-only stages). This is a 'Stage Evidence Score', NOT a probability, NOT
+   model confidence, NOT an ATT&CK probability, and NOT prediction accuracy.
+
+8. PRIMARY-STAGE SELECTION LOGIC
+   Highest evidence_score across all 7 stages; if that maximum is below 30,
+   primary_stage = UNKNOWN / INSUFFICIENT_EVIDENCE. All 7 stage scores are always preserved, never deleted.
+
+9. UNKNOWN LOGIC
+   See item 8. Verified via self-test (all-None evidence -> UNKNOWN).
+
+10. FEATURE 13 INTEGRATION
+   P(Infiltration) is attached to each PREDICTED evidence point as a separate contextual field
+   (feature13_attack_probability). It is NEVER fused into or converted into a stage evidence score.
+
+11. OBSERVED VS PREDICTED EVIDENCE
+   OBSERVED: raw values looked up directly from temporal_windows.csv at the sequence's current/last
+   real window (input_end_window) - real data, not model output.
+   PREDICTED: Feature 12's frozen-LSTM recursive rollout at K=1,2,3,5, inverse-transformed from
+   scaled back to raw units via the Feature 7 train-fitted scaler (inverse_transform only, never fit).
+   Ground-truth future states/labels are used ONLY for the separate evaluation/reproducibility
+   checks below, never as mapper inputs.
+
+12. EVALUATION METHODOLOGY (no ATT&CK ground truth available)
+   The current dataset (Benign/Infilteration binary labels) contains NO legitimate ATT&CK stage ground truth. mitre_stage_confusion_matrix.json was intentionally NOT created, per the Feature 14 specification: 'Only create mitre_stage_confusion_matrix.json IF a legitimate ground-truth ATT&CK stage label actually exists.' ATT&CK classification accuracy/precision/recall/F1 CANNOT be claimed or computed.
+
+13. RULE COVERAGE RESULTS
+   {'discovery_high_port_diversity': 225, 'discovery_repeated_short_flows': 434, 'discovery_low_bytes_per_flow': 991, 'c2_regular_beacon_timing': 2548, 'c2_persistent_bidirectional_traffic': 3188, 'exfil_high_outbound_volume': 2498, 'exfil_high_outbound_inbound_ratio': 5038, 'impact_high_rate_and_growth': 9856, 'impact_elevated_volume_or_frequency': 16459, 'recon_port_scanning_pattern': 274, 'initial_access_suspicious_connection_pattern': 55, 'lateral_movement_internal_destination_count': 0}
+   Rules never triggered on this dataset: ['lateral_movement_internal_destination_count']
+
+14. REPRODUCIBILITY RESULTS
+   {'pass1_equals_pass2': True, 'audit_record_count': 17460}
+
+15. LEAKAGE / MODEL-INTEGRITY CHECKS
+   no_model_trained: PASS
+   no_scaler_fitted: PASS
+   no_classifier_fitted: PASS
+   feature13_not_tuned: PASS
+   validation_labels_not_used_to_alter_rules: PASS
+   future_ground_truth_not_used_as_inference_input: PASS
+   lstm_unmodified: PASS
+   classifier_unmodified: PASS
+   forecasting_unmodified: PASS
+   feature13_probabilities_unmodified: PASS
+   feature7_13_artifacts_unchanged: PASS
+
+16. FEATURE 7-13 ARTIFACT INTEGRITY
+   feature7_13_artifacts_unchanged: True
+
+17. LIMITATIONS
+   - Lateral Movement evidence is structurally unavailable: this dataset has no source/destination
+     IP addresses, so internal-destination-count evidence can never be computed here.
+   - PREDICTED evidence lacks dst_port_nunique, observation_count, and avg_bytes_per_flow, because
+     these are not part of the 68 features the LSTM predicts (they are Feature 6 window metadata,
+     not state-vector features) - so Discovery/Reconnaissance rules that depend on them can only
+     fire on OBSERVED evidence, never on PREDICTED evidence. See evidence_feature_availability
+     in the metrics JSON for exact per-field availability percentages.
+   - Reconnaissance and Initial Access are explicitly capped (candidate-only) because flow
+     telemetry cannot establish attacker intent or confirm compromise.
+   - This is network-evidence-based, transparent, rule-based reasoning; it is NOT a trained
+     model and carries no learned generalization guarantees.
+
+18. EXPLICIT STATEMENT
+   The current dataset (Benign/Infilteration binary labels) contains NO legitimate ATT&CK stage ground truth. mitre_stage_confusion_matrix.json was intentionally NOT created, per the Feature 14 specification: 'Only create mitre_stage_confusion_matrix.json IF a legitimate ground-truth ATT&CK stage label actually exists.' ATT&CK classification accuracy/precision/recall/F1 CANNOT be claimed or computed.
+
+OUTPUTS:
+   predictions_csv: results\mitre\mitre_stage_predictions.csv
+   evidence_csv: results\mitre\mitre_stage_evidence.csv
+   rule_definitions_json: results\mitre\mitre_stage_rule_definitions.json
+   config_json: results\mitre\mitre_stage_mapping_config.json

@@ -1,0 +1,778 @@
+{
+  "objective": "Convert LSTM-predicted future network states (Feature 12) into P(Infiltration) via the frozen Feature 11 classifier, at horizons K=1,2,3,5.",
+  "scientific_distinction": "Feature 12 answers: what might the future network state look like? Feature 13 answers: given the predicted future network state, how strongly does the frozen attack classifier associate that future state with Infiltration? This is not MITRE ATT&CK stage prediction, causal attacker-intent prediction, guaranteed early warning, a risk score, or a mitigation decision.",
+  "primary_result_label": "Full recursive CyberChess pipeline (predicted future state -> frozen classifier)",
+  "diagnostic_result_label": "Oracle future-state diagnostic (ground-truth future state -> frozen classifier; NOT a deployment result)",
+  "test_set_limitation": "The current chronological TEST partition contains no Infiltration samples, so attack-progression detection metrics cannot be established on that partition. Feature 13 is therefore evaluated on the mixed-class VALIDATION partition as a development-stage assessment. A later expanded multi-day evaluation will provide a proper unseen attack-containing test set.",
+  "horizons": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "threshold": 0.5,
+  "sample_counts_per_horizon": {
+    "validation": {
+      "1": 3492,
+      "2": 3388,
+      "3": 3288,
+      "5": 3092
+    },
+    "test": {
+      "1": 2871,
+      "2": 2726,
+      "3": 2592,
+      "5": 2341
+    }
+  },
+  "validation_full_pipeline_metrics": {
+    "1": {
+      "n_samples": 3492,
+      "n_positive": 1677,
+      "n_negative": 1815,
+      "predicted_positive_count": 2248,
+      "predicted_negative_count": 1244,
+      "confusion_matrix": {
+        "tn": 828,
+        "fp": 987,
+        "fn": 416,
+        "tp": 1261
+      },
+      "false_positive_rate": 0.543801652892562,
+      "threshold": 0.5,
+      "roc_auc": 0.6601401886814148,
+      "pr_auc": 0.6258363243129139,
+      "precision": 0.5609430604982206,
+      "recall": 0.751937984496124,
+      "f1": 0.642547770700637,
+      "notes": []
+    },
+    "2": {
+      "n_samples": 3388,
+      "n_positive": 1631,
+      "n_negative": 1757,
+      "predicted_positive_count": 2440,
+      "predicted_negative_count": 948,
+      "confusion_matrix": {
+        "tn": 692,
+        "fp": 1065,
+        "fn": 256,
+        "tp": 1375
+      },
+      "false_positive_rate": 0.6061468412066021,
+      "threshold": 0.5,
+      "roc_auc": 0.6727374464653431,
+      "pr_auc": 0.6348047776865507,
+      "precision": 0.5635245901639344,
+      "recall": 0.8430410790925812,
+      "f1": 0.6755097027757307,
+      "notes": []
+    },
+    "3": {
+      "n_samples": 3288,
+      "n_positive": 1584,
+      "n_negative": 1704,
+      "predicted_positive_count": 2517,
+      "predicted_negative_count": 771,
+      "confusion_matrix": {
+        "tn": 595,
+        "fp": 1109,
+        "fn": 176,
+        "tp": 1408
+      },
+      "false_positive_rate": 0.6508215962441315,
+      "threshold": 0.5,
+      "roc_auc": 0.687802874697681,
+      "pr_auc": 0.64133091553076,
+      "precision": 0.5593961064759635,
+      "recall": 0.8888888888888888,
+      "f1": 0.686661789807364,
+      "notes": []
+    },
+    "5": {
+      "n_samples": 3092,
+      "n_positive": 1498,
+      "n_negative": 1594,
+      "predicted_positive_count": 2425,
+      "predicted_negative_count": 667,
+      "confusion_matrix": {
+        "tn": 567,
+        "fp": 1027,
+        "fn": 100,
+        "tp": 1398
+      },
+      "false_positive_rate": 0.6442910915934755,
+      "threshold": 0.5,
+      "roc_auc": 0.7064758448320052,
+      "pr_auc": 0.6401127378203733,
+      "precision": 0.5764948453608247,
+      "recall": 0.9332443257676902,
+      "f1": 0.712719857252103,
+      "notes": []
+    }
+  },
+  "validation_oracle_diagnostic_metrics": {
+    "1": {
+      "n_samples": 3492,
+      "n_positive": 1677,
+      "n_negative": 1815,
+      "predicted_positive_count": 1745,
+      "predicted_negative_count": 1747,
+      "confusion_matrix": {
+        "tn": 1092,
+        "fp": 723,
+        "fn": 655,
+        "tp": 1022
+      },
+      "false_positive_rate": 0.39834710743801655,
+      "threshold": 0.5,
+      "roc_auc": 0.666649911047374,
+      "pr_auc": 0.6568098868390803,
+      "precision": 0.5856733524355301,
+      "recall": 0.6094215861657722,
+      "f1": 0.5973115137346581,
+      "notes": []
+    },
+    "2": {
+      "n_samples": 3388,
+      "n_positive": 1631,
+      "n_negative": 1757,
+      "predicted_positive_count": 1686,
+      "predicted_negative_count": 1702,
+      "confusion_matrix": {
+        "tn": 1061,
+        "fp": 696,
+        "fn": 641,
+        "tp": 990
+      },
+      "false_positive_rate": 0.39612976664769495,
+      "threshold": 0.5,
+      "roc_auc": 0.6660037610790088,
+      "pr_auc": 0.6561374810540423,
+      "precision": 0.5871886120996441,
+      "recall": 0.6069895769466584,
+      "f1": 0.5969249321676213,
+      "notes": []
+    },
+    "3": {
+      "n_samples": 3288,
+      "n_positive": 1584,
+      "n_negative": 1704,
+      "predicted_positive_count": 1627,
+      "predicted_negative_count": 1661,
+      "confusion_matrix": {
+        "tn": 1037,
+        "fp": 667,
+        "fn": 624,
+        "tp": 960
+      },
+      "false_positive_rate": 0.3914319248826291,
+      "threshold": 0.5,
+      "roc_auc": 0.6672637095722483,
+      "pr_auc": 0.6572612554878905,
+      "precision": 0.5900430239704979,
+      "recall": 0.6060606060606061,
+      "f1": 0.5979445655559016,
+      "notes": []
+    },
+    "5": {
+      "n_samples": 3092,
+      "n_positive": 1498,
+      "n_negative": 1594,
+      "predicted_positive_count": 1524,
+      "predicted_negative_count": 1568,
+      "confusion_matrix": {
+        "tn": 978,
+        "fp": 616,
+        "fn": 590,
+        "tp": 908
+      },
+      "false_positive_rate": 0.3864491844416562,
+      "threshold": 0.5,
+      "roc_auc": 0.6725749347101028,
+      "pr_auc": 0.665808953278929,
+      "precision": 0.5958005249343832,
+      "recall": 0.6061415220293725,
+      "f1": 0.600926538716082,
+      "notes": []
+    }
+  },
+  "test_descriptive_metrics": {
+    "1": {
+      "n_samples": 2871,
+      "n_positive": 0,
+      "n_negative": 2871,
+      "predicted_positive_count": 1321,
+      "predicted_negative_count": 1550,
+      "confusion_matrix": {
+        "tn": 1550,
+        "fp": 1321,
+        "fn": 0,
+        "tp": 0
+      },
+      "false_positive_rate": 0.460118425635667,
+      "threshold": 0.5,
+      "roc_auc": null,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": null,
+      "f1": null,
+      "notes": [
+        "ROC-AUC/PR-AUC/recall/F1 not estimable or intentionally withheld (n_positive=0, n_negative=2871)."
+      ],
+      "mean_probability": 0.45276036858558655,
+      "std_probability": 0.1024782657623291
+    },
+    "2": {
+      "n_samples": 2726,
+      "n_positive": 0,
+      "n_negative": 2726,
+      "predicted_positive_count": 1468,
+      "predicted_negative_count": 1258,
+      "confusion_matrix": {
+        "tn": 1258,
+        "fp": 1468,
+        "fn": 0,
+        "tp": 0
+      },
+      "false_positive_rate": 0.5385179750550256,
+      "threshold": 0.5,
+      "roc_auc": null,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": null,
+      "f1": null,
+      "notes": [
+        "ROC-AUC/PR-AUC/recall/F1 not estimable or intentionally withheld (n_positive=0, n_negative=2726)."
+      ],
+      "mean_probability": 0.46034783124923706,
+      "std_probability": 0.09499476104974747
+    },
+    "3": {
+      "n_samples": 2592,
+      "n_positive": 0,
+      "n_negative": 2592,
+      "predicted_positive_count": 1384,
+      "predicted_negative_count": 1208,
+      "confusion_matrix": {
+        "tn": 1208,
+        "fp": 1384,
+        "fn": 0,
+        "tp": 0
+      },
+      "false_positive_rate": 0.5339506172839507,
+      "threshold": 0.5,
+      "roc_auc": null,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": null,
+      "f1": null,
+      "notes": [
+        "ROC-AUC/PR-AUC/recall/F1 not estimable or intentionally withheld (n_positive=0, n_negative=2592)."
+      ],
+      "mean_probability": 0.4562278091907501,
+      "std_probability": 0.09754368662834167
+    },
+    "5": {
+      "n_samples": 2341,
+      "n_positive": 0,
+      "n_negative": 2341,
+      "predicted_positive_count": 1223,
+      "predicted_negative_count": 1118,
+      "confusion_matrix": {
+        "tn": 1118,
+        "fp": 1223,
+        "fn": 0,
+        "tp": 0
+      },
+      "false_positive_rate": 0.5224263135412217,
+      "threshold": 0.5,
+      "roc_auc": null,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": null,
+      "f1": null,
+      "notes": [
+        "ROC-AUC/PR-AUC/recall/F1 not estimable or intentionally withheld (n_positive=0, n_negative=2341)."
+      ],
+      "mean_probability": 0.45429250597953796,
+      "std_probability": 0.1003623753786087
+    }
+  },
+  "calibration": {
+    "1": {
+      "brier_score": 0.23296138644218445,
+      "bins": [
+        {
+          "bin_low": 0.0,
+          "bin_high": 0.1,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.1,
+          "bin_high": 0.2,
+          "n_samples": 3,
+          "mean_predicted_probability": 0.1811755746603012,
+          "observed_infiltration_frequency": 0.0
+        },
+        {
+          "bin_low": 0.2,
+          "bin_high": 0.30000000000000004,
+          "n_samples": 143,
+          "mean_predicted_probability": 0.25134676694869995,
+          "observed_infiltration_frequency": 0.02097902097902098
+        },
+        {
+          "bin_low": 0.30000000000000004,
+          "bin_high": 0.4,
+          "n_samples": 110,
+          "mean_predicted_probability": 0.3504825234413147,
+          "observed_infiltration_frequency": 0.1
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "n_samples": 988,
+          "mean_predicted_probability": 0.4748932421207428,
+          "observed_infiltration_frequency": 0.4068825910931174
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6000000000000001,
+          "n_samples": 2176,
+          "mean_predicted_probability": 0.5316033959388733,
+          "observed_infiltration_frequency": 0.5514705882352942
+        },
+        {
+          "bin_low": 0.6000000000000001,
+          "bin_high": 0.7000000000000001,
+          "n_samples": 70,
+          "mean_predicted_probability": 0.6211373805999756,
+          "observed_infiltration_frequency": 0.8428571428571429
+        },
+        {
+          "bin_low": 0.7000000000000001,
+          "bin_high": 0.8,
+          "n_samples": 2,
+          "mean_predicted_probability": 0.7052092552185059,
+          "observed_infiltration_frequency": 1.0
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        }
+      ]
+    },
+    "2": {
+      "brier_score": 0.2336837649345398,
+      "bins": [
+        {
+          "bin_low": 0.0,
+          "bin_high": 0.1,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.1,
+          "bin_high": 0.2,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.2,
+          "bin_high": 0.30000000000000004,
+          "n_samples": 126,
+          "mean_predicted_probability": 0.2655790150165558,
+          "observed_infiltration_frequency": 0.023809523809523808
+        },
+        {
+          "bin_low": 0.30000000000000004,
+          "bin_high": 0.4,
+          "n_samples": 102,
+          "mean_predicted_probability": 0.3414232134819031,
+          "observed_infiltration_frequency": 0.00980392156862745
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "n_samples": 720,
+          "mean_predicted_probability": 0.4784943163394928,
+          "observed_infiltration_frequency": 0.35
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6000000000000001,
+          "n_samples": 2421,
+          "mean_predicted_probability": 0.5289973020553589,
+          "observed_infiltration_frequency": 0.560512185047501
+        },
+        {
+          "bin_low": 0.6000000000000001,
+          "bin_high": 0.7000000000000001,
+          "n_samples": 19,
+          "mean_predicted_probability": 0.6195167899131775,
+          "observed_infiltration_frequency": 0.9473684210526315
+        },
+        {
+          "bin_low": 0.7000000000000001,
+          "bin_high": 0.8,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        }
+      ]
+    },
+    "3": {
+      "brier_score": 0.23356075584888458,
+      "bins": [
+        {
+          "bin_low": 0.0,
+          "bin_high": 0.1,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.1,
+          "bin_high": 0.2,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.2,
+          "bin_high": 0.30000000000000004,
+          "n_samples": 143,
+          "mean_predicted_probability": 0.2643425762653351,
+          "observed_infiltration_frequency": 0.013986013986013986
+        },
+        {
+          "bin_low": 0.30000000000000004,
+          "bin_high": 0.4,
+          "n_samples": 89,
+          "mean_predicted_probability": 0.34144699573516846,
+          "observed_infiltration_frequency": 0.033707865168539325
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "n_samples": 539,
+          "mean_predicted_probability": 0.47937873005867004,
+          "observed_infiltration_frequency": 0.3172541743970315
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6000000000000001,
+          "n_samples": 2514,
+          "mean_predicted_probability": 0.5265029668807983,
+          "observed_infiltration_frequency": 0.5588703261734288
+        },
+        {
+          "bin_low": 0.6000000000000001,
+          "bin_high": 0.7000000000000001,
+          "n_samples": 3,
+          "mean_predicted_probability": 0.6244567036628723,
+          "observed_infiltration_frequency": 1.0
+        },
+        {
+          "bin_low": 0.7000000000000001,
+          "bin_high": 0.8,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        }
+      ]
+    },
+    "5": {
+      "brier_score": 0.2331732213497162,
+      "bins": [
+        {
+          "bin_low": 0.0,
+          "bin_high": 0.1,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.1,
+          "bin_high": 0.2,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.2,
+          "bin_high": 0.30000000000000004,
+          "n_samples": 168,
+          "mean_predicted_probability": 0.2648390829563141,
+          "observed_infiltration_frequency": 0.017857142857142856
+        },
+        {
+          "bin_low": 0.30000000000000004,
+          "bin_high": 0.4,
+          "n_samples": 68,
+          "mean_predicted_probability": 0.3403927683830261,
+          "observed_infiltration_frequency": 0.1323529411764706
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "n_samples": 431,
+          "mean_predicted_probability": 0.48451513051986694,
+          "observed_infiltration_frequency": 0.20417633410672853
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6000000000000001,
+          "n_samples": 2424,
+          "mean_predicted_probability": 0.5244073867797852,
+          "observed_infiltration_frequency": 0.5763201320132013
+        },
+        {
+          "bin_low": 0.6000000000000001,
+          "bin_high": 0.7000000000000001,
+          "n_samples": 1,
+          "mean_predicted_probability": 0.622647225856781,
+          "observed_infiltration_frequency": 1.0
+        },
+        {
+          "bin_low": 0.7000000000000001,
+          "bin_high": 0.8,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "n_samples": 0,
+          "mean_predicted_probability": null,
+          "observed_infiltration_frequency": null
+        }
+      ]
+    }
+  },
+  "trajectory_summary": [
+    {
+      "horizon": 1,
+      "n": 3492,
+      "mean": 0.4999693036079407,
+      "median": 0.5130056142807007,
+      "std": 0.07035595923662186,
+      "p10": 0.4378620982170105,
+      "p90": 0.5575703978538513,
+      "mean_given_actual_benign": 0.4788178503513336,
+      "mean_given_actual_infiltration": 0.5228613615036011,
+      "median_given_actual_benign": 0.5045270919799805,
+      "median_given_actual_infiltration": 0.5219020843505859
+    },
+    {
+      "horizon": 2,
+      "n": 3388,
+      "mean": 0.5033286213874817,
+      "median": 0.5164667963981628,
+      "std": 0.06311473995447159,
+      "p10": 0.45811471343040466,
+      "p90": 0.5511182546615601,
+      "mean_given_actual_benign": 0.4836267828941345,
+      "mean_given_actual_infiltration": 0.5245525240898132,
+      "median_given_actual_benign": 0.5087112188339233,
+      "median_given_actual_infiltration": 0.5237001776695251
+    },
+    {
+      "horizon": 3,
+      "n": 3288,
+      "mean": 0.5024564266204834,
+      "median": 0.5181597471237183,
+      "std": 0.06353334337472916,
+      "p10": 0.4634529948234558,
+      "p90": 0.545586109161377,
+      "mean_given_actual_benign": 0.4826093912124634,
+      "mean_given_actual_infiltration": 0.5238070487976074,
+      "median_given_actual_benign": 0.5096017122268677,
+      "median_given_actual_infiltration": 0.5251525640487671
+    },
+    {
+      "horizon": 5,
+      "n": 3092,
+      "mean": 0.5007282495498657,
+      "median": 0.518585205078125,
+      "std": 0.06555378437042236,
+      "p10": 0.4734867215156555,
+      "p90": 0.5399482846260071,
+      "mean_given_actual_benign": 0.480217844247818,
+      "mean_given_actual_infiltration": 0.5225530862808228,
+      "median_given_actual_benign": 0.5101531744003296,
+      "median_given_actual_infiltration": 0.5249145030975342
+    }
+  ],
+  "early_warning_diagnostic": {
+    "definition": "Among VALIDATION sequences with a valid K=5 forecast, group by the sequence's ACTUAL label at t+5 (Benign vs Infilteration). For each group, report the mean/median full-pipeline P(Infiltration) at K=1, K=2, K=3, K=5 for that SAME sequence, restricted at each K to sequences for which that horizon is also individually valid (gap/partition-safe). This tests whether sequences destined to show Infiltration at t+5 already display elevated P(Infiltration) at earlier, shorter lead times, without assuming this must be true and without inventing a numeric 'lead time in seconds' metric. Because Feature 12 verified target windows are genuinely consecutive 1-second windows, horizon K here does correspond to K seconds ahead for the sequences evaluated at that horizon.",
+    "results": [
+      {
+        "horizon": 1,
+        "n_in_infiltration_at_t5_group": 1498,
+        "mean_p_infiltration_group": 0.5237056016921997,
+        "n_in_benign_at_t5_group": 1594,
+        "mean_p_benign_group": 0.4781914949417114
+      },
+      {
+        "horizon": 2,
+        "n_in_infiltration_at_t5_group": 1498,
+        "mean_p_infiltration_group": 0.525040864944458,
+        "n_in_benign_at_t5_group": 1594,
+        "mean_p_benign_group": 0.483565092086792
+      },
+      {
+        "horizon": 3,
+        "n_in_infiltration_at_t5_group": 1498,
+        "mean_p_infiltration_group": 0.5239058136940002,
+        "n_in_benign_at_t5_group": 1594,
+        "mean_p_benign_group": 0.4832838773727417
+      },
+      {
+        "horizon": 5,
+        "n_in_infiltration_at_t5_group": 1498,
+        "mean_p_infiltration_group": 0.5225530862808228,
+        "n_in_benign_at_t5_group": 1594,
+        "mean_p_benign_group": 0.480217844247818
+      }
+    ]
+  },
+  "k1_consistency_with_feature11": {
+    "feature13_k1_pipeline_validation": {
+      "n_samples": 3492,
+      "n_positive": 1677,
+      "n_negative": 1815,
+      "predicted_positive_count": 2248,
+      "predicted_negative_count": 1244,
+      "confusion_matrix": {
+        "tn": 828,
+        "fp": 987,
+        "fn": 416,
+        "tp": 1261
+      },
+      "false_positive_rate": 0.543801652892562,
+      "threshold": 0.5,
+      "roc_auc": 0.6601401886814148,
+      "pr_auc": 0.6258363243129139,
+      "precision": 0.5609430604982206,
+      "recall": 0.751937984496124,
+      "f1": 0.642547770700637,
+      "notes": []
+    },
+    "feature11_pipeline_validation": {
+      "n_samples": 3492,
+      "n_positive": 1677,
+      "n_negative": 1815,
+      "predicted_positive_count": 2248,
+      "predicted_negative_count": 1244,
+      "accuracy": 0.5982245131729668,
+      "precision": 0.5609430604982206,
+      "recall": 0.751937984496124,
+      "f1": 0.642547770700637,
+      "roc_auc": 0.6601401886814148,
+      "roc_auc_note": null,
+      "false_positive_rate": 0.543801652892562,
+      "false_positive_rate_note": null,
+      "confusion_matrix": {
+        "tn": 828,
+        "fp": 987,
+        "fn": 416,
+        "tp": 1261
+      },
+      "notes": [],
+      "class_distribution": {
+        "Benign": 1815,
+        "Infilteration": 1677
+      }
+    },
+    "checks": {
+      "accuracy_note": "Feature 13 reports precision/recall/f1/roc_auc/fpr/confusion_matrix; accuracy is derivable from the confusion matrix.",
+      "precision_match": true,
+      "recall_match": true,
+      "f1_match": true,
+      "roc_auc_match": true,
+      "fpr_match": "True",
+      "confusion_matrix_match": true
+    },
+    "all_match": true
+  },
+  "leakage_checks": {
+    "1_classifier_weights_unchanged": true,
+    "2_no_classifier_fitting": true,
+    "3_no_lstm_training": true,
+    "4_no_scaler_fitting": true,
+    "5_no_validation_labels_in_model_inputs": true,
+    "6_no_actual_future_states_in_rollout": true,
+    "7_actual_future_labels_evaluation_only": true,
+    "8_no_temporal_gaps_crossed": true,
+    "9_no_partition_boundary_crossed": true,
+    "10_probabilities_use_predicted_state_for_full_pipeline": true,
+    "11_feature7_12_artifacts_unchanged": true,
+    "lstm_frozen_param_count_with_grad": 0
+  },
+  "reproducibility": {
+    "seed": 42,
+    "repeat_run_match": true,
+    "fresh_reload_match": true,
+    "tolerance": 1e-06
+  },
+  "outputs": {
+    "predictions": "results\\attack_progression\\attack_progression_predictions.csv",
+    "horizon_metrics_csv": "results\\attack_progression\\attack_progression_horizon_metrics.csv",
+    "calibration_csv": "results\\attack_progression\\attack_progression_calibration.csv",
+    "trajectory_csv": "results\\attack_progression\\attack_progression_trajectory_summary.csv",
+    "confusion_matrices": "results\\attack_progression\\attack_progression_confusion_matrices.json",
+    "config": "results\\attack_progression\\attack_progression_config.json"
+  }
+}

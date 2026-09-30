@@ -1,0 +1,195 @@
+======================================================================
+CSE-CIC-IDS2018 DATASET AVAILABILITY AND ATTACK-COMPOSITION INSPECTION
+======================================================================
+
+SCOPE: Inspection only. No Feature 16 implementation. No training. No
+downloads of full CSV files. No modification of existing artifacts.
+
+Methods used:
+  - S3 bucket LIST metadata (aws s3 ls --no-sign-request) -> exact, verified.
+  - HTTP byte-range fetches (~150KB x 5 offsets per file, ~1MB total across
+    9 files) -> verified but partial, non-exhaustive.
+  - Publicly documented CSE-CIC-IDS2018 per-day attack categories (Canadian
+    Institute for Cybersecurity) -> external documentation, not fully
+    re-verified in this session.
+
+Every finding below is labeled VERIFIED, DOCUMENTED, ESTIMATE, or
+UNKNOWN/UNVERIFIED so these are never confused with each other.
+
+----------------------------------------------------------------------
+SECTION 1 - AVAILABLE FILES  [VERIFIED]
+----------------------------------------------------------------------
+s3://cse-cic-ids2018/Processed Traffic Data for ML Algorithms/ contains
+exactly 10 files - matching the list already known, no more, no fewer:
+
+  Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv     107.8 MB  (LOCAL, already processed through Features 1-15)
+  Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv    209.2 MB
+  Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv    328.9 MB
+  Friday-16-02-2018_TrafficForML_CICFlowMeter.csv       333.7 MB
+  Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv    358.2 MB
+  Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv     375.9 MB
+  Thursday-22-02-2018_TrafficForML_CICFlowMeter.csv     382.6 MB
+  Friday-23-02-2018_TrafficForML_CICFlowMeter.csv       382.8 MB
+  Friday-02-03-2018_TrafficForML_CICFlowMeter.csv       352.4 MB
+  Thuesday-20-02-2018_TrafficForML_CICFlowMeter.csv    4054.9 MB  <- outlier (filename typo is in the bucket itself)
+
+  TOTAL (all 10 files): ~6.41 GiB
+
+IMPORTANT CORRECTION: the ~220 GiB figure mentioned in the task almost
+certainly refers to the full RAW packet-capture/log dataset (a separate
+S3 prefix, "Original Network Traffic and Log data/"), NOT the processed
+CICFlowMeter CSVs this project actually uses. The 10 processed CSVs
+combined are only ~6.4 GiB - two orders of magnitude smaller.
+
+----------------------------------------------------------------------
+SECTION 2 - ATTACK COMPOSITION
+----------------------------------------------------------------------
+[DOCUMENTED, partially VERIFIED via byte-range sampling this session]
+
+  Day                    Documented categories                          Sampled this session      Match
+  ---------------------  ----------------------------------------------  ------------------------  -----------
+  Wed-14-02-2018         Benign, FTP-BruteForce, SSH-Bruteforce           same                      FULL
+  Thu-15-02-2018         Benign, DoS-GoldenEye, DoS-Slowloris             Benign only               PARTIAL
+  Fri-16-02-2018         Benign, DoS-Hulk, DoS-SlowHTTPTest               Benign, DoS-Hulk          PARTIAL
+  Tue-20-02-2018         Benign, DDoS-LOIC-HTTP                           Benign only               PARTIAL
+  Wed-21-02-2018         Benign, DDoS-HOIC, DDoS-LOIC-UDP                 Benign, DDoS-HOIC         PARTIAL
+  Thu-22-02-2018         Benign, Brute Force-Web, XSS, SQL Injection      Benign only               PARTIAL
+  Fri-23-02-2018         Benign, Brute Force-Web, XSS, SQL Injection      Benign only               PARTIAL
+  Wed-28-02-2018         Benign, Infilteration                           same                      FULL
+  Thu-01-03-2018 (dev)   Benign, Infilteration                           same (exhaustively, F1-3) FULL
+  Fri-02-03-2018         Benign, Bot                                     same                      FULL
+
+"PARTIAL" means the documented attack rows were not caught by this
+session's small (~1MB total) samples - most likely because attacks occupy
+a minority/clustered portion of a 330-380 MB file. Their presence rests on
+external documentation, not on this session's direct observation.
+
+IMPORTANT CLARIFICATION - Port Scan / Reconnaissance:
+No CSE-CIC-IDS2018 day in this set is documented as containing a distinct
+"PortScan" label. The "PortScan" label many papers cite comes from the
+separate, older CICIDS2017 dataset, not this one. There is no ground-truth
+scanning label available anywhere in this 10-file set.
+
+UNKNOWN/UNVERIFIED:
+  - Exact row-level label counts/proportions for the 9 non-current days.
+  - Whether Feature 2's embedded-header-row (25 rows) and exact-duplicate
+    (73 rows) artifacts recur in other days - unverified without download.
+  - Exact attack time-window boundaries within each day.
+
+----------------------------------------------------------------------
+SECTION 3 - CANDIDATE RANKING (FACTUAL TRADE-OFFS, NO SUBJECTIVE SCORE)
+----------------------------------------------------------------------
+  Wednesday-28-02-2018 (209 MB): same 2 classes as current training
+    (Benign/Infiltration), same schema. Best like-for-like external
+    validation; adds NO new attack-category diversity.
+
+  Wednesday-14-02-2018 (358 MB): credential brute force (FTP+SSH),
+    verified. Different label semantics from current training entirely.
+
+  Wednesday-21-02-2018 (329 MB): volumetric DDoS (HOIC verified, LOIC-UDP
+    documented only). Most directly relevant to this project's stated
+    "Real-Time DDoS Mitigation" goal and Feature 14's Impact/T1498 stage.
+
+  Friday-02-03-2018 (352 MB): botnet/C2 traffic, verified. Relevant to
+    Feature 14's Command-and-Control/T1071 stage. Chronologically adjacent
+    to the current dev day (2018-03-02 vs 03-01) - noted as fact, not flaw.
+
+  Friday-16-02-2018 (334 MB) / Thursday-15-02-2018 (376 MB): single-source
+    DoS, partially verified/documented. Distinct from the DDoS days.
+
+  Thursday-22-02-2018 (383 MB) / Friday-23-02-2018 (383 MB): application-
+    layer attacks (Web brute force, XSS, SQLi), documented only in this
+    session (samples missed them). Only source of app-layer diversity.
+
+  Thuesday-20-02-2018 (4055 MB): SCHEMA MISMATCH (84 cols, extra Flow
+    ID/Src IP/Src Port/Dst IP - verified). Largest file by far (11-38x
+    every other file) for a DDoS subtype already covered more cheaply by
+    Wednesday-21-02-2018. Weakest cost-benefit ratio of the 10 files.
+
+----------------------------------------------------------------------
+SECTION 4 - EVALUATION DESIGN (CAPTURE-DAY-LEVEL SEPARATION)
+----------------------------------------------------------------------
+A. EXTERNAL FROZEN-MODEL EVALUATION candidates:
+     Wednesday-28-02-2018 (label-compatible: same 2 classes)
+     Friday-02-03-2018 (tests behaviour on an unseen attack type - useful
+       for documenting generalization LIMITS, not detection capability)
+
+B. EXPANDED TRAINING/DEVELOPMENT candidates:
+     Wednesday-14-02-2018 (brute force), Wednesday-21-02-2018 (DDoS),
+     Friday-02-03-2018 (Bot) - combined ~1.04 GB, three verified new
+     attack families.
+
+C. FINAL HELD-OUT TEST candidates:
+     Thursday-22-02-2018 or Friday-23-02-2018 (whichever is NOT used in
+     B) - not sampling-verified this session, making either a clean,
+     untouched candidate, pending confirmation once downloaded.
+
+No final A/B/C assignment is made here - this requires your decision.
+
+----------------------------------------------------------------------
+SECTION 5 - FROZEN-MODEL EVALUATION PLAN (NOT IMPLEMENTED)
+----------------------------------------------------------------------
+Reused UNCHANGED: Feature 10 LSTM checkpoint, Feature 11 classifier,
+Feature 7's train-fitted preprocessing pipeline (transform() only, never
+refit), the 68-feature canonical order.
+
+Would need REGENERATION per new day: Feature 2-equivalent cleaning
+(header/duplicate artifacts are file-specific), Feature 5 states, Feature
+6 temporal windows/segments (gaps differ by day), a new Feature-7-style
+sequence set (NOT merged into the existing train/validation/test split).
+
+Explicitly NOT regenerated: LSTM weights, classifier weights, scaler
+statistics, Feature 14 rule thresholds.
+
+----------------------------------------------------------------------
+SECTION 6 - SCHEMA COMPATIBILITY  [VERIFIED via header byte-range fetch]
+----------------------------------------------------------------------
+8 of 9 undownloaded files share the EXACT 80-column header (same names,
+same order, "Label" last) as the current 80-column dataset:
+  Friday-02-03-2018, Friday-16-02-2018, Friday-23-02-2018,
+  Thursday-15-02-2018, Thursday-22-02-2018, Wednesday-14-02-2018,
+  Wednesday-21-02-2018, Wednesday-28-02-2018.
+  -> Should feed through the EXISTING Feature 2 cleaning script unchanged.
+
+Thuesday-20-02-2018 has 84 columns (adds Flow ID, Src IP, Src Port, Dst
+IP at the front) -> WOULD break Feature 2/3/4 as-is; needs an explicit
+column-dropping adapter before reuse. The 68-feature state representation
+must not be silently altered.
+
+Unverified: full-column dtype/value-range consistency beyond the header
+row (e.g. recurrence of Feature 2's known header/duplicate-row quirks).
+
+----------------------------------------------------------------------
+SECTION 7 - DOWNLOAD STRATEGY (NOTHING DOWNLOADED YET)
+----------------------------------------------------------------------
+Recommended minimal, defensible 3-file subset (~896 MB / 0.88 GiB):
+  Wednesday-28-02-2018  (209 MB) - role A/C
+  Wednesday-14-02-2018  (358 MB) - role B
+  Wednesday-21-02-2018  (329 MB) - role B
+
+Optional 4th file (+352 MB, total ~1.22 GiB): Friday-02-03-2018 (Bot).
+
+NOT recommended for near-term download: Thuesday-20-02-2018 (schema
+mismatch + 4.05 GB, weakest cost-benefit ratio).
+
+Deferred pending your decision: Thursday-22-02-2018 / Friday-23-02-2018
+(pick ONE for held-out test C, keep the other genuinely untouched);
+Friday-16-02-2018 / Thursday-15-02-2018 (lower priority, single-source DoS).
+
+----------------------------------------------------------------------
+SECTION 8 - PROJECT INTEGRITY CHECK
+----------------------------------------------------------------------
+No file under data/, results/ (other than this new
+results/dataset_generalization_inspection/ folder), or src/ was created
+or modified by this inspection. One report file
+(results/temporal_window_report.txt) showed a modification timestamp
+from earlier in this project's history (2026-09-22, before this
+inspection); its content was spot-checked and is unchanged - most likely
+an IDE file-open metadata touch, not a content edit, and not caused by
+any command in this inspection.
+
+CONCLUSION: No existing Feature 1-15 artifact was modified.
+
+======================================================================
+END OF REPORT
+======================================================================

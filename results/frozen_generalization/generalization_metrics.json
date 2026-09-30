@@ -1,0 +1,4935 @@
+{
+  "Wednesday-28-02-2018": {
+    "day": "Wednesday-28-02-2018",
+    "n_sequences": 22006,
+    "n_windows": 31854,
+    "attack_prevalence_windows_pct": 22.4838,
+    "training_compatible_view_applicable": true,
+    "logistic_regression_binary": {
+      "n_samples": 22006,
+      "n_positive": 5789,
+      "n_negative": 16217,
+      "attack_prevalence_pct": 26.3065,
+      "predicted_positive_count": 15999,
+      "predicted_negative_count": 6007,
+      "accuracy": 0.43197309824593294,
+      "confusion_matrix": {
+        "tn": 4862,
+        "fp": 11355,
+        "fn": 1145,
+        "tp": 4644
+      },
+      "false_positive_rate": 0.700191157427391,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.6220211760704036,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.39603849052243123,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.29026814175885995,
+      "recall": 0.8022110899982726,
+      "f1": 0.4262897007527079,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "random_forest_binary": {
+      "n_samples": 22006,
+      "n_positive": 5789,
+      "n_negative": 16217,
+      "attack_prevalence_pct": 26.3065,
+      "predicted_positive_count": 11180,
+      "predicted_negative_count": 10826,
+      "accuracy": 0.5746160138144143,
+      "confusion_matrix": {
+        "tn": 8841,
+        "fp": 7376,
+        "fn": 1985,
+        "tp": 3804
+      },
+      "false_positive_rate": 0.45483134981809215,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.6490288054629787,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.45227742528607273,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.3402504472271914,
+      "recall": 0.6571083088616342,
+      "f1": 0.448346985679769,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "lstm_one_step_regression": {
+      "mse": 4.781149864196777,
+      "rmse": 2.186583995819092,
+      "mae": 0.4994910657405853,
+      "n": 22006,
+      "worst_sample_sequence_id": 5104,
+      "worst_sample_mse": 80852.5390625,
+      "worst_sample_dominant_feature": "TotLen Fwd Pkts",
+      "top10_hardest_features": [
+        [
+          "TotLen Fwd Pkts",
+          106.728515625
+        ],
+        [
+          "Subflow Fwd Byts",
+          106.72726440429688
+        ],
+        [
+          "Fwd Act Data Pkts",
+          25.656753540039062
+        ],
+        [
+          "Subflow Fwd Pkts",
+          7.462688446044922
+        ],
+        [
+          "Tot Fwd Pkts",
+          7.461686611175537
+        ],
+        [
+          "PSH Flag Cnt",
+          3.405158758163452
+        ],
+        [
+          "ECE Flag Cnt",
+          2.7808258533477783
+        ],
+        [
+          "RST Flag Cnt",
+          2.777251720428467
+        ],
+        [
+          "ACK Flag Cnt",
+          2.7580020427703857
+        ],
+        [
+          "Fwd PSH Flags",
+          2.665224552154541
+        ]
+      ]
+    },
+    "next_state_classifier_oracle_binary": {
+      "n_samples": 22006,
+      "n_positive": 5789,
+      "n_negative": 16217,
+      "attack_prevalence_pct": 26.3065,
+      "predicted_positive_count": 14794,
+      "predicted_negative_count": 7212,
+      "accuracy": 0.4605562119421976,
+      "confusion_matrix": {
+        "tn": 5779,
+        "fp": 10438,
+        "fn": 1433,
+        "tp": 4356
+      },
+      "false_positive_rate": 0.6436455571314054,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.5973267977140188,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.35974328760703034,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.29444369338921184,
+      "recall": 0.7524615650371395,
+      "f1": 0.42326191517271533,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "next_state_classifier_full_pipeline_binary": {
+      "n_samples": 22006,
+      "n_positive": 5789,
+      "n_negative": 16217,
+      "attack_prevalence_pct": 26.3065,
+      "predicted_positive_count": 17198,
+      "predicted_negative_count": 4808,
+      "accuracy": 0.38830319003908026,
+      "confusion_matrix": {
+        "tn": 3782,
+        "fp": 12435,
+        "fn": 1026,
+        "tp": 4763
+      },
+      "false_positive_rate": 0.7667879385829685,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.5648882741669963,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.32428614765569064,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.27695080823351553,
+      "recall": 0.8227673173259631,
+      "f1": 0.41440814373341456,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "k_step_forecasting": {
+      "1": {
+        "n": 22006,
+        "mse": 4.781149387359619,
+        "rmse": 2.186583995819092,
+        "mae": 0.4994911253452301,
+        "attack_progression_binary_metrics": {
+          "n_samples": 22006,
+          "n_positive": 5789,
+          "n_negative": 16217,
+          "attack_prevalence_pct": 26.3065,
+          "predicted_positive_count": 17198,
+          "predicted_negative_count": 4808,
+          "accuracy": 0.38830319003908026,
+          "confusion_matrix": {
+            "tn": 3782,
+            "fp": 12435,
+            "fn": 1026,
+            "tp": 4763
+          },
+          "false_positive_rate": 0.7667879385829685,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.5648882741669963,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.32428614765569064,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.27695080823351553,
+          "recall": 0.8227673173259631,
+          "f1": 0.41440814373341456,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "2": {
+        "n": 21314,
+        "mse": 4.950197219848633,
+        "rmse": 2.2249038219451904,
+        "mae": 0.5086086988449097,
+        "attack_progression_binary_metrics": {
+          "n_samples": 21314,
+          "n_positive": 5671,
+          "n_negative": 15643,
+          "attack_prevalence_pct": 26.6069,
+          "predicted_positive_count": 18064,
+          "predicted_negative_count": 3250,
+          "accuracy": 0.3584029276531857,
+          "confusion_matrix": {
+            "tn": 2609,
+            "fp": 13034,
+            "fn": 641,
+            "tp": 5030
+          },
+          "false_positive_rate": 0.8332161350124656,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.5653242654023489,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.3214667016528875,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.2784543844109832,
+          "recall": 0.8869687885734439,
+          "f1": 0.42384663998314726,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "3": {
+        "n": 20647,
+        "mse": 5.110660076141357,
+        "rmse": 2.260676860809326,
+        "mae": 0.5142382979393005,
+        "attack_progression_binary_metrics": {
+          "n_samples": 20647,
+          "n_positive": 5555,
+          "n_negative": 15092,
+          "attack_prevalence_pct": 26.9046,
+          "predicted_positive_count": 17914,
+          "predicted_negative_count": 2733,
+          "accuracy": 0.34823461035501524,
+          "confusion_matrix": {
+            "tn": 2184,
+            "fp": 12908,
+            "fn": 549,
+            "tp": 5006
+          },
+          "false_positive_rate": 0.8552875695732839,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.5605298543371432,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.31226455238272166,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.2794462431617729,
+          "recall": 0.9011701170117011,
+          "f1": 0.4266053091311943,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "5": {
+        "n": 19400,
+        "mse": 5.411930084228516,
+        "rmse": 2.326355457305908,
+        "mae": 0.5207371711730957,
+        "attack_progression_binary_metrics": {
+          "n_samples": 19400,
+          "n_positive": 5341,
+          "n_negative": 14059,
+          "attack_prevalence_pct": 27.5309,
+          "predicted_positive_count": 16925,
+          "predicted_negative_count": 2475,
+          "accuracy": 0.34824742268041237,
+          "confusion_matrix": {
+            "tn": 1945,
+            "fp": 12114,
+            "fn": 530,
+            "tp": 4811
+          },
+          "false_positive_rate": 0.8616544562202149,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.5725410694990309,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.3201344498517878,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.28425406203840475,
+          "recall": 0.9007676465081446,
+          "f1": 0.43213868678702955,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      }
+    },
+    "per_attack_family_detection": {
+      "Infilteration": {
+        "n_sequences": 5789,
+        "detected_as_attack_count": 4763,
+        "detection_recall": 0.8228,
+        "note": "Direct, training-label-compatible detection recall."
+      }
+    },
+    "mitre_evidence_sample": [
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq0_observed_t",
+        "primary_stage": "Discovery",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+            "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": true
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 0,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq2445_observed_t",
+        "primary_stage": "Discovery",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 45.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows",
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery. Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only. Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": true
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 2445,
+        "actual_label": "Infilteration"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq4890_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 4890,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq7335_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 7335,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq9780_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 9780,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq12225_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 12225,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq14670_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 14670,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq17115_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 17115,
+        "actual_label": "Infilteration"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq19560_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 19560,
+        "actual_label": "Infilteration"
+      },
+      {
+        "window_identifier": "Wednesday-28-02-2018_seq22005_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 22005,
+        "actual_label": "Benign"
+      }
+    ],
+    "explainability_sample": [
+      {
+        "sequence_id": 0,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5351951718330383,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.1089673042297363,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.2873919904232025,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.2737724184989929,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.26041653752326965,
+            "direction": "attack"
+          },
+          {
+            "feature": "Idle Max",
+            "contribution": -0.13908223807811737,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 2445,
+        "actual_label": "Infilteration",
+        "predicted_probability": 0.5787436366081238,
+        "top5_contributors": [
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 1.204908847808838,
+            "direction": "attack"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.1907199621200562,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.6174305081367493,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.37259796261787415,
+            "direction": "attack"
+          },
+          {
+            "feature": "Bwd Pkt Len Std",
+            "contribution": -0.371940016746521,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 4890,
+        "actual_label": "Benign",
+        "predicted_probability": 0.45852532982826233,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.0522756576538086,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.5445511341094971,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": -0.46480610966682434,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": 0.4597596824169159,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": -0.37301599979400635,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 7335,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5467983484268188,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.9961925148963928,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.29497504234313965,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.28676286339759827,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.17673274874687195,
+            "direction": "attack"
+          },
+          {
+            "feature": "Idle Max",
+            "contribution": -0.10770370811223984,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 9780,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5493503212928772,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.2220863103866577,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.48539599776268005,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.203988716006279,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Tot",
+            "contribution": 0.17615921795368195,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Var",
+            "contribution": -0.15219931304454803,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 12225,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5075792670249939,
+        "top5_contributors": [
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 1.1865659952163696,
+            "direction": "attack"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.1683324575424194,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.4634341597557068,
+            "direction": "benign"
+          },
+          {
+            "feature": "Bwd Pkt Len Std",
+            "contribution": -0.3711997866630554,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Var",
+            "contribution": -0.3492748737335205,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 14670,
+        "actual_label": "Benign",
+        "predicted_probability": 0.6233525276184082,
+        "top5_contributors": [
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 1.5894474983215332,
+            "direction": "attack"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.0447531938552856,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.496893972158432,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Var",
+            "contribution": -0.44299542903900146,
+            "direction": "benign"
+          },
+          {
+            "feature": "Bwd Pkt Len Std",
+            "contribution": -0.37601855397224426,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 17115,
+        "actual_label": "Infilteration",
+        "predicted_probability": 0.5162498950958252,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.8685391545295715,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.5210999250411987,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.2684169411659241,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.2289358377456665,
+            "direction": "benign"
+          },
+          {
+            "feature": "Bwd Pkt Len Std",
+            "contribution": -0.19083863496780396,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 19560,
+        "actual_label": "Infilteration",
+        "predicted_probability": 0.5317956209182739,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.9866505265235901,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.4010505974292755,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.34842756390571594,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.33876535296440125,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.3089216351509094,
+            "direction": "attack"
+          }
+        ]
+      },
+      {
+        "sequence_id": 22005,
+        "actual_label": "Benign",
+        "predicted_probability": 0.44942083954811096,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.1702361106872559,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -0.3204660713672638,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": 0.15842296183109283,
+            "direction": "attack"
+          },
+          {
+            "feature": "Protocol_0",
+            "contribution": 0.12140174210071564,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": 0.11839445680379868,
+            "direction": "attack"
+          }
+        ]
+      }
+    ]
+  },
+  "Wednesday-14-02-2018": {
+    "day": "Wednesday-14-02-2018",
+    "n_sequences": 29091,
+    "n_windows": 32043,
+    "attack_prevalence_windows_pct": 35.1652,
+    "training_compatible_view_applicable": false,
+    "logistic_regression_binary": {
+      "n_samples": 29091,
+      "n_positive": 11268,
+      "n_negative": 17823,
+      "attack_prevalence_pct": 38.7336,
+      "predicted_positive_count": 10352,
+      "predicted_negative_count": 18739,
+      "accuracy": 0.9102127805850607,
+      "confusion_matrix": {
+        "tn": 16975,
+        "fp": 848,
+        "fn": 1764,
+        "tp": 9504
+      },
+      "false_positive_rate": 0.04757897099253773,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.9709985079686773,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.9250951018959238,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.9180834621329211,
+      "recall": 0.8434504792332268,
+      "f1": 0.8791859389454209,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "random_forest_binary": {
+      "n_samples": 29091,
+      "n_positive": 11268,
+      "n_negative": 17823,
+      "attack_prevalence_pct": 38.7336,
+      "predicted_positive_count": 9716,
+      "predicted_negative_count": 19375,
+      "accuracy": 0.6722697741569558,
+      "confusion_matrix": {
+        "tn": 13832,
+        "fp": 3991,
+        "fn": 5543,
+        "tp": 5725
+      },
+      "false_positive_rate": 0.22392414296134208,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.7895244397383644,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.6450739123191249,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.5892342527789214,
+      "recall": 0.508075967341143,
+      "f1": 0.5456538314906596,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "lstm_one_step_regression": {
+      "mse": 0.6163159608840942,
+      "rmse": 0.7850579619407654,
+      "mae": 0.4081503748893738,
+      "n": 29091,
+      "worst_sample_sequence_id": 26484,
+      "worst_sample_mse": 2347.1865234375,
+      "worst_sample_dominant_feature": "Subflow Fwd Byts",
+      "top10_hardest_features": [
+        [
+          "URG Flag Cnt",
+          3.0444681644439697
+        ],
+        [
+          "TotLen Fwd Pkts",
+          2.69262957572937
+        ],
+        [
+          "Subflow Fwd Byts",
+          2.686797618865967
+        ],
+        [
+          "ACK Flag Cnt",
+          2.5188374519348145
+        ],
+        [
+          "Bwd Pkts/s",
+          2.431818962097168
+        ],
+        [
+          "Fwd Header Len",
+          1.5550601482391357
+        ],
+        [
+          "Pkt Len Var",
+          1.2135692834854126
+        ],
+        [
+          "Fwd PSH Flags",
+          1.1927214860916138
+        ],
+        [
+          "SYN Flag Cnt",
+          1.1632148027420044
+        ],
+        [
+          "Fwd Seg Size Min",
+          1.1358556747436523
+        ]
+      ]
+    },
+    "next_state_classifier_oracle_binary": {
+      "n_samples": 29091,
+      "n_positive": 11268,
+      "n_negative": 17823,
+      "attack_prevalence_pct": 38.7336,
+      "predicted_positive_count": 15725,
+      "predicted_negative_count": 13366,
+      "accuracy": 0.6655666701041559,
+      "confusion_matrix": {
+        "tn": 10730,
+        "fp": 7093,
+        "fn": 2636,
+        "tp": 8632
+      },
+      "false_positive_rate": 0.39796891656847894,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.7653683149956946,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.6329881110569835,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.5489348171701113,
+      "recall": 0.7660631877884274,
+      "f1": 0.6395732226873634,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "next_state_classifier_full_pipeline_binary": {
+      "n_samples": 29091,
+      "n_positive": 11268,
+      "n_negative": 17823,
+      "attack_prevalence_pct": 38.7336,
+      "predicted_positive_count": 18466,
+      "predicted_negative_count": 10625,
+      "accuracy": 0.4902203430614279,
+      "confusion_matrix": {
+        "tn": 6809,
+        "fp": 11014,
+        "fn": 3816,
+        "tp": 7452
+      },
+      "false_positive_rate": 0.6179655501318521,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.5825045335456686,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.5305525194943437,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.4035524748185855,
+      "recall": 0.6613418530351438,
+      "f1": 0.501244366718235,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "k_step_forecasting": {
+      "1": {
+        "n": 29091,
+        "mse": 0.6163159012794495,
+        "rmse": 0.7850579023361206,
+        "mae": 0.4081503748893738,
+        "attack_progression_binary_metrics": {
+          "n_samples": 29091,
+          "n_positive": 11268,
+          "n_negative": 17823,
+          "attack_prevalence_pct": 38.7336,
+          "predicted_positive_count": 18466,
+          "predicted_negative_count": 10625,
+          "accuracy": 0.4902203430614279,
+          "confusion_matrix": {
+            "tn": 6809,
+            "fp": 11014,
+            "fn": 3816,
+            "tp": 7452
+          },
+          "false_positive_rate": 0.6179655501318521,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.5825045335456686,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.5305525194943437,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.4035524748185855,
+          "recall": 0.6613418530351438,
+          "f1": 0.501244366718235,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "2": {
+        "n": 28906,
+        "mse": 0.6557824611663818,
+        "rmse": 0.8098039627075195,
+        "mae": 0.4236105978488922,
+        "attack_progression_binary_metrics": {
+          "n_samples": 28906,
+          "n_positive": 11268,
+          "n_negative": 17638,
+          "attack_prevalence_pct": 38.9815,
+          "predicted_positive_count": 19451,
+          "predicted_negative_count": 9455,
+          "accuracy": 0.5249775133190341,
+          "confusion_matrix": {
+            "tn": 6681,
+            "fp": 10957,
+            "fn": 2774,
+            "tp": 8494
+          },
+          "false_positive_rate": 0.621215557319424,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.691437930830999,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.6881248531167476,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.43668705979127037,
+          "recall": 0.7538161164359247,
+          "f1": 0.5530127933852014,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "3": {
+        "n": 28730,
+        "mse": 0.6976186037063599,
+        "rmse": 0.8352356553077698,
+        "mae": 0.44010645151138306,
+        "attack_progression_binary_metrics": {
+          "n_samples": 28730,
+          "n_positive": 11268,
+          "n_negative": 17462,
+          "attack_prevalence_pct": 39.2203,
+          "predicted_positive_count": 18914,
+          "predicted_negative_count": 9816,
+          "accuracy": 0.5589279498781762,
+          "confusion_matrix": {
+            "tn": 7303,
+            "fp": 10159,
+            "fn": 2513,
+            "tp": 8755
+          },
+          "false_positive_rate": 0.5817775741610354,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.7421858390451123,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.7503486951947016,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.4628846357195728,
+          "recall": 0.7769790557330494,
+          "f1": 0.580147107547545,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "5": {
+        "n": 28408,
+        "mse": 0.7534070611000061,
+        "rmse": 0.867990255355835,
+        "mae": 0.45811763405799866,
+        "attack_progression_binary_metrics": {
+          "n_samples": 28408,
+          "n_positive": 11268,
+          "n_negative": 17140,
+          "attack_prevalence_pct": 39.6649,
+          "predicted_positive_count": 19288,
+          "predicted_negative_count": 9120,
+          "accuracy": 0.5349197409180513,
+          "confusion_matrix": {
+            "tn": 6524,
+            "fp": 10616,
+            "fn": 2596,
+            "tp": 8672
+          },
+          "false_positive_rate": 0.6193698949824971,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.7267791888223235,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.7396829222282276,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.4496059726254666,
+          "recall": 0.769613063542776,
+          "f1": 0.5676135619845529,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      }
+    },
+    "per_attack_family_detection": {
+      "FTP-BruteForce": {
+        "n_sequences": 5826,
+        "detected_as_attack_count": 3686,
+        "detection_recall": 0.6327,
+        "note": "Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+      },
+      "SSH-Bruteforce": {
+        "n_sequences": 5442,
+        "detected_as_attack_count": 3766,
+        "detection_recall": 0.692,
+        "note": "Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+      }
+    },
+    "mitre_evidence_sample": [
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq0_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 0,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq3232_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 3232,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq6464_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 6464,
+        "actual_label": "SSH-Bruteforce"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq9696_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 9696,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq12928_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 12928,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq16161_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 16161,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq19393_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 15.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only.",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 19393,
+        "actual_label": "Benign"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq22625_observed_t",
+        "primary_stage": "Exfiltration",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 40.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "exfil_high_outbound_volume"
+            ],
+            "supporting_features": [
+              "Flow Byts/s"
+            ],
+            "explanation": "Unusually high outbound transfer volume relative to typical flow rates is consistent with possible data exfiltration.",
+            "limitation": "High-throughput legitimate transfers (backups, large downloads) produce the same signature; data content/destination cannot be verified.",
+            "is_primary": true
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 22625,
+        "actual_label": "FTP-BruteForce"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq25857_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 25857,
+        "actual_label": "FTP-BruteForce"
+      },
+      {
+        "window_identifier": "Wednesday-14-02-2018_seq29090_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 29090,
+        "actual_label": "Benign"
+      }
+    ],
+    "explainability_sample": [
+      {
+        "sequence_id": 0,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5331546068191528,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.1025725603103638,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.32730066776275635,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.2536989748477936,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.25189897418022156,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.2390194684267044,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 3232,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5571423172950745,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.8650216460227966,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.7068939208984375,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.45287996530532837,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Max",
+            "contribution": 0.2670283317565918,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Std",
+            "contribution": 0.21491926908493042,
+            "direction": "attack"
+          }
+        ]
+      },
+      {
+        "sequence_id": 6464,
+        "actual_label": "SSH-Bruteforce",
+        "predicted_probability": 0.49619874358177185,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -0.9996901154518127,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -0.9681973457336426,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 0.9614220857620239,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 0.921194314956665,
+            "direction": "attack"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.7347170114517212,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 9696,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5518163442611694,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.1242353916168213,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.2944565713405609,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.22454270720481873,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.14355145394802094,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": -0.13456487655639648,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 12928,
+        "actual_label": "Benign",
+        "predicted_probability": 0.6149081587791443,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.6734971404075623,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.46079736948013306,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.394873708486557,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Pkt Len Max",
+            "contribution": 0.2599877119064331,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Seg Size Min",
+            "contribution": -0.2413785755634308,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 16161,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5160328149795532,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.7586110234260559,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.3074408173561096,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.30721309781074524,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Tot",
+            "contribution": -0.2041798084974289,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": 0.18494904041290283,
+            "direction": "attack"
+          }
+        ]
+      },
+      {
+        "sequence_id": 19393,
+        "actual_label": "Benign",
+        "predicted_probability": 0.6231228113174438,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.0286377668380737,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.503955602645874,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.48082253336906433,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.4773409068584442,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.46179184317588806,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 22625,
+        "actual_label": "FTP-BruteForce",
+        "predicted_probability": 0.5740076303482056,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.0027549266815186,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.5654052495956421,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Pkt Len Std",
+            "contribution": -0.4596240818500519,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd Pkt Len Max",
+            "contribution": 0.25074562430381775,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.22729618847370148,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 25857,
+        "actual_label": "FTP-BruteForce",
+        "predicted_probability": 0.49364790320396423,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.4647972583770752,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": 0.25870177149772644,
+            "direction": "attack"
+          },
+          {
+            "feature": "Fwd Seg Size Min",
+            "contribution": 0.24729841947555542,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": -0.15638303756713867,
+            "direction": "benign"
+          },
+          {
+            "feature": "Pkt Len Var",
+            "contribution": -0.13090559840202332,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 29090,
+        "actual_label": "Benign",
+        "predicted_probability": 0.5099837779998779,
+        "top5_contributors": [
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.0213067531585693,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": 0.27672696113586426,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": -0.2725372910499573,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": 0.21668729186058044,
+            "direction": "attack"
+          },
+          {
+            "feature": "Idle Max",
+            "contribution": -0.11608713120222092,
+            "direction": "benign"
+          }
+        ]
+      }
+    ]
+  },
+  "Wednesday-21-02-2018": {
+    "day": "Wednesday-21-02-2018",
+    "n_sequences": 1870,
+    "n_windows": 3256,
+    "attack_prevalence_windows_pct": 71.4681,
+    "training_compatible_view_applicable": false,
+    "logistic_regression_binary": {
+      "n_samples": 1870,
+      "n_positive": 1790,
+      "n_negative": 80,
+      "attack_prevalence_pct": 95.7219,
+      "predicted_positive_count": 537,
+      "predicted_negative_count": 1333,
+      "accuracy": 0.24545454545454545,
+      "confusion_matrix": {
+        "tn": 1,
+        "fp": 79,
+        "fn": 1332,
+        "tp": 458
+      },
+      "false_positive_rate": 0.9875,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.16089734636871503,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.9131136655702083,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.8528864059590316,
+      "recall": 0.2558659217877095,
+      "f1": 0.39363987967339925,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "random_forest_binary": {
+      "n_samples": 1870,
+      "n_positive": 1790,
+      "n_negative": 80,
+      "attack_prevalence_pct": 95.7219,
+      "predicted_positive_count": 4,
+      "predicted_negative_count": 1866,
+      "accuracy": 0.044919786096256686,
+      "confusion_matrix": {
+        "tn": 80,
+        "fp": 0,
+        "fn": 1786,
+        "tp": 4
+      },
+      "false_positive_rate": 0.0,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.1943959497206704,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.9261289800607946,
+      "pr_auc_undefined_reason": null,
+      "precision": 1.0,
+      "recall": 0.0022346368715083797,
+      "f1": 0.004459308807134894,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "lstm_one_step_regression": {
+      "mse": 10647.7783203125,
+      "rmse": 103.18807220458984,
+      "mae": 14.585763931274414,
+      "n": 1870,
+      "worst_sample_sequence_id": 1702,
+      "worst_sample_mse": 206446.0625,
+      "worst_sample_dominant_feature": "Fwd Act Data Pkts",
+      "top10_hardest_features": [
+        [
+          "Fwd Act Data Pkts",
+          452662.375
+        ],
+        [
+          "Tot Fwd Pkts",
+          113566.3515625
+        ],
+        [
+          "Subflow Fwd Pkts",
+          113525.234375
+        ],
+        [
+          "Fwd Header Len",
+          19155.310546875
+        ],
+        [
+          "ACK Flag Cnt",
+          9801.6328125
+        ],
+        [
+          "RST Flag Cnt",
+          6222.0849609375
+        ],
+        [
+          "ECE Flag Cnt",
+          6174.57421875
+        ],
+        [
+          "Subflow Fwd Byts",
+          1375.7147216796875
+        ],
+        [
+          "TotLen Fwd Pkts",
+          1373.6990966796875
+        ],
+        [
+          "PSH Flag Cnt",
+          96.02238464355469
+        ]
+      ]
+    },
+    "next_state_classifier_oracle_binary": {
+      "n_samples": 1870,
+      "n_positive": 1790,
+      "n_negative": 80,
+      "attack_prevalence_pct": 95.7219,
+      "predicted_positive_count": 1867,
+      "predicted_negative_count": 3,
+      "accuracy": 0.9588235294117647,
+      "confusion_matrix": {
+        "tn": 3,
+        "fp": 77,
+        "fn": 0,
+        "tp": 1790
+      },
+      "false_positive_rate": 0.9625,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 1.0,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 1.0,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.9587573647562935,
+      "recall": 1.0,
+      "f1": 0.9789444900191414,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "next_state_classifier_full_pipeline_binary": {
+      "n_samples": 1870,
+      "n_positive": 1790,
+      "n_negative": 80,
+      "attack_prevalence_pct": 95.7219,
+      "predicted_positive_count": 1352,
+      "predicted_negative_count": 518,
+      "accuracy": 0.7454545454545455,
+      "confusion_matrix": {
+        "tn": 61,
+        "fp": 19,
+        "fn": 457,
+        "tp": 1333
+      },
+      "false_positive_rate": 0.2375,
+      "false_positive_rate_undefined_reason": null,
+      "roc_auc": 0.7994902234636873,
+      "roc_auc_undefined_reason": null,
+      "pr_auc": 0.9901975294615077,
+      "pr_auc_undefined_reason": null,
+      "precision": 0.9859467455621301,
+      "recall": 0.7446927374301676,
+      "f1": 0.8485041374920432,
+      "precision_undefined_reason": null,
+      "recall_undefined_reason": null
+    },
+    "k_step_forecasting": {
+      "1": {
+        "n": 1870,
+        "mse": 10647.77734375,
+        "rmse": 103.18806457519531,
+        "mae": 14.585763931274414,
+        "attack_progression_binary_metrics": {
+          "n_samples": 1870,
+          "n_positive": 1790,
+          "n_negative": 80,
+          "attack_prevalence_pct": 95.7219,
+          "predicted_positive_count": 1352,
+          "predicted_negative_count": 518,
+          "accuracy": 0.7454545454545455,
+          "confusion_matrix": {
+            "tn": 61,
+            "fp": 19,
+            "fn": 457,
+            "tp": 1333
+          },
+          "false_positive_rate": 0.2375,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.7994902234636873,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.9901975294615077,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.9859467455621301,
+          "recall": 0.7446927374301676,
+          "f1": 0.8485041374920432,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "2": {
+        "n": 1830,
+        "mse": 9852.150390625,
+        "rmse": 99.25799560546875,
+        "mae": 14.030537605285645,
+        "attack_progression_binary_metrics": {
+          "n_samples": 1830,
+          "n_positive": 1759,
+          "n_negative": 71,
+          "attack_prevalence_pct": 96.1202,
+          "predicted_positive_count": 1370,
+          "predicted_negative_count": 460,
+          "accuracy": 0.753551912568306,
+          "confusion_matrix": {
+            "tn": 40,
+            "fp": 31,
+            "fn": 420,
+            "tp": 1339
+          },
+          "false_positive_rate": 0.43661971830985913,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.8082056866497449,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.9915730325623382,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.9773722627737226,
+          "recall": 0.7612279704377487,
+          "f1": 0.8558644934483861,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "3": {
+        "n": 1793,
+        "mse": 9259.2685546875,
+        "rmse": 96.22509002685547,
+        "mae": 13.526582717895508,
+        "attack_progression_binary_metrics": {
+          "n_samples": 1793,
+          "n_positive": 1728,
+          "n_negative": 65,
+          "attack_prevalence_pct": 96.3748,
+          "predicted_positive_count": 1790,
+          "predicted_negative_count": 3,
+          "accuracy": 0.96207473508087,
+          "confusion_matrix": {
+            "tn": 0,
+            "fp": 65,
+            "fn": 3,
+            "tp": 1725
+          },
+          "false_positive_rate": 1.0,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.836008725071225,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.9933041115582917,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.9636871508379888,
+          "recall": 0.9982638888888888,
+          "f1": 0.9806708357021034,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      },
+      "5": {
+        "n": 1728,
+        "mse": 8292.447265625,
+        "rmse": 91.06287384033203,
+        "mae": 12.732155799865723,
+        "attack_progression_binary_metrics": {
+          "n_samples": 1728,
+          "n_positive": 1675,
+          "n_negative": 53,
+          "attack_prevalence_pct": 96.9329,
+          "predicted_positive_count": 1383,
+          "predicted_negative_count": 345,
+          "accuracy": 0.8078703703703703,
+          "confusion_matrix": {
+            "tn": 33,
+            "fp": 20,
+            "fn": 312,
+            "tp": 1363
+          },
+          "false_positive_rate": 0.37735849056603776,
+          "false_positive_rate_undefined_reason": null,
+          "roc_auc": 0.874694452266967,
+          "roc_auc_undefined_reason": null,
+          "pr_auc": 0.9957422573588517,
+          "pr_auc_undefined_reason": null,
+          "precision": 0.9855386840202458,
+          "recall": 0.8137313432835821,
+          "f1": 0.8914323086984958,
+          "precision_undefined_reason": null,
+          "recall_undefined_reason": null
+        }
+      }
+    },
+    "per_attack_family_detection": {
+      "DDOS attack-HOIC": {
+        "n_sequences": 1332,
+        "detected_as_attack_count": 1332,
+        "detection_recall": 1.0,
+        "note": "Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+      },
+      "DDOS attack-LOIC-UDP": {
+        "n_sequences": 458,
+        "detected_as_attack_count": 1,
+        "detection_recall": 0.0022,
+        "note": "Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family."
+      }
+    },
+    "mitre_evidence_sample": [
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq0_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 45.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows",
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery. Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only. Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 0,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq207_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 45.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows",
+              "discovery_low_bytes_per_flow"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "TotLen Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery. Low bytes transferred per flow is consistent with probing rather than substantive data transfer.",
+            "limitation": "Low-byte flows are common in many benign protocols (DNS, health checks); this is weak supporting evidence only. Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 207,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq415_observed_t",
+        "primary_stage": "Discovery",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+            "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": true
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 415,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq623_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+            "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 623,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq830_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+            "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 830,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq1038_observed_t",
+        "primary_stage": "Command and Control",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+            "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 60.0,
+            "evidence_label": "HIGH",
+            "triggered_rules": [
+              "c2_regular_beacon_timing",
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Flow IAT Mean",
+              "Flow IAT Std",
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Relatively regular inter-arrival timing (low variability) is consistent with beacon-like command-and-control traffic. Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing. Cannot confirm a specific T1071 sub-technique or a repeated destination, because source/destination IP is not present in this dataset; regular timing alone can also reflect legitimate polling/heartbeat traffic.",
+            "is_primary": true
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 1038,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq1246_observed_t",
+        "primary_stage": "Discovery",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "discovery_repeated_short_flows"
+            ],
+            "supporting_features": [
+              "Flow Duration",
+              "observation_count"
+            ],
+            "explanation": "Repeated short-duration connections across multiple destination ports are consistent with network service discovery.",
+            "limitation": "Short flows can also result from normal application behaviour (e.g. health checks, keep-alives).",
+            "is_primary": true
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 25.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [
+              "c2_persistent_bidirectional_traffic"
+            ],
+            "supporting_features": [
+              "Tot Bwd Pkts",
+              "Tot Fwd Pkts",
+              "observation_count"
+            ],
+            "explanation": "Persistent, bidirectional communication is consistent with an established command-and-control channel.",
+            "limitation": "Bidirectional traffic is the norm for almost all legitimate TCP sessions; only meaningful in combination with regular timing.",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": false
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 1246,
+        "actual_label": "DDOS attack-HOIC"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq1453_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 1453,
+        "actual_label": "DDOS attack-LOIC-UDP"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq1661_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 1661,
+        "actual_label": "DDOS attack-LOIC-UDP"
+      },
+      {
+        "window_identifier": "Wednesday-21-02-2018_seq1869_observed_t",
+        "primary_stage": "Impact",
+        "feature13_attack_probability": null,
+        "stages": {
+          "Discovery": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Discovery",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Command and Control": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol (C2)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Exfiltration": {
+            "technique_id": "T1041",
+            "technique_name": "Exfiltration Over C2 Channel",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Impact": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "evidence_score": 30.0,
+            "evidence_label": "MEDIUM",
+            "triggered_rules": [
+              "impact_elevated_volume_or_frequency"
+            ],
+            "supporting_features": [
+              "Flow Byts/s",
+              "Flow Pkts/s",
+              "observation_count"
+            ],
+            "explanation": "Elevated packet rate, byte rate, or connection frequency (any one) is consistent with a network-availability-disruption pattern.",
+            "limitation": "Interpretable evidence only; a single elevated metric does not confirm an active DoS condition.",
+            "is_primary": true
+          },
+          "Reconnaissance": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Initial Access": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "",
+            "is_primary": false
+          },
+          "Lateral Movement": {
+            "technique_id": "T1021",
+            "technique_name": "Remote Services (candidate)",
+            "evidence_score": 0.0,
+            "evidence_label": "LOW",
+            "triggered_rules": [],
+            "supporting_features": [],
+            "explanation": "Insufficient evidence for this stage.",
+            "limitation": "STRUCTURALLY UNAVAILABLE for this dataset: CSE-CIC-IDS2018's processed flow CSVs do not include source or destination IP addresses. This rule can never fire on this data; Lateral Movement will always report UNKNOWN/INSUFFICIENT_EVIDENCE here. This is a data limitation, not a mapper defect.",
+            "is_primary": false
+          }
+        },
+        "sequence_id": 1869,
+        "actual_label": "Benign"
+      }
+    ],
+    "explainability_sample": [
+      {
+        "sequence_id": 0,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.6330046653747559,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.7011977434158325,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.6199705600738525,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.5441877841949463,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.396527886390686,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -0.9924782514572144,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 207,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.6127545237541199,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.7458893060684204,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.668371319770813,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.5680975914001465,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.4391072988510132,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -0.9841196537017822,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 415,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.5959305763244629,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.7548662424087524,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.7020078897476196,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.605833649635315,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.4492206573486328,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -1.029887318611145,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 623,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.5940432548522949,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.754128336906433,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.7031091451644897,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.606652855873108,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.449397325515747,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -1.036483883857727,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 830,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.5944321751594543,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.7548586130142212,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.703530192375183,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.60739004611969,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.4497709274291992,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -1.0347999334335327,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 1038,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.5935540199279785,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.7528997659683228,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.7039320468902588,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.608315110206604,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.4495326280593872,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -1.0428376197814941,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 1246,
+        "actual_label": "DDOS attack-HOIC",
+        "predicted_probability": 0.5919501781463623,
+        "top5_contributors": [
+          {
+            "feature": "Tot Bwd Pkts",
+            "contribution": -1.739992380142212,
+            "direction": "benign"
+          },
+          {
+            "feature": "Subflow Bwd Pkts",
+            "contribution": -1.6977952718734741,
+            "direction": "benign"
+          },
+          {
+            "feature": "TotLen Bwd Pkts",
+            "contribution": 1.6022638082504272,
+            "direction": "attack"
+          },
+          {
+            "feature": "Subflow Bwd Byts",
+            "contribution": 1.444621205329895,
+            "direction": "attack"
+          },
+          {
+            "feature": "Pkt Len Std",
+            "contribution": -1.071645736694336,
+            "direction": "benign"
+          }
+        ]
+      },
+      {
+        "sequence_id": 1453,
+        "actual_label": "DDOS attack-LOIC-UDP",
+        "predicted_probability": 0.2524429261684418,
+        "top5_contributors": [
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": -1.2863054275512695,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": -1.2200640439987183,
+            "direction": "benign"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.2120522260665894,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": 1.0423375368118286,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": 0.5756080150604248,
+            "direction": "attack"
+          }
+        ]
+      },
+      {
+        "sequence_id": 1661,
+        "actual_label": "DDOS attack-LOIC-UDP",
+        "predicted_probability": 0.2536305785179138,
+        "top5_contributors": [
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": -1.2698298692703247,
+            "direction": "benign"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -1.2144314050674438,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": -1.2005712985992432,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": 1.0233697891235352,
+            "direction": "attack"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": 0.5701131224632263,
+            "direction": "attack"
+          }
+        ]
+      },
+      {
+        "sequence_id": 1869,
+        "actual_label": "Benign",
+        "predicted_probability": 0.2771686017513275,
+        "top5_contributors": [
+          {
+            "feature": "Fwd IAT Max",
+            "contribution": -1.3911901712417603,
+            "direction": "benign"
+          },
+          {
+            "feature": "Fwd IAT Mean",
+            "contribution": -1.3575327396392822,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow IAT Mean",
+            "contribution": 1.163175344467163,
+            "direction": "attack"
+          },
+          {
+            "feature": "Protocol_6",
+            "contribution": -0.9992528557777405,
+            "direction": "benign"
+          },
+          {
+            "feature": "Flow Duration",
+            "contribution": 0.6240440607070923,
+            "direction": "attack"
+          }
+        ]
+      }
+    ]
+  }
+}

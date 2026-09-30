@@ -1,0 +1,48 @@
+{
+  "record_type": "MANUAL_ENVIRONMENT_VALIDATION_RECORD",
+  "distinct_from": "CYBERCHESS_DATASET_CAPTURE",
+  "provenance_note": "This record documents findings reported by the user, who manually accessed and verified the actual Sandbox Linux node OUTSIDE this session's tool access. Claude Code's own tools (Bash/PowerShell, and the WSL probes documented in capture_report.json) still have NO reachable connection to this node and did NOT independently perform or verify this capture. This record is transcribed from the user's report, not re-derived or re-executed by this session.",
+  "reported_by": "user (manual verification), transcribed 2026-09-29",
+  "sandbox_node": {
+    "hostname": "ubuntu",
+    "interface": "ens3",
+    "administrative_state": "UP",
+    "link_state": "RUNNING/CONNECTED",
+    "ipv4_address": null,
+    "ipv4_address_note": "ens3 currently has no IPv4 address, consistent with the pre-existing 'Known information' noted at the start of Feature L3.2 - not a new finding, but now confirmed on the actual node rather than assumed."
+  },
+  "capture_mechanism_confirmed": {
+    "tool": "tcpdump",
+    "installed": true,
+    "capture_permission": "confirmed working via sudo",
+    "command_used": "sudo tcpdump -i ens3 -c 10 -nn",
+    "command_note": "Bounded by -c 10 (max packet count) - consistent with this feature's 'capture must be bounded' requirement. This exact command was run manually by the user, NOT by this session's src/data/sandbox_capture/capture_adapter.py code."
+  },
+  "capture_result": {
+    "packets_captured": 1,
+    "packets_received_by_filter": 1,
+    "packets_dropped_by_kernel": 0,
+    "note": "The capture was bounded to -c 10 (up to 10 packets) but only 1 packet was actually observed on the wire in the capture window - expected/plausible given ens3 has no IPv4 address and is otherwise idle."
+  },
+  "observed_packet": {
+    "protocol": "DHCP",
+    "src": "0.0.0.0",
+    "dst": "255.255.255.255",
+    "interpretation": "A single DHCP client broadcast (e.g. DHCPDISCOVER or similar) - consistent with ens3 having no assigned IPv4 address and periodically/opportunistically requesting one."
+  },
+  "what_this_record_DOES_establish": [
+    "The actual Sandbox Linux node (hostname 'ubuntu') is real and reachable by the user.",
+    "ens3 genuinely exists on that node, is administratively UP and link RUNNING/CONNECTED.",
+    "tcpdump is installed and, with sudo, has working capture permission on that node.",
+    "A bounded (-c 10) capture command executes successfully and terminates cleanly.",
+    "At least one genuine packet (DHCP broadcast) can be observed - end-to-end capture mechanics work on the real node."
+  ],
+  "what_this_record_does_NOT_establish": [
+    "This is NOT a CyberChess dataset capture - a single DHCP broadcast packet from 0.0.0.0 has no valid bidirectional 5-tuple flow (no real source IP, no TCP/UDP flow to reconstruct in the sense src/data/pcap/flow_reconstruction.py requires) and cannot be run through CyberChess's 65-feature extractor to produce a meaningful state.",
+    "Lab traffic has NOT been shown to pass through the complete CyberChess feature pipeline (PCAP -> flow reconstruction -> 65 features -> 68D state -> frozen preprocessing). No such run was performed or attempted on this data.",
+    "This does NOT change or upgrade this project's L2.5-L2.9 PCAP feature-validation findings in any way - those remain exactly as previously reported (6 VALIDATED / 21 PARTIALLY_VALIDATED / 37 UNVALIDATED / IPv6 unsupported / PCAP<->CSV correspondence unestablished).",
+    "This session's own src/data/sandbox_capture/capture_adapter.py code was NOT exercised against this real node - it was exercised only against the environments genuinely reachable from this session (native Windows, WSL Kali), where ens3 does not exist (see capture_report.json for that separate, still-accurate record).",
+    "No PCAP file from this manual capture was provided to or inspected by this session - only the summary numbers/text above were reported."
+  ],
+  "next_step_if_pursued": "Obtain the actual .pcap file (or a longer, bounded, non-attack capture) from the real Sandbox node and run it through the EXISTING, unmodified L3.1 validate_flow_table_contract()/L2 pcap_to_state() pipeline, exactly as already done for the official CSE-CIC-IDS2018 samples in L2.7-L2.9, to determine whether it passes the L3.1 RAW_PCAP_FILE gate - not attempted in this update."
+}

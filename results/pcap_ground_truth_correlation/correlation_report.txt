@@ -1,0 +1,172 @@
+======================================================================
+FEATURE L2.9 - PCAP-TO-CSV FLOW CORRELATION REPORT
+======================================================================
+Scope: inspection of the ALREADY-EXISTING candidate_part2_172.31.69.13.pcap
+only. No new download was performed. No PCAP feature formula, no Feature
+1-16/L1/L2/L2.5/L2.6/L2.7 code, and no model was touched.
+
+----------------------------------------------------------------------
+1. CANDIDATE FILE
+----------------------------------------------------------------------
+  Path: results/pcap_ground_truth_correlation/candidate_part2_172.31.69.13.pcap
+  Size: 36,372,624 bytes
+  SHA-256: 48a0ba4955296db31b3241541aaf2f6fc5b3cb2902b9482813834ae62546ebb5
+  Format: genuine libpcap, microsecond timestamps, little-endian, version 2.4, Ethernet
+
+----------------------------------------------------------------------
+2. PROVENANCE (carried over from L2.8/the prior extraction step, not repeated here)
+----------------------------------------------------------------------
+  Source: s3://cse-cic-ids2018/Original Network Traffic and Log data/
+          Thursday-01-03-2018/pcap.zip, entry
+          "pcap/capEC2AMAZ-O4EL3NG-172.31.69.13 part2"
+  This is the SECOND of three sequential parts for host 172.31.69.13 -
+  the SAME internal IP documented on the official CIC dataset page
+  (unb.ca/cic/datasets/ids-2018.html) as the VICTIM of the "Infiltration"
+  attack on Thursday-01-03-2018 (attacker 13.58.225.34, victim
+  "18.216.254.154-172.31.69.13").
+
+----------------------------------------------------------------------
+3. INSPECTION VIA CYBERCHESS'S OWN PARSER (read_pcap + reconstruct_flows,
+   both unmodified)
+----------------------------------------------------------------------
+  total_frames_in_capture:        121,383
+  packets parsed as valid IPv4:   121,086
+  non-IPv4/malformed packets:     297 (all "No IPv4 layer present", e.g. ARP - expected, not a parser defect)
+  minimum packet timestamp (UTC): 2018-03-01 14:03:49.678936
+  maximum packet timestamp (UTC): 2018-03-01 14:35:53.592423
+  protocol distribution (packets): TCP=93,436  UDP=27,390  ICMP=257  IGMP=3
+  unique source IPs:    226
+  unique destination IPs: 191
+  TCP/UDP flows after reconstruct_flows(): 50,434 total (TCP=49,492, UDP=942)
+  packets unassigned to any flow: 260 (= 257 ICMP + 3 IGMP, correctly excluded - flow reconstruction requires TCP/UDP ports by design)
+  read_pcap() wall time: ~33s for 121K packets (~3,650 packets/sec) - not
+    flagged as an unexpected bottleneck for a file this size; noted for
+    completeness per this task's explicit performance-monitoring instruction.
+
+----------------------------------------------------------------------
+4. TIMESTAMP COVERAGE vs. THE CSV'S OBSERVATION WINDOW
+----------------------------------------------------------------------
+  CSV window (Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv, all
+  331,125 raw rows): 2018-03-01 01:00:00 -> 12:59:59 UTC
+  (Timezone resolved as UTC with direct packet-level evidence - see
+  Section 5 below, not assumed.)
+
+  Candidate PCAP range: 2018-03-01 14:03:49.68 -> 14:35:53.59 UTC
+
+  OVERLAP: NONE. The candidate's earliest packet (14:03:49.68) is
+  3,829.68 seconds (~1h 3m 50s) AFTER the CSV's last covered second
+  (12:59:59). The two time ranges are entirely disjoint.
+
+----------------------------------------------------------------------
+5. WHY THIS IS NOT A DEAD END FOR PROVENANCE (even though it IS one for
+   direct correlation) - important context carried from investigation
+   done to obtain this candidate
+----------------------------------------------------------------------
+  Before concluding "no overlap, stop," it is worth recording WHY this
+  candidate was chosen and what it already proved, so this negative
+  result is not mistaken for a provenance failure:
+
+  The official CIC dataset page documents TWO Infiltration attack
+  sessions on Thursday-01-03-2018: 9:57-10:55 and 14:00-15:37 (both
+  attacker 13.58.225.34, victim 172.31.69.13), with no timezone stated.
+  Direct inspection of this candidate's packets found REAL traffic
+  between attacker 13.58.225.34 and the victim from 14:04:35 to
+  14:35:06 UTC - matching the documented SECOND window (14:00-15:37)
+  almost exactly. Separately, the CSV's own Infilteration-labeled rows
+  were found (in earlier discovery work) to end at exactly 10:54:59,
+  matching the documented FIRST window's end (10:55) to the second.
+  Together these two independent, exact matches prove the CSV's
+  Timestamp column, the official attack-schedule table, and real packet
+  timestamps ALL share the same clock: UTC, with NO offset. This
+  resolves Step 2's timezone question conclusively (not invented,
+  empirically derived from two independent exact-second matches).
+
+  What this candidate (part2) captures is the SECOND attack session,
+  which the CSV simply does not include (the CSV's exported window ends
+  before 13:00 UTC). This is a genuine, useful, ALREADY-established
+  provenance finding - just not one usable for direct flow-vs-CSV-row
+  correlation, which requires overlapping time ranges.
+
+----------------------------------------------------------------------
+6. TRAFFIC-CHARACTERISTIC COMPARISON (Step 4) - NOT PERFORMED
+----------------------------------------------------------------------
+  Per this task's explicit Step 5 instruction ("If there is NO useful
+  timestamp overlap, stop and report that this candidate is unsuitable"),
+  no protocol-distribution/port-distribution/duration-distribution
+  comparison against the CSV was attempted. Comparing traffic
+  CHARACTERISTICS (as opposed to actual overlapping flows) across two
+  non-overlapping time windows would not be meaningful evidence of
+  correspondence - CSE-CIC-IDS2018's daily traffic composition changes
+  materially hour to hour (background Benign load vs. attack sessions),
+  so a resemblance or difference in aggregate statistics between 01:00-
+  12:59 and 14:03-14:35 would prove nothing either way.
+
+----------------------------------------------------------------------
+7. CLASSIFICATION
+----------------------------------------------------------------------
+  NOT_MATCHING
+
+  Justification (per this task's own definition): "Evidence indicates
+  the candidate does not correspond to the CSV observation period/data."
+  This candidate's traffic is entirely outside the CSV's covered time
+  window - it cannot correspond to any CSV row by construction, regardless
+  of how strong its OTHER provenance evidence is (which remains strong -
+  see Section 5). This classification is specific to THIS FILE's
+  suitability for CSV correlation, not a retraction of Feature L2.8's
+  MATCH_PLAUSIBLE finding for the broader archive/source.
+
+----------------------------------------------------------------------
+8. LIMITATIONS
+----------------------------------------------------------------------
+  - Only ONE of the victim host's three archive parts was inspected
+    (part2). part1 (which starts at 12:16:38 UTC, per earlier discovery
+    work, and DOES overlap the CSV's window from 12:16:38-12:59:59) was
+    NOT obtained in this run - an earlier attempt to bounded-extract it
+    stalled and was terminated per explicit instruction; it was NOT
+    retried here per this task's explicit "do not retry part1" instruction.
+  - The processed CSV has NO IP address columns at all (confirmed from
+    its own header) - even with an overlapping candidate, matching would
+    be limited to Dst Port + Protocol + Timestamp + flow statistics, not
+    IP address. This is a structural limitation of any future correlation
+    attempt against this CSV, documented here for the next task.
+  - This candidate's zero packets from source IP 172.31.69.24 (the L2.8
+    sample host) or any confirmation of the FIRST attack session were
+    found in this file - consistent with it starting after both relevant
+    windows.
+
+----------------------------------------------------------------------
+9. IS ANOTHER BOUNDED EXTRACTION JUSTIFIED?
+----------------------------------------------------------------------
+  Yes, conditionally: part1 of the SAME host (172.31.69.13) has already-
+  established timestamp overlap with the CSV's window (12:16:38-12:59:59
+  UTC, ~43 minutes) and is a small, principled next candidate - but this
+  task explicitly instructed NOT to retry it now. A future extraction
+  attempt should stream to disk incrementally (not buffer fully in
+  memory before writing, which is why the earlier attempt could not be
+  progress-monitored) and should verify single-chunk throughput before
+  committing to a multi-chunk job, given this environment's demonstrated
+  network variability against this specific S3 bucket.
+
+----------------------------------------------------------------------
+SUMMARY ANSWER TO L2.9's FINAL-REPORT QUESTIONS
+----------------------------------------------------------------------
+  1. Timestamp/timezone discrepancy resolved? YES - UTC, no offset,
+     confirmed via two independent exact-second matches (CSV Infilteration
+     cutoff vs. documented attack end; real attacker-victim packets vs.
+     documented second attack window).
+  2. PCAP entries examined: 1 (candidate_part2_172.31.69.13.pcap only,
+     per instruction - part1 not retried).
+  3. Data downloaded this task: 0 bytes (used only the pre-existing local file).
+  4. Flow-level correspondence with the CSV established? NO - zero
+     timestamp overlap, so no matching was attempted.
+  5. Strong matches found: 0.
+  6. Matching evidence used: N/A (not attempted - see Section 6).
+  7. Classification: NOT_MATCHING.
+  8. Usable as ground truth for feature validation? NOT from this
+     specific file - a different, overlapping candidate (e.g. part1 of
+     the same host) would be required.
+  9. Exact next step: obtain part1 of host 172.31.69.13 (known to overlap
+     the CSV's window) using a disk-streaming (not memory-buffering)
+     extraction method, in a SEPARATE, explicitly-authorized future task.
+
+STOP after L2.9, per instruction.

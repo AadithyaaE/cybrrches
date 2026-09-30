@@ -1,0 +1,2428 @@
+{
+  "dataset": {
+    "input_file": "data\\processed\\Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv",
+    "row_count": 331027,
+    "column_count": 80
+  },
+  "inventory": {
+    "Dst Port": {
+      "column_name": "Dst Port",
+      "dtype": "int64",
+      "num_unique": 16149,
+      "pct_unique": 4.878454,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 65535.0,
+      "mean": 8755.076120678978,
+      "std": 17987.513721571217
+    },
+    "Protocol": {
+      "column_name": "Protocol",
+      "dtype": "int64",
+      "num_unique": 3,
+      "pct_unique": 0.000906,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 17.0,
+      "mean": 9.559474000610223,
+      "std": 5.356050870315237
+    },
+    "Timestamp": {
+      "column_name": "Timestamp",
+      "dtype": "str",
+      "num_unique": 32068,
+      "pct_unique": 9.687427,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": false,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "std": null
+    },
+    "Flow Duration": {
+      "column_name": "Flow Duration",
+      "dtype": "int64",
+      "num_unique": 153887,
+      "pct_unique": 46.487749,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 119999992.0,
+      "mean": 14061622.18662224,
+      "std": 34668415.43714946
+    },
+    "Tot Fwd Pkts": {
+      "column_name": "Tot Fwd Pkts",
+      "dtype": "int64",
+      "num_unique": 328,
+      "pct_unique": 0.099086,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 1.0,
+      "max": 18291.0,
+      "mean": 5.553154274424744,
+      "std": 74.03143997066844
+    },
+    "Tot Bwd Pkts": {
+      "column_name": "Tot Bwd Pkts",
+      "dtype": "int64",
+      "num_unique": 408,
+      "pct_unique": 0.123253,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 35547.0,
+      "mean": 5.647865581961592,
+      "std": 158.05586726941323
+    },
+    "TotLen Fwd Pkts": {
+      "column_name": "TotLen Fwd Pkts",
+      "dtype": "int64",
+      "num_unique": 3953,
+      "pct_unique": 1.194162,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 9789747.0,
+      "mean": 470.94597117455675,
+      "std": 24749.54477690103
+    },
+    "TotLen Bwd Pkts": {
+      "column_name": "TotLen Bwd Pkts",
+      "dtype": "int64",
+      "num_unique": 8805,
+      "pct_unique": 2.659904,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 41900000.0,
+      "mean": 3307.7331698018593,
+      "std": 220373.71912396568
+    },
+    "Fwd Pkt Len Max": {
+      "column_name": "Fwd Pkt Len Max",
+      "dtype": "int64",
+      "num_unique": 1340,
+      "pct_unique": 0.404801,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1968.0,
+      "mean": 164.1952197252792,
+      "std": 263.73787580827576
+    },
+    "Fwd Pkt Len Min": {
+      "column_name": "Fwd Pkt Len Min",
+      "dtype": "int64",
+      "num_unique": 126,
+      "pct_unique": 0.038063,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1460.0,
+      "mean": 16.2715125956493,
+      "std": 41.12813612603741
+    },
+    "Fwd Pkt Len Mean": {
+      "column_name": "Fwd Pkt Len Mean",
+      "dtype": "float64",
+      "num_unique": 10070,
+      "pct_unique": 3.042048,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1460.0,
+      "mean": 46.15544598476167,
+      "std": 61.57902256902497
+    },
+    "Fwd Pkt Len Std": {
+      "column_name": "Fwd Pkt Len Std",
+      "dtype": "float64",
+      "num_unique": 13857,
+      "pct_unique": 4.186063,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1324.411001,
+      "mean": 49.77782594595291,
+      "std": 89.5204729518995
+    },
+    "Bwd Pkt Len Max": {
+      "column_name": "Bwd Pkt Len Max",
+      "dtype": "int64",
+      "num_unique": 857,
+      "pct_unique": 0.258891,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 65160.0,
+      "mean": 320.70556178196944,
+      "std": 519.2012098417792
+    },
+    "Bwd Pkt Len Min": {
+      "column_name": "Bwd Pkt Len Min",
+      "dtype": "int64",
+      "num_unique": 273,
+      "pct_unique": 0.082471,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1212.0,
+      "mean": 33.5705486259429,
+      "std": 54.83067543746765
+    },
+    "Bwd Pkt Len Mean": {
+      "column_name": "Bwd Pkt Len Mean",
+      "dtype": "float64",
+      "num_unique": 13136,
+      "pct_unique": 3.968256,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 33879.28358,
+      "mean": 107.81986297635018,
+      "std": 176.07750412597835
+    },
+    "Bwd Pkt Len Std": {
+      "column_name": "Bwd Pkt Len Std",
+      "dtype": "float64",
+      "num_unique": 14800,
+      "pct_unique": 4.470934,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 21326.2385,
+      "mean": 109.27832175239304,
+      "std": 208.04097766952577
+    },
+    "Flow Byts/s": {
+      "column_name": "Flow Byts/s",
+      "dtype": "float64",
+      "num_unique": 171540,
+      "pct_unique": 51.820546,
+      "missing_count": 1834,
+      "missing_pct": 0.554033,
+      "infinite_count": 1083,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 708000000.0,
+      "mean": 287480.30891631305,
+      "std": 3557484.438234642
+    },
+    "Flow Pkts/s": {
+      "column_name": "Flow Pkts/s",
+      "dtype": "float64",
+      "num_unique": 155521,
+      "pct_unique": 46.981364,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 2917,
+      "is_numeric": true,
+      "min": 0.016743497,
+      "max": 3000000.0,
+      "mean": 87008.63094416303,
+      "std": 318999.4170004056
+    },
+    "Flow IAT Mean": {
+      "column_name": "Flow IAT Mean",
+      "dtype": "float64",
+      "num_unique": 146408,
+      "pct_unique": 44.228416,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 119000000.0,
+      "mean": 2484330.7785879937,
+      "std": 11842388.004552936
+    },
+    "Flow IAT Std": {
+      "column_name": "Flow IAT Std",
+      "dtype": "float64",
+      "num_unique": 127942,
+      "pct_unique": 38.650019,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 69200000.0,
+      "mean": 1178949.7734972097,
+      "std": 3722896.503429404
+    },
+    "Flow IAT Max": {
+      "column_name": "Flow IAT Max",
+      "dtype": "int64",
+      "num_unique": 83986,
+      "pct_unique": 25.371344,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 5756143.424832416,
+      "std": 16557348.930284912
+    },
+    "Flow IAT Min": {
+      "column_name": "Flow IAT Min",
+      "dtype": "int64",
+      "num_unique": 24730,
+      "pct_unique": 7.47069,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 119000000.0,
+      "mean": 1923907.5969603688,
+      "std": 11756339.144680984
+    },
+    "Fwd IAT Tot": {
+      "column_name": "Fwd IAT Tot",
+      "dtype": "int64",
+      "num_unique": 96006,
+      "pct_unique": 29.002468,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 13807005.32577403,
+      "std": 34595720.13659257
+    },
+    "Fwd IAT Mean": {
+      "column_name": "Fwd IAT Mean",
+      "dtype": "float64",
+      "num_unique": 130082,
+      "pct_unique": 39.296492,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 2890908.0573682343,
+      "std": 12096981.43589205
+    },
+    "Fwd IAT Std": {
+      "column_name": "Fwd IAT Std",
+      "dtype": "float64",
+      "num_unique": 97961,
+      "pct_unique": 29.593054,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 84700000.0,
+      "mean": 1362743.482049042,
+      "std": 4504680.402113382
+    },
+    "Fwd IAT Max": {
+      "column_name": "Fwd IAT Max",
+      "dtype": "int64",
+      "num_unique": 95023,
+      "pct_unique": 28.705513,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 5637021.25242956,
+      "std": 16500242.610969152
+    },
+    "Fwd IAT Min": {
+      "column_name": "Fwd IAT Min",
+      "dtype": "int64",
+      "num_unique": 42617,
+      "pct_unique": 12.874176,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 2030286.0010029394,
+      "std": 11920058.636529919
+    },
+    "Bwd IAT Tot": {
+      "column_name": "Bwd IAT Tot",
+      "dtype": "int64",
+      "num_unique": 69546,
+      "pct_unique": 21.009162,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 9928893.70967927,
+      "std": 29903967.89352735
+    },
+    "Bwd IAT Mean": {
+      "column_name": "Bwd IAT Mean",
+      "dtype": "float64",
+      "num_unique": 100353,
+      "pct_unique": 30.315654,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 977226.6477101678,
+      "std": 4176676.2141461764
+    },
+    "Bwd IAT Std": {
+      "column_name": "Bwd IAT Std",
+      "dtype": "float64",
+      "num_unique": 85205,
+      "pct_unique": 25.739592,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 84700000.0,
+      "mean": 1065984.6339207124,
+      "std": 3915400.4902466186
+    },
+    "Bwd IAT Max": {
+      "column_name": "Bwd IAT Max",
+      "dtype": "int64",
+      "num_unique": 52382,
+      "pct_unique": 15.824087,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 3273376.5796566443,
+      "std": 11564178.593771301
+    },
+    "Bwd IAT Min": {
+      "column_name": "Bwd IAT Min",
+      "dtype": "int64",
+      "num_unique": 50729,
+      "pct_unique": 15.324732,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 301262.285318116,
+      "std": 3453862.9023021194
+    },
+    "Fwd PSH Flags": {
+      "column_name": "Fwd PSH Flags",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.06471979627039486,
+      "std": 0.24603115067059586
+    },
+    "Bwd PSH Flags": {
+      "column_name": "Bwd PSH Flags",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Fwd URG Flags": {
+      "column_name": "Fwd URG Flags",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0028094385050162073,
+      "std": 0.05292970832643821
+    },
+    "Bwd URG Flags": {
+      "column_name": "Bwd URG Flags",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Fwd Header Len": {
+      "column_name": "Fwd Header Len",
+      "dtype": "int64",
+      "num_unique": 608,
+      "pct_unique": 0.183671,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 332000.0,
+      "mean": 102.74137154975274,
+      "std": 1405.810303105616
+    },
+    "Bwd Header Len": {
+      "column_name": "Bwd Header Len",
+      "dtype": "int64",
+      "num_unique": 876,
+      "pct_unique": 0.264631,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 531332.0,
+      "mean": 114.50831503170436,
+      "std": 2926.3480858608755
+    },
+    "Fwd Pkts/s": {
+      "column_name": "Fwd Pkts/s",
+      "dtype": "float64",
+      "num_unique": 155224,
+      "pct_unique": 46.891643,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 3000000.0,
+      "mean": 55682.08513624909,
+      "std": 243091.65687665978
+    },
+    "Bwd Pkts/s": {
+      "column_name": "Bwd Pkts/s",
+      "dtype": "float64",
+      "num_unique": 137952,
+      "pct_unique": 41.673942,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 2000000.0,
+      "mean": 30559.82836048826,
+      "std": 121366.38045296058
+    },
+    "Pkt Len Min": {
+      "column_name": "Pkt Len Min",
+      "dtype": "int64",
+      "num_unique": 85,
+      "pct_unique": 0.025678,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1460.0,
+      "mean": 16.03558622106354,
+      "std": 39.09881154075221
+    },
+    "Pkt Len Max": {
+      "column_name": "Pkt Len Max",
+      "dtype": "int64",
+      "num_unique": 1026,
+      "pct_unique": 0.309945,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 65160.0,
+      "mean": 338.372374458881,
+      "std": 522.5890423468297
+    },
+    "Pkt Len Mean": {
+      "column_name": "Pkt Len Mean",
+      "dtype": "float64",
+      "num_unique": 19124,
+      "pct_unique": 5.777172,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 17344.98473,
+      "mean": 73.95394947863493,
+      "std": 106.94180475457036
+    },
+    "Pkt Len Std": {
+      "column_name": "Pkt Len Std",
+      "dtype": "float64",
+      "num_unique": 21705,
+      "pct_unique": 6.556867,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 22788.28621,
+      "mean": 101.47701666141403,
+      "std": 162.87226433741324
+    },
+    "Pkt Len Var": {
+      "column_name": "Pkt Len Var",
+      "dtype": "float64",
+      "num_unique": 21705,
+      "pct_unique": 6.556867,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 519000000.0,
+      "mean": 36823.95490152122,
+      "std": 905513.9100803644
+    },
+    "FIN Flag Cnt": {
+      "column_name": "FIN Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.005893779057297441,
+      "std": 0.07654449768184136
+    },
+    "SYN Flag Cnt": {
+      "column_name": "SYN Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.06471979627039486,
+      "std": 0.24603115067059586
+    },
+    "RST Flag Cnt": {
+      "column_name": "RST Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.19908647935062698,
+      "std": 0.39931382993555187
+    },
+    "PSH Flag Cnt": {
+      "column_name": "PSH Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.43086213511284577,
+      "std": 0.4951976337044072
+    },
+    "ACK Flag Cnt": {
+      "column_name": "ACK Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.20664477519960608,
+      "std": 0.40489900881406304
+    },
+    "URG Flag Cnt": {
+      "column_name": "URG Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.05007144432327272,
+      "std": 0.21809272907216162
+    },
+    "CWE Flag Count": {
+      "column_name": "CWE Flag Count",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0028094385050162073,
+      "std": 0.05292970832643821
+    },
+    "ECE Flag Cnt": {
+      "column_name": "ECE Flag Cnt",
+      "dtype": "int64",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.19908647935062698,
+      "std": 0.39931382993555187
+    },
+    "Down/Up Ratio": {
+      "column_name": "Down/Up Ratio",
+      "dtype": "int64",
+      "num_unique": 28,
+      "pct_unique": 0.008459,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 237.0,
+      "mean": 0.6259217526062829,
+      "std": 1.0405490929655592
+    },
+    "Pkt Size Avg": {
+      "column_name": "Pkt Size Avg",
+      "dtype": "float64",
+      "num_unique": 18849,
+      "pct_unique": 5.694097,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 17478.40769,
+      "mean": 86.77129413325153,
+      "std": 112.66175684791936
+    },
+    "Fwd Seg Size Avg": {
+      "column_name": "Fwd Seg Size Avg",
+      "dtype": "float64",
+      "num_unique": 10070,
+      "pct_unique": 3.042048,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 1460.0,
+      "mean": 46.15544598476167,
+      "std": 61.57902256902497
+    },
+    "Bwd Seg Size Avg": {
+      "column_name": "Bwd Seg Size Avg",
+      "dtype": "float64",
+      "num_unique": 13136,
+      "pct_unique": 3.968256,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 33879.28358,
+      "mean": 107.81986297635018,
+      "std": 176.07750412597835
+    },
+    "Fwd Byts/b Avg": {
+      "column_name": "Fwd Byts/b Avg",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Fwd Pkts/b Avg": {
+      "column_name": "Fwd Pkts/b Avg",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Fwd Blk Rate Avg": {
+      "column_name": "Fwd Blk Rate Avg",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Bwd Byts/b Avg": {
+      "column_name": "Bwd Byts/b Avg",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Bwd Pkts/b Avg": {
+      "column_name": "Bwd Pkts/b Avg",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Bwd Blk Rate Avg": {
+      "column_name": "Bwd Blk Rate Avg",
+      "dtype": "int64",
+      "num_unique": 1,
+      "pct_unique": 0.000302,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "Subflow Fwd Pkts": {
+      "column_name": "Subflow Fwd Pkts",
+      "dtype": "int64",
+      "num_unique": 328,
+      "pct_unique": 0.099086,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 1.0,
+      "max": 18291.0,
+      "mean": 5.553154274424744,
+      "std": 74.03143997066844
+    },
+    "Subflow Fwd Byts": {
+      "column_name": "Subflow Fwd Byts",
+      "dtype": "int64",
+      "num_unique": 3953,
+      "pct_unique": 1.194162,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 9789747.0,
+      "mean": 470.94597117455675,
+      "std": 24749.54477690103
+    },
+    "Subflow Bwd Pkts": {
+      "column_name": "Subflow Bwd Pkts",
+      "dtype": "int64",
+      "num_unique": 408,
+      "pct_unique": 0.123253,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 35547.0,
+      "mean": 5.647865581961592,
+      "std": 158.05586726941323
+    },
+    "Subflow Bwd Byts": {
+      "column_name": "Subflow Bwd Byts",
+      "dtype": "int64",
+      "num_unique": 8806,
+      "pct_unique": 2.660206,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 41866587.0,
+      "mean": 3307.1614702123998,
+      "std": 220318.8608791571
+    },
+    "Init Fwd Win Byts": {
+      "column_name": "Init Fwd Win Byts",
+      "dtype": "int64",
+      "num_unique": 2409,
+      "pct_unique": 0.727735,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": -1.0,
+      "max": 65535.0,
+      "mean": 4737.369256888411,
+      "std": 10792.57519297474
+    },
+    "Init Bwd Win Byts": {
+      "column_name": "Init Bwd Win Byts",
+      "dtype": "int64",
+      "num_unique": 2108,
+      "pct_unique": 0.636806,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": -1.0,
+      "max": 65535.0,
+      "mean": 8820.786144332638,
+      "std": 21251.091622075914
+    },
+    "Fwd Act Data Pkts": {
+      "column_name": "Fwd Act Data Pkts",
+      "dtype": "int64",
+      "num_unique": 131,
+      "pct_unique": 0.039574,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 18290.0,
+      "mean": 2.1838853024073566,
+      "std": 41.68586106563904
+    },
+    "Fwd Seg Size Min": {
+      "column_name": "Fwd Seg Size Min",
+      "dtype": "int64",
+      "num_unique": 10,
+      "pct_unique": 0.003021,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 48.0,
+      "mean": 16.34215940089479,
+      "std": 7.117274125223098
+    },
+    "Active Mean": {
+      "column_name": "Active Mean",
+      "dtype": "float64",
+      "num_unique": 42185,
+      "pct_unique": 12.743673,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 114000000.0,
+      "mean": 289856.03733677417,
+      "std": 3182662.791633142
+    },
+    "Active Std": {
+      "column_name": "Active Std",
+      "dtype": "float64",
+      "num_unique": 29300,
+      "pct_unique": 8.851242,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 72200000.0,
+      "mean": 130736.03455797798,
+      "std": 1903422.510307136
+    },
+    "Active Max": {
+      "column_name": "Active Max",
+      "dtype": "int64",
+      "num_unique": 41165,
+      "pct_unique": 12.435542,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 114000000.0,
+      "mean": 418288.69244200626,
+      "std": 4192125.0917360648
+    },
+    "Active Min": {
+      "column_name": "Active Min",
+      "dtype": "int64",
+      "num_unique": 27466,
+      "pct_unique": 8.297208,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 114000000.0,
+      "mean": 201497.5508855773,
+      "std": 2702097.3412671885
+    },
+    "Idle Mean": {
+      "column_name": "Idle Mean",
+      "dtype": "float64",
+      "num_unique": 16389,
+      "pct_unique": 4.950956,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 5223228.632217571,
+      "std": 16131783.082864447
+    },
+    "Idle Std": {
+      "column_name": "Idle Std",
+      "dtype": "float64",
+      "num_unique": 30560,
+      "pct_unique": 9.231875,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 55200000.0,
+      "mean": 275482.32022673776,
+      "std": 2081495.4032065533
+    },
+    "Idle Max": {
+      "column_name": "Idle Max",
+      "dtype": "int64",
+      "num_unique": 7999,
+      "pct_unique": 2.416419,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 5483582.056508985,
+      "std": 16570625.927482082
+    },
+    "Idle Min": {
+      "column_name": "Idle Min",
+      "dtype": "int64",
+      "num_unique": 19571,
+      "pct_unique": 5.912207,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": true,
+      "min": 0.0,
+      "max": 120000000.0,
+      "mean": 4969095.41332278,
+      "std": 15933498.574516162
+    },
+    "Label": {
+      "column_name": "Label",
+      "dtype": "str",
+      "num_unique": 2,
+      "pct_unique": 0.000604,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "infinite_count": 0,
+      "is_numeric": false,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "std": null
+    }
+  },
+  "classifications": {
+    "Dst Port": {
+      "category": "NETWORK_IDENTIFIER",
+      "reason": "Dst Port identifies the network context of a flow (port/protocol) rather than describing its behaviour. Retained for analysis, but potentially excluded from the first ML baseline if it creates memorization/leakage risk (see Step 3)."
+    },
+    "Protocol": {
+      "category": "NETWORK_IDENTIFIER",
+      "reason": "Protocol identifies the network context of a flow (port/protocol) rather than describing its behaviour. Retained for analysis, but potentially excluded from the first ML baseline if it creates memorization/leakage risk (see Step 3)."
+    },
+    "Timestamp": {
+      "category": "TIMESTAMP",
+      "reason": "Records when the flow occurred. Essential for temporal ordering and later World Model sequence construction, but not treated as a normal predictive feature (see leakage analysis)."
+    },
+    "Flow Duration": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Flow Duration anchors all rate-based features and reflects how long a network interaction persisted, a core behavioural signal."
+    },
+    "Tot Fwd Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions."
+    },
+    "Tot Bwd Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions."
+    },
+    "TotLen Fwd Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic."
+    },
+    "TotLen Bwd Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic."
+    },
+    "Fwd Pkt Len Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Fwd Pkt Len Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Fwd Pkt Len Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Fwd Pkt Len Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Bwd Pkt Len Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Bwd Pkt Len Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Bwd Pkt Len Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Bwd Pkt Len Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Flow Byts/s": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5)."
+    },
+    "Flow Pkts/s": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5)."
+    },
+    "Flow IAT Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Flow IAT Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Flow IAT Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Flow IAT Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Fwd IAT Tot": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Fwd IAT Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Fwd IAT Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Fwd IAT Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Fwd IAT Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Bwd IAT Tot": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Bwd IAT Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Bwd IAT Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Bwd IAT Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Bwd IAT Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic."
+    },
+    "Fwd PSH Flags": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "Bwd PSH Flags": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Fwd URG Flags": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Bwd URG Flags": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Fwd Header Len": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic."
+    },
+    "Bwd Header Len": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic."
+    },
+    "Fwd Pkts/s": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5)."
+    },
+    "Bwd Pkts/s": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5)."
+    },
+    "Pkt Len Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Pkt Len Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Pkt Len Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Pkt Len Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Pkt Len Var": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "FIN Flag Cnt": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "NEAR_CONSTANT: dominant value '0' accounts for 99.41% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "SYN Flag Cnt": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "RST Flag Cnt": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "PSH Flag Cnt": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "ACK Flag Cnt": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "URG Flag Cnt": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "CWE Flag Count": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "ECE Flag Cnt": {
+      "category": "NETWORK_FEATURE",
+      "reason": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques."
+    },
+    "Down/Up Ratio": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Forward/backward traffic ratios and bulk-transfer statistics describe directional asymmetry, useful for identifying one-sided (e.g. scanning) vs bidirectional (e.g. normal session) behaviour."
+    },
+    "Pkt Size Avg": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Fwd Seg Size Avg": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Bwd Seg Size Avg": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Fwd Byts/b Avg": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Fwd Pkts/b Avg": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Fwd Blk Rate Avg": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Bwd Byts/b Avg": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Bwd Pkts/b Avg": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Bwd Blk Rate Avg": {
+      "category": "CONSTANT_OR_NEAR_CONSTANT",
+      "reason": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset."
+    },
+    "Subflow Fwd Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions."
+    },
+    "Subflow Fwd Byts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic."
+    },
+    "Subflow Bwd Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions."
+    },
+    "Subflow Bwd Byts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic."
+    },
+    "Init Fwd Win Byts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic."
+    },
+    "Init Bwd Win Byts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic."
+    },
+    "Fwd Act Data Pkts": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions."
+    },
+    "Fwd Seg Size Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection."
+    },
+    "Active Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Active Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Active Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Active Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Idle Mean": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Idle Std": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Idle Max": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Idle Min": {
+      "category": "NETWORK_FEATURE",
+      "reason": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    },
+    "Label": {
+      "category": "TARGET",
+      "reason": "This is the ground-truth label column produced by the dataset authors. It must never be used as an input feature."
+    }
+  },
+  "constant_or_near_constant_columns": {
+    "Bwd PSH Flags": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "Fwd URG Flags": {
+      "status": "NEAR_CONSTANT",
+      "num_unique": 2,
+      "dominant_value": "0",
+      "dominant_value_fraction": 0.997191
+    },
+    "Bwd URG Flags": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "FIN Flag Cnt": {
+      "status": "NEAR_CONSTANT",
+      "num_unique": 2,
+      "dominant_value": "0",
+      "dominant_value_fraction": 0.994106
+    },
+    "CWE Flag Count": {
+      "status": "NEAR_CONSTANT",
+      "num_unique": 2,
+      "dominant_value": "0",
+      "dominant_value_fraction": 0.997191
+    },
+    "Fwd Byts/b Avg": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "Fwd Pkts/b Avg": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "Fwd Blk Rate Avg": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "Bwd Byts/b Avg": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "Bwd Pkts/b Avg": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    },
+    "Bwd Blk Rate Avg": {
+      "status": "CONSTANT",
+      "num_unique": 1,
+      "dominant_value": "0",
+      "dominant_value_fraction": 1.0
+    }
+  },
+  "leakage_risk": {
+    "Label": {
+      "risk": "N/A",
+      "reason": "Target column; never used as an input feature."
+    },
+    "Timestamp": {
+      "risk": "HIGH",
+      "reason": "Several hours contain exclusively Benign traffic and others contain exclusively (or almost exclusively) Infilteration traffic. Because this dataset is a single day's capture with a scripted attack window, raw Timestamp (or any hour/time-of-day feature derived from it) would let a model memorize 'when the attack happened' instead of learning attack behaviour. Timestamp is therefore HIGH leakage risk as a direct predictive feature, even though it remains essential for later temporal / World Model work (state ordering, sequence construction).",
+      "evidence": {
+        "method": "Cross-tabulated Label against hour-of-day extracted from Timestamp.",
+        "hours_with_zero_infiltration_rows": [
+          1,
+          4,
+          5,
+          8,
+          11,
+          12
+        ],
+        "hours_with_zero_benign_rows": [],
+        "crosstab": {
+          "1": {
+            "Benign": 32520,
+            "Infilteration": 0
+          },
+          "2": {
+            "Benign": 14016,
+            "Infilteration": 33864
+          },
+          "3": {
+            "Benign": 21432,
+            "Infilteration": 20434
+          },
+          "4": {
+            "Benign": 31254,
+            "Infilteration": 0
+          },
+          "5": {
+            "Benign": 11805,
+            "Infilteration": 0
+          },
+          "8": {
+            "Benign": 27091,
+            "Infilteration": 0
+          },
+          "9": {
+            "Benign": 35562,
+            "Infilteration": 1282
+          },
+          "10": {
+            "Benign": 16561,
+            "Infilteration": 37460
+          },
+          "11": {
+            "Benign": 29836,
+            "Infilteration": 0
+          },
+          "12": {
+            "Benign": 17910,
+            "Infilteration": 0
+          }
+        },
+        "conclusion": "Several hours contain exclusively Benign traffic and others contain exclusively (or almost exclusively) Infilteration traffic. Because this dataset is a single day's capture with a scripted attack window, raw Timestamp (or any hour/time-of-day feature derived from it) would let a model memorize 'when the attack happened' instead of learning attack behaviour. Timestamp is therefore HIGH leakage risk as a direct predictive feature, even though it remains essential for later temporal / World Model work (state ordering, sequence construction)."
+      }
+    },
+    "Dst Port": {
+      "risk": "MEDIUM",
+      "reason": "Dst Port has 16149 unique values with a weighted average label purity of 77.27% per value. High cardinality plus moderate-to-high per-value label purity creates a real risk that a model memorizes specific ports from this capture rather than learning generalizable port-usage behaviour.",
+      "evidence": {
+        "num_unique_values": 16149,
+        "weighted_avg_label_purity_per_value": 0.772722,
+        "top_value_counts": {
+          "53": 107444,
+          "443": 51133,
+          "3389": 42416,
+          "445": 14721,
+          "80": 13212,
+          "0": 7149,
+          "22": 2349,
+          "135": 1797,
+          "500": 1232,
+          "23": 1190
+        }
+      }
+    },
+    "Protocol": {
+      "risk": "LOW",
+      "reason": "Protocol has only 3 unique values and traffic is present for both labels under every protocol value observed, so it behaves as a legitimate low-cardinality categorical network feature rather than an identifier that enables memorization.",
+      "evidence": {
+        "num_unique_values": 3,
+        "weighted_avg_label_purity_per_value": 0.718935,
+        "top_value_counts": {
+          "6": 212862,
+          "17": 111016,
+          "0": 7149
+        }
+      }
+    },
+    "Flow Duration": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Tot Fwd Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Tot Bwd Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "TotLen Fwd Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "TotLen Bwd Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Pkt Len Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Pkt Len Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Pkt Len Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Pkt Len Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Pkt Len Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Pkt Len Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Pkt Len Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Pkt Len Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Flow Byts/s": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Flow Pkts/s": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Flow IAT Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Flow IAT Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Flow IAT Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Flow IAT Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd IAT Tot": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd IAT Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd IAT Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd IAT Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd IAT Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd IAT Tot": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd IAT Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd IAT Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd IAT Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd IAT Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd PSH Flags": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd PSH Flags": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Fwd URG Flags": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Bwd URG Flags": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Fwd Header Len": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Header Len": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Pkts/s": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Pkts/s": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Pkt Len Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Pkt Len Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Pkt Len Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Pkt Len Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Pkt Len Var": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "FIN Flag Cnt": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "SYN Flag Cnt": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "RST Flag Cnt": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "PSH Flag Cnt": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "ACK Flag Cnt": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "URG Flag Cnt": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "CWE Flag Count": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "ECE Flag Cnt": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Down/Up Ratio": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Pkt Size Avg": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Seg Size Avg": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Bwd Seg Size Avg": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Byts/b Avg": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Fwd Pkts/b Avg": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Fwd Blk Rate Avg": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Bwd Byts/b Avg": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Bwd Pkts/b Avg": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Bwd Blk Rate Avg": {
+      "risk": "LOW",
+      "reason": "Carries almost no variance/information; not a leakage concern but an information-value concern (see Step 4)."
+    },
+    "Subflow Fwd Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Subflow Fwd Byts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Subflow Bwd Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Subflow Bwd Byts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Init Fwd Win Byts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Init Bwd Win Byts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Act Data Pkts": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Fwd Seg Size Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Active Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Active Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Active Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Active Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Idle Mean": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Idle Std": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Idle Max": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "Idle Min": {
+      "risk": "LOW",
+      "reason": "No evidence of direct label encoding; see feature-vs-label correlation analysis (max |corr| far below 0.5)."
+    },
+    "_feature_vs_label_correlation_analysis": {
+      "method": "Pearson correlation of each numeric feature against a binary Infilteration indicator.",
+      "top_15_by_abs_correlation": [
+        {
+          "column": "Fwd Seg Size Min",
+          "correlation": 0.141246
+        },
+        {
+          "column": "PSH Flag Cnt",
+          "correlation": 0.111426
+        },
+        {
+          "column": "Fwd Pkt Len Mean",
+          "correlation": -0.102598
+        },
+        {
+          "column": "Fwd Seg Size Avg",
+          "correlation": -0.102598
+        },
+        {
+          "column": "Pkt Size Avg",
+          "correlation": -0.088573
+        },
+        {
+          "column": "Fwd Pkt Len Max",
+          "correlation": -0.08595
+        },
+        {
+          "column": "Fwd IAT Mean",
+          "correlation": -0.08162
+        },
+        {
+          "column": "Pkt Len Mean",
+          "correlation": -0.080695
+        },
+        {
+          "column": "Fwd IAT Max",
+          "correlation": -0.079581
+        },
+        {
+          "column": "Flow IAT Mean",
+          "correlation": -0.077003
+        },
+        {
+          "column": "Pkt Len Max",
+          "correlation": -0.076597
+        },
+        {
+          "column": "Flow IAT Max",
+          "correlation": -0.075495
+        },
+        {
+          "column": "Fwd IAT Min",
+          "correlation": -0.07364
+        },
+        {
+          "column": "Idle Max",
+          "correlation": -0.072985
+        },
+        {
+          "column": "Fwd Pkt Len Std",
+          "correlation": -0.072746
+        }
+      ],
+      "max_abs_correlation": 0.141246,
+      "conclusion": "No individual behavioural feature shows strong direct correlation with the label (max |correlation| well below 0.5), so there is no evidence of a behavioural feature directly encoding the label. Leakage risk for NETWORK_FEATURE columns is assessed as LOW on this basis."
+    }
+  },
+  "infinity_and_missingness": {
+    "Flow Byts/s": {
+      "missing_count": 1834,
+      "infinite_count": 1083,
+      "missing_cause": "Investigated: of 1834 missing rows, 1834 have Flow Duration == 0 with zero forward and backward byte totals, consistent with a mathematical 0/0 division (zero-byte, zero-duration flow) rather than data-collection loss.",
+      "infinite_cause": "Investigated: all 1083 infinite rows have Flow Duration == 0 with nonzero packet/byte activity, consistent with division-by-zero on a near-zero-duration flow (rate = bytes or packets / duration)."
+    },
+    "Flow Pkts/s": {
+      "missing_count": 0,
+      "infinite_count": 2917,
+      "infinite_cause": "Investigated: all 2917 infinite rows have Flow Duration == 0 with nonzero packet/byte activity, consistent with division-by-zero on a near-zero-duration flow (rate = bytes or packets / duration)."
+    }
+  },
+  "correlation_audit": {
+    "threshold": 0.95,
+    "num_pairs_found": 43,
+    "pairs": [
+      {
+        "column_a": "Tot Fwd Pkts",
+        "column_b": "Subflow Fwd Pkts",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "Tot Bwd Pkts",
+        "column_b": "Subflow Bwd Pkts",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "TotLen Fwd Pkts",
+        "column_b": "Subflow Fwd Byts",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "TotLen Bwd Pkts",
+        "column_b": "Subflow Bwd Byts",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "Fwd Pkt Len Mean",
+        "column_b": "Fwd Seg Size Avg",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "Bwd Pkt Len Mean",
+        "column_b": "Bwd Seg Size Avg",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "Fwd PSH Flags",
+        "column_b": "SYN Flag Cnt",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "Fwd URG Flags",
+        "column_b": "CWE Flag Count",
+        "correlation": 1.0
+      },
+      {
+        "column_a": "RST Flag Cnt",
+        "column_b": "ECE Flag Cnt",
+        "correlation": 0.999962
+      },
+      {
+        "column_a": "Flow Duration",
+        "column_b": "Fwd IAT Tot",
+        "correlation": 0.997344
+      },
+      {
+        "column_a": "Flow IAT Max",
+        "column_b": "Idle Max",
+        "correlation": 0.995432
+      },
+      {
+        "column_a": "Idle Mean",
+        "column_b": "Idle Min",
+        "correlation": 0.994182
+      },
+      {
+        "column_a": "Flow IAT Max",
+        "column_b": "Fwd IAT Max",
+        "correlation": 0.994064
+      },
+      {
+        "column_a": "Idle Mean",
+        "column_b": "Idle Max",
+        "correlation": 0.992436
+      },
+      {
+        "column_a": "Pkt Len Mean",
+        "column_b": "Pkt Size Avg",
+        "correlation": 0.991254
+      },
+      {
+        "column_a": "Tot Bwd Pkts",
+        "column_b": "TotLen Bwd Pkts",
+        "correlation": 0.990151
+      },
+      {
+        "column_a": "TotLen Bwd Pkts",
+        "column_b": "Subflow Bwd Pkts",
+        "correlation": 0.990151
+      },
+      {
+        "column_a": "Tot Bwd Pkts",
+        "column_b": "Subflow Bwd Byts",
+        "correlation": 0.990132
+      },
+      {
+        "column_a": "Subflow Bwd Pkts",
+        "column_b": "Subflow Bwd Byts",
+        "correlation": 0.990132
+      },
+      {
+        "column_a": "Fwd IAT Max",
+        "column_b": "Idle Max",
+        "correlation": 0.98963
+      },
+      {
+        "column_a": "Flow IAT Mean",
+        "column_b": "Fwd IAT Mean",
+        "correlation": 0.988635
+      },
+      {
+        "column_a": "Flow IAT Max",
+        "column_b": "Idle Mean",
+        "correlation": 0.987979
+      },
+      {
+        "column_a": "Flow IAT Mean",
+        "column_b": "Flow IAT Min",
+        "correlation": 0.987061
+      },
+      {
+        "column_a": "Bwd Pkt Len Max",
+        "column_b": "Pkt Len Max",
+        "correlation": 0.985696
+      },
+      {
+        "column_a": "Flow IAT Min",
+        "column_b": "Fwd IAT Min",
+        "correlation": 0.98477
+      },
+      {
+        "column_a": "Flow IAT Mean",
+        "column_b": "Fwd IAT Min",
+        "correlation": 0.983385
+      },
+      {
+        "column_a": "Fwd IAT Max",
+        "column_b": "Idle Mean",
+        "correlation": 0.982905
+      },
+      {
+        "column_a": "Bwd Header Len",
+        "column_b": "Subflow Bwd Byts",
+        "correlation": 0.979571
+      },
+      {
+        "column_a": "TotLen Bwd Pkts",
+        "column_b": "Bwd Header Len",
+        "correlation": 0.979528
+      },
+      {
+        "column_a": "Fwd IAT Mean",
+        "column_b": "Fwd IAT Min",
+        "correlation": 0.976175
+      },
+      {
+        "column_a": "Bwd Pkt Len Max",
+        "column_b": "Bwd Pkt Len Std",
+        "correlation": 0.975501
+      },
+      {
+        "column_a": "Idle Max",
+        "column_b": "Idle Min",
+        "correlation": 0.974366
+      },
+      {
+        "column_a": "Flow IAT Max",
+        "column_b": "Idle Min",
+        "correlation": 0.970089
+      },
+      {
+        "column_a": "Tot Bwd Pkts",
+        "column_b": "Bwd Header Len",
+        "correlation": 0.969388
+      },
+      {
+        "column_a": "Bwd Header Len",
+        "column_b": "Subflow Bwd Pkts",
+        "correlation": 0.969388
+      },
+      {
+        "column_a": "Pkt Len Max",
+        "column_b": "Pkt Len Std",
+        "correlation": 0.965794
+      },
+      {
+        "column_a": "Fwd IAT Max",
+        "column_b": "Idle Min",
+        "correlation": 0.965767
+      },
+      {
+        "column_a": "Fwd Pkt Len Max",
+        "column_b": "Fwd Pkt Len Std",
+        "correlation": 0.96512
+      },
+      {
+        "column_a": "Bwd Pkt Len Std",
+        "column_b": "Pkt Len Std",
+        "correlation": 0.963407
+      },
+      {
+        "column_a": "Bwd Pkt Len Std",
+        "column_b": "Pkt Len Max",
+        "correlation": 0.962802
+      },
+      {
+        "column_a": "Flow IAT Min",
+        "column_b": "Fwd IAT Mean",
+        "correlation": 0.960778
+      },
+      {
+        "column_a": "Bwd Pkt Len Max",
+        "column_b": "Pkt Len Std",
+        "correlation": 0.958179
+      },
+      {
+        "column_a": "Fwd Pkt Len Min",
+        "column_b": "Pkt Len Min",
+        "correlation": 0.951379
+      }
+    ],
+    "note": "No features were removed based on this audit. Redundancy decisions are deferred to a later feature."
+  },
+  "recommended_core_feature_set": {
+    "features": [
+      "ACK Flag Cnt",
+      "Active Max",
+      "Active Mean",
+      "Active Min",
+      "Active Std",
+      "Bwd Header Len",
+      "Bwd IAT Max",
+      "Bwd IAT Mean",
+      "Bwd IAT Min",
+      "Bwd IAT Std",
+      "Bwd IAT Tot",
+      "Bwd Pkt Len Max",
+      "Bwd Pkt Len Mean",
+      "Bwd Pkt Len Min",
+      "Bwd Pkt Len Std",
+      "Bwd Pkts/s",
+      "Bwd Seg Size Avg",
+      "Down/Up Ratio",
+      "ECE Flag Cnt",
+      "Flow Byts/s",
+      "Flow Duration",
+      "Flow IAT Max",
+      "Flow IAT Mean",
+      "Flow IAT Min",
+      "Flow IAT Std",
+      "Flow Pkts/s",
+      "Fwd Act Data Pkts",
+      "Fwd Header Len",
+      "Fwd IAT Max",
+      "Fwd IAT Mean",
+      "Fwd IAT Min",
+      "Fwd IAT Std",
+      "Fwd IAT Tot",
+      "Fwd PSH Flags",
+      "Fwd Pkt Len Max",
+      "Fwd Pkt Len Mean",
+      "Fwd Pkt Len Min",
+      "Fwd Pkt Len Std",
+      "Fwd Pkts/s",
+      "Fwd Seg Size Avg",
+      "Fwd Seg Size Min",
+      "Idle Max",
+      "Idle Mean",
+      "Idle Min",
+      "Idle Std",
+      "Init Bwd Win Byts",
+      "Init Fwd Win Byts",
+      "PSH Flag Cnt",
+      "Pkt Len Max",
+      "Pkt Len Mean",
+      "Pkt Len Min",
+      "Pkt Len Std",
+      "Pkt Len Var",
+      "Pkt Size Avg",
+      "Protocol",
+      "RST Flag Cnt",
+      "SYN Flag Cnt",
+      "Subflow Bwd Byts",
+      "Subflow Bwd Pkts",
+      "Subflow Fwd Byts",
+      "Subflow Fwd Pkts",
+      "Tot Bwd Pkts",
+      "Tot Fwd Pkts",
+      "TotLen Bwd Pkts",
+      "TotLen Fwd Pkts",
+      "URG Flag Cnt"
+    ],
+    "count": 66,
+    "category_groups": {
+      "packet_counts": [
+        "Tot Fwd Pkts",
+        "Tot Bwd Pkts",
+        "Subflow Fwd Pkts",
+        "Subflow Bwd Pkts",
+        "Fwd Act Data Pkts"
+      ],
+      "byte_counts": [
+        "TotLen Fwd Pkts",
+        "TotLen Bwd Pkts",
+        "Subflow Fwd Byts",
+        "Subflow Bwd Byts"
+      ],
+      "duration": [
+        "Flow Duration"
+      ],
+      "rates": [
+        "Flow Byts/s",
+        "Flow Pkts/s",
+        "Fwd Pkts/s",
+        "Bwd Pkts/s"
+      ],
+      "packet_size_stats": [
+        "Fwd Pkt Len Max",
+        "Fwd Pkt Len Min",
+        "Fwd Pkt Len Mean",
+        "Fwd Pkt Len Std",
+        "Bwd Pkt Len Max",
+        "Bwd Pkt Len Min",
+        "Bwd Pkt Len Mean",
+        "Bwd Pkt Len Std",
+        "Pkt Len Min",
+        "Pkt Len Max",
+        "Pkt Len Mean",
+        "Pkt Len Std",
+        "Pkt Len Var",
+        "Pkt Size Avg",
+        "Fwd Seg Size Avg",
+        "Bwd Seg Size Avg",
+        "Fwd Seg Size Min"
+      ],
+      "inter_arrival_stats": [
+        "Flow IAT Mean",
+        "Flow IAT Std",
+        "Flow IAT Max",
+        "Flow IAT Min",
+        "Fwd IAT Tot",
+        "Fwd IAT Mean",
+        "Fwd IAT Std",
+        "Fwd IAT Max",
+        "Fwd IAT Min",
+        "Bwd IAT Tot",
+        "Bwd IAT Mean",
+        "Bwd IAT Std",
+        "Bwd IAT Max",
+        "Bwd IAT Min"
+      ],
+      "tcp_flags": [
+        "Fwd PSH Flags",
+        "Bwd PSH Flags",
+        "Fwd URG Flags",
+        "Bwd URG Flags",
+        "FIN Flag Cnt",
+        "SYN Flag Cnt",
+        "RST Flag Cnt",
+        "PSH Flag Cnt",
+        "ACK Flag Cnt",
+        "URG Flag Cnt",
+        "CWE Flag Count",
+        "ECE Flag Cnt"
+      ],
+      "header_and_window": [
+        "Fwd Header Len",
+        "Bwd Header Len",
+        "Init Fwd Win Byts",
+        "Init Bwd Win Byts"
+      ],
+      "fwd_bwd_traffic_stats": [
+        "Down/Up Ratio",
+        "Fwd Byts/b Avg",
+        "Fwd Pkts/b Avg",
+        "Fwd Blk Rate Avg",
+        "Bwd Byts/b Avg",
+        "Bwd Pkts/b Avg",
+        "Bwd Blk Rate Avg"
+      ],
+      "active_idle_behaviour": [
+        "Active Mean",
+        "Active Std",
+        "Active Max",
+        "Active Min",
+        "Idle Mean",
+        "Idle Std",
+        "Idle Max",
+        "Idle Min"
+      ]
+    },
+    "group_reasons": {
+      "packet_counts": "Counts how many packets flowed in each direction, a direct signal of flow size and traffic asymmetry useful for distinguishing scan/probe behaviour from normal sessions.",
+      "byte_counts": "Total bytes transferred per direction, capturing payload volume that differs between reconnaissance, exfiltration and normal traffic.",
+      "duration": "Flow Duration anchors all rate-based features and reflects how long a network interaction persisted, a core behavioural signal.",
+      "rates": "Byte/packet throughput describes the intensity of a flow (e.g. bursts vs slow trickles), useful for spotting scanning or flooding behaviour. Note: contains NaN/Infinity for zero-duration flows (see Step 5).",
+      "packet_size_stats": "Packet-size distribution statistics distinguish traffic types (e.g. small control packets vs bulk transfer) and are commonly discriminative for attack detection.",
+      "inter_arrival_stats": "Inter-arrival time statistics describe the timing rhythm of a flow, which differs between automated/scripted attack traffic and human-driven or steady-state traffic.",
+      "tcp_flags": "TCP control-flag counts reveal connection setup/teardown and anomalous flag combinations often associated with scanning or evasion techniques.",
+      "header_and_window": "Header lengths and initial TCP window sizes reflect protocol-stack behaviour and negotiated connection parameters, which can differ between normal and attack traffic.",
+      "fwd_bwd_traffic_stats": "Forward/backward traffic ratios and bulk-transfer statistics describe directional asymmetry, useful for identifying one-sided (e.g. scanning) vs bidirectional (e.g. normal session) behaviour.",
+      "active_idle_behaviour": "Active/idle period statistics describe bursting patterns within a flow, capturing behavioural rhythm relevant to distinguishing automated attack tooling from typical usage."
+    }
+  },
+  "reserved_for_later": {
+    "features": [
+      "Dst Port",
+      "Timestamp"
+    ],
+    "reasons": {
+      "Dst Port": "High-cardinality identifier with medium leakage risk (memorization risk); may be useful later via bucketing/embedding rather than raw value.",
+      "Timestamp": "High leakage risk as a raw predictive feature in this single-day capture, but required for temporal ordering and the eventual World Model S(t) sequence construction."
+    }
+  },
+  "excluded_from_first_baseline": {
+    "Bwd PSH Flags": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Fwd URG Flags": "NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Bwd URG Flags": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "FIN Flag Cnt": "NEAR_CONSTANT: dominant value '0' accounts for 99.41% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "CWE Flag Count": "NEAR_CONSTANT: dominant value '0' accounts for 99.72% of rows (2 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Fwd Byts/b Avg": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Fwd Pkts/b Avg": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Fwd Blk Rate Avg": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Bwd Byts/b Avg": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Bwd Pkts/b Avg": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Bwd Blk Rate Avg": "CONSTANT: dominant value '0' accounts for 100.0% of rows (1 unique value(s)). Carries little to no discriminative information in this dataset.",
+    "Label": "Target column; never used as an input feature."
+  }
+}

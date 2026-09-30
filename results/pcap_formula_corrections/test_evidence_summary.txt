@@ -1,0 +1,111 @@
+===== tests/test_pcap_pipeline.py (existing 56 L2 behavior tests - unchanged file) =====
+Fixture: C:\Users\Eswaran D\OneDrive\Documents\sih_main_project\tests\fixtures\pcap\synthetic_benign.pcap
+Hashing protected files (pre-run) ...
+  434 protected files hashed.
+Hashing protected files (post-run) ...
+
+======================================================================
+FEATURE L2 - PCAP PIPELINE TEST RESULTS
+======================================================================
+  [PASS] 1_pcap_read_returns_nonzero_frames
+  [PASS] 1_pcap_all_frames_accounted_for
+  [PASS] 1_parsed_packets_have_real_ipv4_endpoints
+  [PASS] 2_malformed_packet_detected
+  [PASS] 2_malformed_packet_has_a_reason_string
+  [PASS] 2_malformed_packet_not_silently_dropped
+  [PASS] 3_flow_count_deterministic
+  [PASS] 3_flow_keys_deterministic
+  [PASS] 3_flow_packet_counts_deterministic
+  [PASS] 3_reversed_input_order_same_flow_count
+  [PASS] 3_expected_flow_count
+  [PASS] 4_tcp_flows_present
+  [PASS] 4_tcp_handshake_flow_closed_by_fin_both
+  [PASS] 4_tcp_handshake_flow_has_5_fwd_4_bwd
+  [PASS] 4_tcp_idle_gap_flow_closed_by_fin_both
+  [PASS] 4_tcp_idle_gap_flow_has_nonzero_idle_mean
+  [PASS] 5_udp_flows_present
+  [PASS] 5_udp_flows_closed_by_end_of_capture
+  [PASS] 5_udp_flow_has_2_fwd_2_bwd
+  [PASS] 5_udp_flow_init_win_byts_is_minus1
+  [PASS] 6_flow_table_row_count_matches_flow_count
+  [PASS] 6_no_nan_values_in_flow_table
+  [PASS] 6_no_none_values_in_flow_table
+  [PASS] 6_syn_flag_count_correct_for_handshake_flow
+  [PASS] 7_feature_mapping_has_65_entries
+  [PASS] 7_category_counts_sum_to_65
+  [PASS] 7_all_features_marked_training_definition_unvalidated
+  [PASS] 7_all_features_have_a_nonempty_limitation_string
+  [PASS] 8_flow_table_columns_match_expected_set
+  [PASS] 8_flow_table_column_order_matches_feature_mapping_order
+  [PASS] 8_all_65_required_features_present
+  [PASS] 9_flow_table_timestamps_ascending
+  [PASS] 9_flow_start_times_match_packet_evidence
+  [PASS] 10_no_fit_call_anywhere_in_pcap_modules
+  [PASS] 11_repeated_packet_count_identical
+  [PASS] 11_repeated_malformed_count_identical
+  [PASS] 11_repeated_flow_count_identical
+  [PASS] 11_repeated_flow_table_identical
+  [PASS] 11_repeated_num_windows_identical
+  [PASS] 11_repeated_num_sequences_identical
+  [PASS] 11_repeated_windows_scaled_identical
+  [PASS] 11_repeated_X_sequences_identical
+  [PASS] 12_state_pipeline_output_produced
+  [PASS] 12_windows_scaled_is_68_dimensional
+  [PASS] 12_reached_68d_state_flag_true
+  [PASS] 12_reached_10step_sequences_flag_true
+  [PASS] 12_X_sequences_shape_is_(N,10,68)
+  [PASS] 12_seq_meta_target_label_is_none
+  [PASS] 12_no_label_column_anywhere_in_pcap_pipeline_input
+  [PASS] 13_compatibility_status_is_complete
+  [PASS] 13_features_computed_equals_65
+  [PASS] 13_no_features_silently_marked_not_computed
+  [PASS] 13_category_d_features_explicitly_flagged_as_simplified
+  [PASS] 13_notes_disclaim_cicflowmeter_validation
+  [PASS] 13_result_carries_same_compatibility_object
+  [PASS] protected_files_unchanged
+
+Total frames in capture: 37
+Packets parsed: 36, malformed: 1
+Flows reconstructed: 11
+Windows: 11, Sequences: 1
+Compatibility status: PCAP_FEATURES_COMPLETE (65/65 features computed)
+
+ALL FEATURE L2 PCAP PIPELINE CHECKS PASSED.
+
+===== tests/test_formula_corrections.py (new Feature L2.6 focused tests) =====
+
+======================================================================
+FEATURE L2.6 - FORMULA CORRECTION TEST RESULTS
+======================================================================
+  [PASS] zero_duration_zero_bytes__flow_byts_per_s_is_nan
+  [PASS] zero_duration_zero_bytes__flow_duration_is_zero
+  [PASS] zero_duration_zero_bytes__fwd_pkts_per_s_is_zero
+  [PASS] zero_duration_zero_bytes__bwd_pkts_per_s_is_zero
+  [PASS] zero_duration_zero_bytes__flow_pkts_per_s_is_inf
+  [PASS] zero_duration_nonzero_bytes__flow_byts_per_s_is_inf
+  [PASS] zero_duration_nonzero_bytes__fwd_pkts_per_s_is_zero_not_inf
+  [PASS] zero_duration_nonzero_bytes__bwd_pkts_per_s_is_zero_not_inf
+  [PASS] zero_duration_fwd_only__tot_bwd_pkts_is_zero
+  [PASS] zero_duration_fwd_only__bwd_pkts_per_s_is_zero_not_inf_not_nan
+  [PASS] zero_duration_fwd_only__fwd_pkts_per_s_is_zero
+  [PASS] normal_duration__flow_duration_is_2_million_us
+  [PASS] normal_duration__flow_byts_per_s_correct
+  [PASS] normal_duration__flow_pkts_per_s_correct
+  [PASS] normal_duration__fwd_pkts_per_s_correct
+  [PASS] normal_duration__bwd_pkts_per_s_correct
+  [PASS] normal_duration__no_infinities_or_nans
+  [PASS] seg_size_min__tcp_no_options_min_is_20
+  [PASS] seg_size_min__mixed_tcp_options_min_is_20_not_32
+  [PASS] seg_size_min__all_options_tcp_min_is_40
+  [PASS] seg_size_min__udp_is_8
+  [PASS] empty_fwd_direction__fwd_seg_size_min_defaults_to_zero
+  [PASS] empty_fwd_direction__tot_fwd_pkts_is_zero
+  [PASS] empty_fwd_direction__fwd_pkts_per_s_is_zero
+  [PASS] empty_fwd_direction__no_exception_raised
+  [PASS] determinism_repeated_call_identical
+  [PASS] determinism_full_pipeline_flow_table_identical
+  [PASS] determinism_full_pipeline_no_nan_where_unexpected
+  [PASS] no_unrelated_feature_outputs_changed
+  [PASS] before_after_snapshot_found_and_compared
+
+ALL FEATURE L2.6 FORMULA CORRECTION CHECKS PASSED.

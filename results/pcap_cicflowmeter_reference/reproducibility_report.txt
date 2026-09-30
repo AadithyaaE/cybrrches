@@ -1,0 +1,26 @@
+======================================================================
+FEATURE L2.7 - REPRODUCIBILITY REPORT
+======================================================================
+
+The comparison was run TWICE end-to-end (both the CICFlowMeter reference and the CyberChess
+extractor), on the identical PCAP file, in separate process invocations.
+
+SHA-256 hashes:
+  comparison_capture.pcap: 464feba27b2841e0d6112a5ede3a49fdcf92a2c8c4ffa77a70c8438ffd5ee6bb
+  cicflowmeter_reference_output_run1.csv: 3f341b0769ab729a209816d576c843245db08c8afcafaa825b1f0f0c9072b591
+  cicflowmeter_reference_output_run2.csv: 3f341b0769ab729a209816d576c843245db08c8afcafaa825b1f0f0c9072b591
+  cyberchess_output_run1.csv: 4fc90440032ff9ea0979d315ec18200179049bb051c38954984029d1b0e1e62c
+  cyberchess_output_run2.csv: 4fc90440032ff9ea0979d315ec18200179049bb051c38954984029d1b0e1e62c
+
+CICFlowMeter reference output identical across both runs (byte-for-byte): True
+CyberChess output identical across both runs (byte-for-byte): True
+
+Configuration used for both runs (recorded for reproducibility):
+  Reference tool: cicflowmeter==0.5.0 (isolated venv)
+  Reference tool invocation: FlowSession.process() called per packet via rdpcap() (see
+    run_cicflowmeter_reference.py and its docstring for why, not the broken CLI entry point)
+  CyberChess: src/data/pcap/{pcap_reader,flow_reconstruction,flow_features}.py (Feature L2/L2.6,
+    unmodified by this task) with default flow_timeout_us and active_idle_threshold_us
+  PCAP: results/pcap_cicflowmeter_reference/comparison_capture.pcap (SHA-256 464feba27b2841e0d6112a5ede3a49fdcf92a2c8c4ffa77a70c8438ffd5ee6bb)
+
+CONCLUSION: Both tools are deterministic on this capture.

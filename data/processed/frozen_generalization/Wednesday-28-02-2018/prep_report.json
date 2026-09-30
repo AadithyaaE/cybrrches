@@ -1,0 +1,44 @@
+{
+  "day_label": "Wednesday-28-02-2018",
+  "input_file": "data\\raw\\external_evaluation\\Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv",
+  "cleaning_report_summary": {
+    "raw_row_count": 613104,
+    "embedded_header_rows_removed": 33,
+    "exact_duplicate_rows_removed": 6089,
+    "final_row_count": 606982,
+    "label_distribution_raw_rows": {
+      "Benign": 538125,
+      "Infilteration": 68857
+    },
+    "timestamp_min": "2018-02-28 01:00:00",
+    "timestamp_max": "2018-02-28 12:59:59"
+  },
+  "unexpected_protocol_values": [],
+  "infinity_counts_pre_conversion": {
+    "Flow Byts/s": 2117,
+    "Flow Pkts/s": 4786
+  },
+  "window_summary": {
+    "num_windows": 31854,
+    "num_continuous_segments": 1504,
+    "num_gaps": 1503,
+    "label_distribution_windows": {
+      "Benign": 24692,
+      "Infilteration": 7162
+    },
+    "observation_count_stats": {
+      "min": 1,
+      "max": 3055,
+      "mean": 19.055
+    }
+  },
+  "sequence_summary": {
+    "num_valid_sequences": 22006,
+    "sequence_length": 10,
+    "feature_count": 68
+  },
+  "preprocessing": {
+    "pipeline_path": "data\\processed\\splits\\preprocessing_pipeline_train_fitted.joblib",
+    "fit_source": "Feature 7 TRAIN partition of the ORIGINAL Thursday-01-03-2018 dataset - NOT refit on this external data."
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "total_features": 65,
+  "status_counts": {
+    "PARTIALLY_VALIDATED": 21,
+    "UNVALIDATED": 37,
+    "VALIDATED": 6,
+    "NOT_REPRODUCIBLE": 1
+  },
+  "classification_counts": {
+    "B": 47,
+    "D": 3,
+    "A": 8,
+    "C": 7
+  },
+  "features_by_status": {
+    "VALIDATED": [
+      "Down/Up Ratio",
+      "Flow Pkts/s",
+      "Fwd Pkt Len Mean",
+      "Fwd Seg Size Avg",
+      "Pkt Len Max",
+      "Pkt Len Min"
+    ],
+    "PARTIALLY_VALIDATED": [
+      "ACK Flag Cnt",
+      "ECE Flag Cnt",
+      "Flow Duration",
+      "Fwd PSH Flags",
+      "Fwd Pkt Len Max",
+      "Fwd Pkt Len Min",
+      "Fwd Pkt Len Std",
+      "Init Bwd Win Byts",
+      "Init Fwd Win Byts",
+      "PSH Flag Cnt",
+      "RST Flag Cnt",
+      "SYN Flag Cnt",
+      "Subflow Bwd Byts",
+      "Subflow Bwd Pkts",
+      "Subflow Fwd Byts",
+      "Subflow Fwd Pkts",
+      "Tot Bwd Pkts",
+      "Tot Fwd Pkts",
+      "TotLen Bwd Pkts",
+      "TotLen Fwd Pkts",
+      "URG Flag Cnt"
+    ],
+    "UNVALIDATED": [
+      "Active Max",
+      "Active Mean",
+      "Active Min",
+      "Active Std",
+      "Bwd Header Len",
+      "Bwd IAT Max",
+      "Bwd IAT Mean",
+      "Bwd IAT Min",
+      "Bwd IAT Std",
+      "Bwd IAT Tot",
+      "Bwd Pkt Len Max",
+      "Bwd Pkt Len Mean",
+      "Bwd Pkt Len Min",
+      "Bwd Pkt Len Std",
+      "Bwd Pkts/s",
+      "Bwd Seg Size Avg",
+      "Flow Byts/s",
+      "Flow IAT Max",
+      "Flow IAT Mean",
+      "Flow IAT Min",
+      "Flow IAT Std",
+      "Fwd Act Data Pkts",
+      "Fwd Header Len",
+      "Fwd IAT Max",
+      "Fwd IAT Mean",
+      "Fwd IAT Min",
+      "Fwd IAT Std",
+      "Fwd IAT Tot",
+      "Fwd Pkts/s",
+      "Idle Max",
+      "Idle Mean",
+      "Idle Min",
+      "Idle Std",
+      "Pkt Len Mean",
+      "Pkt Len Std",
+      "Pkt Len Var",
+      "Pkt Size Avg"
+    ],
+    "NOT_REPRODUCIBLE": [
+      "Fwd Seg Size Min"
+    ]
+  },
+  "cross_feature_check_results": {
+    "subflow_fwd_pkts_eq_tot_fwd_pkts": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0
+    },
+    "subflow_fwd_byts_eq_totlen_fwd_pkts": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0
+    },
+    "subflow_bwd_pkts_eq_tot_bwd_pkts": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0
+    },
+    "subflow_bwd_byts_eq_totlen_bwd_pkts": {
+      "matches": 331009,
+      "total": 331027,
+      "match_rate": 0.9999456237708707
+    },
+    "fwd_seg_size_avg_eq_fwd_pkt_len_mean": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0,
+      "max_abs_diff": 0.0
+    },
+    "bwd_seg_size_avg_eq_bwd_pkt_len_mean": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0,
+      "max_abs_diff": 0.0
+    },
+    "fwd_seg_size_min_eq_fwd_pkt_len_min": {
+      "matches": 7149,
+      "total": 331027,
+      "match_rate": 0.021596425669205232,
+      "max_abs_diff": 1440.0
+    },
+    "pkt_size_avg_eq_pkt_len_mean": {
+      "matches": 101268,
+      "total": 331027,
+      "match_rate": 0.3059206650817003,
+      "max_abs_diff": 394.0
+    },
+    "down_up_ratio_eq_int_bwd_over_fwd": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0
+    },
+    "pkt_len_max_eq_max_fwd_bwd": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0
+    },
+    "pkt_len_min_eq_min_fwd_bwd_naive": {
+      "matches": 328653,
+      "total": 331027,
+      "match_rate": 0.9928283795581629,
+      "all_mismatches_explained_by_zero_bwd_packets": true
+    },
+    "fwd_pkt_len_mean_eq_totlen_over_count": {
+      "matches": 331027,
+      "total": 331027,
+      "match_rate": 1.0,
+      "max_abs_diff": 4.4444436753110494e-07
+    },
+    "bwd_pkt_len_mean_eq_totlen_over_count": {
+      "matches": 281091,
+      "total": 331027,
+      "match_rate": 0.8491482567887212,
+      "max_abs_diff": 4.074597779682563
+    },
+    "init_fwd_win_byts_minus1_present": {
+      "count": 118165,
+      "min_observed": -1.0
+    },
+    "init_bwd_win_byts_minus1_present": {
+      "count": 159413,
+      "min_observed": -1.0
+    },
+    "flow_duration_max": 119999992.0,
+    "active_max_max": 114000000.0,
+    "idle_max_max": 120000000.0,
+    "rate_convention__Flow Byts/s": {
+      "inf_count_total": 1083,
+      "inf_and_zero_duration": 1083,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 1834,
+      "of_those_inf": 0
+    },
+    "rate_convention__Flow Pkts/s": {
+      "inf_count_total": 2917,
+      "inf_and_zero_duration": 2917,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 0,
+      "of_those_inf": 0
+    },
+    "rate_convention__Fwd Pkts/s": {
+      "inf_count_total": 0,
+      "inf_and_zero_duration": 0,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 0,
+      "of_those_inf": 0
+    },
+    "rate_convention__Bwd Pkts/s": {
+      "inf_count_total": 0,
+      "inf_and_zero_duration": 0,
+      "inf_but_nonzero_duration": 0,
+      "zero_duration_rows": 2917,
+      "zero_numerator_and_duration_rows": 2875,
+      "of_those_inf": 0
+    }
+  },
+  "semantic_compatibility_verdict": "NOT ESTABLISHED - see feature_validation_report.txt section 13"
+}

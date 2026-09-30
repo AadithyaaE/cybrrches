@@ -1,0 +1,89 @@
+{
+  "training_csv": {
+    "filename": "Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv",
+    "local_path": "data/raw/Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv",
+    "file_size_bytes": 107842858,
+    "sha256": "b0534c5d7d8b41e03df71c6966c995d116a8ed28e61f377c8b14cdf5d28f4edf",
+    "raw_row_count_excl_header": 331125,
+    "column_count": 80,
+    "timestamp_column_raw_format_example": "01/03/2018 08:17:11",
+    "timestamp_parse_note": "Ambiguous DD/MM vs MM/DD without context. Resolved by day-of-week cross-check: 2018-03-01 is a Thursday (matches filename 'Thursday-01-03-2018'); 2018-01-03 is a Wednesday (does not match). Confirmed format is DD/MM/YYYY.",
+    "timestamp_range_utc_naive": {"min": "2018-03-01 01:00:00", "max": "2018-03-01 12:59:59"},
+    "label_distribution": {"Benign": 238037, "Infilteration": 93063, "embedded_header_artifact_rows_(value_literally_'Label')": 25},
+    "note": "This is the RAW downloaded file (331,125 rows). Feature 2's cleaning step (src/data/clean_dataset.py) removes the 25 embedded-header rows plus exact duplicates, producing the 331,027-row clean CSV used throughout Features 1-16 - not re-derived here, this task is read-only."
+  },
+  "official_source": {
+    "bucket": "s3://cse-cic-ids2018/",
+    "access_method": "aws s3 --no-sign-request (public, anonymous read) and plain HTTPS (https://cse-cic-ids2018.s3.amazonaws.com/...) - both independently verified working in this session",
+    "prior_session_evidence": "results/external_dataset_preparation/download_manifest.json (this project's own prior download of 3 other days from this exact bucket) and results/dataset_generalization_inspection/inspection_report.txt (prior bucket-listing inspection) - both pre-existing, read only, not modified by this task",
+    "top_level_prefixes": [
+      "Original Network Traffic and Log data/",
+      "Processed Traffic Data for ML Algorithms/"
+    ],
+    "official_dataset_page": "https://www.unb.ca/cic/datasets/ids-2018.html",
+    "official_page_confirms": {
+      "cicflowmeter_version_stated": "CICFlowMeter-V3",
+      "feature_count_stated": "80 features extracted from the captured traffic using CICFlowMeter-V3 (matches this project's raw CSV column count exactly: 80)",
+      "s3_sync_instruction_quoted": "aws s3 sync --no-sign-request --region <your-region> 's3://cse-cic-ids2018/' dest-dir",
+      "usage_paths_described": "download the generated CSV files, OR use the raw PCAP and Logs to extract your own features - both explicitly sanctioned by the dataset's own documentation",
+      "citation": "Sharafaldin, Lashkari, Ghorbani - 'Toward Generating a New Intrusion Detection Dataset and Intrusion Traffic Characterization' (ICISSP, January 2018)"
+    }
+  },
+  "candidate_pcap_thursday_01_03_2018": {
+    "s3_key": "Original Network Traffic and Log data/Thursday-01-03-2018/pcap.zip",
+    "https_url": "https://cse-cic-ids2018.s3.amazonaws.com/Original%20Network%20Traffic%20and%20Log%20data/Thursday-01-03-2018/pcap.zip",
+    "size_bytes": 52358069106,
+    "size_human": "~52.36 GB (~48.76 GiB)",
+    "s3_etag": "652d07144e22ca627d2362fa9e77c75e-3121",
+    "etag_note": "Suffix -3121 indicates a 3121-part S3 multipart upload, consistent with a legitimate ~52GB transfer, not directly comparable to a plain MD5",
+    "last_modified": "2018-10-10T13:41:45Z",
+    "accept_ranges_confirmed": true,
+    "verified_via": ["aws s3 ls --no-sign-request", "curl -I (plain HTTPS, public, no auth)"],
+    "internal_structure": {
+      "inspection_method": "ZIP central-directory read via targeted HTTP Range requests (urllib.request), ~56.5 KB transferred total - the 52GB payload itself was NEVER bulk-downloaded",
+      "entry_count": 444,
+      "total_uncompressed_bytes": 63280173042,
+      "naming_pattern": "pcap/cap<HOSTNAME>-<internal-IP> and pcap/UCAP<internal-IP>, one archive member per per-host capture",
+      "ip_range_observed": "172.31.0.0/16 (AWS VPC private range, consistent with CIC's documented AWS-hosted testbed)",
+      "internal_file_dates": "2018-03-16 (packaging date - ~2 weeks after the 2018-03-01 capture day, plausible for post-processing/upload lag)"
+    },
+    "sample_extraction": {
+      "method": "Single smallest archive member extracted via targeted HTTP Range requests against the live S3 object - no full-archive download",
+      "entry_extracted": "pcap/capEC2AMAZ-O4EL3NG-172.31.69.24",
+      "entry_uncompressed_bytes": 406269,
+      "total_network_bytes_transferred_for_extraction": 91731,
+      "local_path": "results/pcap_ground_truth_discovery/sample_capEC2AMAZ-O4EL3NG-172.31.69.24.pcap",
+      "sha256": "0f8b2dbef95408e6e1fb9628d2b5080f54956a1611713745895ccb6318d9f7f1",
+      "verification": {
+        "file_format": "genuine libpcap, magic d4c3b2a1, microsecond timestamps, version 2.4, Ethernet link type (confirmed via `file` command and scapy rdpcap())",
+        "packet_count": 1730,
+        "first_packet_time_utc": "2018-03-01T12:22:23.292589+00:00",
+        "last_packet_time_utc": "2018-03-01T21:29:50.603419+00:00",
+        "date_matches_training_csv": true,
+        "time_of_day_matches_training_csv_window": "PARTIAL/UNRESOLVED - raw sample spans 12:22-21:29 UTC; the processed CSV's stated window (01:00-12:59, timezone unspecified but presumed local Eastern time given CIC's UNB location) overlaps only partially with this UTC range after timezone conversion; not fully reconciled in this task",
+        "namesake_ip_172_31_69_24_present_in_own_capture": false,
+        "namesake_ip_note": "Only link-local (169.254.x.x), multicast, and broadcast addresses were observed in this specific (smallest, likely near-idle) host's capture - an honest, unresolved minor nuance, not treated as disqualifying given this was deliberately the smallest/lowest-traffic file in the 444-entry archive"
+      }
+    }
+  },
+  "candidate_logs_zip_thursday": {
+    "s3_key": "Original Network Traffic and Log data/Thursday-01-03-2018/logs.zip",
+    "size_bytes": 227624294,
+    "content_type_confirmed": "Windows Event Log files (.evtx), one per host - NOT packet capture data",
+    "relevance_to_pcap_discovery": "NOT_MATCHING (wrong content type) - listed for completeness/transparency only"
+  },
+  "other_days_checked_for_completeness": [
+    {"day": "Wednesday-28-02-2018", "pcap_zip_bytes": 53251694487, "logs_zip_bytes": 226631826, "sample_extracted": false},
+    {"day": "Wednesday-14-02-2018", "pcap_zip_bytes": 39913353098, "logs_zip_bytes": 140178796, "sample_extracted": false},
+    {"day": "Wednesday-21-02-2018", "pcap_zip_bytes": 53462820707, "logs_zip_bytes": 194615081, "sample_extracted": false}
+  ],
+  "original_cicflowmeter_investigation": {
+    "repository": "https://github.com/ahlashkari/CICFlowMeter",
+    "current_public_version": "V4.0 (per repo description: 'CICFlowmeter-V4.0 (formerly known as ISCXFlowMeter)')",
+    "version_stated_by_dataset_docs": "CICFlowMeter-V3",
+    "git_tags_found": 0,
+    "git_releases_found": 0,
+    "conclusion": "No V3 git tag/release/commit is identifiable in the CURRENT public repository - the exact source snapshot used to generate CSE-CIC-IDS2018 in 2018 is not cleanly pinned in currently available public evidence. NOT built, NOT cloned, NOT installed (Maven/Java untouched) per task instruction.",
+    "reproducibility_verdict": "NOT reproducible from currently available public evidence alone."
+  }
+}

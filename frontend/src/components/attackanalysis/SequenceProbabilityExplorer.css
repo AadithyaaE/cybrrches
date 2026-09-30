@@ -1,0 +1,195 @@
+.sequence-probability-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sequence-probability-explorer__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.sequence-probability-explorer__select-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.sequence-probability-explorer__select {
+  min-width: 300px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+}
+
+.sequence-probability-explorer__k-group {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.sequence-probability-explorer__k-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sequence-probability-explorer__k-btn--active {
+  background: var(--accent-violet-dim);
+  color: var(--accent-violet);
+}
+
+.sequence-probability-explorer__notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.sequence-probability-explorer__notice p {
+  margin: 0;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  max-width: 90ch;
+}
+
+.sequence-probability-explorer__result {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-5);
+  padding: var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.sequence-probability-explorer__prob-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sequence-probability-explorer__prob-label {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.sequence-probability-explorer__prob-value {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--accent-violet);
+  font-family: var(--font-mono);
+}
+
+.sequence-probability-explorer__prob-track {
+  position: relative;
+  height: 12px;
+  background: var(--bg-input);
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.sequence-probability-explorer__prob-fill {
+  height: 100%;
+  background: var(--accent-violet);
+  border-radius: 6px;
+}
+
+.sequence-probability-explorer__prob-threshold {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 18px;
+  background: var(--text-primary);
+}
+
+.sequence-probability-explorer__prob-caption {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.sequence-probability-explorer__badges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+.sequence-probability-explorer__badge-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sequence-probability-explorer__badge-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.sequence-probability-explorer__trace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sequence-probability-explorer__trace-title {
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.sequence-probability-explorer__trace-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.sequence-probability-explorer__trace-point {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  min-width: 80px;
+}
+
+.sequence-probability-explorer__trace-k {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.sequence-probability-explorer__trace-value {
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent-violet);
+}
+
+@media (max-width: 720px) {
+  .sequence-probability-explorer__result {
+    grid-template-columns: 1fr;
+  }
+}

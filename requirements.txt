@@ -1,0 +1,42 @@
+# CyberChess - Python dependencies
+#
+# Derived by inspecting actual `import` statements across src/ and tests/
+# (never blindly copied from a template) and pinned to the versions
+# verified as currently installed and working in this project's own
+# development environment (queried directly via each package's own
+# __version__ attribute - not invented, not assumed).
+#
+# TWO Python interpreters were used across this project's development:
+#   - python3 (3.14.3): used for the majority of the pipeline (Features
+#     L1, L2.x data-preparation logic, Feature 17, Feature 18). Versions
+#     below are pinned to THIS interpreter's installed packages.
+#   - python (3.12.10): a SEPARATE interpreter that additionally has
+#     `scapy` installed, used specifically for PCAP-parsing features
+#     (Feature L2's pcap_reader.py and everything built on it) and for
+#     Feature L2.7's isolated CICFlowMeter-reference comparison. Its
+#     package versions differ very slightly (numpy 2.5.2, pandas 3.0.5,
+#     torch 2.14.0, joblib 1.6.0 vs. the pins below) - both sets are
+#     believed compatible with this codebase, but only ONE has actually
+#     been exercised end-to-end per feature area. This is documented
+#     honestly rather than silently picking one and hiding the
+#     discrepancy - see docs/REPRODUCIBILITY.md.
+#
+# Which original Python/package versions were used for the very first
+# Features 1-16 (predating the earliest visible session history) could
+# NOT be established with certainty - no requirements.txt or environment
+# snapshot from that period exists anywhere in the repository. The
+# pins below reflect the CURRENT, working, verified environment, not a
+# historical record.
+
+numpy==2.4.3
+pandas==3.0.1
+scikit-learn==1.9.0
+torch==2.12.0
+joblib==1.5.3
+
+# ---- Optional: only required for PCAP-related features (src/data/pcap/,
+# src/data/sandbox_capture/, and anything importing pcap_reader.py) - the
+# core ML research pipeline (Features 1-16, L1, Feature 17, Feature 18)
+# does not require this package. Verified installed at 2.7.0 in the
+# python 3.12.10 interpreter described above. ----
+scapy==2.7.0

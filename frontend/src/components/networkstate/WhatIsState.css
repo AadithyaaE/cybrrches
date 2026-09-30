@@ -1,0 +1,28 @@
+.what-is-state__text {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-4) 0;
+  max-width: 80ch;
+  line-height: 1.6;
+}
+
+.what-is-state__meta {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.what-is-state__meta-label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.what-is-state__meta-value {
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}

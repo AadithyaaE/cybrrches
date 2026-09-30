@@ -1,0 +1,20 @@
+.generalization-summary__recall--failure {
+  color: var(--status-danger);
+  font-weight: 700;
+}
+
+.generalization-summary__callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--status-danger-dim);
+  border: 1px solid var(--status-danger-border);
+  border-radius: var(--radius-md);
+}
+
+.generalization-summary__callout p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}

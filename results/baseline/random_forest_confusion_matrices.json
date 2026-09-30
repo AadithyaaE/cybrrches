@@ -1,0 +1,25 @@
+{
+  "train": {
+    "tn": 10760,
+    "fp": 0,
+    "fn": 0,
+    "tp": 4900
+  },
+  "validation": {
+    "tn": 1475,
+    "fp": 340,
+    "fn": 623,
+    "tp": 1054
+  },
+  "test": {
+    "tn": 2852,
+    "fp": 19,
+    "fn": 0,
+    "tp": 0
+  },
+  "labels_order": [
+    "Benign(0)",
+    "Infilteration(1)"
+  ],
+  "convention": "tn=actual Benign predicted Benign, fp=actual Benign predicted Infilteration, fn=actual Infilteration predicted Benign, tp=actual Infilteration predicted Infilteration."
+}

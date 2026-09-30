@@ -1,0 +1,92 @@
+======================================================================
+ATTACK-DIVERSE FROZEN GENERALIZATION EVALUATION (FEATURE 16)
+======================================================================
+
+No model was trained, retrained, or fit. All external labels were used ONLY for metrics.
+
+Feature 1-15 artifact integrity: PASS - unchanged
+
+----------------------------------------------------------------------
+Wednesday-28-02-2018
+----------------------------------------------------------------------
+  Sequences: 22006  Windows: 31854  Attack prevalence (windows): 22.4838%
+  Training-label-compatible view applicable: True
+  Logistic Regression (binary anomaly view): acc=0.43197309824593294 prec=0.29026814175885995 rec=0.8022110899982726 f1=0.4262897007527079 roc_auc=0.6220211760704036 pr_auc=0.39603849052243123 fpr=0.700191157427391 (n=22006, pos=5789)
+  Random Forest (binary anomaly view): acc=0.5746160138144143 prec=0.3402504472271914 rec=0.6571083088616342 f1=0.448346985679769 roc_auc=0.6490288054629787 pr_auc=0.45227742528607273 fpr=0.45483134981809215 (n=22006, pos=5789)
+  Feature 11 classifier - ORACLE (ground-truth state): acc=0.4605562119421976 prec=0.29444369338921184 rec=0.7524615650371395 f1=0.42326191517271533 roc_auc=0.5973267977140188 pr_auc=0.35974328760703034 fpr=0.6436455571314054 (n=22006, pos=5789)
+  Feature 11 classifier - FULL PIPELINE (LSTM-predicted state): acc=0.38830319003908026 prec=0.27695080823351553 rec=0.8227673173259631 f1=0.41440814373341456 roc_auc=0.5648882741669963 pr_auc=0.32428614765569064 fpr=0.7667879385829685 (n=22006, pos=5789)
+  LSTM one-step regression: MSE=4.7811 RMSE=2.1866 MAE=0.4995
+    Hardest features (top 10 by MSE): [('TotLen Fwd Pkts', 106.728515625), ('Subflow Fwd Byts', 106.72726440429688), ('Fwd Act Data Pkts', 25.656753540039062), ('Subflow Fwd Pkts', 7.462688446044922), ('Tot Fwd Pkts', 7.461686611175537), ('PSH Flag Cnt', 3.405158758163452), ('ECE Flag Cnt', 2.7808258533477783), ('RST Flag Cnt', 2.777251720428467), ('ACK Flag Cnt', 2.7580020427703857), ('Fwd PSH Flags', 2.665224552154541)]
+  K-step forecasting (regression MSE/RMSE/MAE, and attack-progression binary metrics per horizon):
+    K=1: n=22006 mse=4.781149387359619 rmse=2.186583995819092 mae=0.4994911253452301
+      attack-progression (transfer diagnostic): prec=0.27695080823351553 rec=0.8227673173259631 f1=0.41440814373341456 roc_auc=0.5648882741669963 fpr=0.7667879385829685
+    K=2: n=21314 mse=4.950197219848633 rmse=2.2249038219451904 mae=0.5086086988449097
+      attack-progression (transfer diagnostic): prec=0.2784543844109832 rec=0.8869687885734439 f1=0.42384663998314726 roc_auc=0.5653242654023489 fpr=0.8332161350124656
+    K=3: n=20647 mse=5.110660076141357 rmse=2.260676860809326 mae=0.5142382979393005
+      attack-progression (transfer diagnostic): prec=0.2794462431617729 rec=0.9011701170117011 f1=0.4266053091311943 roc_auc=0.5605298543371432 fpr=0.8552875695732839
+    K=5: n=19400 mse=5.411930084228516 rmse=2.326355457305908 mae=0.5207371711730957
+      attack-progression (transfer diagnostic): prec=0.28425406203840475 rec=0.9007676465081446 f1=0.43213868678702955 roc_auc=0.5725410694990309 fpr=0.8616544562202149
+  Per-attack-family detection (binary anomaly recall):
+    Infilteration: n=5789 detected=4763 recall=0.8228 - Direct, training-label-compatible detection recall.
+
+----------------------------------------------------------------------
+Wednesday-14-02-2018
+----------------------------------------------------------------------
+  Sequences: 29091  Windows: 32043  Attack prevalence (windows): 35.1652%
+  Training-label-compatible view applicable: False
+  Logistic Regression (binary anomaly view): acc=0.9102127805850607 prec=0.9180834621329211 rec=0.8434504792332268 f1=0.8791859389454209 roc_auc=0.9709985079686773 pr_auc=0.9250951018959238 fpr=0.04757897099253773 (n=29091, pos=11268)
+  Random Forest (binary anomaly view): acc=0.6722697741569558 prec=0.5892342527789214 rec=0.508075967341143 f1=0.5456538314906596 roc_auc=0.7895244397383644 pr_auc=0.6450739123191249 fpr=0.22392414296134208 (n=29091, pos=11268)
+  Feature 11 classifier - ORACLE (ground-truth state): acc=0.6655666701041559 prec=0.5489348171701113 rec=0.7660631877884274 f1=0.6395732226873634 roc_auc=0.7653683149956946 pr_auc=0.6329881110569835 fpr=0.39796891656847894 (n=29091, pos=11268)
+  Feature 11 classifier - FULL PIPELINE (LSTM-predicted state): acc=0.4902203430614279 prec=0.4035524748185855 rec=0.6613418530351438 f1=0.501244366718235 roc_auc=0.5825045335456686 pr_auc=0.5305525194943437 fpr=0.6179655501318521 (n=29091, pos=11268)
+  LSTM one-step regression: MSE=0.6163 RMSE=0.7851 MAE=0.4082
+    Hardest features (top 10 by MSE): [('URG Flag Cnt', 3.0444681644439697), ('TotLen Fwd Pkts', 2.69262957572937), ('Subflow Fwd Byts', 2.686797618865967), ('ACK Flag Cnt', 2.5188374519348145), ('Bwd Pkts/s', 2.431818962097168), ('Fwd Header Len', 1.5550601482391357), ('Pkt Len Var', 1.2135692834854126), ('Fwd PSH Flags', 1.1927214860916138), ('SYN Flag Cnt', 1.1632148027420044), ('Fwd Seg Size Min', 1.1358556747436523)]
+  K-step forecasting (regression MSE/RMSE/MAE, and attack-progression binary metrics per horizon):
+    K=1: n=29091 mse=0.6163159012794495 rmse=0.7850579023361206 mae=0.4081503748893738
+      attack-progression (transfer diagnostic): prec=0.4035524748185855 rec=0.6613418530351438 f1=0.501244366718235 roc_auc=0.5825045335456686 fpr=0.6179655501318521
+    K=2: n=28906 mse=0.6557824611663818 rmse=0.8098039627075195 mae=0.4236105978488922
+      attack-progression (transfer diagnostic): prec=0.43668705979127037 rec=0.7538161164359247 f1=0.5530127933852014 roc_auc=0.691437930830999 fpr=0.621215557319424
+    K=3: n=28730 mse=0.6976186037063599 rmse=0.8352356553077698 mae=0.44010645151138306
+      attack-progression (transfer diagnostic): prec=0.4628846357195728 rec=0.7769790557330494 f1=0.580147107547545 roc_auc=0.7421858390451123 fpr=0.5817775741610354
+    K=5: n=28408 mse=0.7534070611000061 rmse=0.867990255355835 mae=0.45811763405799866
+      attack-progression (transfer diagnostic): prec=0.4496059726254666 rec=0.769613063542776 f1=0.5676135619845529 roc_auc=0.7267791888223235 fpr=0.6193698949824971
+  Per-attack-family detection (binary anomaly recall):
+    FTP-BruteForce: n=5826 detected=3686 recall=0.6327 - Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family.
+    SSH-Bruteforce: n=5442 detected=3766 recall=0.692 - Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family.
+
+----------------------------------------------------------------------
+Wednesday-21-02-2018
+----------------------------------------------------------------------
+  Sequences: 1870  Windows: 3256  Attack prevalence (windows): 71.4681%
+  Training-label-compatible view applicable: False
+  Logistic Regression (binary anomaly view): acc=0.24545454545454545 prec=0.8528864059590316 rec=0.2558659217877095 f1=0.39363987967339925 roc_auc=0.16089734636871503 pr_auc=0.9131136655702083 fpr=0.9875 (n=1870, pos=1790)
+  Random Forest (binary anomaly view): acc=0.044919786096256686 prec=1.0 rec=0.0022346368715083797 f1=0.004459308807134894 roc_auc=0.1943959497206704 pr_auc=0.9261289800607946 fpr=0.0 (n=1870, pos=1790)
+  Feature 11 classifier - ORACLE (ground-truth state): acc=0.9588235294117647 prec=0.9587573647562935 rec=1.0 f1=0.9789444900191414 roc_auc=1.0 pr_auc=1.0 fpr=0.9625 (n=1870, pos=1790)
+  Feature 11 classifier - FULL PIPELINE (LSTM-predicted state): acc=0.7454545454545455 prec=0.9859467455621301 rec=0.7446927374301676 f1=0.8485041374920432 roc_auc=0.7994902234636873 pr_auc=0.9901975294615077 fpr=0.2375 (n=1870, pos=1790)
+  LSTM one-step regression: MSE=10647.7783 RMSE=103.1881 MAE=14.5858
+    Hardest features (top 10 by MSE): [('Fwd Act Data Pkts', 452662.375), ('Tot Fwd Pkts', 113566.3515625), ('Subflow Fwd Pkts', 113525.234375), ('Fwd Header Len', 19155.310546875), ('ACK Flag Cnt', 9801.6328125), ('RST Flag Cnt', 6222.0849609375), ('ECE Flag Cnt', 6174.57421875), ('Subflow Fwd Byts', 1375.7147216796875), ('TotLen Fwd Pkts', 1373.6990966796875), ('PSH Flag Cnt', 96.02238464355469)]
+  K-step forecasting (regression MSE/RMSE/MAE, and attack-progression binary metrics per horizon):
+    K=1: n=1870 mse=10647.77734375 rmse=103.18806457519531 mae=14.585763931274414
+      attack-progression (transfer diagnostic): prec=0.9859467455621301 rec=0.7446927374301676 f1=0.8485041374920432 roc_auc=0.7994902234636873 fpr=0.2375
+    K=2: n=1830 mse=9852.150390625 rmse=99.25799560546875 mae=14.030537605285645
+      attack-progression (transfer diagnostic): prec=0.9773722627737226 rec=0.7612279704377487 f1=0.8558644934483861 roc_auc=0.8082056866497449 fpr=0.43661971830985913
+    K=3: n=1793 mse=9259.2685546875 rmse=96.22509002685547 mae=13.526582717895508
+      attack-progression (transfer diagnostic): prec=0.9636871508379888 rec=0.9982638888888888 f1=0.9806708357021034 roc_auc=0.836008725071225 fpr=1.0
+    K=5: n=1728 mse=8292.447265625 rmse=91.06287384033203 mae=12.732155799865723
+      attack-progression (transfer diagnostic): prec=0.9855386840202458 rec=0.8137313432835821 f1=0.8914323086984958 roc_auc=0.874694452266967 fpr=0.37735849056603776
+  Per-attack-family detection (binary anomaly recall):
+    DDOS attack-HOIC: n=1332 detected=1332 recall=1.0 - Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family.
+    DDOS attack-LOIC-UDP: n=458 detected=1 recall=0.0022 - Binary anomaly detection recall (predicted non-Benign), NOT attack-family classification - the classifier was never trained to distinguish this family.
+
+======================================================================
+SCOPE / HONESTY NOTES
+======================================================================
+- MITRE evidence for external data was generated WITHOUT destination-port diversity or
+  traffic-growth baseline (not computed for this lightweight external pass) - Discovery/
+  Reconnaissance/Impact-growth rules will therefore show reduced or no evidence for this
+  reason alone, not necessarily because the underlying behaviour is absent.
+- No ATT&CK ground truth exists for any external day; no stage accuracy is reported.
+- Explainability and MITRE evidence were computed for a small deterministic sample
+  (10 sequences per day, evenly spaced) for computational cost reasons.
+- Attack-progression-probability results for Wednesday-14/21 are TRANSFER/GENERALIZATION
+  diagnostics of an Infiltration-trained model on unseen attack families, NOT validated
+  probabilities of FTP brute force or DDoS.

@@ -1,0 +1,70 @@
+.pcap-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pcap-panel__banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--status-warning-dim);
+  border: 1px solid var(--status-warning-border);
+  border-radius: var(--radius-md);
+}
+
+.pcap-panel__banner p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.pcap-panel__flow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.pcap-panel__step-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pcap-panel__step {
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 160px;
+}
+
+.pcap-panel__step--current {
+  border-color: var(--accent-cyan-border);
+  background: var(--accent-cyan-dim);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.pcap-panel__arrow {
+  color: var(--text-disabled);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .pcap-panel__flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pcap-panel__arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+}

@@ -1,0 +1,100 @@
+======================================================================
+MODEL EXPLAINABILITY REPORT (FEATURE 15)
+======================================================================
+
+1. OBJECTIVE
+   Model-grounded, per-prediction explanation of the Feature 10 LSTM -> Feature 11 classifier forecasting path, with optional LLM natural-language rendering.
+
+2. MODEL BEING EXPLAINED
+   Feature 10 LSTM World Model (frozen) -> Feature 11 next-state attack classifier (frozen),
+   the actual deployed/research forecasting path (full recursive pipeline).
+
+3. ATTRIBUTION METHOD AND RATIONALE
+   LAYER C: exact linear-model logit decomposition of the classifier (LogisticRegression is
+   linear, so coef*value is an EXACT per-dimension contribution - no approximation needed).
+   LAYER D: perturbation/occlusion diagnostics for the LSTM itself, since an RNN has no exact
+   closed-form input attribution; occlusion was chosen over SHAP/gradients for its simplicity
+   and lack of baseline-choice ambiguity beyond the (documented) TRAIN-mean reference vector.
+   These are two DIFFERENT quantities and are never conflated or added together.
+
+4. TEMPORAL EXPLANATION APPROACH
+   Preserves t-9..t structure via per-timestep and per-(timestep,feature) occlusion (Layer D).
+
+5. FEATURE 13 INTEGRATION
+   Feature 13's saved predicted_infiltration_probability values are attached VERBATIM per
+   horizon (K=1,2,3,5); never recomputed or altered here. Grounding-verified exactly.
+
+6. FEATURE 14 INTEGRATION
+   Feature 14's saved primary_stage/evidence scores are attached VERBATIM for the observed_t
+   evidence point; never recomputed or altered here. Grounding-verified exactly.
+
+7. LLM ROLE AND LIMITATIONS
+   The LLM is an explanation-generation layer only. It does not determine the attack prediction, attack probability, MITRE stage, evidence score, risk score, or mitigation decision.
+   {'provider': 'disabled', 'any_live_text_generated': False, 'status_note': 'DisabledLLMExplainer active (no LLM_API_KEY configured); prompts were built and grounding-validated, but no network call was made.'}
+
+8. REPRODUCIBILITY
+   {'pass1_equals_pass2': True, 'tolerance': 'exact equality (deterministic occlusion/linear-model computation)'}
+
+9. LEAKAGE CHECKS
+   no_model_trained: PASS
+   no_scaler_fitted: PASS
+   no_classifier_fitted: PASS
+   lstm_not_retrained: PASS
+   llm_did_not_alter_prediction: PASS
+   llm_did_not_alter_probability: PASS
+   llm_did_not_alter_mitre_score: PASS
+   llm_did_not_alter_mitre_stage: PASS
+   no_future_ground_truth_used_as_input: PASS
+   feature7_14_artifacts_unchanged: PASS
+
+10. ATTRIBUTION STABILITY / NUMERICAL INTEGRITY (evaluation checks)
+   feature_name_integrity: PASS
+   temporal_position_integrity: PASS
+   contributions_finite: PASS
+   direction_matches_sign: PASS
+   topk_integrity: PASS
+   prediction_consistency: PASS
+   feature13_integration_integrity: PASS
+   feature14_integration_integrity: PASS
+   no_future_ground_truth_used_as_input: PASS
+   llm_prompt_grounded_in_structured_evidence: PASS
+   feature7_14_artifacts_unchanged: PASS
+
+11. GLOBAL vs LOCAL EXPLANATION DISTINCTION
+   global_feature_importance below is a GLOBAL summary (mean/std of Layer-C contributions across all 3492 VALIDATION sequences); top_contributors inside each entry of explanation_examples.json is the LOCAL, per-prediction attribution for that one sequence. These are never conflated.
+   Top 15 GLOBAL feature importances (mean |Layer-C contribution| across all VALIDATION):
+     Protocol_6: mean_abs=1.0860
+     Pkt Len Std: mean_abs=0.3930
+     Fwd IAT Mean: mean_abs=0.3294
+     Flow IAT Mean: mean_abs=0.3246
+     Fwd IAT Max: mean_abs=0.3069
+     Fwd Pkt Len Std: mean_abs=0.2020
+     Flow Duration: mean_abs=0.1724
+     Fwd IAT Tot: mean_abs=0.1586
+     Idle Max: mean_abs=0.1567
+     Pkt Len Var: mean_abs=0.1354
+     Bwd Pkt Len Std: mean_abs=0.1292
+     Fwd IAT Min: mean_abs=0.1247
+     Fwd Pkt Len Max: mean_abs=0.1154
+     Bwd Pkt Len Max: mean_abs=0.0929
+     Pkt Len Max: mean_abs=0.0900
+
+12. LIMITATIONS
+   - Layer D occlusion is an approximation (perturbation-based), not an exact attribution,
+     and is distinct from SHAP.
+   - Per-cell occlusion (680 forward passes/sequence) was restricted to a deterministic
+     20-sequence sample for computational cost reasons
+     (sequence_ids: [15670, 15853, 16037, 16221, 16404, 16588, 16772, 16956, 17139, 17323, 17507, 17691, 17874, 18058, 18242, 18426, 18609, 18793, 18977, 19161]).
+   - Feature 13 probabilities beyond K=1 depend on the LSTM's free-running recursive rollout,
+     which compounds regression error at longer horizons (documented in Feature 12).
+   - MITRE evidence scores (Feature 14) are explicitly NOT probabilities.
+   - Evaluated on VALIDATION only (TEST has zero Infiltration samples, per Feature 7-9).
+   - No LLM provider was configured in this run; the LLM layer's grounding logic was
+     exercised on the prompt construction, but no live natural-language text was generated.
+
+OUTPUTS:
+   feature_attributions_csv: results\explainability\feature_attributions.csv
+   temporal_attributions_csv: results\explainability\temporal_attributions.csv
+   explanation_examples_json: results\explainability\explanation_examples.json
+   llm_explanation_examples_json: results\explainability\llm_explanation_examples.json
+   config_json: results\explainability\explainability_config.json

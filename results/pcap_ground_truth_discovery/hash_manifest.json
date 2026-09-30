@@ -1,0 +1,15 @@
+{
+  "data/raw/Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv": {
+    "sha256": "b0534c5d7d8b41e03df71c6966c995d116a8ed28e61f377c8b14cdf5d28f4edf",
+    "role": "training CSV currently used by CyberChess (Features 1-16)"
+  },
+  "results/pcap_ground_truth_discovery/sample_capEC2AMAZ-O4EL3NG-172.31.69.24.pcap": {
+    "sha256": "0f8b2dbef95408e6e1fb9628d2b5080f54956a1611713745895ccb6318d9f7f1",
+    "role": "single-host sample extracted from the official Thursday-01-03-2018 pcap.zip via targeted HTTP range requests (406,269 bytes uncompressed)"
+  },
+  "remote:Thursday-01-03-2018/pcap.zip (NOT downloaded, S3 ETag recorded instead)": {
+    "s3_etag": "652d07144e22ca627d2362fa9e77c75e-3121",
+    "content_length_bytes": 52358069106,
+    "role": "full raw-capture archive for the training day - too large to hash locally without downloading; S3 ETag + Content-Length recorded as the remote integrity reference instead"
+  }
+}

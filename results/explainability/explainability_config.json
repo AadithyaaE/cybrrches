@@ -1,0 +1,33 @@
+{
+  "seed": 42,
+  "sample_size": 20,
+  "sampling_method": "evenly-spaced indices across VALIDATION (np.linspace), deterministic",
+  "evaluation_split": "validation",
+  "why_not_test": "TEST partition contains zero Infiltration samples (Feature 7-9 finding); VALIDATION is the mixed-class development/evaluation partition used by Features 11/13.",
+  "attribution_methods": {
+    "layer_c": "Exact linear-model logit decomposition (LogisticRegression coef * value) for the classifier's prediction on the LSTM-predicted next state.",
+    "layer_d_per_timestep": "Whole-timestep occlusion (replace with TRAIN-mean baseline), measuring change in P(Infiltration).",
+    "layer_d_per_cell": "Per-(timestep,feature) occlusion, same baseline/measurement, computed only for the deterministic sample (expensive: 680 forward passes/sequence)."
+  },
+  "occlusion_baseline": "TRAIN-set mean state vector per feature dimension (computed once from data/processed/splits/train/X_sequences_scaled.npy).",
+  "lstm_checkpoint": "results\\lstm\\lstm_world_model.pt",
+  "lstm_architecture": {
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "max_epochs": 50,
+    "patience": 7,
+    "seed": 42,
+    "input_size": 68,
+    "sequence_length": 10
+  },
+  "classifier_path": "results\\next_state\\next_state_attack_classifier.joblib",
+  "environment": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch_version": "2.14.0+cpu",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "device": "cpu"
+  }
+}

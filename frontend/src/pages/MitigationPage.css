@@ -1,0 +1,15 @@
+.mitigation-page__sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.mitigation-page__loading {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.mitigation-page__error {
+  color: var(--status-danger);
+  font-size: var(--fs-sm);
+  margin: 0;
+}

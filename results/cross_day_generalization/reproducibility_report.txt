@@ -1,0 +1,81 @@
+======================================================================
+FEATURE 17 - REPRODUCIBILITY REPORT
+======================================================================
+
+EXPERIMENT A (frozen baseline, inference-only)
+-------------------------------------------------
+Run twice, independently, end to end (data loading, frozen-model inference,
+all metric computation). Compared via exact Python dict/JSON equality.
+
+RESULT: IDENTICAL. Every single field (accuracy, precision, recall, f1,
+roc_auc, pr_auc, fpr, confusion matrices, Brier scores, degenerate-
+prediction flags, per-horizon forecasting stats including all 68
+per-feature MAE/P95/max values, outlier-dominated-dimension lists) matched
+exactly between the two runs. This is expected and required: Experiment A
+performs no training, no random sampling, and no stochastic inference step
+- .transform()/.predict()/.predict_proba() on frozen, already-fitted
+artifacts are pure functions of their input.
+
+EXPERIMENT B (multi-day training)
+-------------------------------------
+Fold "fold_holdout_Wed21" (train=[Thursday-01-03-2018, Wednesday-28-02-2018],
+holdout=Wednesday-21-02-2018) was run TWICE, independently, as separate OS
+processes, with the same fixed random seed (42) applied to Python's
+`random`, NumPy, and PyTorch before any data shuffling or model
+initialization (see run_fold.py::set_seed()).
+
+RESULT: IDENTICAL for every genuinely comparable quantity:
+  - LSTM training: epochs_run=17, best_epoch=10, best_validation_loss=
+    0.9531209468841553 in BOTH runs (wall-clock training_seconds differed
+    trivially, 104.9s vs 102.0s - expected system-load variance, not a
+    correctness signal).
+  - LSTM one-step forecasting: mse, rmse, mae, median_abs_error,
+    p95_abs_error, and all 68 per-feature MAE values were bit-for-bit
+    identical between the two runs (0/68 features differed).
+  - Every classification metric (LogReg, RandomForest, next-state oracle,
+    next-state full-pipeline: accuracy/precision/recall/f1/fpr/roc_auc/
+    pr_auc/confusion matrix/Brier score/degenerate-prediction flag) was
+    identical between the two runs.
+
+ONE FIELD DIFFERED, AND WHY (transparently documented, not hidden):
+  The first run of this fold ("fold_holdout_Wed21_PRE_OUTLIER_FIX") was
+  executed BEFORE a mid-session correction to common.py's outlier-flagging
+  logic (the original definition compared each feature's 95th-percentile
+  absolute error to its mean absolute error, which - as this feature's own
+  test suite caught - fails to detect a SPARSE outlier affecting <5% of
+  rows, since the 95th percentile then still falls in the "normal" range;
+  the corrected definition compares the MAXIMUM absolute error to the mean
+  instead, which is sensitive to a sparse outlier at any rate). The second
+  run ("fold_holdout_Wed21", adopted as canonical) used the corrected code.
+  This is a CODE VERSION DIFFERENCE, not non-determinism: it changed only
+  the derived `outlier_dominated_dimensions` list and added the new
+  `per_feature_max_abs_error` field; it did not exist as a discrepancy
+  between two runs of the SAME code. Both raw result files are kept on
+  disk (results/cross_day_generalization/fold_holdout_Wed21_PRE_OUTLIER_FIX_results.json
+  and fold_holdout_Wed21_results.json) for independent verification of this
+  exact claim.
+
+CONCLUSION: Given a fixed seed and CPU-only execution (no CUDA
+non-determinism), this feature's multi-day training pipeline is
+deterministic for every quantity that does not depend on wall-clock timing,
+verified empirically via an independent end-to-end re-run, not merely
+argued from the presence of a seed.
+
+FOLD "fold_holdout_Wed28" was run once (not independently re-run a second
+time in this session, due to time constraints - see cross_day_report.txt
+limitations). Given it shares the identical code path, fixed-seed
+methodology, and CPU-only execution already empirically verified
+deterministic for fold_holdout_Wed21, this is a scope limitation
+transparently disclosed, not a claim of unverified determinism for this
+specific fold.
+
+PROTECTED ARTIFACT INTEGRITY
+-------------------------------
+Hashed 549 protected files (Features 1-16 results/data/models, L1, L2.x,
+L3.1/L3.2, frontend - excluding this feature's own new output directories
+and __pycache__ noise) BEFORE any Feature 17 work began, and again after
+Experiment A + both training folds + the determinism rerun completed.
+
+RESULT: IDENTICAL (0 files changed) - see leakage_audit.json's
+"protected_artifacts_unchanged": true, cross-checked independently by
+tests/test_cross_day_generalization.py's own hash comparison.

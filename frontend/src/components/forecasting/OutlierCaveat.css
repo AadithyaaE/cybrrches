@@ -1,0 +1,30 @@
+.outlier-caveat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.outlier-caveat__banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--status-warning-dim);
+  border: 1px solid var(--status-warning-border);
+  border-radius: var(--radius-md);
+}
+
+.outlier-caveat__banner p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.outlier-caveat__note {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 90ch;
+  line-height: 1.6;
+}

@@ -1,0 +1,41 @@
+{
+  "mode": "full_pipeline",
+  "partition": "test",
+  "threshold": 0.5,
+  "horizons": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "totalTestSequencesWithAllHorizons": 2341,
+  "sampledSequenceCount": 30,
+  "note": "Frozen research evaluation output, not live inference. All TEST-partition sequences have actual_future_label = Benign (the TEST split contains zero Infiltration sequences) - probabilities shown are the classifier's real output on real held-out data, not fabricated, even though the ground-truth label never varies here.",
+  "probabilityDescriptiveStats": {
+    "1": {
+      "mean": 0.45276037750261233,
+      "std": 0.10249611983407703,
+      "min": 0.18523677,
+      "max": 0.66033137
+    },
+    "2": {
+      "mean": 0.4603478834959648,
+      "std": 0.09501218729091078,
+      "min": 0.2058233,
+      "max": 0.58855295
+    },
+    "3": {
+      "mean": 0.4562278202121913,
+      "std": 0.09756251560810537,
+      "min": 0.21272917,
+      "max": 0.5694582
+    },
+    "5": {
+      "mean": 0.45429254161042293,
+      "std": 0.10038381602069354,
+      "min": 0.21451312,
+      "max": 0.5696047
+    }
+  },
+  "source": "results/attack_progression/attack_progression_predictions.csv"
+}

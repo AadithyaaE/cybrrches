@@ -1,0 +1,229 @@
+{
+  "objective": "Dataset availability and attack-composition inspection ONLY. No Feature 16 implementation, no training, no modification of existing artifacts.",
+  "scope_note": "This report performs zero downloads of full CSV files. It uses (a) S3 bucket LIST metadata (exact, verified), (b) small HTTP byte-range fetches of ~150KB per file at 5 offsets each (~1MB total transferred across 9 files, verified but partial/non-exhaustive), and (c) publicly documented CSE-CIC-IDS2018 attack-category descriptions (external documentation, not independently re-verified in full).",
+
+  "fact_categories": {
+    "1_verified_facts": "Confirmed directly in this session via S3 LIST, HTTP byte-range fetch, or prior Feature 1-3 work on the current dataset.",
+    "2_dataset_documentation_facts": "Well-established, publicly published CSE-CIC-IDS2018 attack-category-per-day descriptions (Canadian Institute for Cybersecurity), not independently re-verified in full in this session.",
+    "3_estimates": "Derived by calculation (e.g. row counts from file size / observed bytes-per-row), explicitly not exact counts.",
+    "4_unknown_unverified": "Cannot be established without a full download; explicitly flagged as such.",
+    "5_recommended_next_investigation": "What should be checked before any download/training decision is finalized."
+  },
+
+  "section_1_available_files": {
+    "source": "s3://cse-cic-ids2018/Processed Traffic Data for ML Algorithms/ (public bucket, listed with --no-sign-request)",
+    "verification_status": "VERIFIED via `aws s3 ls --no-sign-request` in this session.",
+    "total_files_found": 10,
+    "note": "This matches exactly the 10 filenames the user already listed - no additional or missing files were found in this prefix. The bucket also contains a separate 'Original Network Traffic and Log data/' prefix (raw pcap/log captures, not processed CSVs, not inventoried in detail here as it is out of scope for feature-engineering reuse).",
+    "files": [
+      {"filename": "Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-03-01", "s3_size_bytes": 107842858, "locally_downloaded": true, "local_path": "data/raw/Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv", "verified_row_count": 331125, "verified_columns": 80, "verified_labels": ["Benign", "Infilteration"]},
+      {"filename": "Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-28", "s3_size_bytes": 209249758, "locally_downloaded": false},
+      {"filename": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-14", "s3_size_bytes": 358223333, "locally_downloaded": false},
+      {"filename": "Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-21", "s3_size_bytes": 328893673, "locally_downloaded": false},
+      {"filename": "Friday-02-03-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-03-02", "s3_size_bytes": 352368373, "locally_downloaded": false},
+      {"filename": "Friday-16-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-16", "s3_size_bytes": 333723605, "locally_downloaded": false},
+      {"filename": "Thursday-15-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-15", "s3_size_bytes": 375945899, "locally_downloaded": false},
+      {"filename": "Thursday-22-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-22", "s3_size_bytes": 382636202, "locally_downloaded": false},
+      {"filename": "Friday-23-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-23", "s3_size_bytes": 382840456, "locally_downloaded": false},
+      {"filename": "Thuesday-20-02-2018_TrafficForML_CICFlowMeter.csv", "capture_date": "2018-02-20", "s3_size_bytes": 4054925350, "locally_downloaded": false, "note": "Filename typo ('Thuesday') is in the official bucket, not a transcription error here."}
+    ],
+    "total_size_all_10_files_bytes": 6886649407,
+    "total_size_all_10_files_gib_approx": 6.41,
+    "important_correction": "The 10 PROCESSED (CICFlowMeter) CSVs total only ~6.4 GiB combined, NOT 220+ GiB. The ~220 GiB figure referenced in the task almost certainly describes the full RAW packet-capture/log dataset (the separate 'Original Network Traffic and Log data/' prefix), not the processed ML-ready CSVs this project actually consumes. This distinction matters for download-cost planning."
+  },
+
+  "section_2_attack_composition": {
+    "verification_status": "PARTIAL: byte-range sampling (5 samples x ~150KB per file at 10/30/50/70/90% file-offset) confirmed at least one documented attack label in 5 of 9 un-downloaded files. The other 4 files' documented attack rows were not captured by these small samples (likely because attacks occupy a minority, possibly clustered, portion of each file) - their presence is DOCUMENTED but NOT independently re-verified in this session.",
+    "per_day": [
+      {"day": "Wednesday-14-02-2018", "documented_categories": ["Benign", "FTP-BruteForce", "SSH-Bruteforce"], "sampled_this_session": ["Benign", "FTP-BruteForce", "SSH-Bruteforce"], "match": "FULL"},
+      {"day": "Thursday-15-02-2018", "documented_categories": ["Benign", "DoS attacks-GoldenEye", "DoS attacks-Slowloris"], "sampled_this_session": ["Benign"], "match": "PARTIAL - attack rows not captured by samples"},
+      {"day": "Friday-16-02-2018", "documented_categories": ["Benign", "DoS attacks-Hulk", "DoS attacks-SlowHTTPTest"], "sampled_this_session": ["Benign", "DoS attacks-Hulk"], "match": "PARTIAL - one of two documented attack types captured"},
+      {"day": "Thuesday-20-02-2018", "documented_categories": ["Benign", "DDoS attacks-LOIC-HTTP"], "sampled_this_session": ["Benign"], "match": "PARTIAL - attack rows not captured by samples"},
+      {"day": "Wednesday-21-02-2018", "documented_categories": ["Benign", "DDoS attack-HOIC", "DDoS attack-LOIC-UDP"], "sampled_this_session": ["Benign", "DDOS attack-HOIC"], "match": "PARTIAL - one of two documented attack types captured"},
+      {"day": "Thursday-22-02-2018", "documented_categories": ["Benign", "Brute Force-Web", "Brute Force-XSS", "SQL Injection"], "sampled_this_session": ["Benign"], "match": "PARTIAL - attack rows not captured by samples"},
+      {"day": "Friday-23-02-2018", "documented_categories": ["Benign", "Brute Force-Web", "Brute Force-XSS", "SQL Injection"], "sampled_this_session": ["Benign"], "match": "PARTIAL - attack rows not captured by samples"},
+      {"day": "Wednesday-28-02-2018", "documented_categories": ["Benign", "Infilteration"], "sampled_this_session": ["Benign", "Infilteration"], "match": "FULL"},
+      {"day": "Thursday-01-03-2018", "documented_categories": ["Benign", "Infilteration"], "sampled_this_session": ["Benign", "Infilteration"], "match": "FULL (VERIFIED exhaustively in Features 1-3, full file already processed)"},
+      {"day": "Friday-02-03-2018", "documented_categories": ["Benign", "Bot"], "sampled_this_session": ["Benign", "Bot"], "match": "FULL"}
+    ],
+    "category_coverage_across_documented_days": {
+      "Benign": "all 10 days",
+      "Infiltration": "Wednesday-28-02-2018, Thursday-01-03-2018 (current dev day)",
+      "Botnet": "Friday-02-03-2018",
+      "DoS (single-source)": "Thursday-15-02-2018 (GoldenEye, Slowloris), Friday-16-02-2018 (Hulk, SlowHTTPTest)",
+      "DDoS (volumetric, multi-source/tooling)": "Thuesday-20-02-2018 (LOIC-HTTP), Wednesday-21-02-2018 (HOIC, LOIC-UDP)",
+      "Brute Force (credential)": "Wednesday-14-02-2018 (FTP, SSH)",
+      "Brute Force / injection (application-layer)": "Thursday-22-02-2018, Friday-23-02-2018 (Web, XSS, SQL Injection)",
+      "Reconnaissance / Port Scan": "NOT documented as a distinct label in ANY of these 10 CSE-CIC-IDS2018 days. IMPORTANT CLARIFICATION: the well-known 'PortScan' label most papers cite comes from the separate, older CICIDS2017 dataset, not CSE-CIC-IDS2018. Scanning-like behaviour may exist as unlabelled sub-behaviour within Infiltration/Bot days but there is no ground-truth scan label to evaluate against in this dataset family."
+    },
+    "unknown_unverified": [
+      "Exact row-level label counts/proportions for all 9 non-current days (would require full download+parse; the embedded-header-row and duplicate-row issues found in Feature 1-2 for Thursday-01-03-2018 may or may not also affect other days - unverified).",
+      "Whether Feature 2's embedded-header-row artifact (25 rows) and exact-duplicate-row artifact (73 rows) are present in the same form in other days' files.",
+      "Exact attack time-window boundaries within each day (needed for chronological-split design on a new day, analogous to Feature 7)."
+    ]
+  },
+
+  "section_3_candidate_ranking_factual_tradeoffs": [
+    {
+      "day": "Wednesday-28-02-2018",
+      "size_mb": 209.2,
+      "attack_diversity": "LOW (2 classes: Benign, Infiltration) - same as current dev day",
+      "volumetric_attacks": false,
+      "infiltration_related": true,
+      "reconnaissance": "not documented",
+      "brute_force": false,
+      "application_layer": false,
+      "temporal_forecasting_suitability": "HIGH - same label semantics and (per schema check) same 80-column feature schema as the current dev day, so the existing Feature 2-15 pipeline should apply with no structural changes.",
+      "download_cost": "SMALL (209 MB, smallest of the 9 undownloaded files)",
+      "tradeoff_summary": "Best like-for-like external validation of the CURRENT model's Infiltration-detection behaviour on a genuinely different day, but does not add any NEW attack-category diversity."
+    },
+    {
+      "day": "Wednesday-14-02-2018",
+      "size_mb": 358.2,
+      "attack_diversity": "MEDIUM (Benign + 2 brute-force subtypes)",
+      "volumetric_attacks": false,
+      "infiltration_related": false,
+      "reconnaissance": "not documented",
+      "brute_force": true,
+      "application_layer": false,
+      "temporal_forecasting_suitability": "Same 80-column schema as current day (verified); label semantics differ entirely from current Infiltration-only training, so a classifier trained only on Infiltration may not generalize to brute-force without retraining/relabeling decisions.",
+      "download_cost": "MEDIUM (358 MB)",
+      "tradeoff_summary": "Adds a clearly different, well-verified attack family (credential brute force) at moderate size; best suited to expanded training/development rather than frozen-model evaluation of the current Infiltration-only classifier."
+    },
+    {
+      "day": "Wednesday-21-02-2018",
+      "size_mb": 328.9,
+      "attack_diversity": "MEDIUM (Benign + up to 2 DDoS subtypes, 1 verified this session)",
+      "volumetric_attacks": true,
+      "infiltration_related": false,
+      "reconnaissance": "not documented",
+      "brute_force": false,
+      "application_layer": false,
+      "temporal_forecasting_suitability": "Same 80-column schema (verified). Volumetric DDoS traffic is directly relevant to this project's stated 'Real-Time DDoS Mitigation' goal and to Feature 14's Impact/T1498 stage.",
+      "download_cost": "MEDIUM (329 MB)",
+      "tradeoff_summary": "Most directly relevant to the project's DDoS-mitigation framing; adds volumetric-attack ground truth entirely absent from the current dev day."
+    },
+    {
+      "day": "Friday-02-03-2018",
+      "size_mb": 352.4,
+      "attack_diversity": "MEDIUM (Benign + Bot)",
+      "volumetric_attacks": false,
+      "infiltration_related": false,
+      "reconnaissance": "not documented",
+      "brute_force": false,
+      "application_layer": false,
+      "temporal_forecasting_suitability": "Same 80-column schema (verified). Chronologically adjacent to the current dev day (2018-03-02 vs 2018-03-01), which may or may not be desirable depending on whether temporal proximity is wanted for the evaluation design.",
+      "download_cost": "MEDIUM (352 MB)",
+      "tradeoff_summary": "Adds botnet/C2-relevant traffic (directly relevant to Feature 14's Command-and-Control/T1071 stage); being adjacent in time to the current dev day is a factual note, not necessarily a flaw."
+    },
+    {
+      "day": "Friday-16-02-2018 / Thursday-15-02-2018",
+      "size_mb": "333.7 / 375.9",
+      "attack_diversity": "MEDIUM (single-source DoS subtypes)",
+      "volumetric_attacks": "single-source DoS, not distributed",
+      "infiltration_related": false,
+      "reconnaissance": "not documented",
+      "brute_force": false,
+      "application_layer": "partially (Hulk/SlowHTTPTest/Slowloris target HTTP)",
+      "temporal_forecasting_suitability": "Same 80-column schema (verified for Friday-16; documented, header-only-verified for Thursday-15).",
+      "download_cost": "MEDIUM (334-376 MB each)",
+      "tradeoff_summary": "Useful for single-source DoS diversity distinct from the DDoS days; attack rows were not captured in this session's small samples for Thursday-15, so its attack presence rests on external documentation only for now."
+    },
+    {
+      "day": "Thursday-22-02-2018 / Friday-23-02-2018",
+      "size_mb": "382.6 / 382.8",
+      "attack_diversity": "MEDIUM-HIGH (3 documented app-layer subtypes each)",
+      "volumetric_attacks": false,
+      "infiltration_related": false,
+      "reconnaissance": "not documented",
+      "brute_force": "web-form brute force (documented)",
+      "application_layer": true,
+      "temporal_forecasting_suitability": "Same 80-column schema (verified). Adjacent days, documented as similar attack composition to each other.",
+      "download_cost": "MEDIUM-LARGE (~383 MB each)",
+      "tradeoff_summary": "Adds application-layer attack diversity (Web brute force, XSS, SQL Injection) not represented anywhere else in this file set; attack rows not captured in this session's samples for either day."
+    },
+    {
+      "day": "Thuesday-20-02-2018",
+      "size_mb": 4054.9,
+      "attack_diversity": "LOW (Benign + 1 DDoS subtype documented)",
+      "volumetric_attacks": true,
+      "infiltration_related": false,
+      "reconnaissance": "not documented",
+      "brute_force": false,
+      "application_layer": false,
+      "temporal_forecasting_suitability": "SCHEMA MISMATCH (VERIFIED): 84 columns, includes Flow ID/Src IP/Src Port/Dst IP not present in the other 9 files or in the current 80-column pipeline. Would require a compatibility adapter (drop 4 columns) before any existing Feature 2+ code could run on it.",
+      "download_cost": "LARGE (4.05 GB - ~11 to 38x larger than every other file in the set)",
+      "tradeoff_summary": "Single largest cost and only schema-incompatible file in the set, for a DDoS subtype (LOIC-HTTP) that is not uniquely available here (Wednesday-21 already offers 2 documented DDoS subtypes at 1/12th the download size). Weakest cost-benefit ratio of all 10 files for near-term use."
+    }
+  ],
+
+  "section_4_evaluation_design": {
+    "philosophy_confirmed": "Capture-day-level (not row-level) separation, consistent with Feature 7's chronological, gap/partition-aware philosophy already applied WITHIN Thursday-01-03-2018.",
+    "candidate_roles": {
+      "A_external_frozen_model_evaluation": {
+        "definition": "Run the existing frozen Features 8-15 pipeline (same feature engineering, same preprocessing, same trained weights) on a NEW day's data, with NO retraining, to see how it generalizes.",
+        "best_candidates": ["Wednesday-28-02-2018 (label-compatible, same 2 classes as training)", "Friday-02-03-2018 (adds Bot - tests behaviour on an attack type the classifier was never trained to distinguish)"],
+        "reasoning": "Wednesday-28-02-2018 is the most apples-to-apples comparison since it shares the same Benign/Infiltration label set as current training data. Days with entirely different attack types (Bot, DDoS, brute force) will necessarily show the current binary classifier mapping them to Benign or Infiltration in ways that require careful, honest interpretation (the model was never trained to recognize those categories) - useful for documenting generalization LIMITS, not for claiming detection capability on unseen attack types."
+      },
+      "B_expanded_training_development": {
+        "definition": "Incorporate additional days into a retrained/expanded model (a decision NOT made in this inspection).",
+        "best_candidates": ["Wednesday-14-02-2018 (brute force)", "Wednesday-21-02-2018 (DDoS)", "Friday-02-03-2018 (Bot)"],
+        "reasoning": "These three, combined, would give the retrained pipeline exposure to credential brute force, volumetric DDoS, and botnet traffic - the three attack families with the strongest sampling-confirmed evidence in this session, for a combined download of ~1.04 GB."
+      },
+      "C_final_held_out_test": {
+        "definition": "A day never used for any training/tuning decision, reserved purely for a final, one-time generalization report.",
+        "best_candidates": ["Thursday-22-02-2018 or Friday-23-02-2018 (whichever is NOT used in B)"],
+        "reasoning": "These two documented app-layer-attack days were not sampling-verified in this session and were not proposed for B above, making either a clean, untouched candidate for a true held-out set - but this recommendation should be revisited once their attack presence is actually confirmed by download."
+      }
+    },
+    "not_yet_decided": "This inspection does NOT make a final A/B/C assignment. It identifies candidates and the trade-offs; the final split should be decided together with the user before any download."
+  },
+
+  "section_5_frozen_model_evaluation_plan": {
+    "pipeline_reused_unchanged": ["Feature 10 LSTM checkpoint (results/lstm/lstm_world_model.pt)", "Feature 11 classifier (results/next_state/next_state_attack_classifier.joblib)", "Feature 7 train-fitted preprocessing pipeline (data/processed/splits/preprocessing_pipeline_train_fitted.joblib) - transform() only, never refit", "results/temporal_feature_order.json (canonical 68-feature order)"],
+    "artifacts_that_would_need_regeneration_for_a_new_day": [
+      "Feature 2 cleaning output equivalent (embedded-header-row / duplicate-row handling MUST be re-run and re-verified per new file - these artifacts are known to be file-specific, not assumed identical across days).",
+      "Feature 5 network-state S(t) equivalent for the new day.",
+      "Feature 6 temporal windows (1-second aggregation) and continuous-segment/gap structure for the new day (gaps will differ by day).",
+      "A NEW sequence set (X_sequences, analogous to Feature 7) built from the new day - NOT part of the existing train/validation/test split, since Feature 7's split boundaries are specific to Thursday-01-03-2018's own timeline.",
+      "Application of the EXISTING (already-fitted) Feature 7 scaler via .transform() only - never re-fit on the new day's data, to keep the evaluation a true frozen-model test."
+    ],
+    "explicitly_not_regenerated": ["LSTM weights", "Classifier weights", "Scaler statistics (median/mean/std)", "Feature 14 rule thresholds"],
+    "status": "PLANNED ONLY. Not implemented in this inspection."
+  },
+
+  "section_6_schema_compatibility": {
+    "current_pipeline_expects": "80 columns, header starting 'Dst Port,Protocol,Timestamp,...' ending '...,Label', NO Flow ID/Src IP/Src Port/Dst IP columns (verified in Feature 1-3).",
+    "verified_via_byte_range_header_fetch_this_session": {
+      "80_column_matching_files": ["Friday-02-03-2018", "Friday-16-02-2018", "Friday-23-02-2018", "Thursday-15-02-2018", "Thursday-22-02-2018", "Wednesday-14-02-2018", "Wednesday-21-02-2018", "Wednesday-28-02-2018"],
+      "84_column_mismatched_file": ["Thuesday-20-02-2018 (adds Flow ID, Src IP, Src Port, Dst IP at the start; Label remains the last column)"]
+    },
+    "implication": "8 of the 9 undownloaded files can very likely be fed through the EXISTING Feature 2 cleaning script without modification (column names/order match exactly what Feature 2-4 already assume). Thuesday-20-02-2018 would break Feature 2/3/4 as-is and needs a small, explicit adapter (drop the 4 leading columns) BEFORE reuse - this must not be done silently, and the 68-feature state representation must remain unchanged regardless.",
+    "unverified": "Only the HEADER row was checked for the 8 matching files; full-column dtype/value-range consistency (e.g. whether Feature 2's embedded-header-row and duplicate-row quirks recur) is unverified without a full download."
+  },
+
+  "section_7_download_strategy": {
+    "full_dataset_10_files_total_gib": 6.41,
+    "excluding_schema_mismatched_tuesday_file_gib": 2.38,
+    "recommended_minimal_defensible_subset": [
+      {"file": "Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv", "mb": 209.2, "role": "A / C"},
+      {"file": "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv", "mb": 358.2, "role": "B"},
+      {"file": "Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv", "mb": 328.9, "role": "B"}
+    ],
+    "recommended_subset_total_mb": 896.3,
+    "recommended_subset_total_gib_approx": 0.88,
+    "optional_fourth_file": {"file": "Friday-02-03-2018_TrafficForML_CICFlowMeter.csv", "mb": 352.4, "role": "B (adds Bot diversity)", "subset_total_with_this_gib_approx": 1.22},
+    "not_recommended_for_near_term_download": ["Thuesday-20-02-2018 (schema mismatch + 4.05 GB, weakest cost-benefit ratio per section 3)"],
+    "deferred_pending_user_decision": ["Thursday-22-02-2018 / Friday-23-02-2018 (candidates for held-out test C; recommend downloading only ONE of the two, keeping the other genuinely untouched)", "Friday-16-02-2018 / Thursday-15-02-2018 (single-source DoS - useful but lower priority than DDoS/brute-force/bot already covered by the core 3-4 file subset)"]
+  },
+
+  "section_8_project_integrity_check": {
+    "method": "Directory scan (find -newer) comparing file modification times in data/, results/, src/ against the last Feature 15 output file, plus manual content spot-check.",
+    "findings": [
+      "No file under data/raw, data/processed, results/ (except this new results/dataset_generalization_inspection/ folder), or src/ was created or modified by this inspection.",
+      "results/temporal_window_report.txt showed a modification timestamp from 2026-09-22 23:09 (same day as Feature 6-15 work, before this inspection session) - content was spot-checked (header and footer lines) and is byte-identical in substance to its original Feature 6 output. This timestamp most likely reflects the file being opened in the user's IDE (noted via an <ide_opened_file> system event at the start of this conversation), not a content change; no script run in this inspection touched this file.",
+      "This inspection performed zero writes to any existing file. All new content is confined to results/dataset_generalization_inspection/."
+    ],
+    "conclusion": "No existing Feature 1-15 artifact was modified by this inspection."
+  }
+}

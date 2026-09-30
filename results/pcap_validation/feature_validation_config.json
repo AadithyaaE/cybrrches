@@ -1,0 +1,26 @@
+{
+  "evidence_sources": [
+    "results/feature_inventory.csv",
+    "results/feature_selection_report.json / .txt",
+    "results/state_schema.json",
+    "results/model_feature_list.json",
+    "data/processed/Thursday-01-03-2018_TrafficForML_CICFlowMeter_clean.csv (real CICFlowMeter output, cross-feature self-consistency only)"
+  ],
+  "evidence_sources_not_used": [
+    "No CICFlowMeter reference tool (none available in this environment - see results/pcap/tool_availability_report.json)",
+    "No external/web documentation of CICFlowMeter's Java source"
+  ],
+  "status_values": [
+    "VALIDATED",
+    "PARTIALLY_VALIDATED",
+    "UNVALIDATED",
+    "NOT_REPRODUCIBLE"
+  ],
+  "classification_values": {
+    "A": "Definition validated from project/training artifacts",
+    "B": "Strongly derivable from packet/flow information but definition still needs empirical reference comparison",
+    "C": "Approximation/simplification",
+    "D": "Not sufficiently validated"
+  },
+  "training_csv_row_count": 331027
+}

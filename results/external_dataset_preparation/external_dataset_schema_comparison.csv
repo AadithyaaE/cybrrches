@@ -1,0 +1,5 @@
+file,column_count,matches_current_80col_schema_exact,has_timestamp,has_label,has_protocol,has_dst_port,notes
+Thursday-01-03-2018_TrafficForML_CICFlowMeter.csv (current dev dataset - reference),80,TRUE (reference),TRUE,TRUE,TRUE,TRUE,Reference schema from Features 1-15.
+Wednesday-28-02-2018_TrafficForML_CICFlowMeter.csv,80,TRUE,TRUE,TRUE,TRUE,TRUE,Re-verified fresh in this task; SHA256 matches prior download exactly.
+Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv,80,TRUE,TRUE,TRUE,TRUE,TRUE,Re-verified fresh in this task; SHA256 matches prior successful download exactly.
+Wednesday-21-02-2018_TrafficForML_CICFlowMeter.csv,80,TRUE,TRUE,TRUE,TRUE,TRUE,Re-verified fresh in this task; SHA256 matches prior successful download exactly.

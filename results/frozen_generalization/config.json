@@ -1,0 +1,48 @@
+{
+  "external_days": [
+    "Wednesday-28-02-2018",
+    "Wednesday-14-02-2018",
+    "Wednesday-21-02-2018"
+  ],
+  "horizons": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "sequence_length": 10,
+  "feature_count": 68,
+  "training_compatible_days": [
+    "Wednesday-28-02-2018"
+  ],
+  "model_checkpoint_paths": {
+    "logistic_regression": "results\\baseline\\logistic_regression_model.joblib",
+    "random_forest": "results\\baseline\\random_forest_model.joblib",
+    "lstm": "results\\lstm\\lstm_world_model.pt",
+    "next_state_classifier": "results\\next_state\\next_state_attack_classifier.joblib"
+  },
+  "preprocessing_artifact_path": "data\\processed\\splits\\preprocessing_pipeline_train_fitted.joblib",
+  "feature_order_path": "results\\temporal_feature_order.json",
+  "lstm_architecture": {
+    "hidden_size": 128,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "max_epochs": 50,
+    "patience": 7,
+    "seed": 42,
+    "input_size": 68,
+    "sequence_length": 10
+  },
+  "temporal_aggregation_policy_reused_from": "src/data/build_temporal_windows.py :: build_aggregation_policy()",
+  "explainability_sample_size": 10,
+  "explainability_sampling_method": "evenly-spaced indices via np.linspace, deterministic",
+  "environment": {
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "sklearn_version": "1.9.0",
+    "torch_version": "2.14.0+cpu",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "device": "cpu"
+  }
+}

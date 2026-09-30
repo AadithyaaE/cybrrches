@@ -1,0 +1,4 @@
+day,n_sequences,n_windows,attack_prevalence_windows_pct,training_compatible_view_applicable
+Wednesday-28-02-2018,22006,31854,22.4838,True
+Wednesday-14-02-2018,29091,32043,35.1652,False
+Wednesday-21-02-2018,1870,3256,71.4681,False

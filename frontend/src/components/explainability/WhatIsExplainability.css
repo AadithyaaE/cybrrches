@@ -1,0 +1,20 @@
+.what-is-explainability {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.what-is-explainability__lead {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.what-is-explainability__detail {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  max-width: 90ch;
+  line-height: 1.6;
+}

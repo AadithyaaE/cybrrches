@@ -1,0 +1,12 @@
+.forecast-horizon-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.forecast-horizon-view__chart {
+  padding: var(--space-4);
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}

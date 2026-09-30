@@ -1,0 +1,113 @@
+======================================================================
+NEXT-STATE ATTACK PREDICTION REPORT (FEATURE 11)
+======================================================================
+
+1. OBJECTIVE
+   Map the LSTM-predicted next network state S(t+1) to a discrete attack-state prediction (Benign/Infilteration).
+   Feature 11 maps the LSTM-predicted next network state to a discrete attack-state prediction. It does not yet implement multi-step forecasting or attacker-progression probability.
+
+2. ARCHITECTURE
+   Frozen Feature 10 LSTM World Model (unmodified) + a separate downstream
+   LogisticRegression state-to-attack classifier: {'max_iter': 2000, 'class_weight': 'balanced', 'random_state': 42, 'solver': 'lbfgs'}
+
+3. RELATIONSHIP TO FEATURE 10
+   The LSTM World Model (Feature 10, frozen and not retrained here) predicts the continuous 68-dimensional next network state from 10 historical states. Feature 11 adds a separate, downstream classifier that interprets ANY 68-dimensional state (ground-truth or LSTM-predicted) as an attack-state label. The LSTM remains purely a temporal-dynamics model; it was never given the attack label and was not modified in this feature.
+
+4. ORACLE CLASSIFICATION METHODOLOGY (MODE A)
+   Classifier trained on TRAIN ground-truth next states, evaluated on ground-truth next states for train/validation/test. Isolates state-representation separability from LSTM prediction error.
+
+5. FULL PIPELINE METHODOLOGY (MODE B)
+   Same frozen classifier, evaluated on LSTM-predicted next states (X_sequences_scaled -> frozen LSTM -> predicted state -> classifier) for train/validation/test. This is the actual CyberChess forecasting path.
+
+6-8. TRAINING / VALIDATION / TEST DATA
+   train: n=15660, labels={'Benign': 10760, 'Infilteration': 4900}
+   validation: n=3492, labels={'Benign': 1815, 'Infilteration': 1677}
+   test: n=2871, labels={'Benign': 2871, 'Infilteration': 0}
+
+9. CLASSIFIER CONFIGURATION
+   max_iter: 2000
+   class_weight: balanced
+   random_state: 42
+   solver: lbfgs
+
+10. ORACLE METRICS
+   TRAIN: {'n_samples': 15660, 'n_positive': 4900, 'n_negative': 10760, 'predicted_positive_count': 7864, 'predicted_negative_count': 7796, 'accuracy': 0.5747126436781609, 'precision': 0.38809766022380465, 'recall': 0.6228571428571429, 'f1': 0.4782199937323723, 'roc_auc': 0.6249988430316364, 'roc_auc_note': None, 'false_positive_rate': np.float64(0.44721189591078064), 'false_positive_rate_note': None, 'confusion_matrix': {'tn': 5948, 'fp': 4812, 'fn': 1848, 'tp': 3052}, 'notes': [], 'class_distribution': {'Benign': 10760, 'Infilteration': 4900}}
+   VALIDATION: {'n_samples': 3492, 'n_positive': 1677, 'n_negative': 1815, 'predicted_positive_count': 1745, 'predicted_negative_count': 1747, 'accuracy': 0.6053837342497136, 'precision': 0.5856733524355301, 'recall': 0.6094215861657722, 'f1': 0.5973115137346581, 'roc_auc': 0.6666500753181515, 'roc_auc_note': None, 'false_positive_rate': np.float64(0.39834710743801655), 'false_positive_rate_note': None, 'confusion_matrix': {'tn': 1092, 'fp': 723, 'fn': 655, 'tp': 1022}, 'notes': [], 'class_distribution': {'Benign': 1815, 'Infilteration': 1677}}
+   TEST: {'n_samples': 2871, 'n_positive': 0, 'n_negative': 2871, 'predicted_positive_count': 911, 'predicted_negative_count': 1960, 'accuracy': 0.6826889585510275, 'precision': 0.0, 'recall': None, 'f1': 0.0, 'roc_auc': None, 'roc_auc_note': 'Not computable: only one class present in y_true (n_positive=0, n_negative=2871).', 'false_positive_rate': np.float64(0.3173110414489725), 'false_positive_rate_note': None, 'confusion_matrix': {'tn': 1960, 'fp': 911, 'fn': 0, 'tp': 0}, 'notes': ["Recall is not estimable: with zero actual positive samples, recall's denominator (TP+FN) is structurally 0 (0/0) - mathematically undefined, reported as null.", 'F1 is still well-defined here (F1=0.0) since TP+FP+FN > 0 even though TP=0.'], 'class_distribution': {'Benign': 2871, 'Infilteration': 0}}
+
+11. FULL-PIPELINE METRICS
+   TRAIN: {'n_samples': 15660, 'n_positive': 4900, 'n_negative': 10760, 'predicted_positive_count': 9427, 'predicted_negative_count': 6233, 'accuracy': 0.5457854406130268, 'precision': 0.38262437679007105, 'recall': 0.7361224489795918, 'f1': 0.5035248132895931, 'roc_auc': 0.6433575221910325, 'roc_auc_note': None, 'false_positive_rate': np.float64(0.5408921933085502), 'false_positive_rate_note': None, 'confusion_matrix': {'tn': 4940, 'fp': 5820, 'fn': 1293, 'tp': 3607}, 'notes': [], 'class_distribution': {'Benign': 10760, 'Infilteration': 4900}}
+   VALIDATION: {'n_samples': 3492, 'n_positive': 1677, 'n_negative': 1815, 'predicted_positive_count': 2248, 'predicted_negative_count': 1244, 'accuracy': 0.5982245131729668, 'precision': 0.5609430604982206, 'recall': 0.751937984496124, 'f1': 0.642547770700637, 'roc_auc': 0.6601401886814148, 'roc_auc_note': None, 'false_positive_rate': np.float64(0.543801652892562), 'false_positive_rate_note': None, 'confusion_matrix': {'tn': 828, 'fp': 987, 'fn': 416, 'tp': 1261}, 'notes': [], 'class_distribution': {'Benign': 1815, 'Infilteration': 1677}}
+   TEST: {'n_samples': 2871, 'n_positive': 0, 'n_negative': 2871, 'predicted_positive_count': 1321, 'predicted_negative_count': 1550, 'accuracy': 0.539881574364333, 'precision': 0.0, 'recall': None, 'f1': 0.0, 'roc_auc': None, 'roc_auc_note': 'Not computable: only one class present in y_true (n_positive=0, n_negative=2871).', 'false_positive_rate': np.float64(0.460118425635667), 'false_positive_rate_note': None, 'confusion_matrix': {'tn': 1550, 'fp': 1321, 'fn': 0, 'tp': 0}, 'notes': ["Recall is not estimable: with zero actual positive samples, recall's denominator (TP+FN) is structurally 0 (0/0) - mathematically undefined, reported as null.", 'F1 is still well-defined here (F1=0.0) since TP+FP+FN > 0 even though TP=0.'], 'class_distribution': {'Benign': 2871, 'Infilteration': 0}}
+
+12. ORACLE vs FULL-PIPELINE COMPARISON (VALIDATION)
+   VALIDATION is the meaningful comparison point because it is the only evaluation partition (besides TRAIN, which the classifier was fit on) containing both classes. The difference (pipeline - oracle) provides an empirical indication of how errors in future-state prediction affect downstream attack-state classification; it does not establish that this difference is solely or causally due to LSTM prediction error, since other factors (e.g. classifier decision boundary sensitivity near the LSTM's smoothed/regression-toward-mean predictions) could also contribute. No overall winner or ranking is declared.
+   accuracy: oracle=0.6053837342497136 pipeline=0.5982245131729668 difference=-0.0071592210767468245
+   precision: oracle=0.5856733524355301 pipeline=0.5609430604982206 difference=-0.024730291937309468
+   recall: oracle=0.6094215861657722 pipeline=0.751937984496124 difference=0.1425163983303518
+   f1: oracle=0.5973115137346581 pipeline=0.642547770700637 difference=0.04523625696597888
+   roc_auc: oracle=0.6666500753181515 pipeline=0.6601401886814148 difference=-0.006509886636736684
+   false_positive_rate: oracle=0.39834710743801655 pipeline=0.543801652892562 difference=0.14545454545454545
+
+13. CONFUSION MATRICES
+   See results\next_state\next_state_attack_confusion_matrices.json
+
+14. PROBABILITY OUTPUTS
+   Raw Logistic Regression probabilities are reported; probability calibration is deferred.
+
+15. LEAKAGE CHECKS
+   1_state_input_shape_68: PASS
+   2_labels_binary: PASS
+   3_no_nan_inf: PASS
+   4_no_timestamp_in_model_input: PASS
+   5_no_sequence_id_in_model_input: PASS
+   6_no_attack_label_in_model_input: PASS
+   7_classifier_fitted_only_on_train_ground_truth: PASS
+   8_validation_labels_used_only_for_evaluation: PASS
+   9_test_labels_used_only_for_final_evaluation: PASS
+   10_lstm_not_retrained: PASS
+   11_feature7_files_unchanged: PASS
+   12_feature8_files_unchanged: PASS
+   13_feature9_files_unchanged: PASS
+   14_feature10_files_unchanged: PASS
+   15_no_random_train_test_split: PASS
+
+16. REPRODUCIBILITY CHECKS
+   seed: 42
+   classifier_reload_predict_match: True
+   classifier_reload_proba_match_atol_1e-12: True
+   lstm_reload_determinism_match: True
+   lstm_reload_max_abs_diff: 0.0
+
+17. TEST-SET LIMITATION
+   The chronological TEST partition contains no positive Infiltration examples. Therefore, attack-class recall and ROC-AUC are not estimable on the current TEST partition. Test results should not be interpreted as a complete attack-detection evaluation.
+
+18. KNOWN LIMITATIONS
+   - TEST partition contains no Infiltration target windows; test metrics here
+     characterize false-positive behavior on benign traffic only, in both modes.
+   - The oracle-vs-pipeline difference on VALIDATION is descriptive, not a proof of
+     causality (see comparison_statement).
+   - Raw (uncalibrated) probabilities are reported; see item 14.
+   - Single continuous-day capture: generalization to other days/networks is untested.
+   Feature 8's Logistic Regression was trained on a FLATTENED 10x68=680-dimensional historical sequence (t-9..t) to predict the NEXT window's label directly. Feature 11's Logistic Regression is a different model: it maps ONE 68-dimensional FUTURE state vector (ground-truth or LSTM-predicted S(t+1)) to its attack-state label. They are not interchangeable and are not directly comparable as classifiers of the same input.
+
+19. WHAT FEATURE 11 DOES NOT IMPLEMENT
+   - K-step / multi-step forecasting
+   - Attack-progression probability across multiple future windows
+   - MITRE ATT&CK stage prediction
+   - Explainability (SHAP or otherwise)
+   - Autonomous mitigation
+
+20. RECOMMENDED NEXT FEATURE
+   Feature 12: extend the frozen World Model to multi-step (K-step) rollout forecasting,
+   still respecting the chronological split and the TEST-set label limitation documented above.
+
+OUTPUTS:
+   classifier: results\next_state\next_state_attack_classifier.joblib
+   confusion_matrices: results\next_state\next_state_attack_confusion_matrices.json
+   config: results\next_state\next_state_attack_config.json
+   oracle_metrics: results\next_state\oracle_metrics.json
+   pipeline_metrics: results\next_state\pipeline_metrics.json
+   predictions_summary: results\next_state\next_state_attack_predictions_summary.csv
+   validation_attack_predictions: data\processed\next_state\validation_attack_predictions.csv
+   test_attack_predictions: data\processed\next_state\test_attack_predictions.csv

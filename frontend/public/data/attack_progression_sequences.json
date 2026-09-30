@@ -1,0 +1,932 @@
+[
+  {
+    "sequenceId": 19163,
+    "currentTimestamp": "2018-03-01 11:35:41",
+    "segmentId": 1122,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.51869947,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:35:42"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5142621,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:35:43"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.27536875,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:35:44"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5053379,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:35:46"
+      }
+    }
+  },
+  {
+    "sequenceId": 19251,
+    "currentTimestamp": "2018-03-01 11:37:38",
+    "segmentId": 1125,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.4937067,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:37:39"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.35088894,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:37:40"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.51256657,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:37:41"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.50382966,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:37:43"
+      }
+    }
+  },
+  {
+    "sequenceId": 19344,
+    "currentTimestamp": "2018-03-01 11:39:50",
+    "segmentId": 1130,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5218728,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:39:51"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.49658865,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:39:52"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.27750158,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:39:53"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.49984497,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:39:55"
+      }
+    }
+  },
+  {
+    "sequenceId": 19445,
+    "currentTimestamp": "2018-03-01 11:42:41",
+    "segmentId": 1138,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.49762106,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:42:42"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.46893218,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:42:43"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.401041,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:42:44"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5339798,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:42:46"
+      }
+    }
+  },
+  {
+    "sequenceId": 19537,
+    "currentTimestamp": "2018-03-01 11:44:54",
+    "segmentId": 1143,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5523986,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:44:55"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.52709305,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:44:56"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.289585,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:44:57"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.49185705,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:44:59"
+      }
+    }
+  },
+  {
+    "sequenceId": 19630,
+    "currentTimestamp": "2018-03-01 11:47:08",
+    "segmentId": 1148,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5058253,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:47:09"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.51577973,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:47:10"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.26323003,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:47:11"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5006265,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:47:13"
+      }
+    }
+  },
+  {
+    "sequenceId": 19729,
+    "currentTimestamp": "2018-03-01 11:49:53",
+    "segmentId": 1154,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.51952416,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:49:54"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5160065,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:49:55"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.23897937,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:49:56"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.49544328,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:49:58"
+      }
+    }
+  },
+  {
+    "sequenceId": 19835,
+    "currentTimestamp": "2018-03-01 11:53:04",
+    "segmentId": 1162,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.52127284,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:53:05"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.55301636,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:53:06"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.41534176,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:53:07"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5189592,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:53:09"
+      }
+    }
+  },
+  {
+    "sequenceId": 19920,
+    "currentTimestamp": "2018-03-01 11:54:45",
+    "segmentId": 1164,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.49092066,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:54:46"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.48742855,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:54:47"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.52744246,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:54:48"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.39658815,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:54:50"
+      }
+    }
+  },
+  {
+    "sequenceId": 20015,
+    "currentTimestamp": "2018-03-01 11:57:04",
+    "segmentId": 1168,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5010958,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:57:05"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5293954,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:57:06"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.47274253,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:57:07"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5139601,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:57:09"
+      }
+    }
+  },
+  {
+    "sequenceId": 20103,
+    "currentTimestamp": "2018-03-01 11:58:54",
+    "segmentId": 1170,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5242499,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:58:55"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5237794,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:58:56"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.24637663,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:58:57"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.49705887,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 11:58:59"
+      }
+    }
+  },
+  {
+    "sequenceId": 20184,
+    "currentTimestamp": "2018-03-01 12:00:15",
+    "segmentId": 1170,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.43148398,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:00:16"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.2661509,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:00:17"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.47908774,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:00:18"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.45532888,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:00:20"
+      }
+    }
+  },
+  {
+    "sequenceId": 20273,
+    "currentTimestamp": "2018-03-01 12:02:16",
+    "segmentId": 1174,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.29625595,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:02:17"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.53556556,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:02:18"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.51669765,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:02:19"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.2791921,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:02:21"
+      }
+    }
+  },
+  {
+    "sequenceId": 20353,
+    "currentTimestamp": "2018-03-01 12:03:36",
+    "segmentId": 1174,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.528246,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:03:37"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.34010062,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:03:38"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.5360997,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:03:39"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.50858146,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:03:41"
+      }
+    }
+  },
+  {
+    "sequenceId": 20450,
+    "currentTimestamp": "2018-03-01 12:05:57",
+    "segmentId": 1178,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.52374375,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:05:58"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.49818486,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:05:59"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.50273985,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:06:00"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.52524114,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:06:02"
+      }
+    }
+  },
+  {
+    "sequenceId": 20564,
+    "currentTimestamp": "2018-03-01 12:09:40",
+    "segmentId": 1188,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.2918417,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:09:41"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5359624,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:09:42"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.494059,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:09:43"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.2667863,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:09:45"
+      }
+    }
+  },
+  {
+    "sequenceId": 20657,
+    "currentTimestamp": "2018-03-01 12:11:54",
+    "segmentId": 1193,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.50012875,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:11:55"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5151051,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:11:56"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.5270711,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:11:57"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.52323043,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:11:59"
+      }
+    }
+  },
+  {
+    "sequenceId": 20784,
+    "currentTimestamp": "2018-03-01 12:19:20",
+    "segmentId": 1230,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5069199,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:19:21"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5395682,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:19:22"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.50887156,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:19:23"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5284718,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:19:25"
+      }
+    }
+  },
+  {
+    "sequenceId": 20885,
+    "currentTimestamp": "2018-03-01 12:22:16",
+    "segmentId": 1238,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5184903,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:22:17"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.4783847,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:22:18"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.29357216,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:22:19"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.50022376,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:22:21"
+      }
+    }
+  },
+  {
+    "sequenceId": 20994,
+    "currentTimestamp": "2018-03-01 12:26:08",
+    "segmentId": 1252,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.2448727,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:26:09"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5228749,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:26:10"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.5353997,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:26:11"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.25912225,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:26:13"
+      }
+    }
+  },
+  {
+    "sequenceId": 21082,
+    "currentTimestamp": "2018-03-01 12:28:00",
+    "segmentId": 1255,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.48692018,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:28:01"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5179108,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:28:02"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.51345205,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:28:03"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.50162905,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:28:05"
+      }
+    }
+  },
+  {
+    "sequenceId": 21187,
+    "currentTimestamp": "2018-03-01 12:31:16",
+    "segmentId": 1265,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.53522915,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:31:17"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.53383946,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:31:18"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.37507078,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:31:19"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.51724076,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:31:21"
+      }
+    }
+  },
+  {
+    "sequenceId": 21308,
+    "currentTimestamp": "2018-03-01 12:36:47",
+    "segmentId": 1289,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.51761067,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:36:48"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5032148,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:36:49"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.31078935,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:36:50"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5039183,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:36:52"
+      }
+    }
+  },
+  {
+    "sequenceId": 21400,
+    "currentTimestamp": "2018-03-01 12:38:52",
+    "segmentId": 1292,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.20427065,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:38:53"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.552527,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:38:54"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.5117947,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:38:55"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.25846374,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:38:57"
+      }
+    }
+  },
+  {
+    "sequenceId": 21498,
+    "currentTimestamp": "2018-03-01 12:41:41",
+    "segmentId": 1301,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.548089,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:41:42"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5093322,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:41:43"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.51398295,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:41:44"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.5313212,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:41:46"
+      }
+    }
+  },
+  {
+    "sequenceId": 21604,
+    "currentTimestamp": "2018-03-01 12:45:50",
+    "segmentId": 1318,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.45341855,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:45:51"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.44077966,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:45:52"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.48819968,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:45:53"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.45586258,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:45:55"
+      }
+    }
+  },
+  {
+    "sequenceId": 21711,
+    "currentTimestamp": "2018-03-01 12:49:37",
+    "segmentId": 1332,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5058983,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:49:38"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5042225,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:49:39"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.5074781,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:49:40"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.52978045,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:49:42"
+      }
+    }
+  },
+  {
+    "sequenceId": 21830,
+    "currentTimestamp": "2018-03-01 12:54:07",
+    "segmentId": 1348,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5407664,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:54:08"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5139519,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:54:09"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.25079203,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:54:10"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.50976914,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:54:12"
+      }
+    }
+  },
+  {
+    "sequenceId": 21931,
+    "currentTimestamp": "2018-03-01 12:56:57",
+    "segmentId": 1355,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.5366498,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:56:58"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.4969519,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:56:59"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.31443295,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:57:00"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.51044655,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:57:02"
+      }
+    }
+  },
+  {
+    "sequenceId": 22029,
+    "currentTimestamp": "2018-03-01 12:59:54",
+    "segmentId": 1365,
+    "horizons": {
+      "1": {
+        "predictedInfiltrationProbability": 0.4450683,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:59:55"
+      },
+      "2": {
+        "predictedInfiltrationProbability": 0.5172715,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:59:56"
+      },
+      "3": {
+        "predictedInfiltrationProbability": 0.49945813,
+        "predictedAttackClassAt050": 0,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:59:57"
+      },
+      "5": {
+        "predictedInfiltrationProbability": 0.53696454,
+        "predictedAttackClassAt050": 1,
+        "actualFutureLabel": "Benign",
+        "futureTimestamp": "2018-03-01 12:59:59"
+      }
+    }
+  }
+]

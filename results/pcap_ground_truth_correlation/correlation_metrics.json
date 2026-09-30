@@ -1,0 +1,35 @@
+{
+  "candidate_file": "results/pcap_ground_truth_correlation/candidate_part2_172.31.69.13.pcap",
+  "parser_used": "src/data/pcap/pcap_reader.py::read_pcap() and src/data/pcap/flow_reconstruction.py::reconstruct_flows() - CyberChess's existing, UNMODIFIED Feature L2 code",
+  "read_pcap_wall_time_seconds": 33.2,
+  "reconstruct_flows_wall_time_seconds": 0.45,
+  "total_frames_in_capture": 121383,
+  "packets_parsed_ipv4": 121086,
+  "packets_malformed_or_non_ipv4": 297,
+  "malformed_reason_note": "All 297 are 'No IPv4 layer present (e.g. ARP or other non-IP frame)' - expected on a real LAN capture, not a parser defect.",
+  "protocol_distribution_packets": {"6_TCP": 93436, "17_UDP": 27390, "1_ICMP": 257, "2_IGMP": 3},
+  "unique_source_ips": 226,
+  "unique_destination_ips": 191,
+  "flow_reconstruction": {
+    "total_flows": 50434,
+    "tcp_flows": 49492,
+    "udp_flows": 942,
+    "packets_unassigned_to_a_flow": 260,
+    "unassigned_reason_note": "260 = 257 ICMP + 3 IGMP packets, exactly matching the protocol distribution above - correctly excluded since flow_reconstruction.py requires TCP/UDP ports by design, not a bug."
+  },
+  "determinism_check": {
+    "runs_performed": 2,
+    "signature_run1": "2feee61273782178ac0aec04b4aae70156f673a0509d358d65e6272ddf066885",
+    "signature_run2": "2feee61273782178ac0aec04b4aae70156f673a0509d358d65e6272ddf066885",
+    "identical": true,
+    "signature_covers": "packet count, malformed count, flow count, and every flow's (key, protocol, start_time_us, end_time_us, packet_count, closed_reason)"
+  },
+  "csv_overlap_check": {
+    "overlap_found": false,
+    "csv_rows_examined": 0,
+    "csv_rows_in_overlap_window": 0,
+    "strong_matches_found": 0,
+    "ambiguous_matches_found": 0,
+    "reason_no_matching_attempted": "Candidate's entire timestamp range (14:03:49-14:35:53 UTC) falls after the CSV's covered window (01:00:00-12:59:59 UTC) - zero overlap, so flow-level matching against CSV rows is not meaningful and was not attempted, per this task's explicit Step 5 instruction."
+  }
+}
