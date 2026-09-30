@@ -5,6 +5,12 @@
 > **Status: offline/research predictive cyber-defense prototype with a controlled mitigation *simulation*.**
 > CyberChess is **not** a production firewall. It does **not** perform live network enforcement, and it does **not** modify any real firewall, router, or network device. Every "mitigation" and "verification" result in this project is an explicitly labeled, deterministic, arithmetic-only **simulation** over research data — never a claim about real traffic being blocked.
 
+## Live Demo
+
+**[Open CyberChess Live Demo](https://cybrrches-bzonq36j0-aadithyaa-s-projects.vercel.app/overview)**
+
+The public CyberChess research/demo interface for exploring this prototype, including its **simulated** mitigation and verification workflow. Like the rest of the project, the demo does not perform real firewall enforcement or real network verification.
+
 ---
 
 ## The research cycle: Observe → Identify → Predict → Mitigate → Verify
