@@ -7,7 +7,7 @@
 
 ## Live Demo
 
-**[Open CyberChess Live Demo](https://cybrrches-bzonq36j0-aadithyaa-s-projects.vercel.app/overview)**
+**[Open CyberChess Live Demo](https://cybrrches.vercel.app/overview)**
 
 The public CyberChess research/demo interface for exploring this prototype, including its **simulated** mitigation and verification workflow. Like the rest of the project, the demo does not perform real firewall enforcement or real network verification.
 
